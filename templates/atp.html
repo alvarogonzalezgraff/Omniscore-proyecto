@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetWin - ATP Rankings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Shared Premium Styles from Wimbledon applied to ATP */
+        :root {
+            --primary: #0ea5e9;
+            --primary-glow: rgba(14, 165, 233, 0.4);
+            --dark-bg: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background-color: var(--dark-bg); 
+            color: var(--text-main); 
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6; 
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
+        }
+        h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header { 
+            background: rgba(10, 10, 10, 0.8); 
+            backdrop-filter: blur(12px);
+            padding: 15px 0; 
+            position: sticky; top: 0; z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 800; font-family: 'Outfit', sans-serif; color: #fff; letter-spacing: -0.5px; }
+        .logo span { color: #f59e0b; } /* Keep BetWin orange */
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav ul li a { font-weight: 500; font-size: 15px; color: var(--text-muted); transition: color 0.3s; }
+        nav ul li a:hover { color: #fff; }
+
+        /* Premium Hero */
+        .hero { 
+            padding: 80px 0 60px; 
+            text-align: center; 
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.4) 0%, rgba(2, 132, 199, 0.2) 100%);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        .hero h1 { 
+            font-size: 56px; 
+            font-weight: 800;
+            margin-bottom: 15px; 
+            background: linear-gradient(to right, #fff, #bfdbfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .hero p { font-size: 20px; color: #cbd5e1; max-width: 600px; margin: 0 auto; }
+        
+        .btn-back { 
+            background: var(--glass-bg); 
+            color: #fff; 
+            padding: 10px 24px; 
+            border: 1px solid var(--glass-border); 
+            border-radius: 30px; 
+            cursor: pointer; 
+            font-weight: 500; 
+            display: inline-flex; align-items: center; gap: 8px; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            margin-bottom: 30px; 
+            backdrop-filter: blur(10px);
+        }
+        .btn-back:hover { 
+            background: rgba(255,255,255,0.1); 
+            transform: translateX(-5px); 
+        }
+
+        /* Glass Cards / Panels */
+        .glass-panel { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(16px);
+            border-radius: 20px; 
+            padding: 40px; 
+            margin: 40px auto; 
+            border: 1px solid var(--glass-border); 
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        .flex-between { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
+        .info-title { 
+            font-size: 28px; 
+            font-weight: 600;
+            color: #fff; 
+            margin-bottom: 0; 
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .info-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 4px;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+        .badge { font-family: 'Outfit', sans-serif; font-size: 14px; color: var(--primary); background: rgba(14, 165, 233, 0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.2); }
+
+        /* Modern Table */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        
+        th {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--glass-border);
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 15px;
+            color: #fff;
+            transition: background 0.2s;
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        
+        .pos-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-weight: 700;
+            font-size: 13px;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        .pos-1 { background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+        .pos-2 { background: rgba(148, 163, 184, 0.2); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }
+        .pos-3 { background: rgba(180, 83, 9, 0.2); color: #fbbf24; border: 1px solid rgba(180, 83, 9, 0.3); }
+        
+        .player-name {
+            font-weight: 600;
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .points-val {
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .glass-panel { padding: 25px; margin: 20px; }
+        }
+    
+/* Sport Top Navigation */
+.sport-top-nav { position: fixed; top: 70px; left: 16px; z-index: 150; display: flex; flex-direction: column; gap: 6px; }
+.sport-top-nav a { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(17,24,39,0.92); backdrop-filter: blur(12px); border: 1px solid #1f2937; border-radius: 8px; color: #9ca3af; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.25s; white-space: nowrap; }
+.sport-top-nav a:hover { color: #fff; background: rgba(17,24,39,0.98); transform: translateX(4px); border-color: var(--nav-accent, #3b82f6); box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.sport-top-nav a .nav-icon { font-size: 15px; }
+.sport-top-nav a.futbol-nav { --nav-accent: #22c55e; }
+.sport-top-nav a.basket-nav { --nav-accent: #f59e0b; }
+.sport-top-nav a.tenis-nav { --nav-accent: #eab308; }
+.sport-top-nav a.active-nav { color: #fff; border-color: var(--nav-accent); background: rgba(17,24,39,0.98); box-shadow: 0 0 10px rgba(59,130,246,0.15); }
+@media (max-width: 900px) { .sport-top-nav { position: fixed; top: auto; bottom: 0; left: 0; right: 0; flex-direction: row; justify-content: center; gap: 6px; padding: 10px; background: rgba(10,14,26,0.95); border-top: 1px solid #1f2937; border-radius: 0; } .sport-top-nav a .nav-label { display: none; } .sport-top-nav a { padding: 8px 12px; } }
+</style>
+</head>
+<body>
+<!-- Sport Top Navigation -->
+<div class="sport-top-nav">
+    <a href="/deportes#seccion-futbol" class="futbol-nav"><span class="nav-icon">⚽</span><span class="nav-label">Fútbol</span></a>
+    <a href="/deportes#seccion-baloncesto" class="basket-nav"><span class="nav-icon">🏀</span><span class="nav-label">Baloncesto</span></a>
+    <a href="/deportes#seccion-tenis" class="tenis-nav active-nav"><span class="nav-icon">🎾</span><span class="nav-label">Tenis</span></a>
+</div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="/inicio" class="logo">Bet<span>Win</span></a>
+                <nav>
+                    <ul>
+                        <li><a href="/inicio">Inicio</a></li>
+                        <li><a href="/deportes">Deportes</a></li>
+                        <li><a href="#">En Vivo</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container" style="position: relative; z-index: 2;">
+            <button class="btn-back" onclick="window.location.href='/deportes'">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                Volver a Deportes
+            </button>
+            <h1>👔 ATP Tour Rankings</h1>
+            <p>Clasificación Oficial del Circuito Profesional de Tenis Masculino, con nuestro diseño premium inmersivo.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="glass-panel">
+            <div class="flex-between">
+                <h2 class="info-title">Clasificación Mundial</h2>
+                <div class="badge">🌐 Temporada 2025</div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px; text-align: center;">Rank</th>
+                            <th>Tenista</th>
+                            <th>Puntos ATP</th>
+                            <th>Torneos Jugados</th>
+                        </tr>
+                    </thead>
+                    <tbody id="standings-body">
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="spin" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-6.219-8.56"></path></svg>
+                                    Obteniendo datos del ranking global...
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .spin { animation: spin 1s linear infinite; stroke: var(--primary); }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+
+    <script>
+        const API_URL = "http://localhost:8001/api/scraped-standings/ATP Rankings";
+
+        async function loadStandings() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error("Error fetching data");
+                const data = await response.json();
+                
+                const tbody = document.getElementById("standings-body");
+                if (data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 40px; color: var(--text-muted);">No hay datos disponibles del ranking mundial en este momento.</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = data.map((player, index) => {
+                    // Custom badge formatting for top 3
+                    let badgeClass = "pos-badge";
+                    if(index === 0) badgeClass += " pos-1";
+                    else if(index === 1) badgeClass += " pos-2";
+                    else if(index === 2) badgeClass += " pos-3";
+                    
+                    return `
+                    <tr>
+                        <td style="text-align: center;">
+                            <span class="${badgeClass}">${player.position}</span>
+                        </td>
+                        <td class="player-name">${player.team_name}</td>
+                        <td class="points-val">${player.points}</td>
+                        <td style="color: var(--text-muted); font-weight: 500;">${player.matches_played}</td>
+                    </tr>
+                `}).join('');
+                
+            } catch (error) {
+                console.error("Error:", error);
+                document.getElementById("standings-body").innerHTML = 
+                    '<tr><td colspan="4" style="text-align: center; color: #ef4444; padding: 40px; background: rgba(239, 68, 68, 0.05);">⚠️ Error al cargar la clasificación ATP. Asegúrese de que la base de datos esté online.</td></tr>';
+            }
+        }
+
+        window.onload = loadStandings;
+    </script>
+</body>
+</html>

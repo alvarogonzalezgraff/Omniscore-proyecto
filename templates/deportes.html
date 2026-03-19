@@ -1,0 +1,1771 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetWin - Deportes</title>
+    <script>
+        (function() {
+            try {
+                var raw = localStorage.getItem('currentUser');
+                if (!raw) { window.location.replace('/login'); return; }
+                var user = JSON.parse(raw);
+                if (!user || !user.username) { window.location.replace('/login'); return; }
+            } catch(e) { localStorage.removeItem('currentUser'); window.location.replace('/login'); }
+        })();
+    </script>
+    <style>
+      /* Estilos generales */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background-color: #1e293b;
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #3b82f6;
+      }
+
+      .logo span {
+        color: #f59e0b;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+      }
+
+      nav ul li a {
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #3b82f6;
+      }
+
+      .btn {
+        padding: 8px 20px;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn-primary {
+        background-color: #f59e0b;
+        color: #1e293b;
+        padding: 12px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      .btn-primary:hover {
+        background-color: #d97706;
+      }
+
+      .btn-back {
+        background-color: #334155;
+        color: #f8fafc;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-back:hover {
+        background-color: #475569;
+      }
+
+      /* Hero Section */
+      .hero {
+        background:
+          linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
+          url("https://images.unsplash.com/photo-1461896836934- voices?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
+        background-size: cover;
+        background-position: center;
+        padding: 60px 0;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+        margin-bottom: 15px;
+        background: linear-gradient(135deg, #3b82f6, #f59e0b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p {
+        font-size: 18px;
+        max-width: 600px;
+        margin: 0 auto 20px;
+        color: #cbd5e1;
+      }
+
+      /* Sección de Deportes */
+      .sports-index {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 32px;
+        margin-bottom: 40px;
+        text-align: center;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #3b82f6, #f59e0b);
+        margin: 10px auto 0;
+        border-radius: 2px;
+      }
+
+      /* Cards de Deportes Grandes */
+      .sport-section {
+        margin-bottom: 60px;
+      }
+
+      .sport-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #334155;
+      }
+
+      .sport-header-icon {
+        font-size: 48px;
+      }
+
+      .sport-header h2 {
+        font-size: 28px;
+        color: #f8fafc;
+      }
+
+      .sport-header p {
+        color: #94a3b8;
+        font-size: 14px;
+      }
+
+      .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .category-card {
+        background: linear-gradient(145deg, #1e293b, #263346);
+        border-radius: 15px;
+        padding: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid #334155;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .category-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--accent-color), transparent);
+      }
+
+      .category-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        border-color: var(--accent-color);
+      }
+
+      .category-card.futbol {
+        --accent-color: #22c55e;
+      }
+
+      .category-card.baloncesto {
+        --accent-color: #f59e0b;
+      }
+
+      .category-card.tenis {
+        --accent-color: #eab308;
+      }
+
+      .category-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+      }
+
+      .category-name {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: #f8fafc;
+      }
+
+      .category-description {
+        color: #94a3b8;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      .category-stats {
+        display: flex;
+        gap: 20px;
+        padding-top: 15px;
+        border-top: 1px solid #334155;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 18px;
+        font-weight: bold;
+        color: var(--accent-color);
+      }
+
+      .stat-label {
+        font-size: 11px;
+        color: #64748b;
+        text-transform: uppercase;
+      }
+
+      .category-arrow {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        color: #64748b;
+        transition: all 0.3s;
+      }
+
+      .category-card:hover .category-arrow {
+        right: 15px;
+        color: var(--accent-color);
+      }
+
+      /* ===== FAVORITES ===== */
+      .fav-btn {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 32px;
+        height: 32px;
+        border: none;
+        background: rgba(0,0,0,0.3);
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition: all 0.3s;
+        color: #64748b;
+      }
+      .fav-btn:hover { background: rgba(0,0,0,0.5); transform: scale(1.15); }
+      .fav-btn.is-fav { color: #facc15; text-shadow: 0 0 8px rgba(250,204,21,0.5); }
+
+      .favorites-section {
+        margin-bottom: 40px;
+        display: none;
+      }
+      .favorites-section.has-favs { display: block; }
+      .favorites-section .sport-header { border-bottom-color: #facc15; }
+      .favorites-section .sport-header h2 { color: #facc15; }
+      .fav-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 16px;
+      }
+      .fav-card {
+        background: linear-gradient(145deg, #1e293b, #263346);
+        border-radius: 12px;
+        padding: 16px 18px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 1px solid #334155;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        position: relative;
+      }
+      .fav-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); border-color: #facc15; }
+      .fav-card .fav-card-icon { font-size: 28px; }
+      .fav-card .fav-card-info { flex: 1; }
+      .fav-card .fav-card-name { font-size: 15px; font-weight: 700; color: #f8fafc; margin-bottom: 2px; }
+      .fav-card .fav-card-sport { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 5px; }
+      .fav-card .fav-card-sport .sport-dot { width: 6px; height: 6px; border-radius: 50%; }
+      .fav-card .fav-remove { position: absolute; top: 8px; right: 8px; background: none; border: none; color: #64748b; cursor: pointer; font-size: 14px; transition: color 0.2s; padding: 4px; }
+      .fav-card .fav-remove:hover { color: #ef4444; }
+      .fav-empty { color: #64748b; font-size: 14px; font-style: italic; padding: 10px 0; }
+
+      /* Featured Events */
+      .featured-events {
+        background-color: #1e293b;
+        padding: 60px 0;
+      }
+
+      .events-scroll {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding-bottom: 15px;
+      }
+
+      .events-scroll::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      .events-scroll::-webkit-scrollbar-track {
+        background: #334155;
+        border-radius: 3px;
+      }
+
+      .events-scroll::-webkit-scrollbar-thumb {
+        background: #3b82f6;
+        border-radius: 3px;
+      }
+
+      .event-mini-card {
+        min-width: 250px;
+        background-color: #0f172a;
+        border-radius: 10px;
+        padding: 20px;
+        border: 1px solid #334155;
+        transition: all 0.3s;
+      }
+
+      .event-mini-card:hover {
+        border-color: #3b82f6;
+      }
+
+      .event-sport-tag {
+        display: inline-block;
+        background-color: #3b82f6;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+
+      .event-mini-card .teams {
+        margin-bottom: 15px;
+      }
+
+      .event-mini-card .team {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 0;
+      }
+
+      .event-mini-card .vs {
+        text-align: center;
+        color: #64748b;
+        font-size: 12px;
+      }
+
+      .event-time {
+        color: #f59e0b;
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1e293b;
+        padding: 50px 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #3b82f6;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-column ul li a {
+        color: #94a3b8;
+        transition: color 0.3s;
+      }
+
+      .footer-column ul li a:hover {
+        color: #3b82f6;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #334155;
+        color: #94a3b8;
+        font-size: 14px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+        }
+
+        nav ul {
+          margin: 20px 0;
+        }
+
+        .hero h1 {
+          font-size: 32px;
+        }
+
+        .categories-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sport-header {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+
+      /* Estilos para el Modal de Partido */
+      .modal-match {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(15, 23, 42, 0.85); /* backdrop */
+        justify-content: center;
+        align-items: center;
+      }
+      .modal-match-content {
+        background-color: #1e293b;
+        color: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        width: 90%;
+        max-width: 480px;
+        position: relative;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        border: 1px solid #334155;
+      }
+      .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #94a3b8;
+        transition: color 0.3s;
+      }
+      .modal-close:hover {
+        color: #f8fafc;
+      }
+      .modal-league-label {
+        font-size: 12px;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        display: block;
+      }
+      .modal-teams-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .modal-team-block {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .modal-score-block {
+        font-size: 28px;
+        color: #f59e0b;
+        padding: 0 15px;
+      }
+      .modal-stats-section {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 15px;
+        text-align: left;
+      }
+      .modal-stat-card {
+        flex: 1;
+        background: #0f172a;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #334155;
+      }
+      .modal-stat-title {
+        color: #3b82f6;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #334155;
+        padding-bottom: 4px;
+      }
+      .modal-stat-item {
+        font-size: 12px;
+        margin-bottom: 4px;
+        color: #cbd5e1;
+      }
+      .modal-stat-item strong {
+        color: #f8fafc;
+      }
+      .modal-btn-go {
+        display: inline-block;
+        padding: 10px 24px;
+        background: linear-gradient(135deg, #3b82f6, #0ea5e9);
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+        transition:
+          transform 0.3s,
+          box-shadow 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .modal-btn-go:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+      }
+
+      /* ===== SIDEBAR NAVIGATION ===== */
+      .sport-sidebar {
+        position: absolute;
+        left: 20px;
+        top: 80px;
+        z-index: 50;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .sport-sidebar .sidebar-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        background: rgba(30, 41, 59, 0.85);
+        backdrop-filter: blur(16px);
+        border: 1px solid #334155;
+        border-radius: 10px;
+        color: #94a3b8;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        white-space: nowrap;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .sport-sidebar .sidebar-btn:hover {
+        transform: translateX(6px);
+        border-color: var(--sidebar-accent);
+        color: #fff;
+        background: rgba(30, 41, 59, 0.95);
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--sidebar-glow);
+      }
+
+      .sport-sidebar .sidebar-btn.active {
+        border-color: var(--sidebar-accent);
+        color: #fff;
+        background: rgba(30, 41, 59, 0.95);
+        transform: translateX(6px);
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4), 0 0 20px var(--sidebar-glow);
+      }
+
+      .sport-sidebar .sidebar-btn .sidebar-icon {
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      .sport-sidebar .sidebar-btn .sidebar-label {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        letter-spacing: 0.3px;
+      }
+
+      .sport-sidebar .sidebar-btn .sidebar-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--sidebar-accent);
+        margin-left: auto;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .sport-sidebar .sidebar-btn:hover .sidebar-dot,
+      .sport-sidebar .sidebar-btn.active .sidebar-dot {
+        opacity: 1;
+      }
+
+      .sidebar-btn.futbol-btn { --sidebar-accent: #22c55e; --sidebar-glow: rgba(34, 197, 94, 0.2); }
+      .sidebar-btn.basket-btn { --sidebar-accent: #f59e0b; --sidebar-glow: rgba(245, 158, 11, 0.2); }
+      
+      /* Adjust main container to not overlap with sidebar */
+      @media (min-width: 1400px) {
+        .sport-sidebar {
+          left: calc(50% - 700px - 80px);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .sport-sidebar {
+          position: fixed;
+          left: auto;
+          right: 0;
+          top: auto;
+          bottom: 0;
+          transform: none;
+          flex-direction: row;
+          justify-content: center;
+          gap: 8px;
+          padding: 12px 16px;
+          width: 100%;
+          background: rgba(15, 23, 42, 0.95);
+          backdrop-filter: blur(16px);
+          border-top: 1px solid #334155;
+          border-radius: 0;
+          z-index: 200;
+        }
+        .sport-sidebar .sidebar-btn {
+          padding: 10px 16px;
+          border-radius: 10px;
+          font-size: 14px;
+        }
+        .sport-sidebar .sidebar-btn .sidebar-label {
+          display: none;
+        }
+        .sport-sidebar .sidebar-btn .sidebar-dot {
+          display: none;
+        }
+        .sports-index {
+          padding-bottom: 100px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/inicio" class="logo">Bet<span>Win</span></a>
+          <nav>
+            <ul>
+              <li><a href="/inicio">Inicio</a></li>
+              <li><a href="/deportes" style="color: #3b82f6">Deportes</a></li>
+              <li><a href="#">En Vivo</a></li>
+              <li><a href="#">Casino</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <button class="btn-back" onclick="window.location.href = '/inicio'">
+          ← Volver al Inicio
+        </button>
+        <h1 style="margin-top: 20px">Centro de Deportes</h1>
+        <p>
+          Explora las mejores competiciones de fútbol, baloncesto y tenis.
+          Estadísticas, resultados y mucho más.
+        </p>
+      </div>
+    </section>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <div class="sport-sidebar" id="sportSidebar">
+      <button class="sidebar-btn futbol-btn active" onclick="scrollToSection('seccion-futbol', this)">
+        <span class="sidebar-icon">⚽</span>
+        <span class="sidebar-label">Fútbol</span>
+        <span class="sidebar-dot"></span>
+      </button>
+      <button class="sidebar-btn basket-btn" onclick="scrollToSection('seccion-baloncesto', this)">
+        <span class="sidebar-icon">🏀</span>
+        <span class="sidebar-label">Baloncesto</span>
+        <span class="sidebar-dot"></span>
+      </button>
+          </div>
+
+    <!-- Sección Principal de Deportes -->
+    <section class="sports-index">
+      <div class="container">
+        <!-- ⭐ FAVORITOS -->
+        <div class="favorites-section" id="favoritosSection">
+          <div class="sport-header">
+            <span class="sport-header-icon">⭐</span>
+            <div>
+              <h2>Mis Favoritos</h2>
+              <p>Tus ligas y torneos favoritos de un vistazo</p>
+            </div>
+          </div>
+          <div class="fav-grid" id="favGrid"></div>
+        </div>
+
+        <!-- ⚽ FÚTBOL -->
+        <div class="sport-section" id="seccion-futbol">
+          <div class="sport-header">
+            <span class="sport-header-icon">⚽</span>
+            <div>
+              <h2>Fútbol</h2>
+              <p>Las mejores ligas y competiciones del mundo</p>
+            </div>
+          </div>
+
+          <div class="categories-grid">
+            <div
+              class="category-card futbol"
+              onclick="window.location.href = '/premier-league'"
+            >
+              <div class="category-icon">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+              <button class="fav-btn" data-fav-name="Premier League" data-fav-icon="🏴󠁧󠁢󠁥󠁮󠁧󠁿" data-fav-sport="futbol" data-fav-sport-label="Fútbol" data-fav-url="/premier-league" data-fav-color="#22c55e" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">Premier League</div>
+              <div class="category-description">
+                La liga más competitiva del mundo con los mejores equipos
+                ingleses.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">20</div>
+                  <div class="stat-label">Equipos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">38</div>
+                  <div class="stat-label">Jornadas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card futbol"
+              onclick="window.location.href = '/laliga'"
+            >
+              <div class="category-icon">🇪🇸</div>
+              <button class="fav-btn" data-fav-name="LaLiga EA Sports" data-fav-icon="🇪🇸" data-fav-sport="futbol" data-fav-sport-label="Fútbol" data-fav-url="/laliga" data-fav-color="#22c55e" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">LaLiga EA Sports</div>
+              <div class="category-description">
+                La primera división española con Real Madrid, Barcelona y más.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">20</div>
+                  <div class="stat-label">Equipos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">38</div>
+                  <div class="stat-label">Jornadas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card futbol"
+              onclick="window.location.href = '/serie-a'"
+            >
+              <div class="category-icon">🇮🇹</div>
+              <button class="fav-btn" data-fav-name="Serie A" data-fav-icon="🇮🇹" data-fav-sport="futbol" data-fav-sport-label="Fútbol" data-fav-url="/serie-a" data-fav-color="#22c55e" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">Serie A</div>
+              <div class="category-description">
+                El fútbol italiano con Juventus, Inter, Milan y Napoli.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">20</div>
+                  <div class="stat-label">Equipos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">38</div>
+                  <div class="stat-label">Jornadas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card futbol"
+              onclick="window.location.href = '/bundesliga'"
+            >
+              <div class="category-icon">🇩🇪</div>
+              <button class="fav-btn" data-fav-name="Bundesliga" data-fav-icon="🇩🇪" data-fav-sport="futbol" data-fav-sport-label="Fútbol" data-fav-url="/bundesliga" data-fav-color="#22c55e" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">Bundesliga</div>
+              <div class="category-description">
+                La liga alemana con Bayern Munich, Dortmund y más.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">18</div>
+                  <div class="stat-label">Equipos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">34</div>
+                  <div class="stat-label">Jornadas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card futbol"
+              onclick="window.location.href = '/liga-hypermotion'"
+            >
+              <div class="category-icon">🇪🇸</div>
+              <button class="fav-btn" data-fav-name="Liga Hypermotion" data-fav-icon="🇪🇸" data-fav-sport="futbol" data-fav-sport-label="Fútbol" data-fav-url="/liga-hypermotion" data-fav-color="#22c55e" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">Liga Hypermotion</div>
+              <div class="category-description">
+                La segunda división española con equipos luchando por ascender.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">22</div>
+                  <div class="stat-label">Equipos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">42</div>
+                  <div class="stat-label">Jornadas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card futbol"
+              onclick="window.location.href = '/champions-league'"
+            >
+              <div class="category-icon">🏆</div>
+              <button class="fav-btn" data-fav-name="Champions League" data-fav-icon="🏆" data-fav-sport="futbol" data-fav-sport-label="Fútbol" data-fav-url="/champions-league" data-fav-color="#22c55e" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">Champions League</div>
+              <div class="category-description">
+                La máxima competición europea de clubes.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">36</div>
+                  <div class="stat-label">Equipos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">1</div>
+                  <div class="stat-label">Grupo</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🏀 BALONCESTO -->
+        <div class="sport-section" id="seccion-baloncesto">
+          <div class="sport-header">
+            <span class="sport-header-icon">🏀</span>
+            <div>
+              <h2>Baloncesto</h2>
+              <p>NBA, Euroliga y las mejores ligas del basket mundial</p>
+            </div>
+          </div>
+
+          <div class="categories-grid">
+            <div
+              class="category-card baloncesto"
+              onclick="window.location.href = '/nba'"
+            >
+              <div class="category-icon">🇺🇸</div>
+              <button class="fav-btn" data-fav-name="NBA" data-fav-icon="🇺🇸" data-fav-sport="baloncesto" data-fav-sport-label="Baloncesto" data-fav-url="/nba" data-fav-color="#f59e0b" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">NBA</div>
+              <div class="category-description">
+                La liga de baloncesto más importante del mundo.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">30</div>
+                  <div class="stat-label">Equipos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">82</div>
+                  <div class="stat-label">Partidos</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card baloncesto"
+              onclick="window.location.href = '/euroliga'"
+            >
+              <div class="category-icon">🇪🇺</div>
+              <button class="fav-btn" data-fav-name="Euroliga" data-fav-icon="🏀" data-fav-sport="baloncesto" data-fav-sport-label="Baloncesto" data-fav-url="/euroliga" data-fav-color="#f59e0b" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">Euroliga</div>
+              <div class="category-description">
+                La máxima competición europea de baloncesto.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">18</div>
+                  <div class="stat-label">Equipos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">34</div>
+                  <div class="stat-label">Jornadas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card baloncesto"
+              onclick="window.location.href = '/acb'"
+            >
+              <div class="category-icon">🇪🇸</div>
+              <button class="fav-btn" data-fav-name="ACB Liga Endesa" data-fav-icon="🇪🇸" data-fav-sport="baloncesto" data-fav-sport-label="Baloncesto" data-fav-url="/acb" data-fav-color="#f59e0b" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">ACB Liga Endesa</div>
+              <div class="category-description">
+                La liga española de baloncesto profesional.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">18</div>
+                  <div class="stat-label">Equipos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">34</div>
+                  <div class="stat-label">Jornadas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card baloncesto"
+              onclick="window.location.href = '/fiba'"
+            >
+              <div class="category-icon">🌍</div>
+              <button class="fav-btn" data-fav-name="FIBA World Cup" data-fav-icon="🌍" data-fav-sport="baloncesto" data-fav-sport-label="Baloncesto" data-fav-url="/fiba" data-fav-color="#f59e0b" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">FIBA World Cup</div>
+              <div class="category-description">
+                El campeonato mundial de selecciones nacionales.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">32</div>
+                  <div class="stat-label">Selecciones</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">4</div>
+                  <div class="stat-label">Años</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🎾 TENIS -->
+        <div class="sport-section" id="seccion-tenis">
+          <div class="sport-header">
+            <span class="sport-header-icon">🎾</span>
+            <div>
+              <h2>Tenis</h2>
+              <p>Grand Slams, ATP, WTA y los mejores torneos del circuito</p>
+            </div>
+          </div>
+
+          <div class="categories-grid">
+            <div class="category-card tenis" onclick="window.location.href='/australian-open'" style="cursor: pointer;">
+              <div class="category-icon">🏆</div>
+              <button class="fav-btn" data-fav-name="Australian Open" data-fav-icon="🇦🇺" data-fav-sport="tenis" data-fav-sport-label="Tenis" data-fav-url="/australian-open" data-fav-color="#eab308" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">Australian Open</div>
+              <div class="category-description">
+                El primer Grand Slam del año en Melbourne.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">128</div>
+                  <div class="stat-label">Jugadores</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">7</div>
+                  <div class="stat-label">Rondas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card tenis"
+              onclick="window.location.href = '/roland-garros'"
+              style="cursor: pointer"
+            >
+              <div class="category-icon">🇫🇷</div>
+              <button class="fav-btn" data-fav-name="Roland Garros" data-fav-icon="🇫🇷" data-fav-sport="tenis" data-fav-sport-label="Tenis" data-fav-url="/roland-garros" data-fav-color="#eab308" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">Roland Garros</div>
+              <div class="category-description">
+                El Grand Slam de tierra batida en París.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">128</div>
+                  <div class="stat-label">Jugadores</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">7</div>
+                  <div class="stat-label">Rondas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card tenis"
+              onclick="window.location.href = '/wimbledon'"
+              style="cursor: pointer"
+            >
+              <div class="category-icon">🇬🇧</div>
+              <button class="fav-btn" data-fav-name="Wimbledon" data-fav-icon="🇬🇧" data-fav-sport="tenis" data-fav-sport-label="Tenis" data-fav-url="/wimbledon" data-fav-color="#eab308" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">Wimbledon</div>
+              <div class="category-description">
+                El torneo más prestigioso sobre hierba.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">128</div>
+                  <div class="stat-label">Jugadores</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">7</div>
+                  <div class="stat-label">Rondas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div class="category-card tenis" onclick="window.location.href='/us-open'" style="cursor: pointer;">
+              <div class="category-icon">🇺🇸</div>
+              <button class="fav-btn" data-fav-name="US Open" data-fav-icon="🇺🇸" data-fav-sport="tenis" data-fav-sport-label="Tenis" data-fav-url="/us-open" data-fav-color="#eab308" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">US Open</div>
+              <div class="category-description">
+                El Grand Slam americano en Nueva York.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">128</div>
+                  <div class="stat-label">Jugadores</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">7</div>
+                  <div class="stat-label">Rondas</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div
+              class="category-card tenis"
+              onclick="window.location.href = '/atp'"
+            >
+              <div class="category-icon">👔</div>
+              <button class="fav-btn" data-fav-name="ATP Tour" data-fav-icon="👔" data-fav-sport="tenis" data-fav-sport-label="Tenis" data-fav-url="/atp" data-fav-color="#eab308" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">ATP Tour</div>
+              <div class="category-description">
+                El circuito profesional masculino de tenis.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">64</div>
+                  <div class="stat-label">Torneos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">500+</div>
+                  <div class="stat-label">Jugadores</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+
+            <div class="category-card tenis" onclick="window.location.href='/wta'" style="cursor: pointer;">
+              <div class="category-icon">👗</div>
+              <button class="fav-btn" data-fav-name="WTA Tour" data-fav-icon="👗" data-fav-sport="tenis" data-fav-sport-label="Tenis" data-fav-url="/wta" data-fav-color="#eab308" onclick="event.stopPropagation(); toggleFav(this)" title="Añadir a favoritos">☆</button>
+              <div class="category-name">WTA Tour</div>
+              <div class="category-description">
+                El circuito profesional femenino de tenis.
+              </div>
+              <div class="category-stats">
+                <div class="stat-item">
+                  <div class="stat-number">55</div>
+                  <div class="stat-label">Torneos</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-number">400+</div>
+                  <div class="stat-label">Jugadoras</div>
+                </div>
+              </div>
+              <span class="category-arrow">→</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resultados Destacados -->
+    <section class="featured-events">
+      <div class="container">
+        <h2 class="section-title">Últimos Resultados Destacados</h2>
+        <div class="events-scroll">
+          <div
+            class="event-mini-card"
+            style="cursor: pointer"
+            onclick="
+              openMatchModal(
+                'LaLiga EA Sports',
+                'Real Madrid',
+                'Barcelona',
+                '3 - 2',
+                '/laliga',
+              )
+            "
+          >
+            <span class="event-sport-tag" style="background-color: #ef4444"
+              >🇪🇸 La Liga</span
+            >
+            <div class="teams">
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Real Madrid</span> <strong>3</strong>
+              </div>
+              <div class="vs" style="margin: 4px 0"></div>
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Barcelona</span> <strong>2</strong>
+              </div>
+            </div>
+            <div class="event-time" style="color: #64748b">Ayer, 21:00</div>
+          </div>
+
+          <div
+            class="event-mini-card"
+            style="cursor: pointer"
+            onclick="
+              openMatchModal(
+                'NBA',
+                'Los Angeles Lakers',
+                'Golden State Warriors',
+                '124 - 118',
+                '/nba',
+              )
+            "
+          >
+            <span class="event-sport-tag" style="background-color: #ce1141"
+              >🇺🇸 NBA</span
+            >
+            <div class="teams">
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Lakers</span> <strong>124</strong>
+              </div>
+              <div class="vs" style="margin: 4px 0"></div>
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Warriors</span> <strong>118</strong>
+              </div>
+            </div>
+            <div class="event-time" style="color: #64748b">Ayer, 03:00</div>
+          </div>
+
+          <div
+            class="event-mini-card"
+            style="cursor: pointer"
+            onclick="
+              openMatchModal(
+                'Euroliga',
+                'Panathinaikos AKTOR Athens',
+                'Real Madrid',
+                '89 - 85',
+                '/euroliga',
+              )
+            "
+          >
+            <span class="event-sport-tag" style="background-color: #e95914"
+              >🇪🇺 Euroliga</span
+            >
+            <div class="teams">
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Panathinaikos</span> <strong>89</strong>
+              </div>
+              <div class="vs" style="margin: 4px 0"></div>
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Real Madrid</span> <strong>85</strong>
+              </div>
+            </div>
+            <div class="event-time" style="color: #64748b">Hoy, 20:30</div>
+          </div>
+
+          <div
+            class="event-mini-card"
+            style="cursor: pointer"
+            onclick="
+              openMatchModal(
+                'Premier League',
+                'Liverpool',
+                'Man City',
+                '1 - 1',
+                '/premier-league',
+              )
+            "
+          >
+            <span class="event-sport-tag" style="background-color: #3d195b"
+              >🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</span
+            >
+            <div class="teams">
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Liverpool</span> <strong>1</strong>
+              </div>
+              <div class="vs" style="margin: 4px 0"></div>
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Man City</span> <strong>1</strong>
+              </div>
+            </div>
+            <div class="event-time" style="color: #64748b">Ayer, 17:30</div>
+          </div>
+
+          <div
+            class="event-mini-card"
+            style="cursor: pointer"
+            onclick="
+              openMatchModal('ACB', 'Unicaja', 'Baskonia', '95 - 91', '/acb')
+            "
+          >
+            <span class="event-sport-tag" style="background-color: #f59e0b"
+              >🇪🇸 Liga ACB</span
+            >
+            <div class="teams">
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Unicaja</span> <strong>95</strong>
+              </div>
+              <div class="vs" style="margin: 4px 0"></div>
+              <div
+                class="team"
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  width: 100%;
+                "
+              >
+                <span>Baskonia</span> <strong>91</strong>
+              </div>
+            </div>
+            <div class="event-time" style="color: #64748b">Hoy, 18:30</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal de Detalles del Partido -->
+    <div id="matchModalLayer" class="modal-match">
+      <div class="modal-match-content">
+        <span class="modal-close" onclick="closeMatchModal()">&times;</span>
+        <span id="modalMatchLeague" class="modal-league-label">Liga</span>
+
+        <div class="modal-teams-row">
+          <div class="modal-team-block" id="modalMatchHome">Home</div>
+          <div class="modal-score-block" id="modalMatchScore">-</div>
+          <div class="modal-team-block" id="modalMatchAway">Away</div>
+        </div>
+
+        <div
+          class="modal-stats-section"
+          id="modalStatsSection"
+          style="display: none"
+        >
+          <div class="modal-stat-card" id="modalHomeCard">
+            <h4 class="modal-stat-title">Información Local</h4>
+            <div id="modalHomeDetails">Cargando...</div>
+          </div>
+          <div class="modal-stat-card" id="modalAwayCard">
+            <h4 class="modal-stat-title">Información Visitante</h4>
+            <div id="modalAwayDetails">Cargando...</div>
+          </div>
+        </div>
+
+        <div
+          id="modalMatchEvents"
+          style="
+            display: none;
+            background: #0f172a;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            margin-bottom: 15px;
+            text-align: left;
+            max-height: 130px;
+            overflow-y: auto;
+          "
+        ></div>
+
+        <button onclick="goToSector()" id="modalBtnSector" class="modal-btn-go">
+          Ir al Sector Completo
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>BetWin</h3>
+            <ul>
+              <li><a href="/footer/sobre-nosotros">Sobre Nosotros</a></li>
+              <li><a href="/footer/contacto">Contacto</a></li>
+              <li><a href="/footer/terminos">Términos y Condiciones</a></li>
+              <li><a href="#">Política de Privacidad</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Deportes</h3>
+            <ul>
+              <li><a href="#futbol">Fútbol</a></li>
+              <li><a href="#baloncesto">Baloncesto</a></li>
+              <li><a href="#tenis">Tenis</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Ayuda</h3>
+            <ul>
+              <li><a href="#">Centro de Ayuda</a></li>
+              <li><a href="/footer/juego-responsable">Juego Responsable</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Síguenos</h3>
+            <ul>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© 2026 BetWin - Todos los derechos reservados</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function toggleChampionsButtons(event) {
+        const buttonsDiv = document.getElementById("champions-buttons");
+        if (buttonsDiv.style.display === "none") {
+          buttonsDiv.style.display = "flex";
+        } else {
+          buttonsDiv.style.display = "none";
+        }
+      }
+
+      let currentSectorUrl = "";
+
+      async function openMatchModal(league, home, away, score, targetUrl) {
+        document.getElementById("matchModalLayer").style.display = "flex";
+        document.getElementById("modalMatchLeague").innerText = league;
+        document.getElementById("modalMatchHome").innerText = home;
+        document.getElementById("modalMatchAway").innerText = away;
+        document.getElementById("modalMatchScore").innerText = score;
+        currentSectorUrl = targetUrl;
+
+        document.getElementById("modalStatsSection").style.display = "none";
+        document.getElementById("modalHomeDetails").innerHTML = "Cargando...";
+        document.getElementById("modalAwayDetails").innerHTML = "Cargando...";
+
+        try {
+          const url = `/api/match-details?league=${encodeURIComponent(league)}&home=${encodeURIComponent(home)}&away=${encodeURIComponent(away)}`;
+          const res = await fetch(url);
+          const data = await res.json();
+
+          document.getElementById("modalStatsSection").style.display = "flex";
+
+          let homeHtml = "";
+          if (data.home_team) {
+            homeHtml += `<div class="modal-stat-item">Clasificación: <strong>#${data.home_team.position}</strong></div>`;
+            homeHtml += `<div class="modal-stat-item">Victorias: <strong>${data.home_team.wins}</strong> / Derrotas: <strong>${data.home_team.losses}</strong></div>`;
+          }
+          if (data.home_scorers && data.home_scorers.length > 0) {
+            homeHtml += `<br><div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#94a3b8;">TOP JUGADORES (Liga)</div>`;
+            data.home_scorers.forEach((p) => {
+              homeHtml += `<div class="modal-stat-item">• ${p.player_name}: <strong>${p.goals} pts/goles</strong></div>`;
+            });
+          }
+
+          let awayHtml = "";
+          if (data.away_team) {
+            awayHtml += `<div class="modal-stat-item">Clasificación: <strong>#${data.away_team.position}</strong></div>`;
+            awayHtml += `<div class="modal-stat-item">Victorias: <strong>${data.away_team.wins}</strong> / Derrotas: <strong>${data.away_team.losses}</strong></div>`;
+          }
+          if (data.away_scorers && data.away_scorers.length > 0) {
+            awayHtml += `<br><div style="font-weight:bold; margin-bottom:5px; font-size:12px; color:#94a3b8;">TOP JUGADORES (Liga)</div>`;
+            data.away_scorers.forEach((p) => {
+              awayHtml += `<div class="modal-stat-item">• ${p.player_name}: <strong>${p.goals} pts/goles</strong></div>`;
+            });
+          }
+
+          document.getElementById("modalHomeDetails").innerHTML =
+            homeHtml || "Sin datos extra";
+          document.getElementById("modalAwayDetails").innerHTML =
+            awayHtml || "Sin datos extra";
+
+          // Procesar Eventos del Partido
+          const eventsContainer = document.getElementById("modalMatchEvents");
+          eventsContainer.style.display = "none";
+          eventsContainer.innerHTML = "";
+
+          if (
+            data.match_events &&
+            (data.match_events.goals.length > 0 ||
+              data.match_events.cards.length > 0 ||
+              data.match_events.substitutions.length > 0 ||
+              data.match_events.injuries.length > 0)
+          ) {
+            eventsContainer.style.display = "block";
+            eventsContainer.innerHTML = `<h4 class="modal-stat-title" style="margin-bottom: 15px;">Acontecimientos del Partido</h4>`;
+
+            if (data.match_events.goals.length > 0) {
+              let html = `<div class="modal-stat-item" style="margin-bottom:10px;"><strong style="color:#22c55e;">⚽ Goles:</strong><br>`;
+              data.match_events.goals.forEach((g) => {
+                let extra = g.is_penalty
+                  ? " (Punto de penalti)"
+                  : g.is_own_goal
+                    ? " (En propia)"
+                    : "";
+                if (g.assist_player_name)
+                  extra += ` asistencia de ${g.assist_player_name}`;
+                html += `<span>• ${g.minute ? g.minute + "'" : ""} ${g.player_name}${extra}</span><br>`;
+              });
+              eventsContainer.innerHTML += html + `</div>`;
+            }
+            if (data.match_events.cards.length > 0) {
+              let html = `<div class="modal-stat-item" style="margin-bottom:10px;"><strong style="color:#eab308;">🟨/🟥 Tarjetas:</strong><br>`;
+              data.match_events.cards.forEach((c) => {
+                let icon = c.card_type === "Roja" ? "🟥" : "🟨";
+                html += `<span>• ${c.minute ? c.minute + "'" : ""} ${icon} ${c.player_name} (${c.reason})</span><br>`;
+              });
+              eventsContainer.innerHTML += html + `</div>`;
+            }
+            if (data.match_events.substitutions.length > 0) {
+              let html = `<div class="modal-stat-item" style="margin-bottom:10px;"><strong style="color:#3b82f6;">🔄 Cambios:</strong><br>`;
+              data.match_events.substitutions.forEach((s) => {
+                html += `<span>• ${s.minute ? s.minute + "'" : ""} Entra ${s.player_in}, Sale ${s.player_out}</span><br>`;
+              });
+              eventsContainer.innerHTML += html + `</div>`;
+            }
+            if (data.match_events.injuries.length > 0) {
+              let html = `<div class="modal-stat-item" style="margin-bottom:10px;"><strong style="color:#ef4444;">🚑 Lesiones:</strong><br>`;
+              data.match_events.injuries.forEach((i) => {
+                html += `<span>• ${i.minute ? i.minute + "'" : ""} ${i.player_name} (${i.description})</span><br>`;
+              });
+              eventsContainer.innerHTML += html + `</div>`;
+            }
+          }
+        } catch (err) {
+          console.error(err);
+          document.getElementById("modalHomeDetails").innerHTML =
+            "Error cargando datos";
+          document.getElementById("modalAwayDetails").innerHTML =
+            "Error cargando datos";
+        }
+      }
+
+      function closeMatchModal() {
+        document.getElementById("matchModalLayer").style.display = "none";
+      }
+
+      function goToSector() {
+        if (currentSectorUrl) {
+          window.location.href = currentSectorUrl;
+        }
+      }
+    </script>
+
+    <script>
+      // Sidebar navigation
+      function scrollToSection(sectionId, btn) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        // Update active state
+        document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+      }
+
+      // Auto-detect which section is in view
+      window.addEventListener('scroll', function() {
+        const sections = [
+          { id: 'seccion-futbol', btn: '.futbol-btn' },
+          { id: 'seccion-baloncesto', btn: '.basket-btn' },
+          { id: 'seccion-tenis', btn: '.tenis-btn' }
+        ];
+        
+        let currentSection = sections[0].btn;
+        const scrollPos = window.scrollY + window.innerHeight / 3;
+        
+        sections.forEach(sec => {
+          const el = document.getElementById(sec.id);
+          if (el && el.offsetTop <= scrollPos) {
+            currentSection = sec.btn;
+          }
+        });
+        
+        document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+        const activeBtn = document.querySelector(currentSection);
+        if (activeBtn) activeBtn.classList.add('active');
+      });
+
+      // Auto-scroll if arriving from another page with hash
+      window.addEventListener('DOMContentLoaded', function() {
+        if (window.location.hash) {
+          const targetId = window.location.hash.substring(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            setTimeout(() => {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+          }
+        }
+      });
+    </script>
+
+    <script>
+      // ===== FAVORITES SYSTEM =====
+      function getFavs() {
+        try { return JSON.parse(localStorage.getItem('betwin_favs') || '[]'); }
+        catch(e) { return []; }
+      }
+      function saveFavs(favs) { localStorage.setItem('betwin_favs', JSON.stringify(favs)); }
+
+      function toggleFav(btn) {
+        const name = btn.dataset.favName;
+        let favs = getFavs();
+        const idx = favs.findIndex(f => f.name === name);
+        if (idx >= 0) {
+          favs.splice(idx, 1);
+          btn.classList.remove('is-fav');
+          btn.textContent = '☆';
+        } else {
+          favs.push({
+            name: name,
+            icon: btn.dataset.favIcon,
+            sport: btn.dataset.favSport,
+            sportLabel: btn.dataset.favSportLabel,
+            url: btn.dataset.favUrl,
+            color: btn.dataset.favColor
+          });
+          btn.classList.add('is-fav');
+          btn.textContent = '★';
+        }
+        saveFavs(favs);
+        renderFavs();
+      }
+
+      function removeFav(name) {
+        let favs = getFavs();
+        favs = favs.filter(f => f.name !== name);
+        saveFavs(favs);
+        // Update star buttons
+        document.querySelectorAll('.fav-btn').forEach(btn => {
+          if (btn.dataset.favName === name) {
+            btn.classList.remove('is-fav');
+            btn.textContent = '☆';
+          }
+        });
+        renderFavs();
+      }
+
+      function renderFavs() {
+        const favs = getFavs();
+        const section = document.getElementById('favoritosSection');
+        const grid = document.getElementById('favGrid');
+        if (!section || !grid) return;
+
+        if (favs.length === 0) {
+          section.classList.remove('has-favs');
+          grid.innerHTML = '';
+          return;
+        }
+
+        section.classList.add('has-favs');
+        grid.innerHTML = favs.map(f => `
+          <div class="fav-card" onclick="window.location.href='${f.url}'">
+            <div class="fav-card-icon">${f.icon}</div>
+            <div class="fav-card-info">
+              <div class="fav-card-name">${f.name}</div>
+              <div class="fav-card-sport">
+                <span class="sport-dot" style="background:${f.color}"></span>
+                ${f.sportLabel}
+              </div>
+            </div>
+            <button class="fav-remove" onclick="event.stopPropagation(); removeFav('${f.name}')" title="Quitar de favoritos">✕</button>
+          </div>
+        `).join('');
+      }
+
+      // Init: mark stars as active and render favs section
+      document.addEventListener('DOMContentLoaded', function() {
+        const favs = getFavs();
+        document.querySelectorAll('.fav-btn').forEach(btn => {
+          if (favs.some(f => f.name === btn.dataset.favName)) {
+            btn.classList.add('is-fav');
+            btn.textContent = '★';
+          }
+        });
+        renderFavs();
+      });
+    </script>
+  </body>
+</html>

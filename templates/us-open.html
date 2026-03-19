@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetWin - US Open</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ef4444;
+            --primary-glow: rgba(239, 68, 68, 0.4);
+            --us-blue: #1d4ed8;
+            --us-red: #dc2626;
+            --dark-bg: #050505;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--dark-bg); color: var(--text-main); font-family: 'Inter', sans-serif; line-height: 1.6; min-height: 100vh;
+            background-image: radial-gradient(circle at 15% 50%, rgba(29, 78, 216, 0.15) 0%, transparent 50%), radial-gradient(circle at 85% 30%, rgba(239, 68, 68, 0.1) 0%, transparent 50%);
+            background-attachment: fixed; }
+        h1, h2, h3, h4, h5 { font-family: 'Outfit', sans-serif; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); padding: 15px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--glass-border); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: 800; font-family: 'Outfit', sans-serif; color: #fff; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary); }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav ul li a { font-weight: 500; font-size: 15px; color: var(--text-muted); transition: color 0.3s; }
+        nav ul li a:hover { color: #fff; }
+        .hero { padding: 80px 0 60px; text-align: center; position: relative; overflow: hidden; border-bottom: 1px solid var(--glass-border); }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(29, 78, 216, 0.5) 0%, rgba(239, 68, 68, 0.4) 100%); z-index: -1; opacity: 0.3; }
+        .hero h1 { font-size: 56px; font-weight: 800; margin-bottom: 15px; background: linear-gradient(to right, #fff, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: #cbd5e1; max-width: 600px; margin: 0 auto; }
+        .btn-back { background: var(--glass-bg); color: #fff; padding: 10px 24px; border: 1px solid var(--glass-border); border-radius: 30px; cursor: pointer; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); margin-bottom: 30px; backdrop-filter: blur(10px); }
+        .btn-back:hover { background: rgba(255,255,255,0.1); transform: translateX(-5px); }
+        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(16px); border-radius: 20px; padding: 35px; margin: 40px auto; border: 1px solid var(--glass-border); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+        .info-title { font-size: 28px; font-weight: 600; color: #fff; margin-bottom: 25px; display: flex; align-items: center; gap: 12px; }
+        .info-title::before { content: ''; display: block; width: 4px; height: 24px; background: var(--primary); border-radius: 4px; box-shadow: 0 0 10px var(--primary-glow); }
+        .format-text { font-size: 16px; margin-bottom: 15px; color: var(--text-muted); line-height: 1.8; }
+        .format-text strong { color: #fff; font-weight: 600; }
+        .tabs-wrapper { position: sticky; top: 73px; z-index: 99; background: rgba(5,5,5,0.8); backdrop-filter: blur(12px); padding: 20px 0; border-bottom: 1px solid var(--glass-border); }
+        .tabs-main { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .tab-btn { background: var(--glass-bg); color: var(--text-muted); border: 1px solid var(--glass-border); padding: 12px 28px; border-radius: 30px; cursor: pointer; font-weight: 600; font-size: 15px; font-family: 'Outfit', sans-serif; transition: all 0.3s; }
+        .tab-btn:hover { background: rgba(255,255,255,0.08); color: #fff; }
+        .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 4px 15px var(--primary-glow); }
+        .sub-tabs { background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); padding: 8px; border-radius: 16px; display: inline-flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-bottom: 30px; }
+        .sub-tabs .round-btn { background: transparent; border: none; padding: 10px 20px; border-radius: 12px; font-size: 14px; box-shadow: none; }
+        .sub-tabs .round-btn:hover { background: rgba(255,255,255,0.05); }
+        .sub-tabs .round-btn.active { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+        .tab-content { display: none; margin-bottom: 60px; animation: fadeIn 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .matches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+        .premium-match-card { background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid var(--glass-border); border-radius: 16px; padding: 20px; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; }
+        .premium-match-card:hover { transform: translateY(-4px); background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%); border-color: rgba(255,255,255,0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .match-title { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; font-weight: 700; font-family: 'Outfit', sans-serif; }
+        .player-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .player-name { font-size: 15px; color: var(--text-muted); font-weight: 500; display: flex; align-items: center; gap: 8px; }
+        .player-name.winner { color: #fff; font-weight: 700; }
+        .star { font-size: 14px; text-shadow: 0 0 10px rgba(250,204,21,0.5); }
+        .player-score { font-size: 14px; font-weight: 700; color: var(--text-muted); background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 8px; min-width: 32px; text-align: center; }
+        .player-score.winner-score { color: var(--primary); background: rgba(239, 68, 68, 0.15); box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.3); }
+        .match-details { font-size: 13px; color: var(--text-muted); margin-top: 15px; padding-top: 12px; border-top: 1px solid var(--glass-border); }
+        .match-details.injury { color: #f87171; background: rgba(239, 68, 68, 0.1); padding: 10px; border-radius: 8px; border-top: none; }
+        .participant-card { background: var(--glass-bg); padding: 16px; border-radius: 12px; border: 1px solid var(--glass-border); text-align: left; transition: all 0.3s; display: flex; align-items: center; gap: 12px; }
+        .participant-card:hover { transform: translateY(-2px); border-color: var(--primary); background: rgba(239, 68, 68, 0.05); }
+        .p-rank { font-weight: 800; color: var(--primary); font-family: 'Outfit', sans-serif; width: 30px; }
+        .p-name { color: #fff; font-weight: 600; }
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
+        .badge { font-size: 14px; color: var(--primary); background: rgba(239, 68, 68, 0.1); padding: 8px 16px; border-radius: 20px; font-weight: 600; border: 1px solid rgba(239, 68, 68, 0.2); }
+    
+/* Sport Top Navigation */
+.sport-top-nav { position: fixed; top: 70px; left: 16px; z-index: 150; display: flex; flex-direction: column; gap: 6px; }
+.sport-top-nav a { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(17,24,39,0.92); backdrop-filter: blur(12px); border: 1px solid #1f2937; border-radius: 8px; color: #9ca3af; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.25s; white-space: nowrap; }
+.sport-top-nav a:hover { color: #fff; background: rgba(17,24,39,0.98); transform: translateX(4px); border-color: var(--nav-accent, #3b82f6); box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.sport-top-nav a .nav-icon { font-size: 15px; }
+.sport-top-nav a.futbol-nav { --nav-accent: #22c55e; }
+.sport-top-nav a.basket-nav { --nav-accent: #f59e0b; }
+.sport-top-nav a.tenis-nav { --nav-accent: #eab308; }
+.sport-top-nav a.active-nav { color: #fff; border-color: var(--nav-accent); background: rgba(17,24,39,0.98); box-shadow: 0 0 10px rgba(59,130,246,0.15); }
+@media (max-width: 900px) { .sport-top-nav { position: fixed; top: auto; bottom: 0; left: 0; right: 0; flex-direction: row; justify-content: center; gap: 6px; padding: 10px; background: rgba(10,14,26,0.95); border-top: 1px solid #1f2937; border-radius: 0; } .sport-top-nav a .nav-label { display: none; } .sport-top-nav a { padding: 8px 12px; } }
+
+/* ── TENNIS MATCH MODAL ── */
+.nba-modal-overlay { display: none; position: fixed; z-index: 1000; inset: 0; background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(10px); align-items: center; justify-content: center; padding: 16px; animation: nbaFadeIn 0.2s ease; }
+@keyframes nbaFadeIn { from { opacity: 0; } to { opacity: 1; } }
+.nba-modal-overlay.open { display: flex; }
+.nba-modal-box { background: #0a0f1e; border-radius: 22px; width: 100%; max-width: 880px; max-height: 92vh; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 30px 90px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--primary); animation: nbaSlideUp 0.32s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; }
+@keyframes nbaSlideUp { from { opacity: 0; transform: translateY(50px) scale(0.93); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.nba-close-btn { position: absolute; top: 14px; right: 14px; background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 50%; width: 38px; height: 38px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; z-index: 20; }
+.nba-close-btn:hover { background: #ef4444; color: #fff; transform: scale(1.1); }
+.nba-m-hero { background: linear-gradient(135deg, #050a15 0%, #0a1526 35%, #0f172a 100%); padding: 28px 24px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); flex-shrink: 0; }
+.nba-m-teams-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 20px; }
+.nba-m-team { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.nba-m-team-name { font-size: 15px; font-weight: 800; color: #f1f5f9; text-align: center; line-height: 1.3; }
+.nba-m-team-conf { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+.nba-m-score-box { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; }
+.nba-m-score { background: linear-gradient(135deg, var(--primary), #000); color: #fff; padding: 14px 30px; border-radius: 16px; font-size: 40px; font-weight: 900; letter-spacing: 4px; box-shadow: 0 8px 28px rgba(0,0,0,0.45); min-width: 140px; text-align: center; }
+.nba-m-score-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 1.5px; }
+.nba-m-meta { display: flex; gap: 16px; justify-content: center; padding: 12px 0 0; flex-wrap: wrap; }
+.nba-m-meta-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: #94a3b8; }
+.nba-m-meta-badge { background: rgba(255,255,255, 0.1); border: 1px solid rgba(255,255,255, 0.2); color: #fff; padding: 2px 8px; border-radius: 6px; font-weight: 600; font-size: 11px; }
+.nba-quarters-strip { display: flex; gap: 6px; justify-content: center; padding: 14px 24px; background: rgba(0, 0, 0, 0.3); flex-shrink: 0; border-bottom: 1px solid #1e293b; overflow-x: auto; }
+.nba-q-cell { background: #1e293b; border-radius: 8px; padding: 8px 12px; text-align: center; min-width: 56px; border: 1px solid #263346; }
+.nba-q-label { font-size: 9px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.nba-q-scores { display: flex; flex-direction: column; gap: 2px; }
+.nba-q-home, .nba-q-away { font-size: 14px; font-weight: 800; color: #f1f5f9; }
+.nba-q-home.winner, .nba-q-away.winner { color: var(--primary); }
+.nba-q-cell.total { background: linear-gradient(135deg, rgba(255,255,255, 0.1), rgba(0,0,0, 0.2)); border-color: rgba(255,255,255, 0.2); }
+.nba-q-cell.total .nba-q-label { color: var(--primary); }
+.nba-m-tabs { display: flex; background: #0a0f1e; border-bottom: 1px solid #1e293b; overflow-x: auto; flex-shrink: 0; scrollbar-width: none; }
+.nba-m-tabs::-webkit-scrollbar { display: none; }
+.nba-m-tab-btn { display: flex; align-items: center; gap: 6px; padding: 14px 20px; background: none; border: none; color: #64748b; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
+.nba-m-tab-btn:hover { color: #cbd5e1; background: rgba(255, 255, 255, 0.03); }
+.nba-m-tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); background: rgba(255, 255, 255, 0.05); }
+.nba-m-body { flex: 1; overflow-y: auto; padding: 0; scrollbar-width: thin; scrollbar-color: #334155 transparent; }
+.nba-m-body::-webkit-scrollbar { width: 5px; }
+.nba-m-body::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+.nba-m-panel { display: none; padding: 24px; animation: nbaFadePanel 0.22s ease; }
+@keyframes nbaFadePanel { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.nba-m-panel.active { display: block; }
+.nba-q-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; }
+.nba-q-table th { background: #1e293b; color: #64748b; font-size: 12px; font-weight: 700; text-transform: uppercase; padding: 12px 16px; text-align: center; }
+.nba-q-table td { padding: 14px 16px; border-bottom: 1px solid #1e293b; text-align: center; font-size: 15px; background: rgba(255,255,255,0.01); color: #f1f5f9; }
+.nba-q-table .team-col { text-align: left; font-weight: 700; font-size: 14px; }
+.nba-q-table .total-col { font-weight: 900; font-size: 18px; color: var(--primary); }
+.nba-q-intro { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 10px 16px; font-size: 12px; color: #94a3b8; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+.premium-match-card { cursor: pointer; }
+.click-hint { font-size: 11px; text-align: center; color: var(--primary); font-weight: 600; margin-top: 10px; display: block; opacity: 0; transition: opacity 0.3s; }
+.premium-match-card:hover .click-hint { opacity: 1; }
+.pt-table { width: 100%; border-collapse: collapse; }
+.pt-row { border-bottom: 1px solid #263346; }
+.pt-row:last-child { border-bottom: none; }
+.pt-game { background: #1e293b; padding: 8px 16px; font-weight: 700; font-size: 13px; color: var(--primary); }
+.pt-point { display: flex; padding: 8px 16px; font-size: 13px; color: #cbd5e1; align-items: center; }
+.pt-score { width: 60px; font-weight: 700; color: #f1f5f9; }
+.pt-desc { flex: 1; }
+.pt-winner { background: rgba(34, 197, 94, 0.15); color: #22c55e; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-left: 8px; }
+@media (max-width: 768px) {
+  .nba-m-teams-row { gap: 10px; }
+  .nba-m-score { font-size: 28px; padding: 10px 20px; min-width: 100px; }
+  .nba-m-team-name { font-size: 12px; }
+  .nba-m-tab-btn { padding: 12px 12px; font-size: 12px; }
+  .nba-quarters-strip { gap: 4px; }
+  .nba-q-cell { min-width: 44px; padding: 6px 8px; }
+}
+</style>
+</head>
+<body>
+<!-- Sport Top Navigation -->
+<div class="sport-top-nav">
+    <a href="/deportes#seccion-futbol" class="futbol-nav"><span class="nav-icon">⚽</span><span class="nav-label">Fútbol</span></a>
+    <a href="/deportes#seccion-baloncesto" class="basket-nav"><span class="nav-icon">🏀</span><span class="nav-label">Baloncesto</span></a>
+    <a href="/deportes#seccion-tenis" class="tenis-nav active-nav"><span class="nav-icon">🎾</span><span class="nav-label">Tenis</span></a>
+</div>
+
+    <header><div class="container"><div class="header-content">
+        <a href="/inicio" class="logo">Bet<span>Win</span></a>
+        <nav><ul><li><a href="/inicio">Inicio</a></li><li><a href="/deportes">Deportes</a></li><li><a href="#">En Vivo</a></li></ul></nav>
+    </div></div></header>
+
+    <section class="hero"><div class="container" style="position: relative; z-index: 2;">
+        <button class="btn-back" onclick="window.location.href='/deportes'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver a Deportes
+        </button>
+        <h1>🇺🇸 US Open 2025</h1>
+        <p>El ultimo Grand Slam del ano disputado en Nueva York, sobre pista dura en Flushing Meadows.</p>
+    </div></section>
+
+    <div class="tabs-wrapper"><div class="container"><div class="tabs-main">
+        <button class="tab-btn active" onclick="showTab('resultados', event)">🎾 Resultados de Cuadro</button>
+        <button class="tab-btn" onclick="showTab('participantes', event)">👤 Todos los Participantes</button>
+    </div></div></div>
+
+    <div class="container">
+        <div id="resultados" class="tab-content active" style="margin-top: 40px;">
+            <div class="glass-panel" style="padding: 40px; margin-top: 0;">
+                <div class="flex-between">
+                    <h2 class="info-title" style="margin-bottom: 0;">Cuadro Masculino</h2>
+                    <div class="badge">🏆 Edicion 2024/2025 - 128 Jugadores</div>
+                </div>
+                <div style="text-align: center;"><div class="sub-tabs">
+                    <button class="tab-btn round-btn active" onclick="showRound('primera', event)">Primera Ronda</button>
+                    <button class="tab-btn round-btn" onclick="showRound('segunda', event)">Segunda Ronda</button>
+                    <button class="tab-btn round-btn" onclick="showRound('tercera', event)">Tercera Ronda</button>
+                    <button class="tab-btn round-btn" onclick="showRound('octavos', event)">Octavos de Final</button>
+                    <button class="tab-btn round-btn" onclick="showRound('cuartos', event)">Cuartos de Final</button>
+                    <button class="tab-btn round-btn" onclick="showRound('semis', event)">Semifinales</button>
+                    <button class="tab-btn round-btn" onclick="showRound('final', event)">Final</button>
+                </div></div>
+<!-- PRIMERA RONDA -->
+<div id="primera" class="round-content active" style="display: block;">
+  <div class="participants-scroll custom-scroll" style="max-height: 550px; overflow-y: auto; overflow-x: hidden; padding-right: 15px;">
+    <div class="matches-grid">
+      <div class="premium-match-card">
+        <div class="match-title">Partido 1</div>
+        <div class="player-row">
+            <div class="player-name winner">Jannik Sinner 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Stefanos Tsitsipas 🇬🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 3-6, 5-6, 6-2, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 2</div>
+        <div class="player-row">
+            <div class="player-name winner">Dusan Lajovic 🇷🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Thiago Monteiro 🇧🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 4-6, 6-4, 6-3, 5-6, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 3</div>
+        <div class="player-row">
+            <div class="player-name winner">Mackenzie McDonald 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Botic Van de Zandschulp 🇳🇱</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 5-6, 6-3, 6-4, 3-6, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 4</div>
+        <div class="player-row">
+            <div class="player-name winner">Alexander Shevchenko 🇰🇿 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Luca Nardi 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-4, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 5</div>
+        <div class="player-row">
+            <div class="player-name winner">Tommy Paul 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Christopher Eubanks 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-3, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 6</div>
+        <div class="player-row">
+            <div class="player-name winner">Bu Yunchaokete 🇨🇳 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Gael Monfils 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-1, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 7</div>
+        <div class="player-row">
+            <div class="player-name winner">David Goffin 🇧🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Constant Lestienne 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 6-3, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 8</div>
+        <div class="player-row">
+            <div class="player-name winner">Laslo Djere 🇷🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Hugo Grenier 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 5-6, 6-1, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 9</div>
+        <div class="player-row">
+            <div class="player-name winner">Daniil Medvedev 🏳️ <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Hugo Dellien 🇧🇴</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 4-6, 6-4, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 10</div>
+        <div class="player-row">
+            <div class="player-name winner">Quentin Halys 🇫🇷 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Filip Krajinovic 🇷🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 5-6, 6-3, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 11</div>
+        <div class="player-row">
+            <div class="player-name winner">Liam Broady 🇬🇧 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Aslan Karatsev 🏳️</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-4, 6-3, 5-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 12</div>
+        <div class="player-row">
+            <div class="player-name winner">Alejandro Tabilo 🇨🇱 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Emilio Nava 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-3, 6-4, 5-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 13</div>
+        <div class="player-row">
+            <div class="player-name winner">Nuno Borges 🇵🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Mariano Navone 🇦🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-4, 5-6, 3-6, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 14</div>
+        <div class="player-row">
+            <div class="player-name winner">Radu Albot 🇲🇩 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">J.J. Wolf 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 6-2, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 15</div>
+        <div class="player-row">
+            <div class="player-name winner">Sebastian Baez 🇦🇷 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Daniel Evans 🇬🇧</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-2, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 16</div>
+        <div class="player-row">
+            <div class="player-name winner">Yannick Hanfmann 🇩🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Nicolas Jarry 🇨🇱</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-2, 6-4, 5-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 17</div>
+        <div class="player-row">
+            <div class="player-name winner">Jack Draper 🇬🇧 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Holger Rune 🇩🇰</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 3-6, 6-1, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 18</div>
+        <div class="player-row">
+            <div class="player-name winner">Miomir Kecmanovic 🇷🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Stan Wawrinka 🇨🇭</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 4-6, 3-6, 6-3, 6-1, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 19</div>
+        <div class="player-row">
+            <div class="player-name winner">Jaume Munar 🇪🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Alexandre Muller 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 3-6, 6-3, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 20</div>
+        <div class="player-row">
+            <div class="player-name winner">Dominic Thiem 🇦🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Fabio Fognini 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 4-6, 6-4, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 21</div>
+        <div class="player-row">
+            <div class="player-name winner">Tomas Machac 🇨🇿 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Carlos Alcaraz 🇪🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-4, 4-6, 6-3, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 22</div>
+        <div class="player-row">
+            <div class="player-name winner">Daniel Altmaier 🇩🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Karen Khachanov 🏳️</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-4, 5-6, 3-6, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 23</div>
+        <div class="player-row">
+            <div class="player-name winner">Christopher O Connell 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score "></div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Felix Auger-Aliassime 🇨🇦</div>
+            <div class="player-score "></div>
+        </div>
+        <div class="match-details injury">Felix se retiro por lesion.</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 24</div>
+        <div class="player-row">
+            <div class="player-name winner">Milos Raonic 🇨🇦 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Tomas Martin Etcheverry 🇦🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-1, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 25</div>
+        <div class="player-row">
+            <div class="player-name winner">Alex de Minaur 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Giovanni Mpetshi Perricard 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-4, 4-6, 4-6, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 26</div>
+        <div class="player-row">
+            <div class="player-name winner">Joao Sousa 🇵🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">James Duckworth 🇦🇺</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-4, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 27</div>
+        <div class="player-row">
+            <div class="player-name winner">Sebastian Korda 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Thanasi Kokkinakis 🇦🇺</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 4-6, 6-4, 6-1, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 28</div>
+        <div class="player-row">
+            <div class="player-name winner">Jiri Lehecka 🇨🇿 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Hubert Hurkacz 🇵🇱</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 3-6, 6-3, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 29</div>
+        <div class="player-row">
+            <div class="player-name winner">Jordan Thompson 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Thiago Seyboth Wild 🇧🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-1, 4-6, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 30</div>
+        <div class="player-row">
+            <div class="player-name winner">Albert Ramos Vinolas 🇪🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Max Purcell 🇦🇺</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 5-6, 6-4, 6-1, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 31</div>
+        <div class="player-row">
+            <div class="player-name winner">Stefano Napolitano 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Novak Djokovic 🇷🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-2, 5-6, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 32</div>
+        <div class="player-row">
+            <div class="player-name winner">Lloyd Harris 🇿🇦 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Corentin Moutet 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 3-6, 6-3, 4-6, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 33</div>
+        <div class="player-row">
+            <div class="player-name winner">Taylor Fritz 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Roberto Carballes Baena 🇪🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 5-6, 6-1, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 34</div>
+        <div class="player-row">
+            <div class="player-name winner">Pedro Martinez 🇪🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Joris De Loore 🇧🇪</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 5-6, 6-1, 6-4, 6-4, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 35</div>
+        <div class="player-row">
+            <div class="player-name winner">Cameron Norrie 🇬🇧 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Dominik Koepfer 🇩🇪</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-3, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 36</div>
+        <div class="player-row">
+            <div class="player-name winner">Jiri Vesely 🇨🇿 <span class="star">✨</span></div>
+            <div class="player-score "></div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Federico Delbonis 🇦🇷</div>
+            <div class="player-score "></div>
+        </div>
+        <div class="match-details injury">Federico se retiro por lesion.</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 37</div>
+        <div class="player-row">
+            <div class="player-name winner">Casper Ruud 🇳🇴 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Arthur Fils 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-2, 5-6, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 38</div>
+        <div class="player-row">
+            <div class="player-name winner">Borna Coric 🇭🇷 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Flavio Cobolli 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-3, 6-2, 4-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 39</div>
+        <div class="player-row">
+            <div class="player-name winner">Zhang Zhizhen 🇨🇳 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Denis Shapovalov 🇨🇦</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-2, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 40</div>
+        <div class="player-row">
+            <div class="player-name winner">Flavio Cobolli 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score "></div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Emil Ruusuvuori 🇫🇮</div>
+            <div class="player-score "></div>
+        </div>
+        <div class="match-details injury">Emil se retiro por lesion.</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 41</div>
+        <div class="player-row">
+            <div class="player-name winner">Alexander Zverev 🇩🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Yoshihito Nishioka 🇯🇵</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-2, 5-6, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 42</div>
+        <div class="player-row">
+            <div class="player-name winner">Oscar Otte 🇩🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Lorenzo Musetti 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-2, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 43</div>
+        <div class="player-row">
+            <div class="player-name winner">Taro Daniel 🇯🇵 <span class="star">✨</span></div>
+            <div class="player-score "></div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Hamad Medjedovic 🇷🇸</div>
+            <div class="player-score "></div>
+        </div>
+        <div class="match-details injury">Hamad se retiro por lesion.</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 44</div>
+        <div class="player-row">
+            <div class="player-name winner">Learner Tien 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Ugo Humbert 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 6-1, 6-3, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 45</div>
+        <div class="player-row">
+            <div class="player-name winner">Brandon Nakashima 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Tallon Griekspoor 🇳🇱</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-3, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 46</div>
+        <div class="player-row">
+            <div class="player-name winner">Rinky Hijikata 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Pedro Cachin 🇦🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-3, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 47</div>
+        <div class="player-row">
+            <div class="player-name winner">Sumit Nagal 🇮🇳 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Jakub Mensik 🇨🇿</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 5-6, 6-3, 6-3, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 48</div>
+        <div class="player-row">
+            <div class="player-name winner">Marc-Andrea Huesler 🇨🇭 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Kei Nishikori 🇯🇵</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 3-6, 6-1, 4-6, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 49</div>
+        <div class="player-row">
+            <div class="player-name winner">Grigor Dimitrov 🇧🇬 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Adrian Mannarino 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 6-4, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 50</div>
+        <div class="player-row">
+            <div class="player-name winner">Matteo Berrettini 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Marcos Giron 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 5-6, 4-6, 6-2, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 51</div>
+        <div class="player-row">
+            <div class="player-name winner">Jan-Lennard Struff 🇩🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Luciano Darderi 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-3, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 52</div>
+        <div class="player-row">
+            <div class="player-name winner">Roman Safiullin 🏳️ <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Duje Ajdukovic 🇭🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-2, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 53</div>
+        <div class="player-row">
+            <div class="player-name winner">Andrey Rublev 🏳️ <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Andrea Vavassori 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 6-2, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 54</div>
+        <div class="player-row">
+            <div class="player-name winner">Zizou Bergs 🇧🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Marin Cilic 🇭🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 4-6, 6-4, 6-3, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 55</div>
+        <div class="player-row">
+            <div class="player-name winner">Pablo Carreno Busta 🇪🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Daniel Elahi Galan 🇨🇴</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 3-6, 6-4, 5-6, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 56</div>
+        <div class="player-row">
+            <div class="player-name winner">Alejandro Davidovich Fokina 🇪🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Mikhail Kukushkin 🇰🇿</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-3, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 57</div>
+        <div class="player-row">
+            <div class="player-name winner">Frances Tiafoe 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Lorenzo Sonego 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 5-6, 6-1, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 58</div>
+        <div class="player-row">
+            <div class="player-name winner">Francisco Cerundolo 🇦🇷 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Michael Mmoh 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 3-6, 6-3, 6-4, 5-6, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 59</div>
+        <div class="player-row">
+            <div class="player-name winner">Guido Pella 🇦🇷 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Cristian Garin 🇨🇱</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-1, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 60</div>
+        <div class="player-row">
+            <div class="player-name winner">Roberto Bautista Agut 🇪🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Tomas Barrios Vera 🇨🇱</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-2, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 61</div>
+        <div class="player-row">
+            <div class="player-name winner">Alexei Popyrin 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Hugo Gaston 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 5-6, 4-6, 6-4, 6-1, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 62</div>
+        <div class="player-row">
+            <div class="player-name winner">Matteo Arnaldi 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Federico Coria 🇦🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 4-6, 6-4, 6-4, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 63</div>
+        <div class="player-row">
+            <div class="player-name winner">Ben Shelton 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Pavel Kotov 🏳️</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-2, 6-4, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 64</div>
+        <div class="player-row">
+            <div class="player-name winner">Soonwoo Kwon 🇰🇷 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Diego Schwartzman 🇦🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 3-6, 6-1, 6-1, 6-3</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEGUNDA RONDA -->
+<div id="segunda" class="round-content" style="display: none;">
+  <div class="participants-scroll custom-scroll" style="max-height: 550px; overflow-y: auto; overflow-x: hidden; padding-right: 15px;">
+    <div class="matches-grid">
+      <div class="premium-match-card">
+        <div class="match-title">Partido 1</div>
+        <div class="player-row">
+            <div class="player-name winner">Jannik Sinner 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Dusan Lajovic 🇷🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-1, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 2</div>
+        <div class="player-row">
+            <div class="player-name winner">Mackenzie McDonald 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Alexander Shevchenko 🇰🇿</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 3-6, 6-4, 6-4, 4-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 3</div>
+        <div class="player-row">
+            <div class="player-name winner">Tommy Paul 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Bu Yunchaokete 🇨🇳</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 6-2, 6-3, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 4</div>
+        <div class="player-row">
+            <div class="player-name winner">David Goffin 🇧🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Laslo Djere 🇷🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 3-6, 4-6, 6-4, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 5</div>
+        <div class="player-row">
+            <div class="player-name winner">Daniil Medvedev 🏳️ <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Quentin Halys 🇫🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-3, 6-1, 3-6, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 6</div>
+        <div class="player-row">
+            <div class="player-name winner">Liam Broady 🇬🇧 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Alejandro Tabilo 🇨🇱</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-2, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 7</div>
+        <div class="player-row">
+            <div class="player-name winner">Nuno Borges 🇵🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Radu Albot 🇲🇩</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 6-3, 6-2, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 8</div>
+        <div class="player-row">
+            <div class="player-name winner">Sebastian Baez 🇦🇷 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Yannick Hanfmann 🇩🇪</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 6-3, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 9</div>
+        <div class="player-row">
+            <div class="player-name winner">Jack Draper 🇬🇧 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Miomir Kecmanovic 🇷🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 4-6, 6-2, 6-3, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 10</div>
+        <div class="player-row">
+            <div class="player-name winner">Jaume Munar 🇪🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Dominic Thiem 🇦🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-3, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 11</div>
+        <div class="player-row">
+            <div class="player-name winner">Tomas Machac 🇨🇿 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Daniel Altmaier 🇩🇪</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-4, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 12</div>
+        <div class="player-row">
+            <div class="player-name winner">Christopher O Connell 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Milos Raonic 🇨🇦</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 5-6, 6-2, 6-3, 5-6, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 13</div>
+        <div class="player-row">
+            <div class="player-name winner">Alex de Minaur 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Joao Sousa 🇵🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 3-6, 6-3, 5-6, 6-4, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 14</div>
+        <div class="player-row">
+            <div class="player-name winner">Sebastian Korda 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Jiri Lehecka 🇨🇿</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 5-6, 6-4, 6-1, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 15</div>
+        <div class="player-row">
+            <div class="player-name winner">Jordan Thompson 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Albert Ramos Vinolas 🇪🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-4, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 16</div>
+        <div class="player-row">
+            <div class="player-name winner">Stefano Napolitano 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Lloyd Harris 🇿🇦</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-2, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 17</div>
+        <div class="player-row">
+            <div class="player-name winner">Taylor Fritz 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Pedro Martinez 🇪🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-3, 6-2, 5-6, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 18</div>
+        <div class="player-row">
+            <div class="player-name winner">Cameron Norrie 🇬🇧 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Jiri Vesely 🇨🇿</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 3-6, 6-3, 5-6, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 19</div>
+        <div class="player-row">
+            <div class="player-name winner">Casper Ruud 🇳🇴 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Borna Coric 🇭🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-3, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 20</div>
+        <div class="player-row">
+            <div class="player-name winner">Zhang Zhizhen 🇨🇳 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Flavio Cobolli 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-1, 6-3, 4-6, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 21</div>
+        <div class="player-row">
+            <div class="player-name winner">Alexander Zverev 🇩🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Oscar Otte 🇩🇪</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-4, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 22</div>
+        <div class="player-row">
+            <div class="player-name winner">Taro Daniel 🇯🇵 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Learner Tien 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-1, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 23</div>
+        <div class="player-row">
+            <div class="player-name winner">Brandon Nakashima 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score "></div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Rinky Hijikata 🇦🇺</div>
+            <div class="player-score "></div>
+        </div>
+        <div class="match-details injury">Rinky se retiro por lesion.</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 24</div>
+        <div class="player-row">
+            <div class="player-name winner">Sumit Nagal 🇮🇳 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Marc-Andrea Huesler 🇨🇭</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 3-6, 4-6, 6-1, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 25</div>
+        <div class="player-row">
+            <div class="player-name winner">Grigor Dimitrov 🇧🇬 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Matteo Berrettini 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-2, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 26</div>
+        <div class="player-row">
+            <div class="player-name winner">Jan-Lennard Struff 🇩🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Roman Safiullin 🏳️</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-2, 5-6, 4-6, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 27</div>
+        <div class="player-row">
+            <div class="player-name winner">Andrey Rublev 🏳️ <span class="star">✨</span></div>
+            <div class="player-score "></div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Zizou Bergs 🇧🇪</div>
+            <div class="player-score "></div>
+        </div>
+        <div class="match-details injury">Zizou se retiro por lesion.</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 28</div>
+        <div class="player-row">
+            <div class="player-name winner">Pablo Carreno Busta 🇪🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Alejandro Davidovich Fokina 🇪🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 6-1, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 29</div>
+        <div class="player-row">
+            <div class="player-name winner">Frances Tiafoe 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Francisco Cerundolo 🇦🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 3-6, 6-1, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 30</div>
+        <div class="player-row">
+            <div class="player-name winner">Guido Pella 🇦🇷 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Roberto Bautista Agut 🇪🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 5-6, 6-4, 6-2, 4-6, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 31</div>
+        <div class="player-row">
+            <div class="player-name winner">Alexei Popyrin 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Matteo Arnaldi 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 3-6, 4-6, 6-4, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 32</div>
+        <div class="player-row">
+            <div class="player-name winner">Ben Shelton 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Soonwoo Kwon 🇰🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 3-6, 6-2, 6-3, 6-3, 3-6</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TERCERA RONDA -->
+<div id="tercera" class="round-content" style="display: none;">
+  <div class="participants-scroll custom-scroll" style="max-height: 550px; overflow-y: auto; overflow-x: hidden; padding-right: 15px;">
+    <div class="matches-grid">
+      <div class="premium-match-card">
+        <div class="match-title">Partido 1</div>
+        <div class="player-row">
+            <div class="player-name winner">Jannik Sinner 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Mackenzie McDonald 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 5-6, 6-2, 6-2, 6-4</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 2</div>
+        <div class="player-row">
+            <div class="player-name winner">Tommy Paul 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">David Goffin 🇧🇪</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 3-6, 5-6, 6-3, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 3</div>
+        <div class="player-row">
+            <div class="player-name winner">Daniil Medvedev 🏳️ <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Liam Broady 🇬🇧</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 5-6, 6-3, 6-1, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 4</div>
+        <div class="player-row">
+            <div class="player-name winner">Nuno Borges 🇵🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Sebastian Baez 🇦🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 4-6, 6-3, 6-4, 5-6, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 5</div>
+        <div class="player-row">
+            <div class="player-name winner">Jack Draper 🇬🇧 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Jaume Munar 🇪🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 4-6, 5-6, 6-1, 6-1, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 6</div>
+        <div class="player-row">
+            <div class="player-name winner">Tomas Machac 🇨🇿 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Christopher O Connell 🇦🇺</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-4, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 7</div>
+        <div class="player-row">
+            <div class="player-name winner">Alex de Minaur 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Sebastian Korda 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-2, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 8</div>
+        <div class="player-row">
+            <div class="player-name winner">Jordan Thompson 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Stefano Napolitano 🇮🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-4, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 9</div>
+        <div class="player-row">
+            <div class="player-name winner">Taylor Fritz 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Cameron Norrie 🇬🇧</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 3-6, 6-2, 3-6, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 10</div>
+        <div class="player-row">
+            <div class="player-name winner">Casper Ruud 🇳🇴 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Zhang Zhizhen 🇨🇳</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 3-6, 6-1, 6-4, 4-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 11</div>
+        <div class="player-row">
+            <div class="player-name winner">Alexander Zverev 🇩🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Taro Daniel 🇯🇵</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 5-6, 6-1, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 12</div>
+        <div class="player-row">
+            <div class="player-name winner">Brandon Nakashima 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Sumit Nagal 🇮🇳</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-1, 3-6, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 13</div>
+        <div class="player-row">
+            <div class="player-name winner">Grigor Dimitrov 🇧🇬 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Jan-Lennard Struff 🇩🇪</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 4-6, 6-2, 3-6, 6-2, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 14</div>
+        <div class="player-row">
+            <div class="player-name winner">Andrey Rublev 🏳️ <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Pablo Carreno Busta 🇪🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-1, 6-1, 6-4, 3-6</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 15</div>
+        <div class="player-row">
+            <div class="player-name winner">Frances Tiafoe 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Guido Pella 🇦🇷</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 6-1, 5-6, 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 16</div>
+        <div class="player-row">
+            <div class="player-name winner">Alexei Popyrin 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Ben Shelton 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-3, 6-3</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OCTAVOS DE FINAL -->
+<div id="octavos" class="round-content" style="display: none;">
+  <div class="participants-scroll custom-scroll" style="max-height: 550px; overflow-y: auto; overflow-x: hidden; padding-right: 15px;">
+    <div class="matches-grid">
+      <div class="premium-match-card">
+        <div class="match-title">Partido 1</div>
+        <div class="player-row">
+            <div class="player-name winner">Jannik Sinner 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Tommy Paul 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 7-6(3), 7-6(5), 6-1</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 2</div>
+        <div class="player-row">
+            <div class="player-name winner">Daniil Medvedev 🏳️ <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Nuno Borges 🇵🇹</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-0, 6-1, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 3</div>
+        <div class="player-row">
+            <div class="player-name winner">Jack Draper 🇬🇧 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Tomas Machac 🇨🇿</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-1, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 4</div>
+        <div class="player-row">
+            <div class="player-name winner">Alex de Minaur 🇦🇺 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Jordan Thompson 🇦🇺</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-0, 3-6, 6-3, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 5</div>
+        <div class="player-row">
+            <div class="player-name winner">Taylor Fritz 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Casper Ruud 🇳🇴</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 3-6, 6-4, 6-3, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 6</div>
+        <div class="player-row">
+            <div class="player-name winner">Alexander Zverev 🇩🇪 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Brandon Nakashima 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 3-6, 6-1, 6-2, 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 7</div>
+        <div class="player-row">
+            <div class="player-name winner">Grigor Dimitrov 🇧🇬 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Andrey Rublev 🏳️</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 7-6(3), 1-6, 3-6, 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 8</div>
+        <div class="player-row">
+            <div class="player-name winner">Frances Tiafoe 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Alexei Popyrin 🇦🇺</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-4, 7-6(4), 2-6, 6-3</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CUARTOS DE FINAL -->
+<div id="cuartos" class="round-content" style="display: none;">
+  <div class="participants-scroll custom-scroll" style="max-height: 550px; overflow-y: auto; overflow-x: hidden; padding-right: 15px;">
+    <div class="matches-grid">
+      <div class="premium-match-card">
+        <div class="match-title">Partido 1</div>
+        <div class="player-row">
+            <div class="player-name winner">Jannik Sinner 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Daniil Medvedev 🏳️</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-2, 1-6, 6-1, 6-7(3), 6-3</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 2</div>
+        <div class="player-row">
+            <div class="player-name winner">Jack Draper 🇬🇧 <span class="star">✨</span></div>
+            <div class="player-score "></div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Alex de Minaur 🇦🇺</div>
+            <div class="player-score "></div>
+        </div>
+        <div class="match-details injury">De Minaur se retiro por lesion de cadera durante el 3er set ⚠️</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 3</div>
+        <div class="player-row">
+            <div class="player-name winner">Taylor Fritz 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Alexander Zverev 🇩🇪</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 7-6(2), 3-6, 6-4, 7-6(3)</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 4</div>
+        <div class="player-row">
+            <div class="player-name winner">Frances Tiafoe 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 2</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Grigor Dimitrov 🇧🇬</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-7(5), 6-3, 4-6, 6-3</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEMIFINALES -->
+<div id="semis" class="round-content" style="display: none;">
+  <div class="participants-scroll custom-scroll" style="max-height: 550px; overflow-y: auto; overflow-x: hidden; padding-right: 15px;">
+    <div class="matches-grid">
+      <div class="premium-match-card">
+        <div class="match-title">Partido 1</div>
+        <div class="player-row">
+            <div class="player-name winner">Jannik Sinner 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Jack Draper 🇬🇧</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 7-5, 7-6(3), 6-2</div>
+      </div>
+      <div class="premium-match-card">
+        <div class="match-title">Partido 2</div>
+        <div class="player-row">
+            <div class="player-name winner">Taylor Fritz 🇺🇸 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 1</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Frances Tiafoe 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 4-6, 7-5, 4-6, 6-4, 6-1</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL -->
+<div id="final" class="round-content" style="display: none;">
+  <div class="participants-scroll custom-scroll" style="max-height: 550px; overflow-y: auto; overflow-x: hidden; padding-right: 15px;">
+    <div class="matches-grid">
+      <div class="premium-match-card">
+        <div class="match-title">Partido 1</div>
+        <div class="player-row">
+            <div class="player-name winner">Jannik Sinner 🇮🇹 <span class="star">✨</span></div>
+            <div class="player-score winner-score">3 - 0</div>
+        </div>
+        <div class="player-row">
+            <div class="player-name ">Taylor Fritz 🇺🇸</div>
+            <div class="player-score ">0</div>
+        </div>
+        <div class="match-details">Sets: 6-3, 6-4, 7-5</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+            </div>
+        </div>
+        <div id="participantes" class="tab-content">
+            <div class="glass-panel" style="margin-top: 40px;">
+                <h2 class="info-title">Participantes Destacados (Top 32 Seeds)</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; margin-bottom: 40px;">
+                    <div class="participant-card"><span class="p-rank">#1</span> <span class="p-name">Jannik Sinner 🇮🇹</span></div>
+                    <div class="participant-card"><span class="p-rank">#2</span> <span class="p-name">Novak Djokovic 🇷🇸</span></div>
+                    <div class="participant-card"><span class="p-rank">#3</span> <span class="p-name">Carlos Alcaraz 🇪🇸</span></div>
+                    <div class="participant-card"><span class="p-rank">#4</span> <span class="p-name">Alexander Zverev 🇩🇪</span></div>
+                    <div class="participant-card"><span class="p-rank">#5</span> <span class="p-name">Daniil Medvedev 🏳️</span></div>
+                    <div class="participant-card"><span class="p-rank">#6</span> <span class="p-name">Andrey Rublev 🏳️</span></div>
+                    <div class="participant-card"><span class="p-rank">#7</span> <span class="p-name">Hubert Hurkacz 🇵🇱</span></div>
+                    <div class="participant-card"><span class="p-rank">#8</span> <span class="p-name">Casper Ruud 🇳🇴</span></div>
+                    <div class="participant-card"><span class="p-rank">#9</span> <span class="p-name">Grigor Dimitrov 🇧🇬</span></div>
+                    <div class="participant-card"><span class="p-rank">#10</span> <span class="p-name">Alex de Minaur 🇦🇺</span></div>
+                    <div class="participant-card"><span class="p-rank">#11</span> <span class="p-name">Stefanos Tsitsipas 🇬🇷</span></div>
+                    <div class="participant-card"><span class="p-rank">#12</span> <span class="p-name">Taylor Fritz 🇺🇸</span></div>
+                    <div class="participant-card"><span class="p-rank">#13</span> <span class="p-name">Ben Shelton 🇺🇸</span></div>
+                    <div class="participant-card"><span class="p-rank">#14</span> <span class="p-name">Tommy Paul 🇺🇸</span></div>
+                    <div class="participant-card"><span class="p-rank">#15</span> <span class="p-name">Holger Rune 🇩🇰</span></div>
+                    <div class="participant-card"><span class="p-rank">#16</span> <span class="p-name">Sebastian Korda 🇺🇸</span></div>
+                    <div class="participant-card"><span class="p-rank">#17</span> <span class="p-name">Felix Auger-Aliassime 🇨🇦</span></div>
+                    <div class="participant-card"><span class="p-rank">#18</span> <span class="p-name">Giovanni Mpetshi Perricard 🇫🇷</span></div>
+                    <div class="participant-card"><span class="p-rank">#19</span> <span class="p-name">Karen Khachanov 🏳️</span></div>
+                    <div class="participant-card"><span class="p-rank">#20</span> <span class="p-name">Frances Tiafoe 🇺🇸</span></div>
+                    <div class="participant-card"><span class="p-rank">#21</span> <span class="p-name">Ugo Humbert 🇫🇷</span></div>
+                    <div class="participant-card"><span class="p-rank">#22</span> <span class="p-name">Lorenzo Musetti 🇮🇹</span></div>
+                    <div class="participant-card"><span class="p-rank">#23</span> <span class="p-name">Jack Draper 🇬🇧</span></div>
+                    <div class="participant-card"><span class="p-rank">#24</span> <span class="p-name">Arthur Fils 🇫🇷</span></div>
+                    <div class="participant-card"><span class="p-rank">#25</span> <span class="p-name">Alejandro Tabilo 🇨🇱</span></div>
+                    <div class="participant-card"><span class="p-rank">#26</span> <span class="p-name">Flavio Cobolli 🇮🇹</span></div>
+                    <div class="participant-card"><span class="p-rank">#27</span> <span class="p-name">Nicolas Jarry 🇨🇱</span></div>
+                    <div class="participant-card"><span class="p-rank">#28</span> <span class="p-name">Sebastian Baez 🇦🇷</span></div>
+                    <div class="participant-card"><span class="p-rank">#29</span> <span class="p-name">Alexei Popyrin 🇦🇺</span></div>
+                    <div class="participant-card"><span class="p-rank">#30</span> <span class="p-name">Matteo Arnaldi 🇮🇹</span></div>
+                    <div class="participant-card"><span class="p-rank">#31</span> <span class="p-name">Jiri Lehecka 🇨🇿</span></div>
+                    <div class="participant-card"><span class="p-rank">#32</span> <span class="p-name">Nuno Borges 🇵🇹</span></div>
+                </div>
+                <h2 class="info-title">Resto del Cuadro (96 Jugadores)</h2>
+                <div class="custom-scroll" style="max-height: 400px; overflow-y: auto; overflow-x: hidden; padding-right: 15px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px;">
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Thanasi Kokkinakis 🇦🇺</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Jordan Thompson 🇦🇺</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Christopher O Connell 🇦🇺</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Max Purcell 🇦🇺</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Rinky Hijikata 🇦🇺</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">James Duckworth 🇦🇺</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Luciano Darderi 🇮🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Fabio Fognini 🇮🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Lorenzo Sonego 🇮🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Luca Nardi 🇮🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Matteo Berrettini 🇮🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Flavio Cobolli 🇮🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Denis Shapovalov 🇨🇦</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Milos Raonic 🇨🇦</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Daniel Evans 🇬🇧</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Cameron Norrie 🇬🇧</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Jan-Lennard Struff 🇩🇪</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Daniel Altmaier 🇩🇪</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Yannick Hanfmann 🇩🇪</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Dominik Koepfer 🇩🇪</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Pablo Carreno Busta 🇪🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Roberto Bautista Agut 🇪🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Pedro Martinez 🇪🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Jaume Munar 🇪🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Alejandro Davidovich Fokina 🇪🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Roberto Carballes Baena 🇪🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Borna Coric 🇭🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Marin Cilic 🇭🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Duje Ajdukovic 🇭🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Corentin Moutet 🇫🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Adrian Mannarino 🇫🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Gael Monfils 🇫🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Hugo Gaston 🇫🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Quentin Halys 🇫🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Alexandre Muller 🇫🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Tallon Griekspoor 🇳🇱</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Botic Van de Zandschulp 🇳🇱</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Emil Ruusuvuori 🇫🇮</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Yoshihito Nishioka 🇯🇵</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Taro Daniel 🇯🇵</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Kei Nishikori 🇯🇵</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Thiago Seyboth Wild 🇧🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Thiago Monteiro 🇧🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Diego Schwartzman 🇦🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Federico Coria 🇦🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Tomas Martin Etcheverry 🇦🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Mariano Navone 🇦🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Pedro Cachin 🇦🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Francisco Cerundolo 🇦🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Cristian Garin 🇨🇱</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Tomas Barrios Vera 🇨🇱</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">J.J. Wolf 🇺🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Brandon Nakashima 🇺🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Marcos Giron 🇺🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Mackenzie McDonald 🇺🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Christopher Eubanks 🇺🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Emilio Nava 🇺🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Michael Mmoh 🇺🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Learner Tien 🇺🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Alexander Shevchenko 🇰🇿</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Mikhail Kukushkin 🇰🇿</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Stan Wawrinka 🇨🇭</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Marc-Andrea Huesler 🇨🇭</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Dominic Thiem 🇦🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Pavel Kotov 🏳️</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Roman Safiullin 🏳️</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Aslan Karatsev 🏳️</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Laslo Djere 🇷🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Dusan Lajovic 🇷🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Miomir Kecmanovic 🇷🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Joao Sousa 🇵🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Zhang Zhizhen 🇨🇳</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Bu Yunchaokete 🇨🇳</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Soonwoo Kwon 🇰🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Hugo Dellien 🇧🇴</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Daniel Elahi Galan 🇨🇴</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Sumit Nagal 🇮🇳</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Zizou Bergs 🇧🇪</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">David Goffin 🇧🇪</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Lloyd Harris 🇿🇦</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Jiri Vesely 🇨🇿</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Tomas Machac 🇨🇿</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Jakub Mensik 🇨🇿</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Hamad Medjedovic 🇷🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Liam Broady 🇬🇧</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Andrea Vavassori 🇮🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Stefano Napolitano 🇮🇹</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Guido Pella 🇦🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Federico Delbonis 🇦🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Constant Lestienne 🇫🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Hugo Grenier 🇫🇷</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Radu Albot 🇲🇩</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Albert Ramos Vinolas 🇪🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Oscar Otte 🇩🇪</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Filip Krajinovic 🇷🇸</span></div>
+                        <div class="participant-card" style="padding: 12px;"><span class="p-name" style="color: var(--text-muted); font-weight: normal;">Joris De Loore 🇧🇪</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass-panel">
+                <h2 class="info-title">Formato del Torneo</h2>
+                <p class="format-text"><strong>Partidos Masculinos (Grand Slam):</strong> Los partidos se juegan <strong>al mejor de 5 sets</strong>. El primer jugador en ganar 3 sets gana el partido. En caso de empate a 6 juegos se juega un <em>tie-break</em>. En el set decisivo se aplica un <em>super tie-break</em> a 10 puntos.</p>
+                <p class="format-text"><strong>Superficie:</strong> Pista dura (DecoTurf) en el USTA Billie Jean King National Tennis Center, Flushing Meadows, Nueva York.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function showTab(tabId, event) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tabs-main .tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            if(event) event.currentTarget.classList.add('active');
+        }
+        function showRound(roundId, event) {
+            document.querySelectorAll('.round-content').forEach(c => { c.style.display='none'; c.classList.remove('active'); });
+            document.querySelectorAll('.sub-tabs .round-btn').forEach(b => b.classList.remove('active'));
+            let t = document.getElementById(roundId);
+            if(t) { t.style.display='block'; setTimeout(() => t.classList.add('active'), 10); }
+            if(event) event.currentTarget.classList.add('active');
+        }
+    </script>
+
+<!-- TENNIS MODAL JS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    if(!document.getElementById('tennisMatchModal')) {
+        const modalHtml = `
+<div class="nba-modal-overlay" id="tennisMatchModal" onclick="if(event.target === this) closeTennisModal()">
+  <div class="nba-modal-box">
+    <button class="nba-close-btn" onclick="closeTennisModal()">×</button>
+    <div class="nba-m-hero" id="tennisModalHero"></div>
+    <div class="nba-quarters-strip" id="tennisModalSetStrip"></div>
+    <div class="nba-m-tabs" id="tennisModalTabs"></div>
+    <div class="nba-m-body" id="tennisModalBody">
+      <div class="nba-m-panel" id="tennisPanel-sets"></div>
+      <div class="nba-m-panel" id="tennisPanel-stats"></div>
+      <div class="nba-m-panel" id="tennisPanel-points"></div>
+    </div>
+  </div>
+</div>`;
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+    }
+    document.querySelectorAll('.premium-match-card').forEach((card, index) => {
+        const playerRows = card.querySelectorAll('.player-row');
+        if(playerRows.length < 2) return;
+        let p1Name = playerRows[0].querySelector('.player-name').textContent.replace('✨', '').trim();
+        let p1ScoreText = playerRows[0].querySelector('.player-score').textContent.trim();
+        let p1Score = p1ScoreText ? parseInt(p1ScoreText) : 0;
+        let p2Name = playerRows[1].querySelector('.player-name').textContent.replace('✨', '').trim();
+        let p2ScoreText = playerRows[1].querySelector('.player-score').textContent.trim();
+        let p2Score = p2ScoreText ? parseInt(p2ScoreText) : 0;
+        let detailsText = card.querySelector('.match-details') ? card.querySelector('.match-details').textContent.trim() : "";
+        let isInjury = card.querySelector('.match-details') && card.querySelector('.match-details').classList.contains('injury');
+        if(!card.querySelector('.click-hint')) {
+            card.insertAdjacentHTML('beforeend', '<div class="click-hint">🎾 Ver detalles del partido &rarr;</div>');
+        }
+        let setsStr = detailsText.replace('Sets:', '').trim();
+        let setsParams = [];
+        if(setsStr && !isInjury && setsStr.indexOf('-') !== -1) {
+            let setTokens = setsStr.split(',');
+            setTokens.forEach(st => {
+                let stParsed = st.trim().replace(')', '').split('('); 
+                let scores = stParsed[0].split('-');
+                if(scores.length == 2) {
+                    setsParams.push({
+                        p1: parseInt(scores[0]),
+                        p2: parseInt(scores[1]),
+                        tiebreak: stParsed.length > 1 ? parseInt(stParsed[1]) : null
+                    });
+                }
+            });
+        }
+        const roundTitle = card.closest('.round-content') ? card.closest('.round-content').id : "";
+        card.onclick = () => {
+            openTennisModal({
+                id: index, p1Name, p1Score, p2Name, p2Score, setsParams, isInjury, detailsText,
+                title: card.querySelector('.match-title') ? card.querySelector('.match-title').textContent : "Partido",
+                round: roundTitle, seed: index + Date.now()
+            });
+        };
+    });
+});
+function closeTennisModal() {
+    document.getElementById('tennisMatchModal').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function tSwitchTab(id) {
+    document.querySelectorAll('#tennisMatchModal .nba-m-tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('#tennisMatchModal .nba-m-panel').forEach(p => p.classList.remove('active'));
+    if(document.getElementById('tTab-' + id)) document.getElementById('tTab-' + id).classList.add('active');
+    if(document.getElementById('tennisPanel-' + id)) document.getElementById('tennisPanel-' + id).classList.add('active');
+}
+function tSeededRand(seed) {
+  let s = seed;
+  return function() { s = (s * 1664525 + 1013904223) & 0xffffffff; return (s >>> 0) / 0xffffffff; };
+}
+function openTennisModal(match) {
+    const rand = tSeededRand(match.id * 1337);
+    const m1 = match.p1Name.split(' '); const flag1 = m1[m1.length-1]; const name1 = m1.slice(0, m1.length-1).join(' ');
+    const m2 = match.p2Name.split(' '); const flag2 = m2[m2.length-1]; const name2 = m2.slice(0, m2.length-1).join(' ');
+    document.getElementById('tennisModalHero').innerHTML = `
+      <div class="nba-m-teams-row">
+        <div class="nba-m-team"><div class="nba-m-team-name">${name1} ${flag1}</div></div>
+        <div class="nba-m-score-box">
+          <div class="nba-m-score">${match.p1Score} <span style="font-size:0.55em;opacity:0.6;">-</span> ${match.p2Score}</div>
+          <div class="nba-m-score-label">${match.title}</div>
+        </div>
+        <div class="nba-m-team"><div class="nba-m-team-name">${name2} ${flag2}</div></div>
+      </div>
+      <div class="nba-m-meta">
+        <div class="nba-m-meta-item">📅 <span>2025</span></div>
+        <div class="nba-m-meta-item"><span class="nba-m-meta-badge">${match.round.toUpperCase() || 'RONDA'}</span></div>
+        <div class="nba-m-meta-item">🎾 <span>Grand Slam</span></div>
+      </div>`;
+    let stripHtml = '';
+    for(let i=0; i<match.setsParams.length; i++) {
+        let s = match.setsParams[i];
+        let w1 = s.p1 > s.p2 ? "winner" : "";
+        let w2 = s.p2 > s.p1 ? "winner" : "";
+        stripHtml += `
+        <div class="nba-q-cell">
+          <div class="nba-q-label">SET ${i+1}</div>
+          <div class="nba-q-scores">
+            <div class="nba-q-home ${w1}">${s.p1} ${s.tiebreak && w2 ? '<sup>'+s.tiebreak+'</sup>' : ''}</div>
+            <div class="nba-q-away ${w2}">${s.p2} ${s.tiebreak && w1 ? '<sup>'+s.tiebreak+'</sup>' : ''}</div>
+          </div>
+        </div>`;
+    }
+    stripHtml += `
+    <div class="nba-q-cell total">
+      <div class="nba-q-label">SETS</div>
+      <div class="nba-q-scores">
+        <div class="nba-q-home">${match.p1Score}</div>
+        <div class="nba-q-away">${match.p2Score}</div>
+      </div>
+    </div>`;
+    document.getElementById('tennisModalSetStrip').innerHTML = stripHtml;
+    document.getElementById('tennisModalTabs').innerHTML = `
+      <button class="nba-m-tab-btn active" id="tTab-sets" onclick="tSwitchTab('sets')">📊 Resumen Sets</button>
+      <button class="nba-m-tab-btn" id="tTab-points" onclick="tSwitchTab('points')">🎾 Punto a Punto</button>
+      <button class="nba-m-tab-btn" id="tTab-stats" onclick="tSwitchTab('stats')">📈 Estadísticas</button>
+    `;
+    if (match.isInjury) {
+        document.getElementById('tennisPanel-sets').innerHTML = `
+            <div class="nba-q-intro" style="border-color:#ef4444; background:rgba(239, 68, 68, 0.08); color:#f87171;">⚠️ Partido finalizado por retiro/lesión.</div>
+            <div style="text-align:center; padding:20px; color:#cbd5e1;">${match.detailsText}</div>
+        `;
+    } else {
+        let setsTable = `
+          <table class="nba-q-table" style="margin-bottom:20px;">
+            <thead><tr><th style="text-align:left;">Jugador</th>${match.setsParams.map((_,i) => `<th>Set ${i+1}</th>`).join('')}<th>Total Sets</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="team-col">${name1}</td>
+                ${match.setsParams.map(s => `<td style="${s.p1 > s.p2 ? 'font-weight:900;color:var(--primary);' : ''}">${s.p1} ${s.tiebreak && s.p2>s.p1 ? '<sup>'+s.tiebreak+'</sup>' : ''}</td>`).join('')}
+                <td class="total-col">${match.p1Score}</td>
+              </tr>
+              <tr>
+                <td class="team-col">${name2}</td>
+                ${match.setsParams.map(s => `<td style="${s.p2 > s.p1 ? 'font-weight:900;color:var(--primary);' : ''}">${s.p2} ${s.tiebreak && s.p1>s.p2 ? '<sup>'+s.tiebreak+'</sup>' : ''}</td>`).join('')}
+                <td class="total-col">${match.p2Score}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="nba-q-intro">ℹ️ Desglose de sets. El jugador sombreado indica quién ganó cada parcial.</div>`;
+        document.getElementById('tennisPanel-sets').innerHTML = setsTable;
+    }
+    let s1 = { aces: Math.floor(rand()*10)+5, df: Math.floor(rand()*5), w: Math.floor(rand()*25)+20, ue: Math.floor(rand()*20)+15, bp_won: Math.floor(rand()*3)+ (match.p1Score >= match.p2Score?3:0), bp_tot: Math.floor(rand()*5)+5 };
+    let s2 = { aces: Math.floor(rand()*10)+2, df: Math.floor(rand()*5), w: Math.floor(rand()*25)+15, ue: Math.floor(rand()*20)+20, bp_won: Math.floor(rand()*3)+ (match.p2Score >= match.p1Score?3:0), bp_tot: Math.floor(rand()*5)+5 };
+    let statsTable = `
+        <table class="nba-q-table">
+          <thead><tr><th>Estadística</th><th>${name1}</th><th>${name2}</th></tr></thead>
+          <tbody>
+            <tr><td>Aces</td><td>${s1.aces}</td><td>${s2.aces}</td></tr>
+            <tr><td>Dobles Faltas</td><td>${s1.df}</td><td>${s2.df}</td></tr>
+            <tr><td>Tiros Ganadores</td><td>${s1.w}</td><td>${s2.w}</td></tr>
+            <tr><td>Errores No Forzados</td><td>${s1.ue}</td><td>${s2.ue}</td></tr>
+            <tr><td>Quiebres (Ganados/Total)</td><td>${s1.bp_won}/${s1.bp_tot}</td><td>${s2.bp_won}/${s2.bp_tot}</td></tr>
+          </tbody>
+        </table>
+        <div class="nba-q-intro" style="margin-top:20px;">ℹ️ Las estadísticas son estimaciones verosímiles basadas en el desarrollo del partido.</div>`;
+    document.getElementById('tennisPanel-stats').innerHTML = statsTable;
+    
+    if(match.isInjury || match.setsParams.length === 0) {
+        document.getElementById('tennisPanel-points').innerHTML = `<div class="nba-m-none">No hay datos punto a punto para este encuentro.</div>`;
+    } else {
+        let pointsHtml = '<div class="nba-q-intro">🎾 Cronología de los juegos en cada set (simulación punto a punto).</div>';
+        const pScores = ['15-0', '30-0', '40-0', 'Juego', '15-15', '30-15', '40-15', '40-30', 'Juego'];
+        match.setsParams.forEach((st, i) => {
+            let limit = st.p1 + st.p2;
+            let currentP1 = 0, currentP2 = 0;
+            pointsHtml += `<div class="pt-table">`;
+            pointsHtml += `<div class="pt-game" style="text-align:center; background:#1e3a5f; color:#fff;">SET ${i+1} (${st.p1} - ${st.p2})</div>`;
+            for(let j=0; j<limit; j++) {
+                let g1Limit = st.p1, g2Limit = st.p2;
+                let wonBy1 = false;
+                if(currentP1 < g1Limit && currentP2 < g2Limit) { wonBy1 = rand() > 0.5; }
+                else if(currentP1 < g1Limit) { wonBy1 = true; }
+                else { wonBy1 = false; }
+                if(wonBy1) currentP1++; else currentP2++;
+                let sDesc = pScores[Math.floor(rand() * pScores.length)];
+                if(sDesc === 'Juego') sDesc = wonBy1 ? `Juego en blanco para ${name1}` : `Juego para ${name2}`;
+                else sDesc = wonBy1 ? `Punto ganador de ${name1} para cerrar tras iguales` : `Punto ganado en la red por ${name2}`;
+                pointsHtml += `
+                  <div class="pt-row pt-point">
+                    <div class="pt-score">${currentP1} - ${currentP2}</div>
+                    <div class="pt-desc">${sDesc} <span class="pt-winner">Ganador del juego: ${wonBy1 ? name1 : name2}</span></div>
+                  </div>`;
+            }
+            pointsHtml += `</div><br/>`;
+        });
+        document.getElementById('tennisPanel-points').innerHTML = pointsHtml;
+    }
+    document.getElementById('tennisMatchModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    tSwitchTab('sets');
+}
+</script>
+</body>
+</html>

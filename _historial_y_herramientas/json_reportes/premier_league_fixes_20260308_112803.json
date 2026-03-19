@@ -1,0 +1,221 @@
+{
+  "fix_date": "2026-03-08T11:27:56.973078",
+  "total_matchdays": 23,
+  "matchdays": {
+    "jornada_1": {
+      "matchday": 1,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_2": {
+      "matchday": 2,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_3": {
+      "matchday": 3,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_4": {
+      "matchday": 4,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_5": {
+      "matchday": 5,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_6": {
+      "matchday": 6,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_7": {
+      "matchday": 7,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_8": {
+      "matchday": 8,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_9": {
+      "matchday": 9,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_10": {
+      "matchday": 10,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_11": {
+      "matchday": 11,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_12": {
+      "matchday": 12,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_13": {
+      "matchday": 13,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_14": {
+      "matchday": 14,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_15": {
+      "matchday": 15,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_16": {
+      "matchday": 16,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_17": {
+      "matchday": 17,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_18": {
+      "matchday": 18,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_19": {
+      "matchday": 19,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_20": {
+      "matchday": 20,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_21": {
+      "matchday": 21,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_22": {
+      "matchday": 22,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    },
+    "jornada_23": {
+      "matchday": 23,
+      "duplicates_fixed": {
+        "goals": 0,
+        "cards": 0,
+        "substitutions": 0
+      },
+      "fixes_applied": []
+    }
+  },
+  "summary": {
+    "total_fixes_applied": 0,
+    "total_duplicates_removed": {
+      "goals": 0,
+      "cards": 0,
+      "substitutions": 0
+    }
+  }
+}

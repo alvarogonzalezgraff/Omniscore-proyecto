@@ -1,0 +1,6 @@
+/* ===== DISEÑO RESPONSIVE ===== */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 20px;
+    }
+}

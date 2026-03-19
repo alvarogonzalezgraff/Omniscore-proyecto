@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo API Fútbol ⚽</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f0f2f5;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1 {
+        color: #1a1a1a;
+        text-align: center;
+      }
+      .card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+      .btn {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.2s;
+      }
+      .btn:hover {
+        background: #2563eb;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background-color: #f8f9fa;
+      }
+
+      .status-badge {
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .finished {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .pending {
+        background: #fef9c3;
+        color: #854d0e;
+      }
+
+      .loading {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        display: none;
+      }
+      #error-msg {
+        color: #dc2626;
+        display: none;
+        background: #fee2e2;
+        padding: 10px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>⚽ Demo API de Fútbol</h1>
+
+      <div id="error-msg"></div>
+
+      <div class="card">
+        <h2>Equipos de LaLiga</h2>
+        <p>Estos datos vienen directamente de tu base de datos SQLite.</p>
+        <button class="btn" onclick="loadTeams()">🔄 Cargar Equipos</button>
+        <p id="loading-teams" class="loading">Cargando...</p>
+        <table id="teams-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Liga</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Resultados Recientes</h2>
+        <p>Partidos migrados desde tus archivos JS.</p>
+        <button class="btn" onclick="loadMatches()">🔄 Cargar Partidos</button>
+        <p id="loading-matches" class="loading">Cargando...</p>
+        <table id="matches-table">
+          <thead>
+            <tr>
+              <th>Jornada</th>
+              <th>Local</th>
+              <th>Resultado</th>
+              <th>Visitante</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      const API_URL = "http://localhost:8001/api";
+
+      async function loadTeams() {
+        const btn = document.querySelector('button[onclick="loadTeams()"]');
+        const loading = document.getElementById("loading-teams");
+        const tbody = document.querySelector("#teams-table tbody");
+
+        btn.disabled = true;
+        loading.style.display = "block";
+        tbody.innerHTML = ""; // Limpiar
+
+        try {
+          const response = await fetch(`${API_URL}/teams?league_id=1`); // ID 1 = LaLiga
+          if (!response.ok) throw new Error("Error conectando a la API");
+
+          const teams = await response.json();
+
+          teams.forEach((team) => {
+            const row = `<tr>
+                    <td>${team.id}</td>
+                    <td><b>${team.name}</b></td>
+                    <td>${team.league_name}</td>
+                </tr>`;
+            tbody.innerHTML += row;
+          });
+        } catch (error) {
+          showError(
+            "No se pudo conectar a la API. ¿Está corriendo el servidor? (python main.py)",
+          );
+          console.error(error);
+        } finally {
+          btn.disabled = false;
+          loading.style.display = "none";
+        }
+      }
+
+      async function loadMatches() {
+        const btn = document.querySelector('button[onclick="loadMatches()"]');
+        const loading = document.getElementById("loading-matches");
+        const tbody = document.querySelector("#matches-table tbody");
+
+        btn.disabled = true;
+        loading.style.display = "block";
+        tbody.innerHTML = "";
+
+        try {
+          const response = await fetch(`${API_URL}/matches?league_id=1`);
+          const matches = await response.json();
+
+          matches.forEach((match) => {
+            const statusClass = match.is_finished ? "finished" : "pending";
+            const statusText = match.is_finished ? "Finalizado" : "Pendiente";
+            const score = match.is_finished
+              ? `${match.home_score} - ${match.away_score}`
+              : "vs";
+
+            const row = `<tr>
+                    <td>Jornada ${match.matchday}</td>
+                    <td>${match.home_team_name}</td>
+                    <td style="font-weight:bold; text-align:center;">${score}</td>
+                    <td>${match.away_team_name}</td>
+                    <td><span class="status-badge ${statusClass}">${statusText}</span></td>
+                </tr>`;
+            tbody.innerHTML += row;
+          });
+        } catch (error) {
+          showError("Error al cargar partidos.");
+          console.error(error);
+        } finally {
+          btn.disabled = false;
+          loading.style.display = "none";
+        }
+      }
+
+      function showError(msg) {
+        const el = document.getElementById("error-msg");
+        el.innerText = "Error: " + msg;
+        el.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

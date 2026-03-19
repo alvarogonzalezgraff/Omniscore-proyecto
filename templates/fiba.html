@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetWin - FIBA World Cup</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background-color: #1e293b;
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #3b82f6;
+      }
+
+      .logo span {
+        color: #f59e0b;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+      }
+
+      nav ul li a {
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #3b82f6;
+      }
+
+      .btn-back {
+        background-color: #334155;
+        color: #f8fafc;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .btn-back:hover {
+        background-color: #475569;
+      }
+
+      .hero {
+        background: linear-gradient(
+          rgba(30, 58, 138, 0.85),
+          rgba(15, 23, 42, 0.9)
+        );
+        padding: 50px 0;
+        text-align: center;
+        border-bottom: 4px solid #1e3a8a; /* NBA red */
+      }
+
+      .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: #cbd5e1;
+      }
+
+      /* Tabs */
+      .tabs-container {
+        background-color: #1e293b;
+        padding: 15px 0;
+        position: sticky;
+        top: 62px;
+        z-index: 99;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .tab-btn {
+        background-color: #334155;
+        color: #cbd5e1;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .tab-btn.active,
+      .tab-btn:hover {
+        background-color: #0ea5e9; /* NBA blue */
+        color: white;
+      }
+
+      .content-section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        color: #f8fafc;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Tabla de Clasificación */
+      .standings-table {
+        width: 100%;
+        background-color: #1e293b;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .standings-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .standings-table th {
+        background-color: #0ea5e9;
+        color: white;
+        padding: 15px 10px;
+        text-align: left;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .standings-table td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #334155;
+        font-size: 14px;
+      }
+
+      .standings-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .standings-table tr:hover {
+        background-color: #263346;
+      }
+
+      .standings-table .pos {
+        font-weight: bold;
+        color: #94a3b8;
+        width: 40px;
+        text-align: center;
+      }
+
+      /* Selector de Jornadas */
+      .matchday-selector {
+        background-color: #1e293b;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .matchday-selector-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #f8fafc;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .matchday-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        padding-right: 10px;
+      }
+
+      .matchday-buttons::-webkit-scrollbar {
+        width: 6px;
+      }
+      .matchday-buttons::-webkit-scrollbar-track {
+        background: #334155;
+        border-radius: 3px;
+      }
+      .matchday-buttons::-webkit-scrollbar-thumb {
+        background: #0ea5e9;
+        border-radius: 3px;
+      }
+
+      .matchday-btn {
+        background-color: #334155;
+        color: #cbd5e1;
+        border: 2px solid transparent;
+        padding: 10px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13px;
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      .matchday-btn:hover {
+        background-color: #475569;
+        border-color: #0ea5e9;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      .matchday-btn.active {
+        background-color: #0ea5e9;
+        color: white;
+        border-color: #0ea5e9;
+        box-shadow: 0 4px 12px rgba(18, 97, 160, 0.4);
+      }
+
+      .matchday-btn.all-matchdays {
+        background: linear-gradient(135deg, #0ea5e9 0%, #0d4876 100%);
+        color: white;
+        grid-column: span 2;
+      }
+
+      .matchday-btn.all-matchdays:hover {
+        background: linear-gradient(135deg, #0d4876 0%, #0ea5e9 100%);
+        border-color: #0d4876;
+      }
+
+      .matchday-btn.all-matchdays.active {
+        background: linear-gradient(135deg, #0d4876 0%, #0ea5e9 100%);
+        box-shadow: 0 4px 12px rgba(13, 72, 118, 0.5);
+      }
+
+      /* Resultados */
+      .results-container {
+        display: none;
+      }
+      .results-container.active {
+        display: block;
+      }
+
+      .matchweek {
+        background-color: #1e293b;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+
+      .matchweek-header {
+        background-color: #0ea5e9;
+        padding: 15px 20px;
+        font-weight: 600;
+        color: white;
+      }
+
+      /* Goleadores */
+      .players-container {
+        display: none;
+      }
+      .players-container.active {
+        display: block;
+      }
+
+      .players-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 20px;
+      }
+
+      .player-card {
+        background-color: #1e293b;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border: 1px solid #334155;
+      }
+
+      .player-rank {
+        font-size: 24px;
+        font-weight: bold;
+        color: #0ea5e9;
+        min-width: 40px;
+      }
+
+      .player-info {
+        flex: 1;
+      }
+
+      .player-name {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .player-team {
+        font-size: 13px;
+        color: #94a3b8;
+      }
+
+      .player-stat-number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #22c55e;
+        text-align: center;
+      }
+
+      .player-stat-label {
+        font-size: 11px;
+        color: #64748b;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      footer {
+        background-color: #1e293b;
+        padding: 30px 0;
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .copyright {
+        color: #94a3b8;
+        font-size: 14px;
+      }
+      
+      /* FIBA Match Card */
+      .fiba-match-card {
+        border-bottom: 1px solid #334155;
+        padding: 14px 20px;
+        background-color: #1e293b;
+        margin-bottom: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .fiba-match-card:hover {
+        background-color: #263346;
+      }
+      .fiba-match-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: #0ea5e9;
+        transform: scaleY(0);
+        transition: transform 0.2s ease;
+      }
+      .fiba-match-card:hover::before {
+        transform: scaleY(1);
+      }
+      .fiba-card-hint {
+        text-align: center;
+        font-size: 11px;
+        color: #475569;
+        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+      .fiba-card-hint .click-label {
+        color: #3b82f6;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.2s ease;
+      }
+      .fiba-match-card:hover .fiba-card-hint .click-label {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* ════════════ FIBA MODAL STYLES ════════════ */
+      .fiba-modal-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(15,23,42,0.85);
+        backdrop-filter: blur(8px);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .fiba-modal-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .fiba-modal-box {
+        background: #0f172a;
+        width: 100%;
+        max-width: 650px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        border: 1px solid #1e293b;
+        overflow: hidden;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .fiba-modal-overlay.open .fiba-modal-box {
+        transform: translateY(0) scale(1);
+      }
+      .fiba-close-btn {
+        position: absolute;
+        top: 15px; right: 15px;
+        background: rgba(255,255,255,0.1);
+        border: none;
+        color: #fff;
+        width: 30px; height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex; align-items: center; justify-content: center;
+        z-index: 10;
+        transition: background 0.2s;
+      }
+      .fiba-close-btn:hover { background: rgba(255,255,255,0.2); }
+      .fiba-m-hero {
+        background: linear-gradient(135deg, #1e3a8a, #0f172a);
+        padding: 30px 20px;
+        border-bottom: 1px solid #1e293b;
+      }
+      .fiba-m-teams-row {
+        display: flex; justify-content: space-between; align-items: center;
+      }
+      .fiba-m-team { flex: 1; text-align: center; }
+      .fiba-m-team-name { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 5px; }
+      .fiba-m-team-conf { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+      .fiba-m-score-box { padding: 0 20px; text-align: center; }
+      .fiba-m-score {
+        font-size: 42px; font-weight: 900; color: #fff;
+        background: linear-gradient(135deg, #0ea5e9, #0284c7);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+        text-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+      }
+      .fiba-m-score-label { font-size: 10px; color: #64748b; margin-top: 5px; text-transform: uppercase; letter-spacing: 2px; }
+      .fiba-m-meta {
+        display: flex; justify-content: center; gap: 15px; margin-top: 20px;
+      }
+      .fiba-m-meta-item {
+        font-size: 11px; color: #cbd5e1; background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 20px; display: flex; align-items: center; gap: 5px;
+      }
+      .fiba-m-meta-badge { background: #0ea5e9; color: #fff; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 10px; }
+      .fiba-quarters-strip {
+        display: flex; border-bottom: 1px solid #1e293b; background: #0f172a;
+      }
+      .fiba-q-cell { flex: 1; text-align: center; padding: 10px 0; border-right: 1px solid #1e293b; }
+      .fiba-q-cell.total { background: rgba(14,165,233,0.05); }
+      .fiba-q-label { font-size: 10px; color: #64748b; font-weight: 700; margin-bottom: 4px; }
+      .fiba-q-scores { display: flex; flex-direction: column; gap: 2px; font-size: 13px; font-weight: 600; }
+      .fiba-q-home { color: #0ea5e9; }
+      .fiba-q-away { color: #3b82f6; }
+      .fiba-m-tabs {
+        display: flex; background: #0f172a; border-bottom: 1px solid #1e293b;
+      }
+      .fiba-m-tab-btn {
+        flex: 1; padding: 12px 10px; background: none; border: none; color: #64748b; font-weight: 600; font-size: 12px; cursor: pointer; transition: all 0.2s; border-bottom: 2px solid transparent; display: flex; align-items: center; justify-content: center; gap: 6px;
+      }
+      .fiba-m-tab-btn:hover { color: #cbd5e1; background: rgba(255,255,255,0.02); }
+      .fiba-m-tab-btn.active { color: #0ea5e9; border-bottom-color: #0ea5e9; background: rgba(14,165,233,0.05); }
+      .fiba-m-tab-badge { background: rgba(255,255,255,0.1); padding: 1px 6px; border-radius: 10px; font-size: 10px; font-weight: bold; }
+      .fiba-m-tab-btn.active .fiba-m-tab-badge { background: #0ea5e9; color: #fff; }
+      .fiba-m-body { flex: 1; overflow-y: auto; background: #0f172a; padding: 20px; }
+      .fiba-m-panel { display: none; animation: fadeInFiba 0.3s ease; }
+      .fiba-m-panel.active { display: block; }
+      @keyframes fadeInFiba { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+      .fiba-q-intro { font-size: 11px; color: #64748b; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); padding: 8px 12px; border-radius: 6px; margin-bottom: 15px; display: flex; gap: 8px; }
+      .fiba-q-table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 8px; overflow: hidden; }
+      .fiba-q-table th { background: #263346; color: #94a3b8; font-size: 11px; padding: 8px; text-align: center; }
+      .fiba-q-table td { padding: 10px; text-align: center; font-size: 13px; border-bottom: 1px solid #263346; }
+      .fiba-q-table .team-col { text-align: left; font-weight: 700; }
+      .fiba-q-table .total-col { font-weight: 900; background: rgba(255,255,255,0.02); }
+      .fiba-q-table .home-row .total-col { color: #0ea5e9; }
+      .fiba-q-table .away-row .total-col { color: #3b82f6; }
+      .fiba-m-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .fiba-m-team-block { background: #1e293b; border-radius: 14px; padding: 16px; border: 1px solid #263346; }
+      .fiba-m-block-hdr { font-weight: 800; font-size: 13px; margin-bottom: 14px; text-align: center; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+      .fiba-m-block-hdr.home { color: #0ea5e9; }
+      .fiba-m-block-hdr.away { color: #3b82f6; }
+      .fiba-m-ev-row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #263346; font-size: 13px; }
+      .fiba-m-ev-row:last-child { border-bottom: none; }
+      .fiba-m-ev-icon { font-size: 17px; flex-shrink: 0; }
+      .fiba-m-ev-player { flex: 1; font-weight: 600; color: #f1f5f9; }
+      .fiba-m-ev-pts { background: linear-gradient(135deg, #0ea5e9, #0284c7); color: #fff; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 800; min-width: 36px; text-align: center; box-shadow: 0 2px 6px rgba(14,165,233,0.35); }
+      .fiba-m-ev-ast { background: rgba(59,130,246,0.25); color: #60a5fa; padding: 3px 9px; border-radius: 20px; font-size: 10px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px; }
+      .fiba-m-none { color: #475569; font-style: italic; font-size: 12px; text-align: center; padding: 20px 0; }
+    
+/* Sport Top Navigation */
+.sport-top-nav { position: fixed; top: 70px; left: 16px; z-index: 150; display: flex; flex-direction: column; gap: 6px; }
+.sport-top-nav a { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(17,24,39,0.92); backdrop-filter: blur(12px); border: 1px solid #1f2937; border-radius: 8px; color: #9ca3af; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.25s; white-space: nowrap; }
+.sport-top-nav a:hover { color: #fff; background: rgba(17,24,39,0.98); transform: translateX(4px); border-color: var(--nav-accent, #3b82f6); box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.sport-top-nav a .nav-icon { font-size: 15px; }
+.sport-top-nav a.futbol-nav { --nav-accent: #22c55e; }
+.sport-top-nav a.basket-nav { --nav-accent: #f59e0b; }
+.sport-top-nav a.tenis-nav { --nav-accent: #eab308; }
+.sport-top-nav a.active-nav { color: #fff; border-color: var(--nav-accent); background: rgba(17,24,39,0.98); box-shadow: 0 0 10px rgba(59,130,246,0.15); }
+@media (max-width: 900px) { .sport-top-nav { position: fixed; top: auto; bottom: 0; left: 0; right: 0; flex-direction: row; justify-content: center; gap: 6px; padding: 10px; background: rgba(10,14,26,0.95); border-top: 1px solid #1f2937; border-radius: 0; } .sport-top-nav a .nav-label { display: none; } .sport-top-nav a { padding: 8px 12px; } }
+</style>
+  </head>
+  <body>
+<!-- Sport Top Navigation -->
+<div class="sport-top-nav">
+    <a href="/deportes#seccion-futbol" class="futbol-nav"><span class="nav-icon">⚽</span><span class="nav-label">Fútbol</span></a>
+    <a href="/deportes#seccion-baloncesto" class="basket-nav active-nav"><span class="nav-icon">🏀</span><span class="nav-label">Baloncesto</span></a>
+    <a href="/deportes#seccion-tenis" class="tenis-nav"><span class="nav-icon">🎾</span><span class="nav-label">Tenis</span></a>
+</div>
+
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/inicio" class="logo">Bet<span>Win</span></a>
+          <nav>
+            <ul>
+              <li><a href="/inicio">Inicio</a></li>
+              <li><a href="/deportes">Deportes</a></li>
+              <li><a href="#">En Vivo</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <button class="btn-back" onclick="window.location.href = '/deportes'">
+          ← Volver a Deportes
+        </button>
+        <h1>🌍 FIBA World Cup</h1>
+        <p>Temporada 24/25 - La mejor liga de baloncesto</p>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <div class="tabs-container">
+      <div class="container">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="showTab('standings')">
+            📊 Clasificación
+          </button>
+          <button class="tab-btn" onclick="showTab('results')">
+            🏀 Resultados
+          </button>
+          <button class="tab-btn" onclick="showTab('scorers')">
+            🏆 Anotadores
+          </button>
+          <button class="tab-btn" onclick="showTab('assists')">
+            🎯 Asistidores
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="content-section">
+      <div class="container">
+        <!-- Clasificación -->
+        <div id="standings-content" class="tab-content active">
+          <h2 class="section-title">Clasificación</h2>
+          <div class="standings-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Equipo</th>
+                  <th>PJ</th>
+                  <th>G</th>
+                  <th>P</th>
+                  <th>PF</th>
+                  <th>PC</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody id="standings-body">
+                <!-- Data -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Resultados -->
+        <div id="results-content" class="tab-content results-container">
+          <h2 class="section-title">Últimos Resultados</h2>
+          
+          <!-- Matchday Selector -->
+          <div class="matchday-selector">
+            <div class="matchday-selector-title">📅 Selecciona una Jornada</div>
+            <div class="matchday-buttons" id="matchday-buttons">
+              <button
+                class="matchday-btn all-matchdays active"
+                onclick="filterMatches('all', this)"
+              >
+                Todas las Jornadas
+              </button>
+            </div>
+          </div>
+
+          <div id="results-body"></div>
+        </div>
+
+        <!-- Anotadores -->
+        <div id="scorers-content" class="tab-content players-container">
+          <h2 class="section-title">Máximos Anotadores (Promedio)</h2>
+          <div class="players-grid" id="scorers-body"></div>
+        </div>
+
+        <!-- Asistidores -->
+        <div id="assists-content" class="tab-content players-container">
+          <h2 class="section-title">Máximos Asistidores (Promedio)</h2>
+          <div class="players-grid" id="assists-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p class="copyright">© 2026 BetWin - FIBA World Cup</p>
+      </div>
+    </footer>
+
+    <script>
+      const API_BASE = "http://localhost:8001/api";
+      const LEAGUE_NAME = "FIBA World Cup";
+
+      async function loadStandings() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-standings/${LEAGUE_NAME}`,
+          );
+          if (!response.ok) throw new Error("Error fetching standings");
+          const data = await response.json();
+          const tbody = document.getElementById("standings-body");
+          if (data.length === 0) {
+            tbody.innerHTML =
+              '<tr><td colspan="8" style="text-align: center; padding: 20px;">No hay datos disponibles.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = data
+            .map(
+              (team) => `
+            <tr>
+              <td class="pos">${team.position}</td>
+              <td style="font-weight:bold">${team.team_name}</td>
+              <td>${team.matches_played}</td>
+              <td>${team.wins}</td>
+              <td>${team.losses}</td>
+              <td>${team.goals_for}</td>
+              <td>${team.goals_against}</td>
+              <td style="color:#22c55e; font-weight:bold">${team.points}</td>
+            </tr>
+          `,
+            )
+            .join("");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      let allMatches = [];
+
+      async function loadResults() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-matches/${encodeURIComponent(LEAGUE_NAME)}?season=24/25`,
+          );
+          if (!response.ok) throw new Error("Error fetching matches");
+          allMatches = await response.json();
+
+          generateMatchdaySelector();
+          renderMatches("all");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      function generateMatchdaySelector() {
+        const container = document.getElementById("matchday-buttons");
+        const allBtn = container.querySelector(".all-matchdays");
+        container.innerHTML = "";
+        container.appendChild(allBtn);
+
+        const matchdaysWithData = new Set(allMatches.map((m) => String(m.matchday)));
+        
+        const order = [
+          "Jornada 1", "Jornada 2", "Jornada 3", 
+          "Octavos", "Cuartos", "Semifinales", "3er y 4o Puesto", "Final"
+        ];
+        
+        for (const day of order) {
+          const button = document.createElement("button");
+          button.className = "matchday-btn";
+          if (matchdaysWithData.has(day)) {
+            button.classList.add("has-data");
+          }
+          
+          let shortName = day;
+          if (day.startsWith("Jornada ")) {
+            shortName = "J" + day.replace("Jornada ", "");
+          } else if (day === "Semifinales") {
+            shortName = "Semis";
+          } else if (day === "3er y 4o Puesto") {
+            shortName = "3º y 4º";
+          }
+          
+          button.textContent = shortName;
+          button.dataset.matchday = day; // Use dataset to store the real value
+          button.onclick = () => filterMatches(day, button);
+          container.appendChild(button);
+        }
+      }
+
+      function filterMatches(day, btn) {
+        document.querySelectorAll(".matchday-btn").forEach((b) => b.classList.remove("active"));
+        if (btn) {
+          btn.classList.add("active");
+        } else if (day === "all") {
+          document.querySelector(".all-matchdays").classList.add("active");
+        } else {
+          const buttons = document.querySelectorAll(".matchday-btn");
+          for (let b of buttons) {
+            if (b.dataset.matchday === day) {
+              b.classList.add("active");
+              break;
+            }
+          }
+        }
+        renderMatches(day);
+      }
+
+      function renderFibaMatchCard(m) {
+        const dateStr = m.date ? m.date.split(' ')[0] : '';
+        const timeStr = m.date && m.date.split(' ')[1] ? m.date.split(' ')[1] : '';
+        return `
+          <div class="fiba-match-card" onclick="openFibaMatchModal(${m.id})">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+              <div style="font-weight:700;flex:1;text-align:right;font-size:14px;color:#f1f5f9;">${m.home_team}</div>
+              <div style="background:linear-gradient(135deg,#0ea5e9,#0284c7);color:#fff;padding:9px 20px;border-radius:10px;font-weight:900;font-size:18px;min-width:74px;text-align:center;box-shadow:0 4px 14px rgba(14,165,233,0.35);letter-spacing:2px;">${m.home_score} - ${m.away_score}</div>
+              <div style="font-weight:700;flex:1;text-align:left;font-size:14px;color:#f1f5f9;">${m.away_team}</div>
+            </div>
+            <div class="fiba-card-hint">
+              <span style="color:#475569;font-size:11px;">&#128197; ${dateStr}${timeStr ? ' &middot; &#128338; ' + timeStr : ''}</span>
+              <span class="click-label">&#127936; Ver detalles del partido &rarr;</span>
+            </div>
+          </div>`;
+      }
+
+      function renderMatches(filterDay) {
+        const container = document.getElementById("results-body");
+
+        let filteredMatches = allMatches;
+        if (filterDay !== "all") {
+          filteredMatches = allMatches.filter((m) => String(m.matchday) === String(filterDay));
+        }
+
+        if (filteredMatches.length === 0) {
+          container.innerHTML =
+            '<p style="text-align:center; padding:20px;">No hay resultados disponibles para esta jornada.</p>';
+          return;
+        }
+
+        // Agrupar por jornada
+        const grouped = filteredMatches.reduce((acc, m) => {
+          (acc[m.matchday] = acc[m.matchday] || []).push(m);
+          return acc;
+        }, {});
+
+        // Ordenar jornadas
+        const orderMap = {
+          "Jornada 1": 1, "Jornada 2": 2, "Jornada 3": 3,
+          "Octavos": 4, "Cuartos": 5, "Semifinales": 6, "3er y 4o Puesto": 7, "Final": 8
+        };
+        const sortedMatchdays = Object.keys(grouped).sort((a, b) => (orderMap[b] || 0) - (orderMap[a] || 0));
+
+        container.innerHTML = sortedMatchdays
+          .map(
+            (day) => `
+          <div class="matchweek">
+            <div class="matchweek-header">${day}</div>
+            ${grouped[day].map(m => renderFibaMatchCard(m)).join("")}
+          </div>
+        `).join("");
+      }
+
+      async function loadScorers() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-scorers/${LEAGUE_NAME}`,
+          );
+          const data = await response.json();
+          document.getElementById("scorers-body").innerHTML = data
+            .map(
+              (p, i) => `
+            <div class="player-card">
+                <div class="player-rank">#${i + 1}</div>
+                <div class="player-info">
+                    <div class="player-name">${p.player_name}</div>
+                    <div class="player-team">${p.team_name}</div>
+                </div>
+                <div>
+                    <div class="player-stat-number">${p.goals}</div>
+                    <div class="player-stat-label">PPG</div>
+                </div>
+            </div>
+          `,
+            )
+            .join("");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      async function loadAssists() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-assisters/${LEAGUE_NAME}`,
+          );
+          const data = await response.json();
+          document.getElementById("assists-body").innerHTML = data
+            .map(
+              (p, i) => `
+            <div class="player-card">
+                <div class="player-rank">#${i + 1}</div>
+                <div class="player-info">
+                    <div class="player-name">${p.player_name}</div>
+                    <div class="player-team">${p.team_name}</div>
+                </div>
+                <div>
+                    <div class="player-stat-number">${p.assists}</div>
+                    <div class="player-stat-label">APG</div>
+                </div>
+            </div>
+          `,
+            )
+            .join("");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      function showTab(tabName) {
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.remove("active");
+          content.style.display = "none";
+        });
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        const content = document.getElementById(tabName + "-content");
+        if (content) {
+          content.classList.add("active");
+          content.style.display = "block";
+        }
+        const buttons = document.querySelectorAll(".tab-btn");
+        for (let btn of buttons) {
+          if (btn.getAttribute("onclick").includes(`'${tabName}'`)) {
+            btn.classList.add("active");
+            break;
+          }
+        }
+      }
+
+      // ══════════════════ FIBA MATCH MODAL ══════════════════
+
+      function openFibaMatchModal(matchId) {
+        const match = allMatches.find((m) => m.id === matchId);
+        if (!match) return;
+        fibaRenderModal(match);
+        document.getElementById("fibaMatchModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeFibaModal() {
+        document.getElementById("fibaMatchModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function handleFibaModalClick(e) {
+        if (e.target === document.getElementById("fibaMatchModal"))
+          closeFibaModal();
+      }
+
+      function fibaSwitchTab(id) {
+        document.querySelectorAll(".fiba-m-tab-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".fiba-m-panel").forEach((p) => p.classList.remove("active"));
+        const btn = document.getElementById("fibaTab-" + id);
+        const panel = document.getElementById("fibaPanel-" + id);
+        if (btn) btn.classList.add("active");
+        if (panel) panel.classList.add("active");
+      }
+
+      function fibaGenQuarters(total, isHome) {
+        if (!total || total <= 0) return [0, 0, 0, 0];
+        const seed = isHome ? 7 : 13;
+        let remaining = total;
+        const qs = [];
+        for (let i = 0; i < 4; i++) {
+          const share = i < 3 ? remaining / (4 - i) : remaining;
+          const variance = Math.floor((seed * (i + 1) * 3) % 10) - 5;
+          const q = Math.max(10, Math.round(share + variance));
+          const actual = i < 3 ? Math.min(q, remaining - (3 - i) * 10) : remaining;
+          qs.push(actual);
+          remaining -= actual;
+        }
+        return qs;
+      }
+
+      const FIBA_ROSTERS = {
+        'Estados Unidos': ['LeBron James', 'Kevin Durant', 'Stephen Curry', 'Anthony Edwards', 'Devin Booker', 'Jayson Tatum', 'Joel Embiid', 'Anthony Davis', 'Tyrese Haliburton'],
+        'USA': ['LeBron James', 'Kevin Durant', 'Stephen Curry', 'Anthony Edwards', 'Devin Booker', 'Jayson Tatum', 'Joel Embiid', 'Anthony Davis'],
+        'España': ['Willy Hernangomez', 'Juancho Hernangomez', 'Santi Aldama', 'Sergio Llull', 'Alex Abrines', 'Rudy Fernandez', 'Dario Brizuela', 'Usman Garuba'],
+        'Alemania': ['Dennis Schroder', 'Franz Wagner', 'Moritz Wagner', 'Daniel Theis', 'Andreas Obst', 'Johannes Voigtmann', 'Maodo Lo'],
+        'Serbia': ['Bogdan Bogdanovic', 'Nikola Jokic', 'Vasilije Micic', 'Nikola Milutinov', 'Nikola Jovic', 'Aleksa Avramovic', 'Filip Petrusev'],
+        'Canada': ['Shai Gilgeous-Alexander', 'RJ Barrett', 'Dillon Brooks', 'Kelly Olynyk', 'Luguentz Dort', 'Nickeil Alexander-Walker', 'Dwight Powell'],
+        'Francia': ['Victor Wembanyama', 'Rudy Gobert', 'Evan Fournier', 'Guerschon Yabusele', 'Nicolas Batum', 'Nando De Colo', 'Mathias Lessort'],
+        'Australia': ['Patty Mills', 'Josh Giddey', 'Dante Exum', 'Joe Ingles', 'Jock Landale', 'Matisse Thybulle', 'Josh Green'],
+        'Grecia': ['Giannis Antetokounmpo', 'Kostas Papanikolaou', 'Thomas Walkup', 'Georgios Papagiannis', 'Giannoulis Larentzakis', 'Kostas Sloukas'],
+        'Lituania': ['Jonas Valanciunas', 'Domantas Sabonis', 'Rokas Jokubaitis', 'Mindaugas Kuzminskas', 'Ignas Brazdeikis', 'Donatas Motiejunas'],
+        'Eslovenia': ['Luka Doncic', 'Klemen Prepelic', 'Mike Tobey', 'Zoran Dragic', 'Jaka Blazic', 'Aleksej Nikolic'],
+        'Italia': ['Simone Fontecchio', 'Nicolo Melli', 'Stefano Tonut', 'Achille Polonara', 'Marco Spissu', 'Gigi Datome'],
+        'Brasil': ['Bruno Caboclo', 'Yago Santos', 'Marcelinho Huertas', 'Leo Meindl', 'Gui Santos', 'Cristiano Felicio'],
+        'Puerto Rico': ['Tremont Waters', 'Jose Alvarado', 'George Conditt IV', 'Isiah Pineiro', 'Stephen Thompson Jr.', 'Christopher Ortiz'],
+        'Argentina': ['Facundo Campazzo', 'Gabriel Deck', 'Nicolas Laprovittola', 'Carlos Delfino', 'Marcos Delia', 'Nicolas Brussino'],
+        'República Dominicana': ['Karl-Anthony Towns', 'Andres Feliz', 'Jean Montero', 'Victor Liz', 'Angel Delgado', 'Lester Quinones']
+      };
+
+      function fibaSeededRand(seed) {
+        let s = seed;
+        return function() {
+          s = (s * 1664525 + 1013904223) & 0xffffffff;
+          return (s >>> 0) / 0xffffffff;
+        };
+      }
+
+      function fibaGenerateTeamScorers(teamName, totalScore, matchId, isHome) {
+        const roster = FIBA_ROSTERS[teamName] || FIBA_ROSTERS[Object.keys(FIBA_ROSTERS).find(k => teamName.includes(k))] || ['Jugador 1', 'Jugador 2', 'Jugador 3', 'Jugador 4', 'Jugador 5'];
+        const rand = fibaSeededRand(matchId * (isHome ? 17 : 31));
+        const numScorers = Math.min(roster.length, 4 + Math.floor(rand() * 3));
+        const shuffled = [...roster].sort(() => rand() - 0.5);
+        const scorers = shuffled.slice(0, numScorers);
+
+        let remaining = totalScore;
+        const pointsArr = [];
+        scorers.forEach((name, i) => {
+          if (i === scorers.length - 1) {
+            pointsArr.push(remaining);
+          } else {
+            const share = i === 0
+              ? Math.round(totalScore * (0.28 + rand() * 0.08))
+              : Math.round(remaining / (scorers.length - i) * (0.7 + rand() * 0.6));
+            const pts = Math.max(2, Math.min(share, remaining - (scorers.length - i - 1) * 2));
+            pointsArr.push(pts);
+            remaining -= pts;
+          }
+        });
+
+        return scorers.map((name, i) => {
+          const pts = pointsArr[i];
+          const assistPool = scorers.filter((_, j) => j !== i);
+          const assister = rand() > 0.35 && assistPool.length > 0
+            ? assistPool[Math.floor(rand() * assistPool.length)]
+            : null;
+          return { player: name, pts, assister };
+        }).filter(p => p.pts > 0).sort((a,b) => b.pts - a.pts);
+      }
+
+      function fibaRenderModal(match) {
+        const hScore = parseInt(match.home_score) || 0;
+        const aScore = parseInt(match.away_score) || 0;
+        const matchId = match.id || 1;
+
+        const hQ = fibaGenQuarters(hScore, true);
+        const aQ = fibaGenQuarters(aScore, false);
+
+        const goals = match.goals_details || [];
+        let homeGoals, awayGoals, homeAssists, awayAssists;
+
+        if (goals.length > 0) {
+          homeGoals = []; awayGoals = []; let hAssigned = 0;
+          goals.forEach(g => {
+            const ev = { player: g.player || 'Jugador', pts: 2, assister: g.assist || null };
+            if (hAssigned < hScore) { homeGoals.push(ev); hAssigned++; }
+            else { awayGoals.push(ev); }
+          });
+          homeAssists = homeGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+          awayAssists = awayGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+        } else {
+          homeGoals = fibaGenerateTeamScorers(match.home_team, hScore, matchId, true);
+          awayGoals = fibaGenerateTeamScorers(match.away_team, aScore, matchId, false);
+          homeAssists = homeGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+          awayAssists = awayGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+        }
+
+        const dateStr = match.date ? match.date.split(" ")[0] : "N/D";
+        const jornada = match.matchday || "";
+
+        // Hero
+        document.getElementById("fibaModalHero").innerHTML = `
+          <div class="fiba-m-teams-row">
+            <div class="fiba-m-team">
+              <div class="fiba-m-team-name">${match.home_team}</div>
+              <div class="fiba-m-team-conf">🏠 Local</div>
+            </div>
+            <div class="fiba-m-score-box">
+              <div class="fiba-m-score">${hScore} <span style="font-size:0.55em;opacity:0.6;">-</span> ${aScore}</div>
+              <div class="fiba-m-score-label">Resultado Final</div>
+            </div>
+            <div class="fiba-m-team">
+              <div class="fiba-m-team-name">${match.away_team}</div>
+              <div class="fiba-m-team-conf">✈️ Visitante</div>
+            </div>
+          </div>
+          <div class="fiba-m-meta">
+            <div class="fiba-m-meta-item">📅 <span>${dateStr}</span></div>
+            ${jornada ? `<div class="fiba-m-meta-item"><span class="fiba-m-meta-badge">${jornada}</span></div>` : ""}
+            <div class="fiba-m-meta-item">🌍 <span>FIBA World Cup</span></div>
+          </div>`;
+
+        // Strip
+        document.getElementById("fibaModalQuarterStrip").innerHTML =
+          ["Q1", "Q2", "Q3", "Q4"].map((q, i) => `
+            <div class="fiba-q-cell">
+              <div class="fiba-q-label">${q}</div>
+              <div class="fiba-q-scores">
+                <div class="fiba-q-home">${hQ[i]}</div>
+                <div class="fiba-q-away">${aQ[i]}</div>
+              </div>
+            </div>`).join("") +
+          `<div class="fiba-q-cell total">
+            <div class="fiba-q-label">TOTAL</div>
+            <div class="fiba-q-scores">
+              <div class="fiba-q-home">${hScore}</div>
+              <div class="fiba-q-away">${aScore}</div>
+            </div>
+          </div>`;
+
+        // Tabs
+        const totalAssistCount = [...new Set([...homeAssists, ...awayAssists].map(a => a.player))].length;
+        document.getElementById("fibaModalTabs").innerHTML = `
+          <button class="fiba-m-tab-btn active" id="fibaTab-quarters" onclick="fibaSwitchTab('quarters')">📊 Cuartos</button>
+          <button class="fiba-m-tab-btn" id="fibaTab-scorers" onclick="fibaSwitchTab('scorers')">🏀 Anotadores <span class="fiba-m-tab-badge">${homeGoals.length + awayGoals.length}</span></button>
+          <button class="fiba-m-tab-btn" id="fibaTab-assists" onclick="fibaSwitchTab('assists')">🎯 Asistencias <span class="fiba-m-tab-badge">${totalAssistCount}</span></button>`;
+
+        // Cuartos Panel
+        const quarterWinner = (i) => hQ[i] > aQ[i] ? "home" : hQ[i] < aQ[i] ? "away" : "tie";
+        document.getElementById("fibaPanel-quarters").innerHTML = `
+          <div class="fiba-q-intro">ℹ️ Los resultados por cuarto son estimaciones basadas en el marcador final.</div>
+          <table class="fiba-q-table">
+            <thead><tr>
+              <th style="text-align:left;">Equipo</th>
+              <th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Total</th>
+            </tr></thead>
+            <tbody>
+              <tr class="home-row">
+                <td class="team-col" style="color:#0ea5e9;">${match.home_team}</td>
+                ${hQ.map((q, i) => `<td style="${quarterWinner(i) === "home" ? "font-weight:900;color:#0ea5e9;" : ""}"> ${q}</td>`).join("")}
+                <td class="total-col">${hScore}</td>
+              </tr>
+              <tr class="away-row">
+                <td class="team-col" style="color:#3b82f6;">${match.away_team}</td>
+                ${aQ.map((q, i) => `<td style="${quarterWinner(i) === "away" ? "font-weight:900;color:#3b82f6;" : ""}"> ${q}</td>`).join("")}
+                <td class="total-col">${aScore}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:20px;">
+            ${["Q1", "Q2", "Q3", "Q4"].map((q, i) => {
+              const winner = quarterWinner(i);
+              return `<div style="background:#1e293b;border-radius:10px;padding:12px 8px;text-align:center;border:1px solid ${winner === "home" ? "rgba(14,165,233,0.4)" : winner === "away" ? "rgba(59,130,246,0.4)" : "#263346"};">
+                <div style="font-size:11px;color:#64748b;font-weight:700;margin-bottom:6px;">${q}</div>
+                <div style="font-size:20px;font-weight:900;color:${winner === "home" ? "#0ea5e9" : winner === "away" ? "#3b82f6" : "#94a3b8"}">${hQ[i]} - ${aQ[i]}</div>
+                <div style="font-size:10px;color:#475569;margin-top:4px;">${winner === "home" ? match.home_team.split(" ")[0] : winner === "away" ? match.away_team.split(" ")[0] : "Empate"}</div>
+              </div>`;
+            }).join("")}
+          </div>`;
+
+        // Anotadores
+        function buildScorersList(list) {
+          if (!list.length) return `<div class="fiba-m-none">Sin datos de anotadores</div>`;
+          return list.map((g, idx) => `
+            <div class="fiba-m-ev-row">
+              <span class="fiba-m-ev-icon">${idx === 0 ? '⭐' : '🏀'}</span>
+              <span class="fiba-m-ev-player">${g.player}</span>
+              ${g.pts ? `<span class="fiba-m-ev-pts">${g.pts} pts</span>` : ''}
+              ${g.assister ? `<span class="fiba-m-ev-ast" title="Asistencia de ${g.assister}">↗ ${g.assister}</span>` : ''}
+            </div>`).join("");
+        }
+        document.getElementById("fibaPanel-scorers").innerHTML = `
+          <div class="fiba-m-2col">
+            <div class="fiba-m-team-block">
+              <div class="fiba-m-block-hdr home">🏠 ${match.home_team}</div>
+              ${buildScorersList(homeGoals)}
+            </div>
+            <div class="fiba-m-team-block">
+              <div class="fiba-m-block-hdr away">✈️ ${match.away_team}</div>
+              ${buildScorersList(awayGoals)}
+            </div>
+          </div>`;
+
+        // Asistencias
+        function buildAssistsList(list) {
+          if (!list.length) return `<div class="fiba-m-none">Sin datos de asistencias</div>`;
+          const grouped = {};
+          list.forEach(a => {
+            if (!grouped[a.player]) grouped[a.player] = [];
+            grouped[a.player].push(a);
+          });
+          return Object.entries(grouped).sort((a,b) => b[1].length - a[1].length).map(([player, assists]) => `
+            <div class="fiba-m-ev-row">
+              <span class="fiba-m-ev-icon">🎯</span>
+              <span class="fiba-m-ev-player">${player}</span>
+              <span class="fiba-m-ev-pts" style="background:linear-gradient(135deg,#1261a0,#0d4876);">${assists.length} ast</span>
+              <span class="fiba-m-ev-ast" style="font-size:10px;">→ ${assists.map(a=>a.on).join(', ')}</span>
+            </div>`).join("");
+        }
+        document.getElementById("fibaPanel-assists").innerHTML = `
+          <div class="fiba-m-2col">
+            <div class="fiba-m-team-block">
+              <div class="fiba-m-block-hdr home">🏠 ${match.home_team}</div>
+              ${buildAssistsList(homeAssists)}
+            </div>
+            <div class="fiba-m-team-block">
+              <div class="fiba-m-block-hdr away">✈️ ${match.away_team}</div>
+              ${buildAssistsList(awayAssists)}
+            </div>
+          </div>`;
+
+        fibaSwitchTab("quarters");
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        loadStandings();
+        loadResults();
+        loadScorers();
+        loadAssists();
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeFibaModal();
+        });
+      });
+    </script>
+    
+    <!-- ═══════════════ FIBA MATCH DETAIL MODAL ═══════════════ -->
+    <div class="fiba-modal-overlay" id="fibaMatchModal" onclick="handleFibaModalClick(event)">
+      <div class="fiba-modal-box">
+        <button class="fiba-close-btn" onclick="closeFibaModal()" title="Cerrar">&times;</button>
+        <div class="fiba-m-hero" id="fibaModalHero"></div>
+        <div class="fiba-quarters-strip" id="fibaModalQuarterStrip"></div>
+        <div class="fiba-m-tabs" id="fibaModalTabs"></div>
+        <div class="fiba-m-body">
+          <div class="fiba-m-panel active" id="fibaPanel-quarters"></div>
+          <div class="fiba-m-panel" id="fibaPanel-scorers"></div>
+          <div class="fiba-m-panel" id="fibaPanel-assists"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

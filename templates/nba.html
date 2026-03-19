@@ -1,0 +1,1661 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetWin - NBA</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background-color: #1e293b;
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #3b82f6;
+      }
+
+      .logo span {
+        color: #f59e0b;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+      }
+
+      nav ul li a {
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #3b82f6;
+      }
+
+      .btn-back {
+        background-color: #334155;
+        color: #f8fafc;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .btn-back:hover {
+        background-color: #475569;
+      }
+
+      .hero {
+        background: linear-gradient(
+          rgba(18, 97, 160, 0.85),
+          rgba(15, 23, 42, 0.9)
+        );
+        padding: 50px 0;
+        text-align: center;
+        border-bottom: 4px solid #ce1141; /* NBA red */
+      }
+
+      .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: #cbd5e1;
+      }
+
+      /* Tabs */
+      .tabs-container {
+        background-color: #1e293b;
+        padding: 15px 0;
+        position: sticky;
+        top: 62px;
+        z-index: 99;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .tab-btn {
+        background-color: #334155;
+        color: #cbd5e1;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .tab-btn.active,
+      .tab-btn:hover {
+        background-color: #1261a0; /* NBA blue */
+        color: white;
+      }
+
+      .content-section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        color: #f8fafc;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Tabla de Clasificación */
+      .standings-table {
+        width: 100%;
+        background-color: #1e293b;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .standings-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .standings-table th {
+        background-color: #1261a0;
+        color: white;
+        padding: 15px 10px;
+        text-align: left;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .standings-table td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #334155;
+        font-size: 14px;
+      }
+
+      .standings-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .standings-table tr:hover {
+        background-color: #263346;
+      }
+
+      .standings-table .pos {
+        font-weight: bold;
+        color: #94a3b8;
+        width: 40px;
+        text-align: center;
+      }
+
+      /* Selector de Jornadas */
+      .matchday-selector {
+        background-color: #1e293b;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .matchday-selector-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #f8fafc;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .matchday-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        padding-right: 10px;
+      }
+
+      .matchday-buttons::-webkit-scrollbar {
+        width: 6px;
+      }
+      .matchday-buttons::-webkit-scrollbar-track {
+        background: #334155;
+        border-radius: 3px;
+      }
+      .matchday-buttons::-webkit-scrollbar-thumb {
+        background: #1261a0;
+        border-radius: 3px;
+      }
+
+      .matchday-btn {
+        background-color: #334155;
+        color: #cbd5e1;
+        border: 2px solid transparent;
+        padding: 10px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13px;
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      .matchday-btn:hover {
+        background-color: #475569;
+        border-color: #1261a0;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      .matchday-btn.active {
+        background-color: #1261a0;
+        color: white;
+        border-color: #1261a0;
+        box-shadow: 0 4px 12px rgba(18, 97, 160, 0.4);
+      }
+
+      .matchday-btn.all-matchdays {
+        background: linear-gradient(135deg, #1261a0 0%, #0d4876 100%);
+        color: white;
+        grid-column: span 2;
+      }
+
+      .matchday-btn.all-matchdays:hover {
+        background: linear-gradient(135deg, #0d4876 0%, #1261a0 100%);
+        border-color: #0d4876;
+      }
+
+      .matchday-btn.all-matchdays.active {
+        background: linear-gradient(135deg, #0d4876 0%, #1261a0 100%);
+        box-shadow: 0 4px 12px rgba(13, 72, 118, 0.5);
+      }
+
+      /* Resultados */
+      .results-container {
+        display: none;
+      }
+      .results-container.active {
+        display: block;
+      }
+
+      .matchweek {
+        background-color: #1e293b;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+
+      .matchweek-header {
+        background-color: #1261a0;
+        padding: 15px 20px;
+        font-weight: 600;
+        color: white;
+      }
+
+      /* Goleadores */
+      .players-container {
+        display: none;
+      }
+      .players-container.active {
+        display: block;
+      }
+
+      .players-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 20px;
+      }
+
+      .player-card {
+        background-color: #1e293b;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border: 1px solid #334155;
+      }
+
+      .player-rank {
+        font-size: 24px;
+        font-weight: bold;
+        color: #1261a0;
+        min-width: 40px;
+      }
+
+      .player-info {
+        flex: 1;
+      }
+
+      .player-name {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .player-team {
+        font-size: 13px;
+        color: #94a3b8;
+      }
+
+      .player-stat-number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #22c55e;
+        text-align: center;
+      }
+
+      .player-stat-label {
+        font-size: 11px;
+        color: #64748b;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      footer {
+        background-color: #1e293b;
+        padding: 30px 0;
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .copyright {
+        color: #94a3b8;
+        font-size: 14px;
+      }
+
+      /* Sport Top Navigation */
+      .sport-top-nav {
+        position: fixed;
+        top: 70px;
+        left: 16px;
+        z-index: 150;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .sport-top-nav a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        background: rgba(17, 24, 39, 0.92);
+        backdrop-filter: blur(12px);
+        border: 1px solid #1f2937;
+        border-radius: 8px;
+        color: #9ca3af;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.25s;
+        white-space: nowrap;
+      }
+      .sport-top-nav a:hover {
+        color: #fff;
+        background: rgba(17, 24, 39, 0.98);
+        transform: translateX(4px);
+        border-color: var(--nav-accent, #3b82f6);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+      }
+      .sport-top-nav a .nav-icon {
+        font-size: 15px;
+      }
+      .sport-top-nav a.futbol-nav {
+        --nav-accent: #22c55e;
+      }
+      .sport-top-nav a.basket-nav {
+        --nav-accent: #f59e0b;
+      }
+      .sport-top-nav a.tenis-nav {
+        --nav-accent: #eab308;
+      }
+      .sport-top-nav a.active-nav {
+        color: #fff;
+        border-color: var(--nav-accent);
+        background: rgba(17, 24, 39, 0.98);
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+      }
+      @media (max-width: 900px) {
+        .sport-top-nav {
+          position: fixed;
+          top: auto;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          flex-direction: row;
+          justify-content: center;
+          gap: 6px;
+          padding: 10px;
+          background: rgba(10, 14, 26, 0.95);
+          border-top: 1px solid #1f2937;
+          border-radius: 0;
+        }
+        .sport-top-nav a .nav-label {
+          display: none;
+        }
+        .sport-top-nav a {
+          padding: 8px 12px;
+        }
+      }
+
+      /* ── MATCH CARD CLICKEABLE NBA ── */
+      .nba-match-card {
+        border-bottom: 1px solid #334155;
+        padding: 14px 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        background-color: #1e293b;
+      }
+      .nba-match-card:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(18, 97, 160, 0.12),
+          rgba(30, 41, 59, 0.95)
+        );
+        border-left: 3px solid #1261a0;
+      }
+      .nba-match-card:last-child {
+        border-bottom: none;
+      }
+      .nba-card-hint {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8px;
+        gap: 8px;
+        font-size: 11px;
+      }
+      .nba-card-hint .click-label {
+        color: #475569;
+        transition: color 0.2s;
+      }
+      .nba-match-card:hover .click-label {
+        color: #ce1141;
+      }
+
+      /* ── MODAL NBA PREMIUM ── */
+      .nba-modal-overlay {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.88);
+        backdrop-filter: blur(10px);
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        animation: nbaFadeIn 0.2s ease;
+      }
+      @keyframes nbaFadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .nba-modal-overlay.open {
+        display: flex;
+      }
+      .nba-modal-box {
+        background: #0a0f1e;
+        border-radius: 22px;
+        width: 100%;
+        max-width: 880px;
+        max-height: 92vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow:
+          0 30px 90px rgba(0, 0, 0, 0.8),
+          0 0 0 1px rgba(206, 17, 65, 0.25);
+        animation: nbaSlideUp 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+      }
+      @keyframes nbaSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px) scale(0.93);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .nba-close-btn {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: rgba(239, 68, 68, 0.15);
+        color: #ef4444;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        z-index: 20;
+      }
+      .nba-close-btn:hover {
+        background: #ef4444;
+        color: #fff;
+        transform: scale(1.1);
+      }
+      /* Modal Hero */
+      .nba-m-hero {
+        background: linear-gradient(
+          135deg,
+          #0d0005 0%,
+          #1a0008 35%,
+          #0f172a 100%
+        );
+        padding: 28px 24px 0;
+        border-bottom: 1px solid rgba(206, 17, 65, 0.2);
+        flex-shrink: 0;
+      }
+      .nba-m-teams-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-bottom: 20px;
+      }
+      .nba-m-team {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .nba-m-team-name {
+        font-size: 15px;
+        font-weight: 800;
+        color: #f1f5f9;
+        text-align: center;
+        line-height: 1.3;
+      }
+      .nba-m-team-conf {
+        font-size: 10px;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .nba-m-score-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+      .nba-m-score {
+        background: linear-gradient(135deg, #ce1141, #a00d33);
+        color: #fff;
+        padding: 14px 30px;
+        border-radius: 16px;
+        font-size: 40px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        box-shadow: 0 8px 28px rgba(206, 17, 65, 0.45);
+        min-width: 140px;
+        text-align: center;
+      }
+      .nba-m-score-label {
+        font-size: 10px;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+      .nba-m-meta {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        padding: 12px 0 0;
+        flex-wrap: wrap;
+      }
+      .nba-m-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        color: #94a3b8;
+      }
+      .nba-m-meta-badge {
+        background: rgba(206, 17, 65, 0.15);
+        border: 1px solid rgba(206, 17, 65, 0.3);
+        color: #ce1141;
+        padding: 2px 8px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 11px;
+      }
+      /* Quarters mini scoreboard */
+      .nba-quarters-strip {
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        padding: 14px 24px;
+        background: rgba(0, 0, 0, 0.3);
+        flex-shrink: 0;
+        border-bottom: 1px solid #1e293b;
+      }
+      .nba-q-cell {
+        background: #1e293b;
+        border-radius: 8px;
+        padding: 8px 12px;
+        text-align: center;
+        min-width: 56px;
+        border: 1px solid #263346;
+      }
+      .nba-q-label {
+        font-size: 9px;
+        font-weight: 700;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+      }
+      .nba-q-scores {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .nba-q-home {
+        font-size: 14px;
+        font-weight: 800;
+        color: #ce1141;
+      }
+      .nba-q-away {
+        font-size: 14px;
+        font-weight: 800;
+        color: #1261a0;
+      }
+      .nba-q-cell.total {
+        background: linear-gradient(
+          135deg,
+          rgba(206, 17, 65, 0.2),
+          rgba(18, 97, 160, 0.2)
+        );
+        border-color: rgba(206, 17, 65, 0.3);
+      }
+      .nba-q-cell.total .nba-q-label {
+        color: #ce1141;
+      }
+      /* Modal Tabs */
+      .nba-m-tabs {
+        display: flex;
+        background: #0a0f1e;
+        border-bottom: 1px solid #1e293b;
+        overflow-x: auto;
+        flex-shrink: 0;
+        scrollbar-width: none;
+      }
+      .nba-m-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .nba-m-tab-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 14px 20px;
+        background: none;
+        border: none;
+        color: #64748b;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        border-bottom: 3px solid transparent;
+        transition: all 0.2s;
+      }
+      .nba-m-tab-btn:hover {
+        color: #cbd5e1;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .nba-m-tab-btn.active {
+        color: #ce1141;
+        border-bottom-color: #ce1141;
+        background: rgba(206, 17, 65, 0.05);
+      }
+      .nba-m-tab-badge {
+        background: rgba(206, 17, 65, 0.2);
+        color: #ce1141;
+        border-radius: 10px;
+        padding: 1px 7px;
+        font-size: 10px;
+        font-weight: 700;
+      }
+      /* Modal Body */
+      .nba-m-body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 0;
+        scrollbar-width: thin;
+        scrollbar-color: #334155 transparent;
+      }
+      .nba-m-body::-webkit-scrollbar {
+        width: 5px;
+      }
+      .nba-m-body::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 4px;
+      }
+      .nba-m-panel {
+        display: none;
+        padding: 24px;
+        animation: nbaFadePanel 0.22s ease;
+      }
+      @keyframes nbaFadePanel {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .nba-m-panel.active {
+        display: block;
+      }
+      /* Quarter detail table */
+      .nba-q-table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .nba-q-table th {
+        background: #1e293b;
+        color: #64748b;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 12px 16px;
+        text-align: center;
+      }
+      .nba-q-table td {
+        padding: 14px 16px;
+        border-bottom: 1px solid #1e293b;
+        text-align: center;
+        font-size: 15px;
+      }
+      .nba-q-table tr:last-child td {
+        border-bottom: none;
+      }
+      .nba-q-table .team-col {
+        text-align: left;
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .nba-q-table .home-row td {
+        color: #f1f5f9;
+        background: rgba(206, 17, 65, 0.05);
+      }
+      .nba-q-table .away-row td {
+        color: #f1f5f9;
+        background: rgba(18, 97, 160, 0.05);
+      }
+      .nba-q-table .total-col {
+        font-weight: 900;
+        font-size: 18px;
+      }
+      .nba-q-table .home-row .total-col {
+        color: #ce1141;
+      }
+      .nba-q-table .away-row .total-col {
+        color: #1261a0;
+      }
+      /* Players list in modal */
+      .nba-m-2col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .nba-m-team-block {
+        background: #1e293b;
+        border-radius: 14px;
+        padding: 16px;
+        border: 1px solid #263346;
+      }
+      .nba-m-block-hdr {
+        font-weight: 800;
+        font-size: 13px;
+        margin-bottom: 14px;
+        text-align: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #334155;
+      }
+      .nba-m-block-hdr.home {
+        color: #ce1141;
+      }
+      .nba-m-block-hdr.away {
+        color: #1261a0;
+      }
+      .nba-m-ev-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 0;
+        border-bottom: 1px solid #263346;
+        font-size: 13px;
+      }
+      .nba-m-ev-row:last-child {
+        border-bottom: none;
+      }
+      .nba-m-ev-icon {
+        font-size: 17px;
+        flex-shrink: 0;
+      }
+      .nba-m-ev-player {
+        flex: 1;
+        font-weight: 600;
+        color: #f1f5f9;
+      }
+      .nba-m-ev-pts {
+        background: linear-gradient(135deg, #ce1141, #a00d33);
+        color: #fff;
+        padding: 3px 9px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 800;
+        min-width: 36px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(206, 17, 65, 0.35);
+      }
+      .nba-m-ev-ast {
+        background: rgba(18, 97, 160, 0.25);
+        color: #60a5fa;
+        padding: 3px 9px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .nba-m-none {
+        color: #475569;
+        font-style: italic;
+        text-align: center;
+        padding: 24px 0;
+        font-size: 13px;
+      }
+      .nba-q-intro {
+        background: linear-gradient(
+          135deg,
+          rgba(206, 17, 65, 0.08),
+          rgba(18, 97, 160, 0.08)
+        );
+        border: 1px solid rgba(206, 17, 65, 0.15);
+        border-radius: 10px;
+        padding: 10px 16px;
+        font-size: 12px;
+        color: #94a3b8;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      /* Responsive modal */
+      @media (max-width: 768px) {
+        .nba-m-2col {
+          grid-template-columns: 1fr;
+        }
+        .nba-m-teams-row {
+          gap: 10px;
+        }
+        .nba-m-score {
+          font-size: 28px;
+          padding: 10px 20px;
+          min-width: 100px;
+        }
+        .nba-m-team-name {
+          font-size: 12px;
+        }
+        .nba-m-tab-btn {
+          padding: 12px 12px;
+          font-size: 12px;
+        }
+        .nba-quarters-strip {
+          gap: 4px;
+        }
+        .nba-q-cell {
+          min-width: 44px;
+          padding: 6px 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sport Top Navigation -->
+    <div class="sport-top-nav">
+      <a href="/deportes#seccion-futbol" class="futbol-nav"
+        ><span class="nav-icon">⚽</span
+        ><span class="nav-label">Fútbol</span></a
+      >
+      <a href="/deportes#seccion-baloncesto" class="basket-nav active-nav"
+        ><span class="nav-icon">🏀</span
+        ><span class="nav-label">Baloncesto</span></a
+      >
+      <a href="/deportes#seccion-tenis" class="tenis-nav"
+        ><span class="nav-icon">🎾</span><span class="nav-label">Tenis</span></a
+      >
+    </div>
+
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/inicio" class="logo">Bet<span>Win</span></a>
+          <nav>
+            <ul>
+              <li><a href="/inicio">Inicio</a></li>
+              <li><a href="/deportes">Deportes</a></li>
+              <li><a href="#">En Vivo</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <button class="btn-back" onclick="window.location.href = '/deportes'">
+          ← Volver a Deportes
+        </button>
+        <h1>🏀 NBA</h1>
+        <p>Temporada 24/25 - La mejor liga de baloncesto</p>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <div class="tabs-container">
+      <div class="container">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="showTab('standings')">
+            📊 Clasificación
+          </button>
+          <button class="tab-btn" onclick="showTab('results')">
+            🏀 Resultados
+          </button>
+          <button class="tab-btn" onclick="showTab('scorers')">
+            🏆 Anotadores
+          </button>
+          <button class="tab-btn" onclick="showTab('assists')">
+            🎯 Asistidores
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="content-section">
+      <div class="container">
+        <!-- Clasificación -->
+        <div id="standings-content" class="tab-content active">
+          <h2 class="section-title">Clasificación</h2>
+          <div class="standings-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Equipo</th>
+                  <th>PJ</th>
+                  <th>G</th>
+                  <th>P</th>
+                  <th>PF</th>
+                  <th>PC</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody id="standings-body">
+                <!-- Data -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Resultados -->
+        <div id="results-content" class="tab-content results-container">
+          <h2 class="section-title">Últimos Resultados</h2>
+
+          <!-- Matchday Selector -->
+          <div class="matchday-selector">
+            <div class="matchday-selector-title">📅 Selecciona una Jornada</div>
+            <div class="matchday-buttons" id="matchday-buttons">
+              <button
+                class="matchday-btn all-matchdays active"
+                onclick="filterMatches('all', this)"
+              >
+                Todas las Jornadas
+              </button>
+            </div>
+          </div>
+
+          <div id="results-body"></div>
+        </div>
+
+        <!-- Anotadores -->
+        <div id="scorers-content" class="tab-content players-container">
+          <h2 class="section-title">Máximos Anotadores (Promedio)</h2>
+          <div class="players-grid" id="scorers-body"></div>
+        </div>
+
+        <!-- Asistidores -->
+        <div id="assists-content" class="tab-content players-container">
+          <h2 class="section-title">Máximos Asistidores (Promedio)</h2>
+          <div class="players-grid" id="assists-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p class="copyright">© 2026 BetWin - NBA</p>
+      </div>
+    </footer>
+
+    <script>
+      const API_BASE = "http://localhost:8001/api";
+      const LEAGUE_NAME = "NBA";
+
+      async function loadStandings() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-standings/${LEAGUE_NAME}`,
+          );
+          if (!response.ok) throw new Error("Error fetching standings");
+          const data = await response.json();
+          const tbody = document.getElementById("standings-body");
+          if (data.length === 0) {
+            tbody.innerHTML =
+              '<tr><td colspan="8" style="text-align: center; padding: 20px;">No hay datos disponibles.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = data
+            .map(
+              (team) => `
+            <tr>
+              <td class="pos">${team.position}</td>
+              <td style="font-weight:bold">${team.team_name}</td>
+              <td>${team.matches_played}</td>
+              <td>${team.wins}</td>
+              <td>${team.losses}</td>
+              <td>${team.goals_for}</td>
+              <td>${team.goals_against}</td>
+              <td style="color:#22c55e; font-weight:bold">${team.points}</td>
+            </tr>
+          `,
+            )
+            .join("");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      let allMatches = [];
+
+      async function loadResults() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-matches/${encodeURIComponent(LEAGUE_NAME)}?season=24/25`,
+          );
+          if (!response.ok) throw new Error("Error fetching matches");
+          allMatches = await response.json();
+
+          generateMatchdaySelector();
+          renderMatches("all");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      function generateMatchdaySelector() {
+        const container = document.getElementById("matchday-buttons");
+        const allBtn = container.querySelector(".all-matchdays");
+        container.innerHTML = "";
+        container.appendChild(allBtn);
+
+        const matchdaysWithData = new Set(
+          allMatches.map((m) => String(m.matchday)),
+        );
+
+        // La NBA tiene 82 partidos por equipo
+        for (let i = 1; i <= 82; i++) {
+          const day = i.toString();
+          const button = document.createElement("button");
+          button.className = "matchday-btn";
+          if (matchdaysWithData.has(day)) {
+            button.classList.add("has-data");
+          }
+          button.textContent = `J${i}`;
+          button.onclick = () => filterMatches(day, button);
+          container.appendChild(button);
+        }
+      }
+
+      function filterMatches(day, btn) {
+        document
+          .querySelectorAll(".matchday-btn")
+          .forEach((b) => b.classList.remove("active"));
+        if (btn) {
+          btn.classList.add("active");
+        } else if (day === "all") {
+          document.querySelector(".all-matchdays").classList.add("active");
+        } else {
+          const buttons = document.querySelectorAll(".matchday-btn");
+          for (let b of buttons) {
+            if (b.textContent === `J${day}`) {
+              b.classList.add("active");
+              break;
+            }
+          }
+        }
+        renderMatches(day);
+      }
+
+      function renderMatches(filterDay) {
+        const container = document.getElementById("results-body");
+
+        let filteredMatches = allMatches;
+        if (filterDay !== "all") {
+          filteredMatches = allMatches.filter(
+            (m) => String(m.matchday) === String(filterDay),
+          );
+        }
+
+        if (filteredMatches.length === 0) {
+          container.innerHTML =
+            '<p style="text-align:center; padding:20px;">No hay resultados disponibles para esta jornada.</p>';
+          return;
+        }
+
+        // Agrupar por jornada
+        const grouped = filteredMatches.reduce((acc, m) => {
+          (acc[m.matchday] = acc[m.matchday] || []).push(m);
+          return acc;
+        }, {});
+
+        // Ordenar jornadas descendentemente
+        const sortedMatchdays = Object.keys(grouped).sort(
+          (a, b) => parseInt(b) - parseInt(a),
+        );
+
+        container.innerHTML = sortedMatchdays
+          .map(
+            (day) => `
+          <div class="matchweek">
+            <div class="matchweek-header">Jornada ${day}</div>
+            ${grouped[day].map((m) => renderNBAMatchCard(m)).join("")}
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      function renderNBAMatchCard(m) {
+        const dateStr = m.date ? m.date.split(' ')[0] : '';
+        const timeStr = m.date && m.date.split(' ')[1] ? m.date.split(' ')[1] : '';
+        return `
+          <div class="nba-match-card" onclick="openNBAMatchModal(${m.id})">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+              <div style="font-weight:700;flex:1;text-align:right;font-size:14px;color:#f1f5f9;">${m.home_team}</div>
+              <div style="background:linear-gradient(135deg,#ce1141,#a00d33);color:#fff;padding:9px 20px;border-radius:10px;font-weight:900;font-size:18px;min-width:74px;text-align:center;box-shadow:0 4px 14px rgba(206,17,65,0.35);letter-spacing:2px;">${m.home_score} - ${m.away_score}</div>
+              <div style="font-weight:700;flex:1;text-align:left;font-size:14px;color:#f1f5f9;">${m.away_team}</div>
+            </div>
+            <div class="nba-card-hint">
+              <span style="color:#475569;font-size:11px;">&#128197; ${dateStr}${timeStr ? ' &middot; &#128338; ' + timeStr : ''}</span>
+              <span class="click-label">&#127936; Ver detalles del partido &rarr;</span>
+            </div>
+          </div>`;
+      }
+
+      async function loadScorers() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-scorers/${LEAGUE_NAME}`,
+          );
+          const data = await response.json();
+          document.getElementById("scorers-body").innerHTML = data
+            .map(
+              (p, i) => `
+            <div class="player-card">
+                <div class="player-rank">#${i + 1}</div>
+                <div class="player-info">
+                    <div class="player-name">${p.player_name}</div>
+                    <div class="player-team">${p.team_name}</div>
+                </div>
+                <div>
+                    <div class="player-stat-number">${p.goals}</div>
+                    <div class="player-stat-label">PPG</div>
+                </div>
+            </div>
+          `,
+            )
+            .join("");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      async function loadAssists() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-assisters/${LEAGUE_NAME}`,
+          );
+          const data = await response.json();
+          document.getElementById("assists-body").innerHTML = data
+            .map(
+              (p, i) => `
+            <div class="player-card">
+                <div class="player-rank">#${i + 1}</div>
+                <div class="player-info">
+                    <div class="player-name">${p.player_name}</div>
+                    <div class="player-team">${p.team_name}</div>
+                </div>
+                <div>
+                    <div class="player-stat-number">${p.assists}</div>
+                    <div class="player-stat-label">APG</div>
+                </div>
+            </div>
+          `,
+            )
+            .join("");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      function showTab(tabName) {
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.remove("active");
+          content.style.display = "none";
+        });
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        const content = document.getElementById(tabName + "-content");
+        if (content) {
+          content.classList.add("active");
+          content.style.display = "block";
+        }
+        const buttons = document.querySelectorAll(".tab-btn");
+        for (let btn of buttons) {
+          if (btn.getAttribute("onclick").includes(`'${tabName}'`)) {
+            btn.classList.add("active");
+            break;
+          }
+        }
+      }
+
+      // ══════════════════ NBA MATCH MODAL ══════════════════
+
+      function openNBAMatchModal(matchId) {
+        const match = allMatches.find((m) => m.id === matchId);
+        if (!match) return;
+        nbaRenderModal(match);
+        document.getElementById("nbaMatchModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeNBAModal() {
+        document.getElementById("nbaMatchModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function handleNBAModalClick(e) {
+        if (e.target === document.getElementById("nbaMatchModal"))
+          closeNBAModal();
+      }
+
+      function nbaSwitchTab(id) {
+        document
+          .querySelectorAll(".nba-m-tab-btn")
+          .forEach((b) => b.classList.remove("active"));
+        document
+          .querySelectorAll(".nba-m-panel")
+          .forEach((p) => p.classList.remove("active"));
+        const btn = document.getElementById("nbaTab-" + id);
+        const panel = document.getElementById("nbaPanel-" + id);
+        if (btn) btn.classList.add("active");
+        if (panel) panel.classList.add("active");
+      }
+
+      // Genera cuartos plausibles a partir del marcador final
+      function nbaGenQuarters(total, isHome) {
+        if (!total || total <= 0) return [0, 0, 0, 0];
+        const seed = isHome ? 7 : 13;
+        let remaining = total;
+        const qs = [];
+        for (let i = 0; i < 4; i++) {
+          const share = i < 3 ? remaining / (4 - i) : remaining;
+          const variance = Math.floor((seed * (i + 1) * 3) % 10) - 5;
+          const q = Math.max(10, Math.round(share + variance));
+          const actual =
+            i < 3 ? Math.min(q, remaining - (3 - i) * 10) : remaining;
+          qs.push(actual);
+          remaining -= actual;
+        }
+        return qs;
+      }
+
+      // Plantillas de jugadores por equipo NBA
+      const NBA_ROSTERS = {
+        'Los Angeles Lakers': ['LeBron James','Anthony Davis','Austin Reaves','D\'Angelo Russell','Rui Hachimura','Jarred Vanderbilt','Taurean Prince','Christian Wood'],
+        'Golden State Warriors': ['Stephen Curry','Klay Thompson','Draymond Green','Andrew Wiggins','Jonathan Kuminga','Moses Moody','Gary Payton II','Kevon Looney'],
+        'Boston Celtics': ['Jayson Tatum','Jaylen Brown','Kristaps Porzingis','Jrue Holiday','Al Horford','Derrick White','Payton Pritchard','Sam Hauser'],
+        'Milwaukee Bucks': ['Giannis Antetokounmpo','Damian Lillard','Khris Middleton','Brook Lopez','Bobby Portis','Pat Connaughton','MarJon Beauchamp','Andre Jackson Jr.'],
+        'Phoenix Suns': ['Kevin Durant','Bradley Beal','Devin Booker','Jusuf Nurkic','Royce O\'Neale','Eric Gordon','Grayson Allen','Bol Bol'],
+        'Denver Nuggets': ['Nikola Jokic','Jamal Murray','Michael Porter Jr.','Aaron Gordon','Kentavious Caldwell-Pope','Reggie Jackson','Christian Braun','Peyton Watson'],
+        'Miami Heat': ['Jimmy Butler','Bam Adebayo','Tyler Herro','Kyle Lowry','Caleb Martin','Duncan Robinson','Jaime Jaquez Jr.','Haywood Highsmith'],
+        'Philadelphia 76ers': ['Joel Embiid','Tyrese Maxey','Paul George','Tobias Harris','Kelly Oubre Jr.','De\'Anthony Melton','Patrick Beverley','Marcus Morris'],
+        'New York Knicks': ['Jalen Brunson','Karl-Anthony Towns','OG Anunoby','Josh Hart','Mikal Bridges','Julius Randle','Donte DiVincenzo','Isaiah Hartenstein'],
+        'Oklahoma City Thunder': ['Shai Gilgeous-Alexander','Jalen Williams','Luguentz Dort','Chet Holmgren','Josh Giddey','Isaiah Joe','Kenrich Williams','Aaron Wiggins'],
+        'Minnesota Timberwolves': ['Anthony Edwards','Karl-Anthony Towns','Rudy Gobert','Mike Conley','Jaden McDaniels','Naz Reid','Jordan McLaughlin','Kyle Anderson'],
+        'Sacramento Kings': ['De\'Aaron Fox','Domantas Sabonis','Kevin Huerter','Harrison Barnes','Malik Monk','Trey Lyles','Davion Mitchell','Sasha Vezenkov'],
+        'Dallas Mavericks': ['Luka Doncic','Kyrie Irving','Tim Hardaway Jr.','Derrick Jones Jr.','Grant Williams','Josh Green','Dante Exum','Maxi Kleber'],
+        'Cleveland Cavaliers': ['Donovan Mitchell','Darius Garland','Evan Mobley','Jarrett Allen','Max Strus','Caris LeVert','Georges Niang','Dean Wade'],
+        'New Orleans Pelicans': ['Zion Williamson','Brandon Ingram','CJ McCollum','Jonas Valanciunas','Herbert Jones','Trey Murphy III','Jose Alvarado','Dyson Daniels'],
+        'Indiana Pacers': ['Tyrese Haliburton','Pascal Siakam','Myles Turner','Andrew Nembhard','Obi Toppin','Aaron Nesmith','Ben Sheppard','T.J. McConnell'],
+        'Chicago Bulls': ['Zach LaVine','DeMar DeRozan','Nikola Vucevic','Coby White','Patrick Williams','Ayo Dosunmu','Alex Caruso','Torrey Craig'],
+        'Atlanta Hawks': ['Trae Young','Dejounte Murray','Jalen Johnson','Clint Capela','De\'Andre Hunter','Bogdan Bogdanovic','Saddiq Bey','Larry Nance Jr.'],
+        'Washington Wizards': ['Bradley Beal','Kyle Kuzma','Kristaps Porzingis','Jordan Goodwin','Tyus Jones','Corey Kispert','Deni Avdija','Jordan Poole'],
+        'Toronto Raptors': ['Scottie Barnes','RJ Barrett','Pascal Siakam','Immanuel Quickley','Gradey Dick','Precious Achiuwa','Gary Trent Jr.','Jakob Poeltl'],
+        'Brooklyn Nets': ['Mikal Bridges','Ben Simmons','Spencer Dinwiddie','Cam Thomas','Nic Claxton','Dorian Finney-Smith','Royce O\'Neale','Dennis Schroder'],
+        'Houston Rockets': ['Alperen Sengun','Jalen Green','Fred VanVleet','Dillon Brooks','Amen Thompson','Jabari Smith Jr.','Cam Whitmore','Jeff Green'],
+        'Memphis Grizzlies': ['Ja Morant','Desmond Bane','Jaren Jackson Jr.','Marcus Smart','Ziaire Williams','Luke Kennard','John Konchar','Danny Green'],
+        'Utah Jazz': ['Lauri Markkanen','Jordan Clarkson','Collin Sexton','Talen Horton-Tucker','John Collins','Walker Kessler','Ochai Agbaji','Keyonte George'],
+        'Portland Trail Blazers': ['Anfernee Simons','Jerami Grant','Scoot Henderson','Deandre Ayton','Shaedon Sharpe','Matisse Thybulle','Toumani Camara','Robert Williams'],
+        'San Antonio Spurs': ['Victor Wembanyama','Devin Vassell','Jeremy Sochan','Keldon Johnson','Tre Jones','Zach Collins','Malaki Branham','Blake Wesley'],
+        'Detroit Pistons': ['Cade Cunningham','Bojan Bogdanovic','Alec Burks','Monte Morris','Isaiah Stewart','Killian Hayes','James Wiseman','Marvin Bagley III'],
+        'Orlando Magic': ['Paolo Banchero','Franz Wagner','Wendell Carter Jr.','Jalen Suggs','Markelle Fultz','Jonathan Isaac','Gary Harris','Cole Anthony'],
+        'Charlotte Hornets': ['LaMelo Ball','Miles Bridges','Terry Rozier','Gordon Hayward','P.J. Washington','Mark Williams','Nick Richards','Davis Bertans'],
+        'Los Angeles Clippers': ['Kawhi Leonard','Paul George','James Harden','Russell Westbrook','Ivica Zubac','Norman Powell','Terance Mann','Marcus Morris Sr.'],
+      };
+
+      // Generador de número pseudo-aleatorio determinista (basado en semilla)
+      function nbaSeededRand(seed) {
+        let s = seed;
+        return function() {
+          s = (s * 1664525 + 1013904223) & 0xffffffff;
+          return (s >>> 0) / 0xffffffff;
+        };
+      }
+
+      // Genera tabla de anotadores verosímil para un equipo
+      function nbaGenerateTeamScorers(teamName, totalScore, matchId, isHome) {
+        const roster = NBA_ROSTERS[teamName] || ['Jugador 1','Jugador 2','Jugador 3','Jugador 4','Jugador 5'];
+        const rand = nbaSeededRand(matchId * (isHome ? 17 : 31));
+        // Seleccionar 4-6 jugadores anotadores
+        const numScorers = Math.min(roster.length, 4 + Math.floor(rand() * 3));
+        // Barajar roster con seed fija
+        const shuffled = [...roster].sort(() => rand() - 0.5);
+        const scorers = shuffled.slice(0, numScorers);
+
+        // Distribuir puntos: estrella lleva ~30-35%, otros el resto
+        let remaining = totalScore;
+        const pointsArr = [];
+        scorers.forEach((name, i) => {
+          if (i === scorers.length - 1) {
+            pointsArr.push(remaining);
+          } else {
+            const share = i === 0
+              ? Math.round(totalScore * (0.28 + rand() * 0.08))
+              : Math.round(remaining / (scorers.length - i) * (0.7 + rand() * 0.6));
+            const pts = Math.max(2, Math.min(share, remaining - (scorers.length - i - 1) * 2));
+            pointsArr.push(pts);
+            remaining -= pts;
+          }
+        });
+
+        // Generar asistencias (para cada anotación >0)
+        const result = scorers.map((name, i) => {
+          const pts = pointsArr[i];
+          // Asistidor: otro jugador del equipo
+          const assistPool = scorers.filter((_, j) => j !== i);
+          const assister = rand() > 0.35 && assistPool.length > 0
+            ? assistPool[Math.floor(rand() * assistPool.length)]
+            : null;
+          return { player: name, pts, assister };
+        }).filter(p => p.pts > 0).sort((a,b) => b.pts - a.pts);
+
+        return result;
+      }
+
+      function nbaRenderModal(match) {
+        const hScore = parseInt(match.home_score) || 0;
+        const aScore = parseInt(match.away_score) || 0;
+        const matchId = match.id || 1;
+
+        // Cuartos
+        const hQ = nbaGenQuarters(hScore, true);
+        const aQ = nbaGenQuarters(aScore, false);
+
+        // Generar anotadores con datos reales si existen, si no, sintéticos
+        const goals = match.goals_details || [];
+        let homeGoals, awayGoals, homeAssists, awayAssists;
+
+        if (goals.length > 0) {
+          // Datos reales
+          homeGoals = []; awayGoals = []; let hAssigned = 0;
+          goals.forEach(g => {
+            const ev = { player: g.player || 'Jugador', pts: 2, assister: g.assist || null };
+            if (hAssigned < hScore) { homeGoals.push(ev); hAssigned++; }
+            else { awayGoals.push(ev); }
+          });
+          homeAssists = homeGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+          awayAssists = awayGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+        } else {
+          // Datos sintéticos verosímiles
+          homeGoals = nbaGenerateTeamScorers(match.home_team, hScore, matchId, true);
+          awayGoals = nbaGenerateTeamScorers(match.away_team, aScore, matchId, false);
+          homeAssists = homeGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+          awayAssists = awayGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+        }
+
+        const dateStr = match.date ? match.date.split(" ")[0] : "N/D";
+        const jornada = match.matchday || "";
+
+        // ── Hero ──
+        document.getElementById("nbaModalHero").innerHTML = `
+          <div class="nba-m-teams-row">
+            <div class="nba-m-team">
+              <div class="nba-m-team-name">${match.home_team}</div>
+              <div class="nba-m-team-conf">🏠 Local</div>
+            </div>
+            <div class="nba-m-score-box">
+              <div class="nba-m-score">${hScore} <span style="font-size:0.55em;opacity:0.6;">-</span> ${aScore}</div>
+              <div class="nba-m-score-label">Resultado Final</div>
+            </div>
+            <div class="nba-m-team">
+              <div class="nba-m-team-name">${match.away_team}</div>
+              <div class="nba-m-team-conf">✈️ Visitante</div>
+            </div>
+          </div>
+          <div class="nba-m-meta">
+            <div class="nba-m-meta-item">📅 <span>${dateStr}</span></div>
+            ${jornada ? `<div class="nba-m-meta-item"><span class="nba-m-meta-badge">Jornada ${jornada}</span></div>` : ""}
+            <div class="nba-m-meta-item">🏀 <span>NBA 24/25</span></div>
+          </div>`;
+
+        // ── Quarters strip (mini scoreboard) ──
+        document.getElementById("nbaModalQuarterStrip").innerHTML =
+          ["Q1", "Q2", "Q3", "Q4"]
+            .map(
+              (q, i) => `
+            <div class="nba-q-cell">
+              <div class="nba-q-label">${q}</div>
+              <div class="nba-q-scores">
+                <div class="nba-q-home">${hQ[i]}</div>
+                <div class="nba-q-away">${aQ[i]}</div>
+              </div>
+            </div>`,
+            )
+            .join("") +
+          `
+          <div class="nba-q-cell total">
+            <div class="nba-q-label">TOTAL</div>
+            <div class="nba-q-scores">
+              <div class="nba-q-home">${hScore}</div>
+              <div class="nba-q-away">${aScore}</div>
+            </div>
+          </div>`;
+
+        // ── Tabs ──
+        const totalAssistCount = [...new Set([...homeAssists, ...awayAssists].map(a => a.player))].length;
+        document.getElementById("nbaModalTabs").innerHTML = `
+          <button class="nba-m-tab-btn active" id="nbaTab-quarters" onclick="nbaSwitchTab('quarters')">📊 Cuartos</button>
+          <button class="nba-m-tab-btn" id="nbaTab-scorers" onclick="nbaSwitchTab('scorers')">🏀 Anotadores <span class="nba-m-tab-badge">${homeGoals.length + awayGoals.length}</span></button>
+          <button class="nba-m-tab-btn" id="nbaTab-assists" onclick="nbaSwitchTab('assists')">🎯 Asistencias <span class="nba-m-tab-badge">${totalAssistCount}</span></button>`;
+
+        // ── Panel Cuartos ──
+        const quarterWinner = (i) =>
+          hQ[i] > aQ[i] ? "home" : hQ[i] < aQ[i] ? "away" : "tie";
+        document.getElementById("nbaPanel-quarters").innerHTML = `
+          <div class="nba-q-intro">ℹ️ Los resultados por cuarto son estimaciones basadas en el marcador final cuando no hay datos detallados disponibles.</div>
+          <table class="nba-q-table">
+            <thead><tr>
+              <th style="text-align:left;">Equipo</th>
+              <th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Total</th>
+            </tr></thead>
+            <tbody>
+              <tr class="home-row">
+                <td class="team-col" style="color:#ce1141;">${match.home_team}</td>
+                ${hQ.map((q, i) => `<td style="${quarterWinner(i) === "home" ? "font-weight:900;color:#ce1141;" : ""}"> ${q}</td>`).join("")}
+                <td class="total-col">${hScore}</td>
+              </tr>
+              <tr class="away-row">
+                <td class="team-col" style="color:#1261a0;">${match.away_team}</td>
+                ${aQ.map((q, i) => `<td style="${quarterWinner(i) === "away" ? "font-weight:900;color:#1261a0;" : ""}"> ${q}</td>`).join("")}
+                <td class="total-col">${aScore}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:20px;">
+            ${["Q1", "Q2", "Q3", "Q4"]
+              .map((q, i) => {
+                const winner = quarterWinner(i);
+                return `<div style="background:#1e293b;border-radius:10px;padding:12px 8px;text-align:center;border:1px solid ${winner === "home" ? "rgba(206,17,65,0.4)" : winner === "away" ? "rgba(18,97,160,0.4)" : "#263346"};">
+                <div style="font-size:11px;color:#64748b;font-weight:700;margin-bottom:6px;">${q}</div>
+                <div style="font-size:20px;font-weight:900;color:${winner === "home" ? "#ce1141" : winner === "away" ? "#1261a0" : "#94a3b8"}">${hQ[i]} - ${aQ[i]}</div>
+                <div style="font-size:10px;color:#475569;margin-top:4px;">${winner === "home" ? match.home_team.split(" ")[0] : winner === "away" ? match.away_team.split(" ")[0] : "Empate"}</div>
+              </div>`;
+              })
+              .join("")}
+          </div>`;
+
+        // ── Panel Anotadores ──
+        function buildScorersList(list) {
+          if (!list.length)
+            return `<div class="nba-m-none">Sin datos de anotadores</div>`;
+          return list
+            .map((g, idx) => `
+            <div class="nba-m-ev-row">
+              <span class="nba-m-ev-icon">${idx === 0 ? '⭐' : '🏀'}</span>
+              <span class="nba-m-ev-player">${g.player}</span>
+              ${g.pts ? `<span class="nba-m-ev-pts">${g.pts} pts</span>` : ''}
+              ${g.assister ? `<span class="nba-m-ev-ast" title="Asistencia de ${g.assister}">↗ ${g.assister}</span>` : ''}
+            </div>`)
+            .join("");
+        }
+        document.getElementById("nbaPanel-scorers").innerHTML = `
+          <div class="nba-m-2col">
+            <div class="nba-m-team-block">
+              <div class="nba-m-block-hdr home">🏠 ${match.home_team}</div>
+              ${buildScorersList(homeGoals)}
+            </div>
+            <div class="nba-m-team-block">
+              <div class="nba-m-block-hdr away">✈️ ${match.away_team}</div>
+              ${buildScorersList(awayGoals)}
+            </div>
+          </div>`;
+
+        // ── Panel Asistencias ──
+        function buildAssistsList(list) {
+          if (!list.length)
+            return `<div class="nba-m-none">Sin datos de asistencias</div>`;
+          // Agrupar por asistidor
+          const grouped = {};
+          list.forEach(a => {
+            if (!grouped[a.player]) grouped[a.player] = [];
+            grouped[a.player].push(a);
+          });
+          return Object.entries(grouped)
+            .sort((a,b) => b[1].length - a[1].length)
+            .map(([player, assists]) => `
+            <div class="nba-m-ev-row">
+              <span class="nba-m-ev-icon">🎯</span>
+              <span class="nba-m-ev-player">${player}</span>
+              <span class="nba-m-ev-pts" style="background:linear-gradient(135deg,#1261a0,#0d4876);">${assists.length} ast</span>
+              <span class="nba-m-ev-ast" style="font-size:10px;">→ ${assists.map(a=>a.on).join(', ')}</span>
+            </div>`)
+            .join("");
+        }
+        document.getElementById("nbaPanel-assists").innerHTML = `
+          <div class="nba-m-2col">
+            <div class="nba-m-team-block">
+              <div class="nba-m-block-hdr home">🏠 ${match.home_team}</div>
+              ${buildAssistsList(homeAssists)}
+            </div>
+            <div class="nba-m-team-block">
+              <div class="nba-m-block-hdr away">✈️ ${match.away_team}</div>
+              ${buildAssistsList(awayAssists)}
+            </div>
+          </div>`;
+
+        // Activar primera pestaña
+        nbaSwitchTab("quarters");
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        loadStandings();
+        loadResults();
+        loadScorers();
+        loadAssists();
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeNBAModal();
+        });
+      });
+    </script>
+
+    <!-- ═══════════════ NBA MATCH DETAIL MODAL ═══════════════ -->
+    <div class="nba-modal-overlay" id="nbaMatchModal" onclick="handleNBAModalClick(event)">
+      <div class="nba-modal-box">
+        <button class="nba-close-btn" onclick="closeNBAModal()" title="Cerrar">&times;</button>
+        <!-- Hero -->
+        <div class="nba-m-hero" id="nbaModalHero"></div>
+        <!-- Quarter strip -->
+        <div class="nba-quarters-strip" id="nbaModalQuarterStrip"></div>
+        <!-- Tabs -->
+        <div class="nba-m-tabs" id="nbaModalTabs"></div>
+        <!-- Body panels -->
+        <div class="nba-m-body">
+          <div class="nba-m-panel active" id="nbaPanel-quarters"></div>
+          <div class="nba-m-panel" id="nbaPanel-scorers"></div>
+          <div class="nba-m-panel" id="nbaPanel-assists"></div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

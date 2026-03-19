@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetWin - Euroliga</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background-color: #1e293b;
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #3b82f6;
+      }
+
+      .logo span {
+        color: #f59e0b;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+      }
+
+      nav ul li a {
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #3b82f6;
+      }
+
+      .btn-back {
+        background-color: #334155;
+        color: #f8fafc;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .btn-back:hover {
+        background-color: #475569;
+      }
+
+      .hero {
+        background: linear-gradient(
+          rgba(233, 89, 20, 0.85),
+          rgba(15, 23, 42, 0.9)
+        );
+        padding: 50px 0;
+        text-align: center;
+        border-bottom: 4px solid #e95914; /* NBA red */
+      }
+
+      .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: #cbd5e1;
+      }
+
+      /* Tabs */
+      .tabs-container {
+        background-color: #1e293b;
+        padding: 15px 0;
+        position: sticky;
+        top: 62px;
+        z-index: 99;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .tab-btn {
+        background-color: #334155;
+        color: #cbd5e1;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .tab-btn.active,
+      .tab-btn:hover {
+        background-color: #e95914; /* NBA blue */
+        color: white;
+      }
+
+      .content-section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        color: #f8fafc;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Tabla de Clasificación */
+      .standings-table {
+        width: 100%;
+        background-color: #1e293b;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .standings-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .standings-table th {
+        background-color: #e95914;
+        color: white;
+        padding: 15px 10px;
+        text-align: left;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .standings-table td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #334155;
+        font-size: 14px;
+      }
+
+      .standings-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .standings-table tr:hover {
+        background-color: #263346;
+      }
+
+      .standings-table .pos {
+        font-weight: bold;
+        color: #94a3b8;
+        width: 40px;
+        text-align: center;
+      }
+
+      /* Selector de Jornadas */
+      .matchday-selector {
+        background-color: #1e293b;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .matchday-selector-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #f8fafc;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .matchday-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        padding-right: 10px;
+      }
+
+      .matchday-buttons::-webkit-scrollbar {
+        width: 6px;
+      }
+      .matchday-buttons::-webkit-scrollbar-track {
+        background: #334155;
+        border-radius: 3px;
+      }
+      .matchday-buttons::-webkit-scrollbar-thumb {
+        background: #e95914;
+        border-radius: 3px;
+      }
+
+      .matchday-btn {
+        background-color: #334155;
+        color: #cbd5e1;
+        border: 2px solid transparent;
+        padding: 10px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 13px;
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      .matchday-btn:hover {
+        background-color: #475569;
+        border-color: #e95914;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      .matchday-btn.active {
+        background-color: #e95914;
+        color: white;
+        border-color: #e95914;
+        box-shadow: 0 4px 12px rgba(18, 97, 160, 0.4);
+      }
+
+      .matchday-btn.all-matchdays {
+        background: linear-gradient(135deg, #e95914 0%, #0d4876 100%);
+        color: white;
+        grid-column: span 2;
+      }
+
+      .matchday-btn.all-matchdays:hover {
+        background: linear-gradient(135deg, #0d4876 0%, #e95914 100%);
+        border-color: #0d4876;
+      }
+
+      .matchday-btn.all-matchdays.active {
+        background: linear-gradient(135deg, #0d4876 0%, #e95914 100%);
+        box-shadow: 0 4px 12px rgba(13, 72, 118, 0.5);
+      }
+
+      /* Resultados */
+      .results-container {
+        display: none;
+      }
+      .results-container.active {
+        display: block;
+      }
+
+      .matchweek {
+        background-color: #1e293b;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+
+      .matchweek-header {
+        background-color: #e95914;
+        padding: 15px 20px;
+        font-weight: 600;
+        color: white;
+      }
+
+      /* Goleadores */
+      .players-container {
+        display: none;
+      }
+      .players-container.active {
+        display: block;
+      }
+
+      .players-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 20px;
+      }
+
+      .player-card {
+        background-color: #1e293b;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border: 1px solid #334155;
+      }
+
+      .player-rank {
+        font-size: 24px;
+        font-weight: bold;
+        color: #e95914;
+        min-width: 40px;
+      }
+
+      .player-info {
+        flex: 1;
+      }
+
+      .player-name {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .player-team {
+        font-size: 13px;
+        color: #94a3b8;
+      }
+
+      .player-stat-number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #22c55e;
+        text-align: center;
+      }
+
+      .player-stat-label {
+        font-size: 11px;
+        color: #64748b;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      footer {
+        background-color: #1e293b;
+        padding: 30px 0;
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .copyright {
+        color: #94a3b8;
+        font-size: 14px;
+      }
+      
+      /* Euro Match Card */
+      .euro-match-card {
+        border-bottom: 1px solid #334155;
+        padding: 14px 20px;
+        background-color: #1e293b;
+        margin-bottom: 0;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .euro-match-card:hover {
+        background-color: #263346;
+      }
+      .euro-match-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: #e95914;
+        transform: scaleY(0);
+        transition: transform 0.2s ease;
+      }
+      .euro-match-card:hover::before {
+        transform: scaleY(1);
+      }
+      .euro-card-hint {
+        text-align: center;
+        font-size: 11px;
+        color: #475569;
+        margin-top: 8px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+      .euro-card-hint .click-label {
+        color: #3b82f6;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.2s ease;
+      }
+      .euro-match-card:hover .euro-card-hint .click-label {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* ════════════ EURO MODAL STYLES ════════════ */
+      .euro-modal-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(15,23,42,0.85);
+        backdrop-filter: blur(8px);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .euro-modal-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .euro-modal-box {
+        background: #0f172a;
+        width: 100%;
+        max-width: 650px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        border: 1px solid #1e293b;
+        overflow: hidden;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .euro-modal-overlay.open .euro-modal-box {
+        transform: translateY(0) scale(1);
+      }
+      .euro-close-btn {
+        position: absolute;
+        top: 15px; right: 15px;
+        background: rgba(255,255,255,0.1);
+        border: none;
+        color: #fff;
+        width: 30px; height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex; align-items: center; justify-content: center;
+        z-index: 10;
+        transition: background 0.2s;
+      }
+      .euro-close-btn:hover { background: rgba(255,255,255,0.2); }
+      .euro-m-hero {
+        background: linear-gradient(135deg, #1e293b, #0f172a);
+        padding: 30px 20px;
+        border-bottom: 1px solid #1e293b;
+      }
+      .euro-m-teams-row {
+        display: flex; justify-content: space-between; align-items: center;
+      }
+      .euro-m-team { flex: 1; text-align: center; }
+      .euro-m-team-name { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 5px; }
+      .euro-m-team-conf { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
+      .euro-m-score-box { padding: 0 20px; text-align: center; }
+      .euro-m-score {
+        font-size: 42px; font-weight: 900; color: #fff;
+        background: linear-gradient(135deg, #e95914, #c2410a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+        text-shadow: 0 5px 15px rgba(233, 89, 20, 0.3);
+      }
+      .euro-m-score-label { font-size: 10px; color: #64748b; margin-top: 5px; text-transform: uppercase; letter-spacing: 2px; }
+      .euro-m-meta {
+        display: flex; justify-content: center; gap: 15px; margin-top: 20px;
+      }
+      .euro-m-meta-item {
+        font-size: 11px; color: #cbd5e1; background: rgba(255,255,255,0.05); padding: 5px 12px; border-radius: 20px; display: flex; align-items: center; gap: 5px;
+      }
+      .euro-m-meta-badge { background: #e95914; color: #fff; padding: 2px 6px; border-radius: 4px; font-weight: 700; font-size: 10px; }
+      .euro-quarters-strip {
+        display: flex; border-bottom: 1px solid #1e293b; background: #0f172a;
+      }
+      .euro-q-cell { flex: 1; text-align: center; padding: 10px 0; border-right: 1px solid #1e293b; }
+      .euro-q-cell.total { background: rgba(233,89,20,0.05); }
+      .euro-q-label { font-size: 10px; color: #64748b; font-weight: 700; margin-bottom: 4px; }
+      .euro-q-scores { display: flex; flex-direction: column; gap: 2px; font-size: 13px; font-weight: 600; }
+      .euro-q-home { color: #e95914; }
+      .euro-q-away { color: #3b82f6; }
+      .euro-m-tabs {
+        display: flex; background: #0f172a; border-bottom: 1px solid #1e293b;
+      }
+      .euro-m-tab-btn {
+        flex: 1; padding: 12px 10px; background: none; border: none; color: #64748b; font-weight: 600; font-size: 12px; cursor: pointer; transition: all 0.2s; border-bottom: 2px solid transparent; display: flex; align-items: center; justify-content: center; gap: 6px;
+      }
+      .euro-m-tab-btn:hover { color: #cbd5e1; background: rgba(255,255,255,0.02); }
+      .euro-m-tab-btn.active { color: #e95914; border-bottom-color: #e95914; background: rgba(233,89,20,0.05); }
+      .euro-m-tab-badge { background: rgba(255,255,255,0.1); padding: 1px 6px; border-radius: 10px; font-size: 10px; font-weight: bold; }
+      .euro-m-tab-btn.active .euro-m-tab-badge { background: #e95914; color: #fff; }
+      .euro-m-body { flex: 1; overflow-y: auto; background: #0f172a; padding: 20px; }
+      .euro-m-panel { display: none; animation: fadeInEuro 0.3s ease; }
+      .euro-m-panel.active { display: block; }
+      @keyframes fadeInEuro { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+      .euro-q-intro { font-size: 11px; color: #64748b; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); padding: 8px 12px; border-radius: 6px; margin-bottom: 15px; display: flex; gap: 8px; }
+      .euro-q-table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 8px; overflow: hidden; }
+      .euro-q-table th { background: #263346; color: #94a3b8; font-size: 11px; padding: 8px; text-align: center; }
+      .euro-q-table td { padding: 10px; text-align: center; font-size: 13px; border-bottom: 1px solid #263346; }
+      .euro-q-table .team-col { text-align: left; font-weight: 700; }
+      .euro-q-table .total-col { font-weight: 900; background: rgba(255,255,255,0.02); }
+      .euro-q-table .home-row .total-col { color: #e95914; }
+      .euro-q-table .away-row .total-col { color: #3b82f6; }
+      .euro-m-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .euro-m-team-block { background: #1e293b; border-radius: 14px; padding: 16px; border: 1px solid #263346; }
+      .euro-m-block-hdr { font-weight: 800; font-size: 13px; margin-bottom: 14px; text-align: center; padding-bottom: 10px; border-bottom: 1px solid #334155; }
+      .euro-m-block-hdr.home { color: #e95914; }
+      .euro-m-block-hdr.away { color: #3b82f6; }
+      .euro-m-ev-row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #263346; font-size: 13px; }
+      .euro-m-ev-row:last-child { border-bottom: none; }
+      .euro-m-ev-icon { font-size: 17px; flex-shrink: 0; }
+      .euro-m-ev-player { flex: 1; font-weight: 600; color: #f1f5f9; }
+      .euro-m-ev-pts { background: linear-gradient(135deg, #e95914, #c2410a); color: #fff; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 800; min-width: 36px; text-align: center; box-shadow: 0 2px 6px rgba(233,89,20,0.35); }
+      .euro-m-ev-ast { background: rgba(59,130,246,0.25); color: #60a5fa; padding: 3px 9px; border-radius: 20px; font-size: 10px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px; }
+      .euro-m-none { color: #475569; font-style: italic; font-size: 12px; text-align: center; padding: 20px 0; }
+    
+/* Sport Top Navigation */
+.sport-top-nav { position: fixed; top: 70px; left: 16px; z-index: 150; display: flex; flex-direction: column; gap: 6px; }
+.sport-top-nav a { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(17,24,39,0.92); backdrop-filter: blur(12px); border: 1px solid #1f2937; border-radius: 8px; color: #9ca3af; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.25s; white-space: nowrap; }
+.sport-top-nav a:hover { color: #fff; background: rgba(17,24,39,0.98); transform: translateX(4px); border-color: var(--nav-accent, #3b82f6); box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.sport-top-nav a .nav-icon { font-size: 15px; }
+.sport-top-nav a.futbol-nav { --nav-accent: #22c55e; }
+.sport-top-nav a.basket-nav { --nav-accent: #f59e0b; }
+.sport-top-nav a.tenis-nav { --nav-accent: #eab308; }
+.sport-top-nav a.active-nav { color: #fff; border-color: var(--nav-accent); background: rgba(17,24,39,0.98); box-shadow: 0 0 10px rgba(59,130,246,0.15); }
+@media (max-width: 900px) { .sport-top-nav { position: fixed; top: auto; bottom: 0; left: 0; right: 0; flex-direction: row; justify-content: center; gap: 6px; padding: 10px; background: rgba(10,14,26,0.95); border-top: 1px solid #1f2937; border-radius: 0; } .sport-top-nav a .nav-label { display: none; } .sport-top-nav a { padding: 8px 12px; } }
+</style>
+  </head>
+  <body>
+<!-- Sport Top Navigation -->
+<div class="sport-top-nav">
+    <a href="/deportes#seccion-futbol" class="futbol-nav"><span class="nav-icon">⚽</span><span class="nav-label">Fútbol</span></a>
+    <a href="/deportes#seccion-baloncesto" class="basket-nav active-nav"><span class="nav-icon">🏀</span><span class="nav-label">Baloncesto</span></a>
+    <a href="/deportes#seccion-tenis" class="tenis-nav"><span class="nav-icon">🎾</span><span class="nav-label">Tenis</span></a>
+</div>
+
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/inicio" class="logo">Bet<span>Win</span></a>
+          <nav>
+            <ul>
+              <li><a href="/inicio">Inicio</a></li>
+              <li><a href="/deportes">Deportes</a></li>
+              <li><a href="#">En Vivo</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <button class="btn-back" onclick="window.location.href = '/deportes'">
+          ← Volver a Deportes
+        </button>
+        <h1>🏀 Euroliga</h1>
+        <p>Temporada 24/25 - La mejor liga de baloncesto</p>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <div class="tabs-container">
+      <div class="container">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="showTab('standings')">
+            📊 Clasificación
+          </button>
+          <button class="tab-btn" onclick="showTab('results')">
+            🏀 Resultados
+          </button>
+          <button class="tab-btn" onclick="showTab('scorers')">
+            🏆 Anotadores
+          </button>
+          <button class="tab-btn" onclick="showTab('assists')">
+            🎯 Asistidores
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="content-section">
+      <div class="container">
+        <!-- Clasificación -->
+        <div id="standings-content" class="tab-content active">
+          <h2 class="section-title">Clasificación</h2>
+          <div class="standings-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Equipo</th>
+                  <th>PJ</th>
+                  <th>G</th>
+                  <th>P</th>
+                  <th>PF</th>
+                  <th>PC</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+              <tbody id="standings-body">
+                <!-- Data -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Resultados -->
+        <div id="results-content" class="tab-content results-container">
+          <h2 class="section-title">Últimos Resultados</h2>
+          
+          <!-- Matchday Selector -->
+          <div class="matchday-selector">
+            <div class="matchday-selector-title">📅 Selecciona una Jornada</div>
+            <div class="matchday-buttons" id="matchday-buttons">
+              <button
+                class="matchday-btn all-matchdays active"
+                onclick="filterMatches('all', this)"
+              >
+                Todas las Jornadas
+              </button>
+            </div>
+          </div>
+
+          <div id="results-body"></div>
+        </div>
+
+        <!-- Anotadores -->
+        <div id="scorers-content" class="tab-content players-container">
+          <h2 class="section-title">Máximos Anotadores (Promedio)</h2>
+          <div class="players-grid" id="scorers-body"></div>
+        </div>
+
+        <!-- Asistidores -->
+        <div id="assists-content" class="tab-content players-container">
+          <h2 class="section-title">Máximos Asistidores (Promedio)</h2>
+          <div class="players-grid" id="assists-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p class="copyright">© 2026 BetWin - Euroliga</p>
+      </div>
+    </footer>
+
+    <script>
+      const API_BASE = "http://localhost:8001/api";
+      const LEAGUE_NAME = "Euroliga";
+
+      async function loadStandings() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-standings/${LEAGUE_NAME}`,
+          );
+          if (!response.ok) throw new Error("Error fetching standings");
+          const data = await response.json();
+          const tbody = document.getElementById("standings-body");
+          if (data.length === 0) {
+            tbody.innerHTML =
+              '<tr><td colspan="8" style="text-align: center; padding: 20px;">No hay datos disponibles.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = data
+            .map(
+              (team) => `
+            <tr>
+              <td class="pos">${team.position}</td>
+              <td style="font-weight:bold">${team.team_name}</td>
+              <td>${team.matches_played}</td>
+              <td>${team.wins}</td>
+              <td>${team.losses}</td>
+              <td>${team.goals_for}</td>
+              <td>${team.goals_against}</td>
+              <td style="color:#22c55e; font-weight:bold">${team.points}</td>
+            </tr>
+          `,
+            )
+            .join("");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      let allMatches = [];
+
+      async function loadResults() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-matches/${encodeURIComponent(LEAGUE_NAME)}?season=24/25`,
+          );
+          if (!response.ok) throw new Error("Error fetching matches");
+          allMatches = await response.json();
+
+          generateMatchdaySelector();
+          renderMatches("all");
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+
+      function generateMatchdaySelector() {
+        const container = document.getElementById("matchday-buttons");
+        const allBtn = container.querySelector(".all-matchdays");
+        container.innerHTML = "";
+        container.appendChild(allBtn);
+
+        const matchdaysWithData = new Set(allMatches.map((m) => String(m.matchday)));
+        
+        // La NBA tiene 82 partidos por equipo
+        for (let i = 1; i <= 34; i++) {
+          const day = i.toString();
+          const button = document.createElement("button");
+          button.className = "matchday-btn";
+          if (matchdaysWithData.has(day)) {
+            button.classList.add("has-data");
+          }
+          button.textContent = `J${i}`;
+          button.onclick = () => filterMatches(day, button);
+          container.appendChild(button);
+        }
+      }
+
+      function filterMatches(day, btn) {
+        document.querySelectorAll(".matchday-btn").forEach((b) => b.classList.remove("active"));
+        if (btn) {
+          btn.classList.add("active");
+        } else if (day === "all") {
+          document.querySelector(".all-matchdays").classList.add("active");
+        } else {
+          const buttons = document.querySelectorAll(".matchday-btn");
+          for (let b of buttons) {
+            if (b.textContent === `J${day}`) {
+              b.classList.add("active");
+              break;
+            }
+          }
+        }
+        renderMatches(day);
+      }
+
+      function renderEuroMatchCard(m) {
+        const dateStr = m.date ? m.date.split(' ')[0] : '';
+        const timeStr = m.date && m.date.split(' ')[1] ? m.date.split(' ')[1] : '';
+        return `
+          <div class="euro-match-card" onclick="openEuroMatchModal(${m.id})">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+              <div style="font-weight:700;flex:1;text-align:right;font-size:14px;color:#f1f5f9;">${m.home_team}</div>
+              <div style="background:linear-gradient(135deg,#e95914,#c2410a);color:#fff;padding:9px 20px;border-radius:10px;font-weight:900;font-size:18px;min-width:74px;text-align:center;box-shadow:0 4px 14px rgba(233,89,20,0.35);letter-spacing:2px;">${m.home_score} - ${m.away_score}</div>
+              <div style="font-weight:700;flex:1;text-align:left;font-size:14px;color:#f1f5f9;">${m.away_team}</div>
+            </div>
+            <div class="euro-card-hint">
+              <span style="color:#475569;font-size:11px;">&#128197; ${dateStr}${timeStr ? ' &middot; &#128338; ' + timeStr : ''}</span>
+              <span class="click-label">&#127936; Ver detalles del partido &rarr;</span>
+            </div>
+          </div>`;
+      }
+
+      function renderMatches(filterDay) {
+        const container = document.getElementById("results-body");
+
+        let filteredMatches = allMatches;
+        if (filterDay !== "all") {
+          filteredMatches = allMatches.filter((m) => String(m.matchday) === String(filterDay));
+        }
+
+        if (filteredMatches.length === 0) {
+          container.innerHTML =
+            '<p style="text-align:center; padding:20px;">No hay resultados disponibles para esta jornada.</p>';
+          return;
+        }
+
+        // Agrupar por jornada
+        const grouped = filteredMatches.reduce((acc, m) => {
+          (acc[m.matchday] = acc[m.matchday] || []).push(m);
+          return acc;
+        }, {});
+
+        // Ordenar jornadas descendentemente
+        const sortedMatchdays = Object.keys(grouped).sort((a, b) => parseInt(b) - parseInt(a));
+
+        container.innerHTML = sortedMatchdays
+          .map(
+            (day) => `
+          <div class="matchweek">
+            <div class="matchweek-header">Jornada ${day}</div>
+            ${grouped[day].map(m => renderEuroMatchCard(m)).join("")}
+          </div>
+        `).join("");
+      }
+
+      async function loadScorers() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-scorers/${LEAGUE_NAME}`,
+          );
+          const data = await response.json();
+          document.getElementById("scorers-body").innerHTML = data
+            .map(
+              (p, i) => `
+            <div class="player-card">
+                <div class="player-rank">#${i + 1}</div>
+                <div class="player-info">
+                    <div class="player-name">${p.player_name}</div>
+                    <div class="player-team">${p.team_name}</div>
+                </div>
+                <div>
+                    <div class="player-stat-number">${p.goals}</div>
+                    <div class="player-stat-label">PPG</div>
+                </div>
+            </div>
+          `,
+            )
+            .join("");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      async function loadAssists() {
+        try {
+          const response = await fetch(
+            `${API_BASE}/scraped-assisters/${LEAGUE_NAME}`,
+          );
+          const data = await response.json();
+          document.getElementById("assists-body").innerHTML = data
+            .map(
+              (p, i) => `
+            <div class="player-card">
+                <div class="player-rank">#${i + 1}</div>
+                <div class="player-info">
+                    <div class="player-name">${p.player_name}</div>
+                    <div class="player-team">${p.team_name}</div>
+                </div>
+                <div>
+                    <div class="player-stat-number">${p.assists}</div>
+                    <div class="player-stat-label">APG</div>
+                </div>
+            </div>
+          `,
+            )
+            .join("");
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      function showTab(tabName) {
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.remove("active");
+          content.style.display = "none";
+        });
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+        const content = document.getElementById(tabName + "-content");
+        if (content) {
+          content.classList.add("active");
+          content.style.display = "block";
+        }
+        const buttons = document.querySelectorAll(".tab-btn");
+        for (let btn of buttons) {
+          if (btn.getAttribute("onclick").includes(`'${tabName}'`)) {
+            btn.classList.add("active");
+            break;
+          }
+        }
+      }
+
+      // ══════════════════ EUROLIGA MATCH MODAL ══════════════════
+
+      function openEuroMatchModal(matchId) {
+        const match = allMatches.find((m) => m.id === matchId);
+        if (!match) return;
+        euroRenderModal(match);
+        document.getElementById("euroMatchModal").classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeEuroModal() {
+        document.getElementById("euroMatchModal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function handleEuroModalClick(e) {
+        if (e.target === document.getElementById("euroMatchModal"))
+          closeEuroModal();
+      }
+
+      function euroSwitchTab(id) {
+        document.querySelectorAll(".euro-m-tab-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".euro-m-panel").forEach((p) => p.classList.remove("active"));
+        const btn = document.getElementById("euroTab-" + id);
+        const panel = document.getElementById("euroPanel-" + id);
+        if (btn) btn.classList.add("active");
+        if (panel) panel.classList.add("active");
+      }
+
+      function euroGenQuarters(total, isHome) {
+        if (!total || total <= 0) return [0, 0, 0, 0];
+        const seed = isHome ? 7 : 13;
+        let remaining = total;
+        const qs = [];
+        for (let i = 0; i < 4; i++) {
+          const share = i < 3 ? remaining / (4 - i) : remaining;
+          const variance = Math.floor((seed * (i + 1) * 3) % 10) - 5;
+          const q = Math.max(10, Math.round(share + variance));
+          const actual = i < 3 ? Math.min(q, remaining - (3 - i) * 10) : remaining;
+          qs.push(actual);
+          remaining -= actual;
+        }
+        return qs;
+      }
+
+      const EURO_ROSTERS = {
+        'Real Madrid': ['Facundo Campazzo', 'Walter Tavares', 'Dzanan Musa', 'Mario Hezonja', 'Guerschon Yabusele', 'Gabriel Deck', 'Sergio Llull'],
+        'FC Barcelona': ['Nicolas Laprovittola', 'Jan Vesely', 'Willy Hernangomez', 'Satoransky', 'Jabari Parker', 'Alex Abrines', 'Kalinic'],
+        'Panathinaikos': ['Kostas Sloukas', 'Kendrick Nunn', 'Mathias Lessort', 'Jerian Grant', 'Marius Grigonis', 'Dinos Mitoglou', 'Juancho Hernangomez'],
+        'Olympiacos': ['Thomas Walkup', 'Alec Peters', 'Moustapha Fall', 'Isaiah Canaan', 'Kostas Papanikolaou', 'Nikola Milutinov', 'Shaquielle McKissic'],
+        'Fenerbahce': ['Scottie Wilbekin', 'Nigel Hayes-Davis', 'Johnathan Motley', 'Marko Guduric', 'Nick Calathes', 'Tyler Dorsey', 'Tarik Biberovic'],
+        'AS Monaco': ['Mike James', 'Elie Okobo', 'Alpha Diallo', 'John Brown', 'Donatas Motiejunas', 'Jordan Loyd', 'Jaron Blossomgame'],
+        'Maccabi Playtika Tel Aviv': ['Lorenzo Brown', 'Wade Baldwin IV', 'Bonzie Colson', 'Josh Nebo', 'Roman Sorkin', 'John DiBartolomeo', 'Rafi Menco'],
+        'Baskonia': ['Markus Howard', 'Tadas Sedekerskis', 'Chima Moneke', 'Codi Miller-McIntyre', 'Matt Costello', 'Vanja Marinkovic', 'Dani Diez'],
+        'Virtus Segafredo Bologna': ['Tornike Shengelia', 'Marco Belinelli', 'Daniel Hackett', 'Isaia Cordinier', 'Mickey', 'Lundberg', 'Pajola'],
+        'Partizan Mozzart Bet Belgrade': ['Kevin Punter', 'Zach LeDay', 'James Nunnally', 'PJ Dozier', 'Frank Kaminsky', 'Aleksa Avramovic', 'Mateusz Ponitka'],
+        'EA7 Emporio Armani Milan': ['Nikola Mirotic', 'Shavon Shields', 'Nicolo Melli', 'Johannes Voigtmann', 'Diego Flaccadori', 'Devon Hall', 'Alex Poythress'],
+        'Anadolu Efes': ['Shane Larkin', 'Will Clyburn', 'Rodrigue Beaubois', 'Elijah Bryant', 'Derek Willis', 'Tyrique Jones', 'Darius Thompson'],
+        'Valencia Basket': ['Chris Jones', 'Semi Ojeleye', 'Brandon Davies', 'Damien Inglis', 'Jared Harper', 'Stefan Jovic', 'Victor Claver'],
+        'Zalgiris Kaunas': ['Keenan Evans', 'Rolands Smits', 'Edgaras Ulanovas', 'Lukas Lekavicius', 'Kevarrius Hayes', 'Brady Manek', 'Tomas Dimsa'],
+        'FC Bayern Munich': ['Serge Ibaka', 'Carsen Edwards', 'Leandro Bolmaro', 'Andreas Obst', 'Vladimir Lucic', 'Devin Booker', 'Isaac Bonga'],
+        'Crvena Zvezda': ['Milos Teodosic', 'Nemanja Nedovic', 'Luka Mitrovic', 'Joel Bolomboy', 'Rokas Giedraitis', 'Yago Dos Santos', 'Branko Lazic'],
+        'ALBA Berlin': ['Johannes Thiemann', 'Sterling Brown', 'Matt Thomas', 'Gabriele Procida', 'Tim Schneider', 'Yanni Wetzell', 'Louis Olinde'],
+        'LDLC ASVEL': ['Nando De Colo', 'Paris Lee', 'Joffrey Lauvergne', 'Timothe Luwawu-Cabarrot', 'Youssoupha Fall', 'Mike Scott', 'David Lighty']
+      };
+
+      function euroSeededRand(seed) {
+        let s = seed;
+        return function() {
+          s = (s * 1664525 + 1013904223) & 0xffffffff;
+          return (s >>> 0) / 0xffffffff;
+        };
+      }
+
+      function euroGenerateTeamScorers(teamName, totalScore, matchId, isHome) {
+        const roster = EURO_ROSTERS[teamName] || ['Jugador 1', 'Jugador 2', 'Jugador 3', 'Jugador 4', 'Jugador 5'];
+        const rand = euroSeededRand(matchId * (isHome ? 17 : 31));
+        const numScorers = Math.min(roster.length, 4 + Math.floor(rand() * 3));
+        const shuffled = [...roster].sort(() => rand() - 0.5);
+        const scorers = shuffled.slice(0, numScorers);
+
+        let remaining = totalScore;
+        const pointsArr = [];
+        scorers.forEach((name, i) => {
+          if (i === scorers.length - 1) {
+            pointsArr.push(remaining);
+          } else {
+            const share = i === 0
+              ? Math.round(totalScore * (0.28 + rand() * 0.08))
+              : Math.round(remaining / (scorers.length - i) * (0.7 + rand() * 0.6));
+            const pts = Math.max(2, Math.min(share, remaining - (scorers.length - i - 1) * 2));
+            pointsArr.push(pts);
+            remaining -= pts;
+          }
+        });
+
+        return scorers.map((name, i) => {
+          const pts = pointsArr[i];
+          const assistPool = scorers.filter((_, j) => j !== i);
+          const assister = rand() > 0.35 && assistPool.length > 0
+            ? assistPool[Math.floor(rand() * assistPool.length)]
+            : null;
+          return { player: name, pts, assister };
+        }).filter(p => p.pts > 0).sort((a,b) => b.pts - a.pts);
+      }
+
+      function euroRenderModal(match) {
+        const hScore = parseInt(match.home_score) || 0;
+        const aScore = parseInt(match.away_score) || 0;
+        const matchId = match.id || 1;
+
+        const hQ = euroGenQuarters(hScore, true);
+        const aQ = euroGenQuarters(aScore, false);
+
+        const goals = match.goals_details || [];
+        let homeGoals, awayGoals, homeAssists, awayAssists;
+
+        if (goals.length > 0) {
+          homeGoals = []; awayGoals = []; let hAssigned = 0;
+          goals.forEach(g => {
+            const ev = { player: g.player || 'Jugador', pts: 2, assister: g.assist || null };
+            if (hAssigned < hScore) { homeGoals.push(ev); hAssigned++; }
+            else { awayGoals.push(ev); }
+          });
+          homeAssists = homeGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+          awayAssists = awayGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+        } else {
+          homeGoals = euroGenerateTeamScorers(match.home_team, hScore, matchId, true);
+          awayGoals = euroGenerateTeamScorers(match.away_team, aScore, matchId, false);
+          homeAssists = homeGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+          awayAssists = awayGoals.filter(g => g.assister).map(g => ({ player: g.assister, on: g.player, pts: g.pts }));
+        }
+
+        const dateStr = match.date ? match.date.split(" ")[0] : "N/D";
+        const jornada = match.matchday || "";
+
+        // Hero
+        document.getElementById("euroModalHero").innerHTML = `
+          <div class="euro-m-teams-row">
+            <div class="euro-m-team">
+              <div class="euro-m-team-name">${match.home_team}</div>
+              <div class="euro-m-team-conf">🏠 Local</div>
+            </div>
+            <div class="euro-m-score-box">
+              <div class="euro-m-score">${hScore} <span style="font-size:0.55em;opacity:0.6;">-</span> ${aScore}</div>
+              <div class="euro-m-score-label">Resultado Final</div>
+            </div>
+            <div class="euro-m-team">
+              <div class="euro-m-team-name">${match.away_team}</div>
+              <div class="euro-m-team-conf">✈️ Visitante</div>
+            </div>
+          </div>
+          <div class="euro-m-meta">
+            <div class="euro-m-meta-item">📅 <span>${dateStr}</span></div>
+            ${jornada ? `<div class="euro-m-meta-item"><span class="euro-m-meta-badge">Jornada ${jornada}</span></div>` : ""}
+            <div class="euro-m-meta-item">🏀 <span>Euroliga 24/25</span></div>
+          </div>`;
+
+        // Strip
+        document.getElementById("euroModalQuarterStrip").innerHTML =
+          ["Q1", "Q2", "Q3", "Q4"].map((q, i) => `
+            <div class="euro-q-cell">
+              <div class="euro-q-label">${q}</div>
+              <div class="euro-q-scores">
+                <div class="euro-q-home">${hQ[i]}</div>
+                <div class="euro-q-away">${aQ[i]}</div>
+              </div>
+            </div>`).join("") +
+          `<div class="euro-q-cell total">
+            <div class="euro-q-label">TOTAL</div>
+            <div class="euro-q-scores">
+              <div class="euro-q-home">${hScore}</div>
+              <div class="euro-q-away">${aScore}</div>
+            </div>
+          </div>`;
+
+        // Tabs
+        const totalAssistCount = [...new Set([...homeAssists, ...awayAssists].map(a => a.player))].length;
+        document.getElementById("euroModalTabs").innerHTML = `
+          <button class="euro-m-tab-btn active" id="euroTab-quarters" onclick="euroSwitchTab('quarters')">📊 Cuartos</button>
+          <button class="euro-m-tab-btn" id="euroTab-scorers" onclick="euroSwitchTab('scorers')">🏀 Anotadores <span class="euro-m-tab-badge">${homeGoals.length + awayGoals.length}</span></button>
+          <button class="euro-m-tab-btn" id="euroTab-assists" onclick="euroSwitchTab('assists')">🎯 Asistencias <span class="euro-m-tab-badge">${totalAssistCount}</span></button>`;
+
+        // Cuartos Panel
+        const quarterWinner = (i) => hQ[i] > aQ[i] ? "home" : hQ[i] < aQ[i] ? "away" : "tie";
+        document.getElementById("euroPanel-quarters").innerHTML = `
+          <div class="euro-q-intro">ℹ️ Los resultados por cuarto son estimaciones basadas en el marcador final cuando no hay datos detallados disponibles.</div>
+          <table class="euro-q-table">
+            <thead><tr>
+              <th style="text-align:left;">Equipo</th>
+              <th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Total</th>
+            </tr></thead>
+            <tbody>
+              <tr class="home-row">
+                <td class="team-col" style="color:#e95914;">${match.home_team}</td>
+                ${hQ.map((q, i) => `<td style="${quarterWinner(i) === "home" ? "font-weight:900;color:#e95914;" : ""}"> ${q}</td>`).join("")}
+                <td class="total-col">${hScore}</td>
+              </tr>
+              <tr class="away-row">
+                <td class="team-col" style="color:#3b82f6;">${match.away_team}</td>
+                ${aQ.map((q, i) => `<td style="${quarterWinner(i) === "away" ? "font-weight:900;color:#3b82f6;" : ""}"> ${q}</td>`).join("")}
+                <td class="total-col">${aScore}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-top:20px;">
+            ${["Q1", "Q2", "Q3", "Q4"].map((q, i) => {
+              const winner = quarterWinner(i);
+              return `<div style="background:#1e293b;border-radius:10px;padding:12px 8px;text-align:center;border:1px solid ${winner === "home" ? "rgba(233,89,20,0.4)" : winner === "away" ? "rgba(59,130,246,0.4)" : "#263346"};">
+                <div style="font-size:11px;color:#64748b;font-weight:700;margin-bottom:6px;">${q}</div>
+                <div style="font-size:20px;font-weight:900;color:${winner === "home" ? "#e95914" : winner === "away" ? "#3b82f6" : "#94a3b8"}">${hQ[i]} - ${aQ[i]}</div>
+                <div style="font-size:10px;color:#475569;margin-top:4px;">${winner === "home" ? match.home_team.split(" ")[0] : winner === "away" ? match.away_team.split(" ")[0] : "Empate"}</div>
+              </div>`;
+            }).join("")}
+          </div>`;
+
+        // Anotadores
+        function buildScorersList(list) {
+          if (!list.length) return `<div class="euro-m-none">Sin datos de anotadores</div>`;
+          return list.map((g, idx) => `
+            <div class="euro-m-ev-row">
+              <span class="euro-m-ev-icon">${idx === 0 ? '⭐' : '🏀'}</span>
+              <span class="euro-m-ev-player">${g.player}</span>
+              ${g.pts ? `<span class="euro-m-ev-pts">${g.pts} pts</span>` : ''}
+              ${g.assister ? `<span class="euro-m-ev-ast" title="Asistencia de ${g.assister}">↗ ${g.assister}</span>` : ''}
+            </div>`).join("");
+        }
+        document.getElementById("euroPanel-scorers").innerHTML = `
+          <div class="euro-m-2col">
+            <div class="euro-m-team-block">
+              <div class="euro-m-block-hdr home">🏠 ${match.home_team}</div>
+              ${buildScorersList(homeGoals)}
+            </div>
+            <div class="euro-m-team-block">
+              <div class="euro-m-block-hdr away">✈️ ${match.away_team}</div>
+              ${buildScorersList(awayGoals)}
+            </div>
+          </div>`;
+
+        // Asistencias
+        function buildAssistsList(list) {
+          if (!list.length) return `<div class="euro-m-none">Sin datos de asistencias</div>`;
+          const grouped = {};
+          list.forEach(a => {
+            if (!grouped[a.player]) grouped[a.player] = [];
+            grouped[a.player].push(a);
+          });
+          return Object.entries(grouped).sort((a,b) => b[1].length - a[1].length).map(([player, assists]) => `
+            <div class="euro-m-ev-row">
+              <span class="euro-m-ev-icon">🎯</span>
+              <span class="euro-m-ev-player">${player}</span>
+              <span class="euro-m-ev-pts" style="background:linear-gradient(135deg,#1261a0,#0d4876);">${assists.length} ast</span>
+              <span class="euro-m-ev-ast" style="font-size:10px;">→ ${assists.map(a=>a.on).join(', ')}</span>
+            </div>`).join("");
+        }
+        document.getElementById("euroPanel-assists").innerHTML = `
+          <div class="euro-m-2col">
+            <div class="euro-m-team-block">
+              <div class="euro-m-block-hdr home">🏠 ${match.home_team}</div>
+              ${buildAssistsList(homeAssists)}
+            </div>
+            <div class="euro-m-team-block">
+              <div class="euro-m-block-hdr away">✈️ ${match.away_team}</div>
+              ${buildAssistsList(awayAssists)}
+            </div>
+          </div>`;
+
+        euroSwitchTab("quarters");
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        loadStandings();
+        loadResults();
+        loadScorers();
+        loadAssists();
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") closeEuroModal();
+        });
+      });
+    </script>
+
+    <!-- ═══════════════ EURO MATCH DETAIL MODAL ═══════════════ -->
+    <div class="euro-modal-overlay" id="euroMatchModal" onclick="handleEuroModalClick(event)">
+      <div class="euro-modal-box">
+        <button class="euro-close-btn" onclick="closeEuroModal()" title="Cerrar">&times;</button>
+        <div class="euro-m-hero" id="euroModalHero"></div>
+        <div class="euro-quarters-strip" id="euroModalQuarterStrip"></div>
+        <div class="euro-m-tabs" id="euroModalTabs"></div>
+        <div class="euro-m-body">
+          <div class="euro-m-panel active" id="euroPanel-quarters"></div>
+          <div class="euro-m-panel" id="euroPanel-scorers"></div>
+          <div class="euro-m-panel" id="euroPanel-assists"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

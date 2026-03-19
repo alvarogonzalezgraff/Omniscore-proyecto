@@ -1,0 +1,2368 @@
+{
+  "analysis_date": "2026-03-08T11:23:51.491511",
+  "total_matchdays": 23,
+  "matchdays": {
+    "jornada_1": {
+      "matchday": 1,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 547,
+          "teams": "Liverpool vs Bournemouth",
+          "score": "4-2",
+          "events_count": {
+            "goals": 6,
+            "cards": 2,
+            "substitutions": 9,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 548,
+          "teams": "Aston Villa vs Newcastle",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 3,
+            "substitutions": 4,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 549,
+          "teams": "Tottenham vs Burnley",
+          "score": "3-0",
+          "events_count": {
+            "goals": 3,
+            "cards": 0,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 550,
+          "teams": "Brighton vs Fulham",
+          "score": "1-1",
+          "events_count": {
+            "goals": 2,
+            "cards": 6,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 551,
+          "teams": "Sunderland vs West Ham",
+          "score": "3-0",
+          "events_count": {
+            "goals": 3,
+            "cards": 1,
+            "substitutions": 6,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 552,
+          "teams": "Wolves vs Man City",
+          "score": "0-4",
+          "events_count": {
+            "goals": 4,
+            "cards": 1,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 553,
+          "teams": "Nottm Forest vs Brentford",
+          "score": "3-1",
+          "events_count": {
+            "goals": 4,
+            "cards": 0,
+            "substitutions": 7,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 554,
+          "teams": "Chelsea vs Crystal Palace",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 5,
+            "substitutions": 6,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 555,
+          "teams": "Man Utd vs Arsenal",
+          "score": "0-1",
+          "events_count": {
+            "goals": 1,
+            "cards": 5,
+            "substitutions": 9,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 556,
+          "teams": "Leeds United vs Everton",
+          "score": "1-0",
+          "events_count": {
+            "goals": 1,
+            "cards": 2,
+            "substitutions": 6,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        }
+      ],
+      "total_issues": 0
+    },
+    "jornada_2": {
+      "matchday": 2,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 557,
+          "teams": "West Ham vs Chelsea",
+          "score": "1-5",
+          "events_count": {
+            "goals": 6,
+            "cards": 1,
+            "substitutions": 8,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 558,
+          "teams": "Man City vs Tottenham",
+          "score": "0-2",
+          "events_count": {
+            "goals": 2,
+            "cards": 5,
+            "substitutions": 9,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 559,
+          "teams": "Bournemouth vs Wolves",
+          "score": "1-0",
+          "events_count": {
+            "goals": 1,
+            "cards": 1,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 560,
+          "teams": "Brentford vs Aston Villa",
+          "score": "1-0",
+          "events_count": {
+            "goals": 1,
+            "cards": 3,
+            "substitutions": 9,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 561,
+          "teams": "Burnley vs Sunderland",
+          "score": "2-0",
+          "events_count": {
+            "goals": 2,
+            "cards": 1,
+            "substitutions": 8,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 562,
+          "teams": "Arsenal vs Leeds United",
+          "score": "5-0",
+          "events_count": {
+            "goals": 5,
+            "cards": 2,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 563,
+          "teams": "Everton vs Brighton",
+          "score": "2-0",
+          "events_count": {
+            "goals": 2,
+            "cards": 7,
+            "substitutions": 8,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 564,
+          "teams": "Crystal Palace vs Nottm Forest",
+          "score": "1-1",
+          "events_count": {
+            "goals": 2,
+            "cards": 6,
+            "substitutions": 8,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 565,
+          "teams": "Fulham vs Man Utd",
+          "score": "1-1",
+          "events_count": {
+            "goals": 2,
+            "cards": 1,
+            "substitutions": 5,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 566,
+          "teams": "Newcastle vs Liverpool",
+          "score": "2-3",
+          "events_count": {
+            "goals": 5,
+            "cards": 2,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        }
+      ],
+      "total_issues": 0
+    },
+    "jornada_3": {
+      "matchday": 3,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 530,
+          "teams": "West Ham vs Chelsea",
+          "score": "1-5",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-5 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 531,
+          "teams": "Burnley vs Sunderland",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 532,
+          "teams": "Arsenal vs Leeds United",
+          "score": "5-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 5-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 545,
+          "teams": "Man City vs Tottenham",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 533,
+          "teams": "Newcastle vs Liverpool",
+          "score": "2-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-3 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_4": {
+      "matchday": 4,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 525,
+          "teams": "Man Utd vs Burnley",
+          "score": "3-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 526,
+          "teams": "Chelsea vs Fulham",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 527,
+          "teams": "Sunderland vs Brentford",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 528,
+          "teams": "Liverpool vs Arsenal",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 529,
+          "teams": "Brighton vs Man City",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_5": {
+      "matchday": 5,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 521,
+          "teams": "Arsenal vs Nottm Forest",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 522,
+          "teams": "Brentford vs Chelsea",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 523,
+          "teams": "Bournemouth vs Brighton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 544,
+          "teams": "West Ham vs Tottenham",
+          "score": "0-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-3 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 524,
+          "teams": "Man City vs Man Utd",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_6": {
+      "matchday": 6,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 517,
+          "teams": "Liverpool vs Everton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 518,
+          "teams": "Man Utd vs Chelsea",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 519,
+          "teams": "West Ham vs Crystal Palace",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 543,
+          "teams": "Brighton vs Tottenham",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 520,
+          "teams": "Arsenal vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_7": {
+      "matchday": 7,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 512,
+          "teams": "Man City vs Burnley",
+          "score": "5-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 5-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 513,
+          "teams": "Crystal Palace vs Liverpool",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 514,
+          "teams": "Brentford vs Man Utd",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 515,
+          "teams": "Chelsea vs Brighton",
+          "score": "1-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-3 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 516,
+          "teams": "Newcastle vs Arsenal",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_8": {
+      "matchday": 8,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 507,
+          "teams": "Man Utd vs Everton",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 508,
+          "teams": "Chelsea vs Wolves",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 509,
+          "teams": "Arsenal vs Brighton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 510,
+          "teams": "Sunderland vs Man City",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 511,
+          "teams": "Liverpool vs Aston Villa",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_9": {
+      "matchday": 9,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 502,
+          "teams": "Everton vs Man City",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 503,
+          "teams": "Newcastle vs Liverpool",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 504,
+          "teams": "Fulham vs West Ham",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 505,
+          "teams": "Man Utd vs Brentford",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 506,
+          "teams": "Aston Villa vs Arsenal",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_10": {
+      "matchday": 10,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 497,
+          "teams": "Liverpool vs Man Utd",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 498,
+          "teams": "Man City vs Aston Villa",
+          "score": "4-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 4-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 499,
+          "teams": "Chelsea vs Nottm Forest",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 500,
+          "teams": "Arsenal vs Aston Villa",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 501,
+          "teams": "Man City vs West Ham",
+          "score": "4-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 4-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_11": {
+      "matchday": 11,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 492,
+          "teams": "Man Utd vs Nottm Forest",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 493,
+          "teams": "West Ham vs Arsenal",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 494,
+          "teams": "Wolves vs Liverpool",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 495,
+          "teams": "Chelsea vs Fulham",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 496,
+          "teams": "Aston Villa vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_12": {
+      "matchday": 12,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 487,
+          "teams": "Arsenal vs Chelsea",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 488,
+          "teams": "Man City vs Sunderland",
+          "score": "4-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 4-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 489,
+          "teams": "Liverpool vs Nottm Forest",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 490,
+          "teams": "Tottenham vs Aston Villa",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 491,
+          "teams": "Newcastle vs Man Utd",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_13": {
+      "matchday": 13,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 482,
+          "teams": "Everton vs Arsenal",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 483,
+          "teams": "Leeds United vs Liverpool",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 484,
+          "teams": "Chelsea vs Newcastle",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 485,
+          "teams": "Fulham vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 486,
+          "teams": "Man Utd vs Brighton",
+          "score": "3-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_14": {
+      "matchday": 14,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 477,
+          "teams": "Man City vs Nottm Forest",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 478,
+          "teams": "Liverpool vs Bournemouth",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 479,
+          "teams": "Arsenal vs Fulham",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 480,
+          "teams": "Burnley vs Chelsea",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 481,
+          "teams": "Brighton vs Man Utd",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_15": {
+      "matchday": 15,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 472,
+          "teams": "Fulham vs Man City",
+          "score": "4-5",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 4-5 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 473,
+          "teams": "Man City vs Aston Villa",
+          "score": "4-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 4-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 474,
+          "teams": "Liverpool vs Man Utd",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 475,
+          "teams": "Arsenal vs Bournemouth",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 476,
+          "teams": "Tottenham vs Fulham",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_16": {
+      "matchday": 16,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 467,
+          "teams": "Man City vs Newcastle",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 468,
+          "teams": "Everton vs Man Utd",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 469,
+          "teams": "Nottm Forest vs Arsenal",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 470,
+          "teams": "Burnley vs Liverpool",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 471,
+          "teams": "Chelsea vs Sunderland",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_17": {
+      "matchday": 17,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 462,
+          "teams": "Man Utd vs Man City",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 463,
+          "teams": "Liverpool vs West Ham",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 464,
+          "teams": "Arsenal vs Crystal Palace",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 465,
+          "teams": "Sunderland vs Chelsea",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 466,
+          "teams": "Fulham vs Everton",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_18": {
+      "matchday": 18,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 457,
+          "teams": "Aston Villa vs Man Utd",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 458,
+          "teams": "Everton vs Liverpool",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 459,
+          "teams": "Tottenham vs West Ham",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 460,
+          "teams": "Nottm Forest vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 461,
+          "teams": "Wolves vs Arsenal",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 5
+    },
+    "jornada_19": {
+      "matchday": 19,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 447,
+          "teams": "Man Utd vs Newcastle",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 448,
+          "teams": "Nottm Forest vs Man City",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 449,
+          "teams": "Arsenal vs Brighton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 450,
+          "teams": "Brentford vs Bournemouth",
+          "score": "4-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 4-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 451,
+          "teams": "Burnley vs Everton",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 452,
+          "teams": "Liverpool vs Wolves",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 453,
+          "teams": "West Ham vs Fulham",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 454,
+          "teams": "Chelsea vs Aston Villa",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 455,
+          "teams": "Sunderland vs Leeds United",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 456,
+          "teams": "Crystal Palace vs Tottenham",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 9
+    },
+    "jornada_20": {
+      "matchday": 20,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 443,
+          "teams": "Crystal Palace vs Fulham",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 444,
+          "teams": "Liverpool vs Leeds United",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 445,
+          "teams": "Brentford vs Tottenham",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 446,
+          "teams": "Sunderland vs Man City",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 437,
+          "teams": "Burnley vs Newcastle",
+          "score": "1-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-3 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 438,
+          "teams": "Chelsea vs Bournemouth",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 439,
+          "teams": "Nottm Forest vs Everton",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 440,
+          "teams": "West Ham vs Brighton",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 441,
+          "teams": "Arsenal vs Aston Villa",
+          "score": "4-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 4-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 442,
+          "teams": "Man Utd vs Wolves",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 7
+    },
+    "jornada_21": {
+      "matchday": 21,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 427,
+          "teams": "West Ham vs Nottm Forest",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 428,
+          "teams": "Bournemouth vs Tottenham",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 429,
+          "teams": "Sunderland vs Brentford",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 430,
+          "teams": "Crystal Palace vs Aston Villa",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 431,
+          "teams": "Everton vs Wolves",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 432,
+          "teams": "Fulham vs Chelsea",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 433,
+          "teams": "Man City vs Brighton",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 434,
+          "teams": "Burnley vs Man Utd",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 435,
+          "teams": "Newcastle vs Leeds United",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0
+        },
+        {
+          "match_id": 436,
+          "teams": "Arsenal vs Liverpool",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 7
+    },
+    "jornada_22": {
+      "matchday": 22,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 417,
+          "teams": "Aston Villa vs Nottm Forest",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 418,
+          "teams": "Man Utd vs Liverpool",
+          "score": "3-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 419,
+          "teams": "Tottenham vs West Ham",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 420,
+          "teams": "Bournemouth vs Arsenal",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 421,
+          "teams": "Leeds United vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 422,
+          "teams": "Everton vs Brentford",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 423,
+          "teams": "Newcastle vs Crystal Palace",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 424,
+          "teams": "Wolves vs Sunderland",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 425,
+          "teams": "Fulham vs Burnley",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 426,
+          "teams": "Brighton vs Chelsea",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 10
+    },
+    "jornada_23": {
+      "matchday": 23,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 407,
+          "teams": "Arsenal vs Man Utd",
+          "score": "2-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-3 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 408,
+          "teams": "West Ham vs Sunderland",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 409,
+          "teams": "Man City vs Wolves",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-0 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 410,
+          "teams": "Fulham vs Brighton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 411,
+          "teams": "Burnley vs Tottenham",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 2-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 412,
+          "teams": "Bournemouth vs Liverpool",
+          "score": "3-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 3-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 413,
+          "teams": "Crystal Palace vs Chelsea",
+          "score": "1-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-3 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 414,
+          "teams": "Brentford vs Nottm Forest",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 415,
+          "teams": "Newcastle vs Aston Villa",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 0-2 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        },
+        {
+          "match_id": 416,
+          "teams": "Everton vs Leeds United",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: Marcador 1-1 pero 0 goles registrados"
+          ],
+          "issues_count": 1
+        }
+      ],
+      "total_issues": 10
+    }
+  },
+  "summary": {
+    "total_matches": 150,
+    "total_issues": 123,
+    "problematic_matches": 123
+  }
+}

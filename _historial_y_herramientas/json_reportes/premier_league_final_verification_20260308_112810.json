@@ -1,0 +1,6606 @@
+{
+  "analysis_date": "2026-03-08T11:28:03.242330",
+  "overview": {
+    "total_matchdays": 23,
+    "total_matches": 150,
+    "finished_matches": 150,
+    "total_goals_scored": 401,
+    "total_goals_detailed": 52
+  },
+  "total_matchdays": 23,
+  "matchdays": {
+    "jornada_1": {
+      "matchday": 1,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 547,
+          "teams": "Liverpool vs Bournemouth",
+          "score": "4-2",
+          "events_count": {
+            "goals": 6,
+            "cards": 2,
+            "substitutions": 9,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2165,
+                "match_id": 547,
+                "team_id": 102,
+                "player_name": "Hugo Ekitike",
+                "minute": 36,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2166,
+                "match_id": 547,
+                "team_id": 102,
+                "player_name": "Gakpo",
+                "minute": 48,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2167,
+                "match_id": 547,
+                "team_id": 96,
+                "player_name": "Antoine Semenyo",
+                "minute": 63,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2168,
+                "match_id": 547,
+                "team_id": 96,
+                "player_name": "Antoine Semenyo",
+                "minute": 75,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2169,
+                "match_id": 547,
+                "team_id": 102,
+                "player_name": "Federico Chiesa",
+                "minute": 87,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2170,
+                "match_id": 547,
+                "team_id": 102,
+                "player_name": "Salah",
+                "minute": 93,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1783,
+                "match_id": 547,
+                "team_id": 96,
+                "player_name": "David Brooks",
+                "minute": 14,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1782,
+                "match_id": 547,
+                "team_id": 102,
+                "player_name": "Milos Kerkez",
+                "minute": 43,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3097,
+                "match_id": 547,
+                "team_id": 102,
+                "player_in": "Andrew Robertson",
+                "player_out": "Milos Kerkez",
+                "minute": 60
+              },
+              {
+                "id": 3098,
+                "match_id": 547,
+                "team_id": 102,
+                "player_in": "Wataru Endo",
+                "player_out": "Jeremie Frimpong",
+                "minute": 60
+              },
+              {
+                "id": 3099,
+                "match_id": 547,
+                "team_id": 102,
+                "player_in": "Joe Gomez",
+                "player_out": "Hugo Ekitike",
+                "minute": 72
+              },
+              {
+                "id": 3100,
+                "match_id": 547,
+                "team_id": 102,
+                "player_in": "Curtis Jones",
+                "player_out": "Alexis Mac Allister",
+                "minute": 72
+              },
+              {
+                "id": 3102,
+                "match_id": 547,
+                "team_id": 96,
+                "player_in": "Hamed Junior Traore",
+                "player_out": "Alex Scott",
+                "minute": 74
+              },
+              {
+                "id": 3101,
+                "match_id": 547,
+                "team_id": 102,
+                "player_in": "Federico Chiesa",
+                "player_out": "Florian Wirtz",
+                "minute": 82
+              },
+              {
+                "id": 3103,
+                "match_id": 547,
+                "team_id": 96,
+                "player_in": "Ben Winterburn",
+                "player_out": "David Brooks",
+                "minute": 84
+              },
+              {
+                "id": 3104,
+                "match_id": 547,
+                "team_id": 96,
+                "player_in": "James Hill",
+                "player_out": "Adam Smith",
+                "minute": 90
+              },
+              {
+                "id": 3105,
+                "match_id": 547,
+                "team_id": 96,
+                "player_in": "Eli Kroupi",
+                "player_out": "Tyler Adams",
+                "minute": 91
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 548,
+          "teams": "Aston Villa vs Newcastle",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 3,
+            "substitutions": 4,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [
+              {
+                "id": 1784,
+                "match_id": 548,
+                "team_id": 90,
+                "player_name": "Joelinton",
+                "minute": 45,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1785,
+                "match_id": 548,
+                "team_id": 86,
+                "player_name": "Boubacar Kamara",
+                "minute": 58,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1786,
+                "match_id": 548,
+                "team_id": 86,
+                "player_name": "Ezri Konsa",
+                "minute": 66,
+                "card_type": "Roja",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3107,
+                "match_id": 548,
+                "team_id": 90,
+                "player_in": "Jacob Murphy",
+                "player_out": "Anthony Gordon",
+                "minute": 78
+              },
+              {
+                "id": 3108,
+                "match_id": 548,
+                "team_id": 90,
+                "player_in": "Lewis Miley",
+                "player_out": "Joelinton",
+                "minute": 83
+              },
+              {
+                "id": 3106,
+                "match_id": 548,
+                "team_id": 86,
+                "player_in": "Donyell Malen",
+                "player_out": "John McGinn",
+                "minute": 84
+              },
+              {
+                "id": 3109,
+                "match_id": 548,
+                "team_id": 90,
+                "player_in": "William Osula",
+                "player_out": "Harvey Barnes",
+                "minute": 90
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 549,
+          "teams": "Tottenham vs Burnley",
+          "score": "3-0",
+          "events_count": {
+            "goals": 3,
+            "cards": 0,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2171,
+                "match_id": 549,
+                "team_id": 98,
+                "player_name": "Richarlison",
+                "minute": 9,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2172,
+                "match_id": 549,
+                "team_id": 98,
+                "player_name": "Richarlison",
+                "minute": 59,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2173,
+                "match_id": 549,
+                "team_id": 98,
+                "player_name": "Brennan Johnson",
+                "minute": 65,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [],
+            "substitutions": [
+              {
+                "id": 3115,
+                "match_id": 549,
+                "team_id": 99,
+                "player_in": "Jacob Bruun Larsen",
+                "player_out": "Hannibal",
+                "minute": 63
+              },
+              {
+                "id": 3116,
+                "match_id": 549,
+                "team_id": 99,
+                "player_in": "Lesley Ugochukwu",
+                "player_out": "Josh Laurent",
+                "minute": 63
+              },
+              {
+                "id": 3110,
+                "match_id": 549,
+                "team_id": 98,
+                "player_in": "Rodrigo Bentancur",
+                "player_out": "Archie Gray",
+                "minute": 71
+              },
+              {
+                "id": 3111,
+                "match_id": 549,
+                "team_id": 98,
+                "player_in": "Dominic Solanke",
+                "player_out": "Richarlison",
+                "minute": 72
+              },
+              {
+                "id": 3117,
+                "match_id": 549,
+                "team_id": 99,
+                "player_in": "Zian Flemming",
+                "player_out": "Lyle Foster",
+                "minute": 74
+              },
+              {
+                "id": 3118,
+                "match_id": 549,
+                "team_id": 99,
+                "player_in": "Loum Tchaouna",
+                "player_out": "Oliver Sonne",
+                "minute": 74
+              },
+              {
+                "id": 3112,
+                "match_id": 549,
+                "team_id": 98,
+                "player_in": "Wilson Odobert",
+                "player_out": "Brennan Johnson",
+                "minute": 80
+              },
+              {
+                "id": 3113,
+                "match_id": 549,
+                "team_id": 98,
+                "player_in": "Joao Palhinha",
+                "player_out": "Lucas Bergvall",
+                "minute": 80
+              },
+              {
+                "id": 3114,
+                "match_id": 549,
+                "team_id": 98,
+                "player_in": "Mathys Tel",
+                "player_out": "Mohammed Kudus",
+                "minute": 85
+              },
+              {
+                "id": 3119,
+                "match_id": 549,
+                "team_id": 99,
+                "player_in": "Marcus Edwards",
+                "player_out": "Jaidon Anthony",
+                "minute": 85
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 550,
+          "teams": "Brighton vs Fulham",
+          "score": "1-1",
+          "events_count": {
+            "goals": 2,
+            "cards": 6,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2174,
+                "match_id": 550,
+                "team_id": 91,
+                "player_name": "Matt O'Riley",
+                "minute": 55,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 1
+              },
+              {
+                "id": 2175,
+                "match_id": 550,
+                "team_id": 94,
+                "player_name": "Rodrigo Muniz",
+                "minute": 97,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1787,
+                "match_id": 550,
+                "team_id": 94,
+                "player_name": "Calvin Bassey",
+                "minute": 31,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1788,
+                "match_id": 550,
+                "team_id": 91,
+                "player_name": "Kaoru Mitoma",
+                "minute": 60,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1789,
+                "match_id": 550,
+                "team_id": 91,
+                "player_name": "Ferdi Kadioglu",
+                "minute": 73,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1790,
+                "match_id": 550,
+                "team_id": 91,
+                "player_name": "Diego Gomez",
+                "minute": 78,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1791,
+                "match_id": 550,
+                "team_id": 94,
+                "player_name": "Tom Cairney",
+                "minute": 93,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1792,
+                "match_id": 550,
+                "team_id": 94,
+                "player_name": "Rodrigo Muniz",
+                "minute": 98,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3120,
+                "match_id": 550,
+                "team_id": 91,
+                "player_in": "Danny Welbeck",
+                "player_out": "Georginio Rutter",
+                "minute": 67
+              },
+              {
+                "id": 3121,
+                "match_id": 550,
+                "team_id": 91,
+                "player_in": "Diego Gomez",
+                "player_out": "Carlos Baleba",
+                "minute": 67
+              },
+              {
+                "id": 3125,
+                "match_id": 550,
+                "team_id": 94,
+                "player_in": "Adama Traore",
+                "player_out": "Alex Iwobi",
+                "minute": 70
+              },
+              {
+                "id": 3126,
+                "match_id": 550,
+                "team_id": 94,
+                "player_in": "Rodrigo Muniz",
+                "player_out": "Raul Jimenez",
+                "minute": 70
+              },
+              {
+                "id": 3122,
+                "match_id": 550,
+                "team_id": 91,
+                "player_in": "Ferdi Kadioglu",
+                "player_out": "Yankuba Minteh",
+                "minute": 72
+              },
+              {
+                "id": 3123,
+                "match_id": 550,
+                "team_id": 91,
+                "player_in": "Brajan Gruda",
+                "player_out": "Kaoru Mitoma",
+                "minute": 80
+              },
+              {
+                "id": 3127,
+                "match_id": 550,
+                "team_id": 94,
+                "player_in": "Tom Cairney",
+                "player_out": "Sander Berge",
+                "minute": 80
+              },
+              {
+                "id": 3128,
+                "match_id": 550,
+                "team_id": 94,
+                "player_in": "Timothy Castagne",
+                "player_out": "Jorge Cuenca",
+                "minute": 80
+              },
+              {
+                "id": 3124,
+                "match_id": 550,
+                "team_id": 91,
+                "player_in": "James Milner",
+                "player_out": "Matt O'Riley",
+                "minute": 85
+              },
+              {
+                "id": 3129,
+                "match_id": 550,
+                "team_id": 94,
+                "player_in": "Emile Smith Rowe",
+                "player_out": "Josh King",
+                "minute": 85
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 551,
+          "teams": "Sunderland vs West Ham",
+          "score": "3-0",
+          "events_count": {
+            "goals": 3,
+            "cards": 1,
+            "substitutions": 6,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2176,
+                "match_id": 551,
+                "team_id": 93,
+                "player_name": "Eliezer Mayenda",
+                "minute": 61,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2177,
+                "match_id": 551,
+                "team_id": 93,
+                "player_name": "Dan Ballard",
+                "minute": 73,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2178,
+                "match_id": 551,
+                "team_id": 93,
+                "player_name": "Wilson Isidor",
+                "minute": 92,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1793,
+                "match_id": 551,
+                "team_id": 97,
+                "player_name": "Max Kilman",
+                "minute": 70,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3130,
+                "match_id": 551,
+                "team_id": 93,
+                "player_in": "Omar Alderete",
+                "player_out": "Nectar Triantis",
+                "minute": 53
+              },
+              {
+                "id": 3133,
+                "match_id": 551,
+                "team_id": 97,
+                "player_in": "Tomas Soucek",
+                "player_out": "Carlos Soler",
+                "minute": 71
+              },
+              {
+                "id": 3134,
+                "match_id": 551,
+                "team_id": 97,
+                "player_in": "Callum Wilson",
+                "player_out": "Michail Antonio",
+                "minute": 71
+              },
+              {
+                "id": 3131,
+                "match_id": 551,
+                "team_id": 93,
+                "player_in": "Wilson Isidor",
+                "player_out": "Eliezer Mayenda",
+                "minute": 76
+              },
+              {
+                "id": 3132,
+                "match_id": 551,
+                "team_id": 93,
+                "player_in": "Enzo Le Fee",
+                "player_out": "Habib Diarra",
+                "minute": 76
+              },
+              {
+                "id": 3135,
+                "match_id": 551,
+                "team_id": 97,
+                "player_in": "Andy Irving",
+                "player_out": "Edson Alvarez",
+                "minute": 82
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 552,
+          "teams": "Wolves vs Man City",
+          "score": "0-4",
+          "events_count": {
+            "goals": 4,
+            "cards": 1,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2179,
+                "match_id": 552,
+                "team_id": 89,
+                "player_name": "Erling Haaland",
+                "minute": 34,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2180,
+                "match_id": 552,
+                "team_id": 89,
+                "player_name": "Tijjani Reijnders",
+                "minute": 37,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2181,
+                "match_id": 552,
+                "team_id": 89,
+                "player_name": "Erling Haaland",
+                "minute": 61,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2182,
+                "match_id": 552,
+                "team_id": 89,
+                "player_name": "Rayan Cherki",
+                "minute": 81,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1794,
+                "match_id": 552,
+                "team_id": 87,
+                "player_name": "Matt Doherty",
+                "minute": 67,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3141,
+                "match_id": 552,
+                "team_id": 89,
+                "player_in": "Matheus Nunes",
+                "player_out": "Rico Lewis",
+                "minute": 65
+              },
+              {
+                "id": 3142,
+                "match_id": 552,
+                "team_id": 89,
+                "player_in": "Omar Marmoush",
+                "player_out": "Jeremy Doku",
+                "minute": 66
+              },
+              {
+                "id": 3143,
+                "match_id": 552,
+                "team_id": 89,
+                "player_in": "Nico O'Reilly",
+                "player_out": "Bernardo Silva",
+                "minute": 66
+              },
+              {
+                "id": 3136,
+                "match_id": 552,
+                "team_id": 87,
+                "player_in": "Hugo Bueno",
+                "player_out": "David Moller Wolfe",
+                "minute": 72
+              },
+              {
+                "id": 3137,
+                "match_id": 552,
+                "team_id": 87,
+                "player_in": "Fer Lopez",
+                "player_out": "Andre",
+                "minute": 72
+              },
+              {
+                "id": 3138,
+                "match_id": 552,
+                "team_id": 87,
+                "player_in": "Jhon Arias",
+                "player_out": "Jean-Ricner Bellegarde",
+                "minute": 73
+              },
+              {
+                "id": 3139,
+                "match_id": 552,
+                "team_id": 87,
+                "player_in": "Rodrigo Gomes",
+                "player_out": "Ki-Jana Hoever",
+                "minute": 73
+              },
+              {
+                "id": 3144,
+                "match_id": 552,
+                "team_id": 89,
+                "player_in": "Rayan Cherki",
+                "player_out": "Erling Haaland",
+                "minute": 74
+              },
+              {
+                "id": 3140,
+                "match_id": 552,
+                "team_id": 87,
+                "player_in": "Hwang Hee-chan",
+                "player_out": "Jorgen Strand Larsen",
+                "minute": 82
+              },
+              {
+                "id": 3145,
+                "match_id": 552,
+                "team_id": 89,
+                "player_in": "Abduqodir Khusanov",
+                "player_out": "John Stones",
+                "minute": 82
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 553,
+          "teams": "Nottm Forest vs Brentford",
+          "score": "3-1",
+          "events_count": {
+            "goals": 4,
+            "cards": 0,
+            "substitutions": 7,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2183,
+                "match_id": 553,
+                "team_id": 95,
+                "player_name": "Chris Wood",
+                "minute": 5,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2184,
+                "match_id": 553,
+                "team_id": 95,
+                "player_name": "Dan Ndoye",
+                "minute": 42,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2185,
+                "match_id": 553,
+                "team_id": 95,
+                "player_name": "Chris Wood",
+                "minute": 45,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2186,
+                "match_id": 553,
+                "team_id": 92,
+                "player_name": "Igor Thiago",
+                "minute": 78,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 1
+              }
+            ],
+            "cards": [],
+            "substitutions": [
+              {
+                "id": 3149,
+                "match_id": 553,
+                "team_id": 92,
+                "player_in": "Kevin Schade",
+                "player_out": "Antoni Milambo",
+                "minute": 46
+              },
+              {
+                "id": 3150,
+                "match_id": 553,
+                "team_id": 92,
+                "player_in": "Jordan Henderson",
+                "player_out": "Mathias Jensen",
+                "minute": 68
+              },
+              {
+                "id": 3151,
+                "match_id": 553,
+                "team_id": 92,
+                "player_in": "Frank Onyeka",
+                "player_out": "Keane Lewis-Potter",
+                "minute": 68
+              },
+              {
+                "id": 3146,
+                "match_id": 553,
+                "team_id": 95,
+                "player_in": "Jota",
+                "player_out": "Dan Ndoye",
+                "minute": 79
+              },
+              {
+                "id": 3147,
+                "match_id": 553,
+                "team_id": 95,
+                "player_in": "Igor Jesus",
+                "player_out": "Chris Wood",
+                "minute": 79
+              },
+              {
+                "id": 3148,
+                "match_id": 553,
+                "team_id": 95,
+                "player_in": "Harry Yates",
+                "player_out": "Morgan Gibbs-White",
+                "minute": 84
+              },
+              {
+                "id": 3152,
+                "match_id": 553,
+                "team_id": 92,
+                "player_in": "Rico Henry",
+                "player_out": "Aaron Hickey",
+                "minute": 88
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 554,
+          "teams": "Chelsea vs Crystal Palace",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 5,
+            "substitutions": 6,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [
+              {
+                "id": 1795,
+                "match_id": 554,
+                "team_id": 101,
+                "player_name": "Reece James",
+                "minute": 24,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1796,
+                "match_id": 554,
+                "team_id": 88,
+                "player_name": "Daniel Munoz",
+                "minute": 28,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1797,
+                "match_id": 554,
+                "team_id": 88,
+                "player_name": "Jean-Philippe Mateta",
+                "minute": 33,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1798,
+                "match_id": 554,
+                "team_id": 88,
+                "player_name": "Will Hughes",
+                "minute": 49,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1799,
+                "match_id": 554,
+                "team_id": 101,
+                "player_name": "Estevao",
+                "minute": 73,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3153,
+                "match_id": 554,
+                "team_id": 101,
+                "player_in": "Estevao",
+                "player_out": "Jamie Gittens",
+                "minute": 54
+              },
+              {
+                "id": 3157,
+                "match_id": 554,
+                "team_id": 88,
+                "player_in": "Jefferson Lerma",
+                "player_out": "Will Hughes",
+                "minute": 70
+              },
+              {
+                "id": 3154,
+                "match_id": 554,
+                "team_id": 101,
+                "player_in": "Liam Delap",
+                "player_out": "Joao Pedro",
+                "minute": 73
+              },
+              {
+                "id": 3155,
+                "match_id": 554,
+                "team_id": 101,
+                "player_in": "Malo Gusto",
+                "player_out": "Reece James",
+                "minute": 79
+              },
+              {
+                "id": 3156,
+                "match_id": 554,
+                "team_id": 101,
+                "player_in": "Andrey Santos",
+                "player_out": "Enzo Fernandez",
+                "minute": 79
+              },
+              {
+                "id": 3158,
+                "match_id": 554,
+                "team_id": 88,
+                "player_in": "Justin Devenny",
+                "player_out": "Eberechi Eze",
+                "minute": 84
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 555,
+          "teams": "Man Utd vs Arsenal",
+          "score": "0-1",
+          "events_count": {
+            "goals": 1,
+            "cards": 5,
+            "substitutions": 9,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2187,
+                "match_id": 555,
+                "team_id": 100,
+                "player_name": "Riccardo Calafiori",
+                "minute": 13,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1800,
+                "match_id": 555,
+                "team_id": 100,
+                "player_name": "Riccardo Calafiori",
+                "minute": 42,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1801,
+                "match_id": 555,
+                "team_id": 83,
+                "player_name": "Patrick Dorgu",
+                "minute": 85,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1802,
+                "match_id": 555,
+                "team_id": 100,
+                "player_name": "David Raya",
+                "minute": 85,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1803,
+                "match_id": 555,
+                "team_id": 100,
+                "player_name": "Jurrien Timber",
+                "minute": 91,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1804,
+                "match_id": 555,
+                "team_id": 100,
+                "player_name": "Myles Lewis-Skelly",
+                "minute": 93,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3159,
+                "match_id": 555,
+                "team_id": 83,
+                "player_in": "Amad Diallo",
+                "player_out": "Diogo Dalot",
+                "minute": 55
+              },
+              {
+                "id": 3163,
+                "match_id": 555,
+                "team_id": 100,
+                "player_in": "Kai Havertz",
+                "player_out": "Viktor Gyokeres",
+                "minute": 60
+              },
+              {
+                "id": 3164,
+                "match_id": 555,
+                "team_id": 100,
+                "player_in": "Noni Madueke",
+                "player_out": "Gabriel Martinelli",
+                "minute": 60
+              },
+              {
+                "id": 3160,
+                "match_id": 555,
+                "team_id": 83,
+                "player_in": "Manuel Ugarte",
+                "player_out": "Casemiro",
+                "minute": 65
+              },
+              {
+                "id": 3165,
+                "match_id": 555,
+                "team_id": 100,
+                "player_in": "Jurrien Timber",
+                "player_out": "Ben White",
+                "minute": 71
+              },
+              {
+                "id": 3166,
+                "match_id": 555,
+                "team_id": 100,
+                "player_in": "Myles Lewis-Skelly",
+                "player_out": "Martin Odegaard",
+                "minute": 72
+              },
+              {
+                "id": 3161,
+                "match_id": 555,
+                "team_id": 83,
+                "player_in": "Benjamin Sesko",
+                "player_out": "Patrick Dorgu",
+                "minute": 80
+              },
+              {
+                "id": 3162,
+                "match_id": 555,
+                "team_id": 83,
+                "player_in": "Harry Maguire",
+                "player_out": "Luke Shaw",
+                "minute": 80
+              },
+              {
+                "id": 3167,
+                "match_id": 555,
+                "team_id": 100,
+                "player_in": "Mikel Merino",
+                "player_out": "Declan Rice",
+                "minute": 83
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 556,
+          "teams": "Leeds United vs Everton",
+          "score": "1-0",
+          "events_count": {
+            "goals": 1,
+            "cards": 2,
+            "substitutions": 6,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2188,
+                "match_id": 556,
+                "team_id": 85,
+                "player_name": "Lukas Nmecha",
+                "minute": 84,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 1
+              }
+            ],
+            "cards": [
+              {
+                "id": 1805,
+                "match_id": 556,
+                "team_id": 84,
+                "player_name": "Tim Iroegbunam",
+                "minute": 56,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1806,
+                "match_id": 556,
+                "team_id": 84,
+                "player_name": "Carlos Alcaraz",
+                "minute": 63,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3168,
+                "match_id": 556,
+                "team_id": 85,
+                "player_in": "Brenden Aaronson",
+                "player_out": "Wilfried Gnonto",
+                "minute": 67
+              },
+              {
+                "id": 3172,
+                "match_id": 556,
+                "team_id": 84,
+                "player_in": "Jack Grealish",
+                "player_out": "Tim Iroegbunam",
+                "minute": 71
+              },
+              {
+                "id": 3169,
+                "match_id": 556,
+                "team_id": 85,
+                "player_in": "Ilia Gruev",
+                "player_out": "Joel Piroe",
+                "minute": 78
+              },
+              {
+                "id": 3170,
+                "match_id": 556,
+                "team_id": 85,
+                "player_in": "Jack Harrison",
+                "player_out": "Dan James",
+                "minute": 78
+              },
+              {
+                "id": 3173,
+                "match_id": 556,
+                "team_id": 84,
+                "player_in": "Tom Barry",
+                "player_out": "Carlos Alcaraz",
+                "minute": 86
+              },
+              {
+                "id": 3171,
+                "match_id": 556,
+                "team_id": 85,
+                "player_in": "Sean Longstaff",
+                "player_out": "Ao Tanaka",
+                "minute": 94
+              }
+            ],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 0,
+        "goal_inconsistencies": 0,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_2": {
+      "matchday": 2,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 557,
+          "teams": "West Ham vs Chelsea",
+          "score": "1-5",
+          "events_count": {
+            "goals": 6,
+            "cards": 1,
+            "substitutions": 8,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2189,
+                "match_id": 557,
+                "team_id": 97,
+                "player_name": "Lucas Paqueta",
+                "minute": 6,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2190,
+                "match_id": 557,
+                "team_id": 101,
+                "player_name": "Joao Pedro",
+                "minute": 15,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2191,
+                "match_id": 557,
+                "team_id": 101,
+                "player_name": "Pedro Neto",
+                "minute": 23,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2192,
+                "match_id": 557,
+                "team_id": 101,
+                "player_name": "Enzo Fernandez",
+                "minute": 34,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2193,
+                "match_id": 557,
+                "team_id": 101,
+                "player_name": "Moises Caicedo",
+                "minute": 54,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2194,
+                "match_id": 557,
+                "team_id": 101,
+                "player_name": "Trevoh Chalobah",
+                "minute": 58,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1807,
+                "match_id": 557,
+                "team_id": 101,
+                "player_name": "Jorrel Hato",
+                "minute": 86,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3174,
+                "match_id": 557,
+                "team_id": 97,
+                "player_in": "Freddie Potts",
+                "player_out": "Jean-Clair Todibo",
+                "minute": 46
+              },
+              {
+                "id": 3175,
+                "match_id": 557,
+                "team_id": 97,
+                "player_in": "Callum Wilson",
+                "player_out": "Niclas Fullkrug",
+                "minute": 46
+              },
+              {
+                "id": 3177,
+                "match_id": 557,
+                "team_id": 101,
+                "player_in": "Andrey Santos",
+                "player_out": "Liam Delap",
+                "minute": 62
+              },
+              {
+                "id": 3178,
+                "match_id": 557,
+                "team_id": 101,
+                "player_in": "Wesley Fofana",
+                "player_out": "Trevoh Chalobah",
+                "minute": 69
+              },
+              {
+                "id": 3179,
+                "match_id": 557,
+                "team_id": 101,
+                "player_in": "Jorrel Hato",
+                "player_out": "Marc Cucurella",
+                "minute": 69
+              },
+              {
+                "id": 3180,
+                "match_id": 557,
+                "team_id": 101,
+                "player_in": "Reece James",
+                "player_out": "Malo Gusto",
+                "minute": 69
+              },
+              {
+                "id": 3176,
+                "match_id": 557,
+                "team_id": 97,
+                "player_in": "Kyle Walker-Peters",
+                "player_out": "Tomas Soucek",
+                "minute": 70
+              },
+              {
+                "id": 3181,
+                "match_id": 557,
+                "team_id": 101,
+                "player_in": "Jamie Gittens",
+                "player_out": "Estevao",
+                "minute": 77
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 558,
+          "teams": "Man City vs Tottenham",
+          "score": "0-2",
+          "events_count": {
+            "goals": 2,
+            "cards": 5,
+            "substitutions": 9,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2195,
+                "match_id": 558,
+                "team_id": 98,
+                "player_name": "Brennan Johnson",
+                "minute": 55,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2196,
+                "match_id": 558,
+                "team_id": 98,
+                "player_name": "Joao Palhinha",
+                "minute": 91,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1808,
+                "match_id": 558,
+                "team_id": 89,
+                "player_name": "Nico Gonzalez",
+                "minute": 40,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1809,
+                "match_id": 558,
+                "team_id": 98,
+                "player_name": "Brennan Johnson",
+                "minute": 70,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1810,
+                "match_id": 558,
+                "team_id": 98,
+                "player_name": "Cristian Romero",
+                "minute": 75,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1811,
+                "match_id": 558,
+                "team_id": 98,
+                "player_name": "Richarlison",
+                "minute": 82,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1812,
+                "match_id": 558,
+                "team_id": 98,
+                "player_name": "Pedro Porro",
+                "minute": 88,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3182,
+                "match_id": 558,
+                "team_id": 89,
+                "player_in": "Nathan Ake",
+                "player_out": "Rayan Ait-Nouri",
+                "minute": 23
+              },
+              {
+                "id": 3183,
+                "match_id": 558,
+                "team_id": 89,
+                "player_in": "Rayan Cherki",
+                "player_out": "Bernardo Silva",
+                "minute": 54
+              },
+              {
+                "id": 3184,
+                "match_id": 558,
+                "team_id": 89,
+                "player_in": "Omar Marmoush",
+                "player_out": "Jeremy Doku",
+                "minute": 54
+              },
+              {
+                "id": 3185,
+                "match_id": 558,
+                "team_id": 89,
+                "player_in": "Phil Foden",
+                "player_out": "Oscar Bobb",
+                "minute": 75
+              },
+              {
+                "id": 3186,
+                "match_id": 558,
+                "team_id": 89,
+                "player_in": "Rodri",
+                "player_out": "Nico Gonzalez",
+                "minute": 75
+              },
+              {
+                "id": 3187,
+                "match_id": 558,
+                "team_id": 98,
+                "player_in": "Richarlison",
+                "player_out": "Dominic Solanke",
+                "minute": 78
+              },
+              {
+                "id": 3188,
+                "match_id": 558,
+                "team_id": 98,
+                "player_in": "Brennan Johnson",
+                "player_out": "Wilson Odobert",
+                "minute": 78
+              },
+              {
+                "id": 3189,
+                "match_id": 558,
+                "team_id": 98,
+                "player_in": "Lucas Bergvall",
+                "player_out": "Mohammed Kudus",
+                "minute": 86
+              },
+              {
+                "id": 3190,
+                "match_id": 558,
+                "team_id": 98,
+                "player_in": "Joao Palhinha",
+                "player_out": "Kevin Danso",
+                "minute": 91
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 559,
+          "teams": "Bournemouth vs Wolves",
+          "score": "1-0",
+          "events_count": {
+            "goals": 1,
+            "cards": 1,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2197,
+                "match_id": 559,
+                "team_id": 96,
+                "player_name": "Marcus Tavernier",
+                "minute": 4,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1813,
+                "match_id": 559,
+                "team_id": 87,
+                "player_name": "Toti Gomes",
+                "minute": 49,
+                "card_type": "Roja",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3191,
+                "match_id": 559,
+                "team_id": 87,
+                "player_in": "Jackson Tchatchoua",
+                "player_out": "Ki-Jana Hoever",
+                "minute": 35
+              },
+              {
+                "id": 3192,
+                "match_id": 559,
+                "team_id": 87,
+                "player_in": "Andre",
+                "player_out": "Jean-Ricner Bellegarde",
+                "minute": 46
+              },
+              {
+                "id": 3193,
+                "match_id": 559,
+                "team_id": 87,
+                "player_in": "Hugo Bueno",
+                "player_out": "David Moller Wolfe",
+                "minute": 46
+              },
+              {
+                "id": 3194,
+                "match_id": 559,
+                "team_id": 87,
+                "player_in": "Santiago Bueno",
+                "player_out": "Jhon Arias",
+                "minute": 56
+              },
+              {
+                "id": 3196,
+                "match_id": 559,
+                "team_id": 96,
+                "player_in": "Ryan Christie",
+                "player_out": "Alex Scott",
+                "minute": 66
+              },
+              {
+                "id": 3197,
+                "match_id": 559,
+                "team_id": 96,
+                "player_in": "Amine Adli",
+                "player_out": "David Brooks",
+                "minute": 66
+              },
+              {
+                "id": 3195,
+                "match_id": 559,
+                "team_id": 87,
+                "player_in": "Hwang Hee-chan",
+                "player_out": "Jorgen Strand Larsen",
+                "minute": 78
+              },
+              {
+                "id": 3198,
+                "match_id": 559,
+                "team_id": 96,
+                "player_in": "Justin Kluivert",
+                "player_out": "Marcus Tavernier",
+                "minute": 78
+              },
+              {
+                "id": 3199,
+                "match_id": 559,
+                "team_id": 96,
+                "player_in": "James Hill",
+                "player_out": "Tyler Adams",
+                "minute": 88
+              },
+              {
+                "id": 3200,
+                "match_id": 559,
+                "team_id": 96,
+                "player_in": "Warren Kroupi Jr.",
+                "player_out": "Evanilson",
+                "minute": 88
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 560,
+          "teams": "Brentford vs Aston Villa",
+          "score": "1-0",
+          "events_count": {
+            "goals": 1,
+            "cards": 3,
+            "substitutions": 9,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2198,
+                "match_id": 560,
+                "team_id": 92,
+                "player_name": "Dango Ouattara",
+                "minute": 12,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1815,
+                "match_id": 560,
+                "team_id": 86,
+                "player_name": "Amadou Onana",
+                "minute": 50,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1814,
+                "match_id": 560,
+                "team_id": 92,
+                "player_name": "Caoimhin Kelleher",
+                "minute": 55,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1816,
+                "match_id": 560,
+                "team_id": 86,
+                "player_name": "Lamare Bogarde",
+                "minute": 80,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3206,
+                "match_id": 560,
+                "team_id": 86,
+                "player_in": "Boubacar Kamara",
+                "player_out": "Emiliano Buendia",
+                "minute": 16
+              },
+              {
+                "id": 3207,
+                "match_id": 560,
+                "team_id": 86,
+                "player_in": "Ian Maatsen",
+                "player_out": "Lucas Digne",
+                "minute": 64
+              },
+              {
+                "id": 3208,
+                "match_id": 560,
+                "team_id": 86,
+                "player_in": "Donyell Malen",
+                "player_out": "Amadou Onana",
+                "minute": 64
+              },
+              {
+                "id": 3201,
+                "match_id": 560,
+                "team_id": 92,
+                "player_in": "Frank Onyeka",
+                "player_out": "Jordan Henderson",
+                "minute": 69
+              },
+              {
+                "id": 3209,
+                "match_id": 560,
+                "team_id": 86,
+                "player_in": "Lamare Bogarde",
+                "player_out": "John McGinn",
+                "minute": 75
+              },
+              {
+                "id": 3202,
+                "match_id": 560,
+                "team_id": 92,
+                "player_in": "Mathias Jensen",
+                "player_out": "Yehor Yarmoliuk",
+                "minute": 79
+              },
+              {
+                "id": 3203,
+                "match_id": 560,
+                "team_id": 92,
+                "player_in": "Aaron Hickey",
+                "player_out": "Kevin Schade",
+                "minute": 79
+              },
+              {
+                "id": 3204,
+                "match_id": 560,
+                "team_id": 92,
+                "player_in": "Rico Henry",
+                "player_out": "Dango Ouattara",
+                "minute": 84
+              },
+              {
+                "id": 3205,
+                "match_id": 560,
+                "team_id": 92,
+                "player_in": "Kristoffer Ajer",
+                "player_out": "Michael Kayode",
+                "minute": 85
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 561,
+          "teams": "Burnley vs Sunderland",
+          "score": "2-0",
+          "events_count": {
+            "goals": 2,
+            "cards": 1,
+            "substitutions": 8,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2199,
+                "match_id": 561,
+                "team_id": 99,
+                "player_name": "Josh Cullen",
+                "minute": 47,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2200,
+                "match_id": 561,
+                "team_id": 99,
+                "player_name": "Jaidon Anthony",
+                "minute": 88,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1817,
+                "match_id": 561,
+                "team_id": 93,
+                "player_name": "Simon Adingra",
+                "minute": 45,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3210,
+                "match_id": 561,
+                "team_id": 93,
+                "player_in": "Jenson Seelt",
+                "player_out": "Dan Ballard",
+                "minute": 9
+              },
+              {
+                "id": 3211,
+                "match_id": 561,
+                "team_id": 93,
+                "player_in": "Wilson Isidor",
+                "player_out": "Eliezer Mayenda",
+                "minute": 63
+              },
+              {
+                "id": 3212,
+                "match_id": 561,
+                "team_id": 93,
+                "player_in": "Enzo Le Fee",
+                "player_out": "Patrick Roberts",
+                "minute": 63
+              },
+              {
+                "id": 3213,
+                "match_id": 561,
+                "team_id": 93,
+                "player_in": "Jacob Bruun Larsen",
+                "player_out": "Chemsdine Talbi",
+                "minute": 63
+              },
+              {
+                "id": 3214,
+                "match_id": 561,
+                "team_id": 99,
+                "player_in": "Joe Worrall",
+                "player_out": "Oliver Sonne",
+                "minute": 69
+              },
+              {
+                "id": 3215,
+                "match_id": 561,
+                "team_id": 99,
+                "player_in": "Josh Laurent",
+                "player_out": "Loum Tchaouna",
+                "minute": 69
+              },
+              {
+                "id": 3216,
+                "match_id": 561,
+                "team_id": 99,
+                "player_in": "Marc Guiu",
+                "player_out": "Lyle Foster",
+                "minute": 80
+              },
+              {
+                "id": 3217,
+                "match_id": 561,
+                "team_id": 99,
+                "player_in": "Zian Flemming",
+                "player_out": "Hannibal",
+                "minute": 83
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 562,
+          "teams": "Arsenal vs Leeds United",
+          "score": "5-0",
+          "events_count": {
+            "goals": 5,
+            "cards": 2,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2201,
+                "match_id": 562,
+                "team_id": 100,
+                "player_name": "Jurrien Timber",
+                "minute": 34,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2202,
+                "match_id": 562,
+                "team_id": 100,
+                "player_name": "Bukayo Saka",
+                "minute": 46,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2203,
+                "match_id": 562,
+                "team_id": 100,
+                "player_name": "Viktor Gyokeres",
+                "minute": 48,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2204,
+                "match_id": 562,
+                "team_id": 100,
+                "player_name": "Jurrien Timber",
+                "minute": 56,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2205,
+                "match_id": 562,
+                "team_id": 100,
+                "player_name": "Viktor Gyokeres",
+                "minute": 95,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 1
+              }
+            ],
+            "cards": [
+              {
+                "id": 1818,
+                "match_id": 562,
+                "team_id": 85,
+                "player_name": "Jayden Bogle",
+                "minute": 60,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1819,
+                "match_id": 562,
+                "team_id": 85,
+                "player_name": "Gabriel Gudmundsson",
+                "minute": 70,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3218,
+                "match_id": 562,
+                "team_id": 100,
+                "player_in": "Ethan Nwaneri",
+                "player_out": "Martin Odegaard",
+                "minute": 40
+              },
+              {
+                "id": 3219,
+                "match_id": 562,
+                "team_id": 100,
+                "player_in": "Leandro Trossard",
+                "player_out": "Bukayo Saka",
+                "minute": 60
+              },
+              {
+                "id": 3223,
+                "match_id": 562,
+                "team_id": 85,
+                "player_in": "Sean Longstaff",
+                "player_out": "Ao Tanaka",
+                "minute": 60
+              },
+              {
+                "id": 3224,
+                "match_id": 562,
+                "team_id": 85,
+                "player_in": "Lukas Nmecha",
+                "player_out": "Joel Piroe",
+                "minute": 60
+              },
+              {
+                "id": 3225,
+                "match_id": 562,
+                "team_id": 85,
+                "player_in": "Brenden Aaronson",
+                "player_out": "Daniel James",
+                "minute": 70
+              },
+              {
+                "id": 3220,
+                "match_id": 562,
+                "team_id": 100,
+                "player_in": "Max Dowman",
+                "player_out": "Noni Madueke",
+                "minute": 75
+              },
+              {
+                "id": 3221,
+                "match_id": 562,
+                "team_id": 100,
+                "player_in": "Myles Lewis-Skelly",
+                "player_out": "Riccardo Calafiori",
+                "minute": 75
+              },
+              {
+                "id": 3226,
+                "match_id": 562,
+                "team_id": 85,
+                "player_in": "Noah Okafor",
+                "player_out": "Wilfried Gnonto",
+                "minute": 75
+              },
+              {
+                "id": 3222,
+                "match_id": 562,
+                "team_id": 100,
+                "player_in": "Cristhian Mosquera",
+                "player_out": "Jurrien Timber",
+                "minute": 80
+              },
+              {
+                "id": 3227,
+                "match_id": 562,
+                "team_id": 85,
+                "player_in": "Sam Byram",
+                "player_out": "Jayden Bogle",
+                "minute": 80
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 563,
+          "teams": "Everton vs Brighton",
+          "score": "2-0",
+          "events_count": {
+            "goals": 2,
+            "cards": 7,
+            "substitutions": 8,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2206,
+                "match_id": 563,
+                "team_id": 84,
+                "player_name": "Iliman Ndiaye",
+                "minute": 23,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2207,
+                "match_id": 563,
+                "team_id": 84,
+                "player_name": "James Garner",
+                "minute": 52,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1820,
+                "match_id": 563,
+                "team_id": 84,
+                "player_name": "Tim Iroegbunam",
+                "minute": 40,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1824,
+                "match_id": 563,
+                "team_id": 91,
+                "player_name": "Maxim De Cuyper",
+                "minute": 50,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1821,
+                "match_id": 563,
+                "team_id": 84,
+                "player_name": "James Garner",
+                "minute": 55,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1822,
+                "match_id": 563,
+                "team_id": 84,
+                "player_name": "Kiernan Dewsbury-Hall",
+                "minute": 60,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1825,
+                "match_id": 563,
+                "team_id": 91,
+                "player_name": "Mats Wieffer",
+                "minute": 65,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1826,
+                "match_id": 563,
+                "team_id": 91,
+                "player_name": "Ferdi Kadioglu",
+                "minute": 80,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1823,
+                "match_id": 563,
+                "team_id": 84,
+                "player_name": "Beto",
+                "minute": 85,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3232,
+                "match_id": 563,
+                "team_id": 91,
+                "player_in": "Jack Hinshelwood",
+                "player_out": "Carlos Baleba",
+                "minute": 65
+              },
+              {
+                "id": 3233,
+                "match_id": 563,
+                "team_id": 91,
+                "player_in": "Diego Gomez",
+                "player_out": "Yasin Ayari",
+                "minute": 65
+              },
+              {
+                "id": 3228,
+                "match_id": 563,
+                "team_id": 84,
+                "player_in": "Carlos Alcaraz",
+                "player_out": "Iliman Ndiaye",
+                "minute": 70
+              },
+              {
+                "id": 3229,
+                "match_id": 563,
+                "team_id": 84,
+                "player_in": "Beto",
+                "player_out": "Thierno Barry",
+                "minute": 70
+              },
+              {
+                "id": 3234,
+                "match_id": 563,
+                "team_id": 91,
+                "player_in": "Ferdi Kadioglu",
+                "player_out": "Maxim De Cuyper",
+                "minute": 72
+              },
+              {
+                "id": 3230,
+                "match_id": 563,
+                "team_id": 84,
+                "player_in": "Dwight McNeil",
+                "player_out": "Tim Iroegbunam",
+                "minute": 78
+              },
+              {
+                "id": 3235,
+                "match_id": 563,
+                "team_id": 91,
+                "player_in": "Brajan Gruda",
+                "player_out": "Mats Wieffer",
+                "minute": 78
+              },
+              {
+                "id": 3231,
+                "match_id": 563,
+                "team_id": 84,
+                "player_in": "Harrison Armstrong",
+                "player_out": "Jack Grealish",
+                "minute": 85
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 564,
+          "teams": "Crystal Palace vs Nottm Forest",
+          "score": "1-1",
+          "events_count": {
+            "goals": 2,
+            "cards": 6,
+            "substitutions": 8,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2208,
+                "match_id": 564,
+                "team_id": 88,
+                "player_name": "Ismaila Sarr",
+                "minute": 37,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2209,
+                "match_id": 564,
+                "team_id": 95,
+                "player_name": "Callum Hudson-Odoi",
+                "minute": 57,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1827,
+                "match_id": 564,
+                "team_id": 88,
+                "player_name": "Maxence Lacroix",
+                "minute": 14,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1830,
+                "match_id": 564,
+                "team_id": 95,
+                "player_name": "Matz Sels",
+                "minute": 53,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1828,
+                "match_id": 564,
+                "team_id": 88,
+                "player_name": "Tyrick Mitchell",
+                "minute": 54,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1831,
+                "match_id": 564,
+                "team_id": 95,
+                "player_name": "Ola Aina",
+                "minute": 68,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1829,
+                "match_id": 564,
+                "team_id": 88,
+                "player_name": "Will Hughes",
+                "minute": 87,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1832,
+                "match_id": 564,
+                "team_id": 95,
+                "player_name": "Murillo",
+                "minute": 92,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3236,
+                "match_id": 564,
+                "team_id": 88,
+                "player_in": "Romain Esse",
+                "player_out": "Justin Devenny",
+                "minute": 66
+              },
+              {
+                "id": 3239,
+                "match_id": 564,
+                "team_id": 95,
+                "player_in": "Arnaud Kalimuendo",
+                "player_out": "Dan Ndoye",
+                "minute": 71
+              },
+              {
+                "id": 3240,
+                "match_id": 564,
+                "team_id": 95,
+                "player_in": "James McAtee",
+                "player_out": "Callum Hudson-Odoi",
+                "minute": 72
+              },
+              {
+                "id": 3237,
+                "match_id": 564,
+                "team_id": 88,
+                "player_in": "Jefferson Lerma",
+                "player_out": "Adam Wharton",
+                "minute": 82
+              },
+              {
+                "id": 3241,
+                "match_id": 564,
+                "team_id": 95,
+                "player_in": "Omari Hutchinson",
+                "player_out": "Morgan Gibbs-White",
+                "minute": 82
+              },
+              {
+                "id": 3238,
+                "match_id": 564,
+                "team_id": 88,
+                "player_in": "Odsonne Edouard",
+                "player_out": "Jean-Philippe Mateta",
+                "minute": 88
+              },
+              {
+                "id": 3242,
+                "match_id": 564,
+                "team_id": 95,
+                "player_in": "Igor Jesus",
+                "player_out": "Chris Wood",
+                "minute": 88
+              },
+              {
+                "id": 3243,
+                "match_id": 564,
+                "team_id": 95,
+                "player_in": "Ryan Yates",
+                "player_out": "Ibrahim Sangare",
+                "minute": 88
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 565,
+          "teams": "Fulham vs Man Utd",
+          "score": "1-1",
+          "events_count": {
+            "goals": 2,
+            "cards": 1,
+            "substitutions": 5,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2210,
+                "match_id": 565,
+                "team_id": 83,
+                "player_name": "Rodrigo Muniz",
+                "minute": 58,
+                "assist_player_name": null,
+                "is_own_goal": 1,
+                "is_penalty": 0
+              },
+              {
+                "id": 2211,
+                "match_id": 565,
+                "team_id": 94,
+                "player_name": "Emile Smith Rowe",
+                "minute": 73,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1833,
+                "match_id": 565,
+                "team_id": 94,
+                "player_name": "Sasa Lukic",
+                "minute": 45,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3246,
+                "match_id": 565,
+                "team_id": 83,
+                "player_in": "Manuel Ugarte",
+                "player_out": "Mason Mount",
+                "minute": 65
+              },
+              {
+                "id": 3244,
+                "match_id": 565,
+                "team_id": 94,
+                "player_in": "Emile Smith Rowe",
+                "player_out": "Josh King",
+                "minute": 72
+              },
+              {
+                "id": 3245,
+                "match_id": 565,
+                "team_id": 94,
+                "player_in": "Raul Jimenez",
+                "player_out": "Rodrigo Muniz",
+                "minute": 72
+              },
+              {
+                "id": 3247,
+                "match_id": 565,
+                "team_id": 83,
+                "player_in": "Benjamin Sesko",
+                "player_out": "Matheus Cunha",
+                "minute": 78
+              },
+              {
+                "id": 3248,
+                "match_id": 565,
+                "team_id": 83,
+                "player_in": "Ayden Heaven",
+                "player_out": "Luke Shaw",
+                "minute": 85
+              }
+            ],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 566,
+          "teams": "Newcastle vs Liverpool",
+          "score": "2-3",
+          "events_count": {
+            "goals": 5,
+            "cards": 2,
+            "substitutions": 10,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [
+              {
+                "id": 2212,
+                "match_id": 566,
+                "team_id": 102,
+                "player_name": "Ryan Gravenberch",
+                "minute": 35,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2213,
+                "match_id": 566,
+                "team_id": 102,
+                "player_name": "Hugo Ekitike",
+                "minute": 50,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2214,
+                "match_id": 566,
+                "team_id": 90,
+                "player_name": "Bruno Guimaraes",
+                "minute": 57,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2215,
+                "match_id": 566,
+                "team_id": 90,
+                "player_name": "William Osula",
+                "minute": 88,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              },
+              {
+                "id": 2216,
+                "match_id": 566,
+                "team_id": 102,
+                "player_name": "Rio Ngumoha",
+                "minute": 100,
+                "assist_player_name": null,
+                "is_own_goal": 0,
+                "is_penalty": 0
+              }
+            ],
+            "cards": [
+              {
+                "id": 1834,
+                "match_id": 566,
+                "team_id": 90,
+                "player_name": "Anthony Gordon",
+                "minute": 45,
+                "card_type": "Roja",
+                "reason": null,
+                "description": null
+              },
+              {
+                "id": 1835,
+                "match_id": 566,
+                "team_id": 102,
+                "player_name": "Conor Bradley",
+                "minute": 60,
+                "card_type": "Amarilla",
+                "reason": null,
+                "description": null
+              }
+            ],
+            "substitutions": [
+              {
+                "id": 3249,
+                "match_id": 566,
+                "team_id": 90,
+                "player_in": "Malick Thiaw",
+                "player_out": "Fabian Schar",
+                "minute": 35
+              },
+              {
+                "id": 3254,
+                "match_id": 566,
+                "team_id": 102,
+                "player_in": "Federico Chiesa",
+                "player_out": "Hugo Ekitike",
+                "minute": 65
+              },
+              {
+                "id": 3255,
+                "match_id": 566,
+                "team_id": 102,
+                "player_in": "Conor Bradley",
+                "player_out": "Florian Wirtz",
+                "minute": 65
+              },
+              {
+                "id": 3250,
+                "match_id": 566,
+                "team_id": 90,
+                "player_in": "William Osula",
+                "player_out": "Harvey Barnes",
+                "minute": 70
+              },
+              {
+                "id": 3251,
+                "match_id": 566,
+                "team_id": 90,
+                "player_in": "Lewis Hall",
+                "player_out": "Kieran Trippier",
+                "minute": 70
+              },
+              {
+                "id": 3252,
+                "match_id": 566,
+                "team_id": 90,
+                "player_in": "Jacob Ramsey",
+                "player_out": "Joelinton",
+                "minute": 78
+              },
+              {
+                "id": 3256,
+                "match_id": 566,
+                "team_id": 102,
+                "player_in": "Rio Ngumoha",
+                "player_out": "Cody Gakpo",
+                "minute": 80
+              },
+              {
+                "id": 3257,
+                "match_id": 566,
+                "team_id": 102,
+                "player_in": "Harvey Elliott",
+                "player_out": "Curtis Jones",
+                "minute": 80
+              },
+              {
+                "id": 3253,
+                "match_id": 566,
+                "team_id": 90,
+                "player_in": "Lewis Miley",
+                "player_out": "Sandro Tonali",
+                "minute": 85
+              },
+              {
+                "id": 3258,
+                "match_id": 566,
+                "team_id": 102,
+                "player_in": "Wataru Endo",
+                "player_out": "Mohamed Salah",
+                "minute": 90
+              }
+            ],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 0,
+        "goal_inconsistencies": 0,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_3": {
+      "matchday": 3,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 530,
+          "teams": "West Ham vs Chelsea",
+          "score": "1-5",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 6 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 531,
+          "teams": "Burnley vs Sunderland",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 532,
+          "teams": "Arsenal vs Leeds United",
+          "score": "5-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 545,
+          "teams": "Man City vs Tottenham",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 533,
+          "teams": "Newcastle vs Liverpool",
+          "score": "2-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_4": {
+      "matchday": 4,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 525,
+          "teams": "Man Utd vs Burnley",
+          "score": "3-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 526,
+          "teams": "Chelsea vs Fulham",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 527,
+          "teams": "Sunderland vs Brentford",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 528,
+          "teams": "Liverpool vs Arsenal",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 529,
+          "teams": "Brighton vs Man City",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_5": {
+      "matchday": 5,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 521,
+          "teams": "Arsenal vs Nottm Forest",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 522,
+          "teams": "Brentford vs Chelsea",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 523,
+          "teams": "Bournemouth vs Brighton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 544,
+          "teams": "West Ham vs Tottenham",
+          "score": "0-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 524,
+          "teams": "Man City vs Man Utd",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_6": {
+      "matchday": 6,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 517,
+          "teams": "Liverpool vs Everton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 518,
+          "teams": "Man Utd vs Chelsea",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 519,
+          "teams": "West Ham vs Crystal Palace",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 543,
+          "teams": "Brighton vs Tottenham",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 520,
+          "teams": "Arsenal vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_7": {
+      "matchday": 7,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 512,
+          "teams": "Man City vs Burnley",
+          "score": "5-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 6 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 513,
+          "teams": "Crystal Palace vs Liverpool",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 514,
+          "teams": "Brentford vs Man Utd",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 515,
+          "teams": "Chelsea vs Brighton",
+          "score": "1-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 516,
+          "teams": "Newcastle vs Arsenal",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_8": {
+      "matchday": 8,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 507,
+          "teams": "Man Utd vs Everton",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 508,
+          "teams": "Chelsea vs Wolves",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 509,
+          "teams": "Arsenal vs Brighton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 510,
+          "teams": "Sunderland vs Man City",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 511,
+          "teams": "Liverpool vs Aston Villa",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_9": {
+      "matchday": 9,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 502,
+          "teams": "Everton vs Man City",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 503,
+          "teams": "Newcastle vs Liverpool",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 504,
+          "teams": "Fulham vs West Ham",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 505,
+          "teams": "Man Utd vs Brentford",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 506,
+          "teams": "Aston Villa vs Arsenal",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_10": {
+      "matchday": 10,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 497,
+          "teams": "Liverpool vs Man Utd",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 498,
+          "teams": "Man City vs Aston Villa",
+          "score": "4-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 499,
+          "teams": "Chelsea vs Nottm Forest",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 500,
+          "teams": "Arsenal vs Aston Villa",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 501,
+          "teams": "Man City vs West Ham",
+          "score": "4-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_11": {
+      "matchday": 11,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 492,
+          "teams": "Man Utd vs Nottm Forest",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 493,
+          "teams": "West Ham vs Arsenal",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 494,
+          "teams": "Wolves vs Liverpool",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 495,
+          "teams": "Chelsea vs Fulham",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 496,
+          "teams": "Aston Villa vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_12": {
+      "matchday": 12,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 487,
+          "teams": "Arsenal vs Chelsea",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 488,
+          "teams": "Man City vs Sunderland",
+          "score": "4-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 489,
+          "teams": "Liverpool vs Nottm Forest",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 490,
+          "teams": "Tottenham vs Aston Villa",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 491,
+          "teams": "Newcastle vs Man Utd",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_13": {
+      "matchday": 13,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 482,
+          "teams": "Everton vs Arsenal",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 483,
+          "teams": "Leeds United vs Liverpool",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 484,
+          "teams": "Chelsea vs Newcastle",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 485,
+          "teams": "Fulham vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 486,
+          "teams": "Man Utd vs Brighton",
+          "score": "3-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_14": {
+      "matchday": 14,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 477,
+          "teams": "Man City vs Nottm Forest",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 478,
+          "teams": "Liverpool vs Bournemouth",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 479,
+          "teams": "Arsenal vs Fulham",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 480,
+          "teams": "Burnley vs Chelsea",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 481,
+          "teams": "Brighton vs Man Utd",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_15": {
+      "matchday": 15,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 472,
+          "teams": "Fulham vs Man City",
+          "score": "4-5",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 9 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 473,
+          "teams": "Man City vs Aston Villa",
+          "score": "4-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 474,
+          "teams": "Liverpool vs Man Utd",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 475,
+          "teams": "Arsenal vs Bournemouth",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 476,
+          "teams": "Tottenham vs Fulham",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_16": {
+      "matchday": 16,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 467,
+          "teams": "Man City vs Newcastle",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 468,
+          "teams": "Everton vs Man Utd",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 469,
+          "teams": "Nottm Forest vs Arsenal",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 470,
+          "teams": "Burnley vs Liverpool",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 471,
+          "teams": "Chelsea vs Sunderland",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_17": {
+      "matchday": 17,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 462,
+          "teams": "Man Utd vs Man City",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 463,
+          "teams": "Liverpool vs West Ham",
+          "score": "3-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 464,
+          "teams": "Arsenal vs Crystal Palace",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 465,
+          "teams": "Sunderland vs Chelsea",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 466,
+          "teams": "Fulham vs Everton",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_18": {
+      "matchday": 18,
+      "total_matches": 5,
+      "matches": [
+        {
+          "match_id": 457,
+          "teams": "Aston Villa vs Man Utd",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 458,
+          "teams": "Everton vs Liverpool",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 459,
+          "teams": "Tottenham vs West Ham",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 460,
+          "teams": "Nottm Forest vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 461,
+          "teams": "Wolves vs Arsenal",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 5,
+        "goal_inconsistencies": 5,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_19": {
+      "matchday": 19,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 447,
+          "teams": "Man Utd vs Newcastle",
+          "score": "1-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 448,
+          "teams": "Nottm Forest vs Man City",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 449,
+          "teams": "Arsenal vs Brighton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 450,
+          "teams": "Brentford vs Bournemouth",
+          "score": "4-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 451,
+          "teams": "Burnley vs Everton",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 452,
+          "teams": "Liverpool vs Wolves",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 453,
+          "teams": "West Ham vs Fulham",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 454,
+          "teams": "Chelsea vs Aston Villa",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 455,
+          "teams": "Sunderland vs Leeds United",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 456,
+          "teams": "Crystal Palace vs Tottenham",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 9,
+        "goal_inconsistencies": 9,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_20": {
+      "matchday": 20,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 443,
+          "teams": "Crystal Palace vs Fulham",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 444,
+          "teams": "Liverpool vs Leeds United",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 445,
+          "teams": "Brentford vs Tottenham",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 446,
+          "teams": "Sunderland vs Man City",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 437,
+          "teams": "Burnley vs Newcastle",
+          "score": "1-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 438,
+          "teams": "Chelsea vs Bournemouth",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 439,
+          "teams": "Nottm Forest vs Everton",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 440,
+          "teams": "West Ham vs Brighton",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 441,
+          "teams": "Arsenal vs Aston Villa",
+          "score": "4-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 442,
+          "teams": "Man Utd vs Wolves",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 7,
+        "goal_inconsistencies": 7,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_21": {
+      "matchday": 21,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 427,
+          "teams": "West Ham vs Nottm Forest",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 428,
+          "teams": "Bournemouth vs Tottenham",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 429,
+          "teams": "Sunderland vs Brentford",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 430,
+          "teams": "Crystal Palace vs Aston Villa",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 431,
+          "teams": "Everton vs Wolves",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 432,
+          "teams": "Fulham vs Chelsea",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 433,
+          "teams": "Man City vs Brighton",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 434,
+          "teams": "Burnley vs Man Utd",
+          "score": "0-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 1 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 435,
+          "teams": "Newcastle vs Leeds United",
+          "score": "0-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [],
+          "issues_count": 0,
+          "goal_inconsistency": false,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 436,
+          "teams": "Arsenal vs Liverpool",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 7,
+        "goal_inconsistencies": 7,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_22": {
+      "matchday": 22,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 417,
+          "teams": "Aston Villa vs Nottm Forest",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 418,
+          "teams": "Man Utd vs Liverpool",
+          "score": "3-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 419,
+          "teams": "Tottenham vs West Ham",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 420,
+          "teams": "Bournemouth vs Arsenal",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 421,
+          "teams": "Leeds United vs Man City",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 422,
+          "teams": "Everton vs Brentford",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 423,
+          "teams": "Newcastle vs Crystal Palace",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 424,
+          "teams": "Wolves vs Sunderland",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 425,
+          "teams": "Fulham vs Burnley",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 426,
+          "teams": "Brighton vs Chelsea",
+          "score": "1-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 10,
+        "goal_inconsistencies": 10,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    },
+    "jornada_23": {
+      "matchday": 23,
+      "total_matches": 10,
+      "matches": [
+        {
+          "match_id": 407,
+          "teams": "Arsenal vs Man Utd",
+          "score": "2-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 408,
+          "teams": "West Ham vs Sunderland",
+          "score": "3-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 409,
+          "teams": "Man City vs Wolves",
+          "score": "2-0",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 410,
+          "teams": "Fulham vs Brighton",
+          "score": "2-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 3 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 411,
+          "teams": "Burnley vs Tottenham",
+          "score": "2-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 412,
+          "teams": "Bournemouth vs Liverpool",
+          "score": "3-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 5 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 413,
+          "teams": "Crystal Palace vs Chelsea",
+          "score": "1-3",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 4 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 414,
+          "teams": "Brentford vs Nottm Forest",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 415,
+          "teams": "Newcastle vs Aston Villa",
+          "score": "0-2",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        },
+        {
+          "match_id": 416,
+          "teams": "Everton vs Leeds United",
+          "score": "1-1",
+          "events_count": {
+            "goals": 0,
+            "cards": 0,
+            "substitutions": 0,
+            "injuries": 0
+          },
+          "issues": [
+            "Goles inconsistentes: 0 registrados vs 2 esperados"
+          ],
+          "issues_count": 1,
+          "goal_inconsistency": true,
+          "duplicate_goals": 0,
+          "duplicate_cards": 0,
+          "duplicate_subs": 0,
+          "missing_data": 0,
+          "events": {
+            "goals": [],
+            "cards": [],
+            "substitutions": [],
+            "injuries": []
+          }
+        }
+      ],
+      "summary": {
+        "total_issues": 10,
+        "goal_inconsistencies": 10,
+        "duplicate_goals": 0,
+        "duplicate_cards": 0,
+        "duplicate_subs": 0,
+        "missing_data": 0
+      }
+    }
+  },
+  "summary": {
+    "total_matches": 150,
+    "total_issues": 123,
+    "goal_inconsistencies": 123,
+    "total_duplicates": {
+      "goals": 0,
+      "cards": 0,
+      "substitutions": 0
+    },
+    "total_missing_data": 0,
+    "perfect_matches": 27,
+    "problematic_matches": 123
+  }
+}

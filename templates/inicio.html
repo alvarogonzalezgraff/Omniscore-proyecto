@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetWin - Apuestas Deportivas</title>
+    <script>
+        // Auth guard: redirect to login if not authenticated
+        (function() {
+            try {
+                var raw = localStorage.getItem('currentUser');
+                if (!raw) { window.location.replace('/login'); return; }
+                var user = JSON.parse(raw);
+                if (!user || !user.username) { window.location.replace('/login'); return; }
+            } catch(e) {
+                localStorage.removeItem('currentUser');
+                window.location.replace('/login');
+            }
+        })();
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0a0e1a; color: #f8fafc; line-height: 1.6; min-height: 100vh; }
+        a { text-decoration: none; color: inherit; }
+
+        header { background: #111827; padding: 12px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #1f2937; }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 26px; font-weight: bold; color: #3b82f6; }
+        .logo span { color: #f59e0b; }
+        nav ul { display: flex; list-style: none; gap: 24px; }
+        nav ul li a { font-weight: 500; font-size: 14px; color: #94a3b8; transition: color 0.3s; }
+        nav ul li a:hover { color: #fff; }
+
+        .auth-buttons { display: flex; align-items: center; gap: 12px; }
+        .btn-login-header { padding: 7px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: 1px solid #3b82f6; background: transparent; color: #3b82f6; font-size: 13px; }
+        .btn-login-header:hover { background-color: #3b82f6; color: white; }
+        .btn-register-header { padding: 7px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; font-size: 13px; }
+        .btn-register-header:hover { background: linear-gradient(135deg, #2563eb, #7c3aed); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
+        .profile-container { position: relative; }
+        .profile-btn { display: flex; align-items: center; gap: 10px; cursor: pointer; padding: 6px 14px; border-radius: 25px; background-color: #1f2937; transition: all 0.3s; border: 1px solid transparent; }
+        .profile-btn:hover { background-color: #374151; border-color: #3b82f6; }
+        .profile-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #8b5cf6); display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px; color: white; text-transform: uppercase; }
+        .profile-name { font-weight: 500; font-size: 13px; color: #e2e8f0; }
+        .profile-arrow { color: #94a3b8; font-size: 10px; transition: transform 0.3s; }
+        .profile-container.open .profile-arrow { transform: rotate(180deg); }
+        .profile-dropdown { position: absolute; top: calc(100% + 10px); right: 0; background-color: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 8px 0; min-width: 200px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s cubic-bezier(0.4,0,0.2,1); z-index: 200; }
+        .profile-container.open .profile-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-item { display: flex; align-items: center; gap: 10px; padding: 10px 16px; color: #cbd5e1; font-size: 14px; transition: all 0.2s; cursor: pointer; }
+        .dropdown-item:hover { background-color: #334155; color: #f8fafc; }
+        .dropdown-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+        .dropdown-divider { height: 1px; background-color: #334155; margin: 6px 0; }
+        .dropdown-item.logout { color: #ef4444; }
+        .dropdown-item.logout:hover { background-color: rgba(239,68,68,0.1); }
+
+        .main-layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 55px); }
+
+        .left-sidebar { width: 210px; background: #111827; border-right: 1px solid #1f2937; padding: 16px 10px; flex-shrink: 0; position: sticky; top: 55px; height: calc(100vh - 55px); overflow-y: auto; }
+        .sidebar-title { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #6b7280; font-weight: 700; margin-bottom: 10px; padding: 0 8px; }
+        .sidebar-sport-btn { display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 12px; background: transparent; border: none; border-radius: 8px; color: #9ca3af; font-size: 13px; font-weight: 500; cursor: pointer; transition: all 0.2s; text-decoration: none; margin-bottom: 3px; }
+        .sidebar-sport-btn:hover { background: #1f2937; color: #fff; }
+        .sidebar-sport-btn.active { background: rgba(59,130,246,0.1); color: #3b82f6; border-left: 3px solid #3b82f6; }
+        .sidebar-sport-btn .sb-icon { font-size: 16px; width: 22px; text-align: center; }
+        .sidebar-sport-btn .sb-count { margin-left: auto; font-size: 10px; background: #1f2937; color: #6b7280; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+        .sport-leagues { padding-left: 12px; overflow: hidden; }
+        .sidebar-league { display: flex; align-items: center; gap: 8px; padding: 6px 12px; color: #6b7280; font-size: 12px; text-decoration: none; border-radius: 6px; transition: all 0.2s; margin-bottom: 1px; }
+        .sidebar-league:hover { background: #1f2937; color: #e5e7eb; }
+
+        /* League cards in main content */
+        .sport-panel { margin-bottom: 22px; animation: fadePanel 0.3s; }
+        @keyframes fadePanel { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .leagues-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+        .league-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #111827; border: 1px solid #1f2937; border-radius: 10px; text-decoration: none; transition: all 0.25s; }
+        .league-card:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
+        .league-card .lc-icon { font-size: 26px; width: 36px; text-align: center; flex-shrink: 0; }
+        .league-card .lc-info { flex: 1; }
+        .league-card .lc-name { font-size: 14px; font-weight: 700; color: #f8fafc; display: block; }
+        .league-card .lc-desc { font-size: 11px; color: #6b7280; display: block; margin-top: 2px; }
+        .league-card .lc-arrow { color: #4b5563; font-size: 18px; font-weight: 700; flex-shrink: 0; transition: color 0.2s; }
+        .league-card:hover .lc-arrow { color: #3b82f6; }
+
+        .sidebar-divider { height: 1px; background: #1f2937; margin: 14px 0; }
+        .sidebar-link { display: flex; align-items: center; gap: 8px; padding: 7px 12px; color: #6b7280; font-size: 12px; text-decoration: none; border-radius: 6px; transition: all 0.2s; margin-bottom: 2px; }
+        .sidebar-link:hover { background: #1f2937; color: #9ca3af; }
+        .sidebar-link svg { width: 14px; height: 14px; }
+
+        .main-content { flex: 1; padding: 20px 24px; overflow-y: auto; }
+
+        .welcome-banner { background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #be185d 100%); border-radius: 14px; padding: 30px 32px; margin-bottom: 22px; position: relative; overflow: hidden; }
+        .welcome-banner::before { content: ''; position: absolute; top: -50%; right: -20%; width: 300px; height: 300px; background: rgba(255,255,255,0.05); border-radius: 50%; }
+        .welcome-banner h1 { font-size: 26px; margin-bottom: 6px; color: #fff; position: relative; }
+        .welcome-banner p { font-size: 14px; color: rgba(255,255,255,0.8); max-width: 500px; position: relative; }
+        .welcome-banner .btn-explore { display: inline-block; margin-top: 14px; padding: 9px 22px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.3s; position: relative; }
+        .welcome-banner .btn-explore:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+
+        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+        .section-header h2 { font-size: 16px; font-weight: 700; color: #f8fafc; display: flex; align-items: center; gap: 8px; }
+        .section-header h2 .dot { width: 7px; height: 7px; border-radius: 50%; background: #3b82f6; }
+        .section-header a { font-size: 12px; color: #3b82f6; font-weight: 500; }
+        .section-header a:hover { text-decoration: underline; }
+
+        .events-list { background: #111827; border-radius: 10px; border: 1px solid #1f2937; overflow: hidden; margin-bottom: 20px; }
+        .event-league-header { padding: 9px 14px; background: #0d1117; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #6b7280; font-weight: 600; border-bottom: 1px solid #1f2937; }
+        .event-row { display: flex; align-items: center; padding: 10px 14px; border-bottom: 1px solid rgba(31,41,55,0.5); transition: background 0.15s; cursor: pointer; }
+        .event-row:last-child { border-bottom: none; }
+        .event-row:hover { background: rgba(59,130,246,0.05); }
+        .event-time { width: 50px; text-align: center; font-size: 11px; color: #6b7280; font-weight: 500; flex-shrink: 0; }
+        .event-time.live { color: #ef4444; font-weight: 700; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+        .event-teams { flex: 1; padding: 0 12px; }
+        .event-team { font-size: 13px; color: #e5e7eb; margin-bottom: 3px; display: flex; align-items: center; gap: 6px; }
+        .event-team:last-child { margin-bottom: 0; }
+        .event-team .team-logo-sm { width: 16px; height: 16px; border-radius: 50%; background: #374151; display: inline-flex; align-items: center; justify-content: center; font-size: 7px; color: #9ca3af; font-weight: 700; }
+        .event-score { display: flex; flex-direction: column; align-items: center; width: 36px; flex-shrink: 0; }
+        .event-score span { font-size: 13px; font-weight: 700; color: #f8fafc; margin-bottom: 3px; }
+
+        .quick-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 22px; }
+        .quick-stat-card { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 18px; transition: all 0.3s; cursor: pointer; }
+        .quick-stat-card:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+        .quick-stat-card .qs-icon { font-size: 24px; margin-bottom: 8px; }
+        .quick-stat-card .qs-value { font-size: 22px; font-weight: 800; color: #fff; margin-bottom: 2px; }
+        .quick-stat-card .qs-label { font-size: 12px; color: #6b7280; }
+
+        .right-sidebar { width: 260px; background: #111827; border-left: 1px solid #1f2937; padding: 18px 14px; flex-shrink: 0; }
+        .right-sidebar h3 { font-size: 13px; font-weight: 700; color: #f8fafc; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+        .top-league-item { display: flex; align-items: center; gap: 8px; padding: 8px; border-radius: 6px; margin-bottom: 4px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+        .top-league-item:hover { background: #1f2937; }
+        .top-league-item .tl-icon { font-size: 16px; width: 24px; text-align: center; }
+        .top-league-item .tl-name { font-size: 12px; color: #d1d5db; font-weight: 500; }
+        .top-league-item .tl-arrow { margin-left: auto; color: #4b5563; font-size: 12px; }
+
+        footer { background: #111827; padding: 36px 0 16px; border-top: 1px solid #1f2937; }
+        .footer-inner { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 24px; margin-bottom: 24px; }
+        .footer-column h3 { font-size: 14px; margin-bottom: 14px; color: #3b82f6; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 6px; }
+        .footer-column ul li a { color: #6b7280; font-size: 12px; transition: color 0.3s; }
+        .footer-column ul li a:hover { color: #3b82f6; }
+        .copyright { text-align: center; padding-top: 16px; border-top: 1px solid #1f2937; color: #4b5563; font-size: 12px; }
+
+        .stats-center { display: none; }
+        .league-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .tab-btn { background: #1f2937; color: #9ca3af; border: none; padding: 7px 14px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 12px; transition: all 0.2s; }
+        .tab-btn.active, .tab-btn:hover { background: #3b82f6; color: white; }
+        .stats-content { display: none; animation: fadeIn 0.3s; }
+        .stats-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .stats-grid-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }
+        .stats-table-container { background: #1f2937; border-radius: 8px; overflow: hidden; margin-bottom: 12px; }
+        .card-header { background: #111827; padding: 10px 14px; font-weight: bold; color: #3b82f6; font-size: 13px; border-bottom: 1px solid #374151; }
+        .stats-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        .stats-table th { background: #111827; padding: 8px 10px; text-align: left; font-weight: 600; color: #6b7280; }
+        .stats-table td { padding: 8px 10px; border-bottom: 1px solid #374151; }
+        .stats-table tr:last-child td { border-bottom: none; }
+        .stats-table tr:hover { background: #374151; }
+        .team-cell { display: flex; align-items: center; gap: 8px; }
+        .team-logo { width: 18px; height: 18px; background: #6b7280; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #0f172a; font-weight: bold; }
+        .match-result { display: flex; justify-content: space-between; align-items: center; padding: 7px 10px; border-bottom: 1px solid #374151; }
+        .match-score { background: #111827; padding: 3px 7px; border-radius: 4px; font-weight: bold; color: #f59e0b; font-size: 12px; }
+        .player-item { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; border-bottom: 1px solid #374151; cursor: pointer; transition: background 0.2s; }
+        .player-item:hover { background: #374151; }
+        .form-badge { display: inline-block; width: 16px; height: 16px; line-height: 16px; text-align: center; border-radius: 3px; color: white; font-size: 9px; font-weight: bold; margin-right: 1px; }
+        .form-W { background: #22c55e; } .form-D { background: #f59e0b; } .form-L { background: #ef4444; }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-content { background: #1e293b; width: 90%; max-width: 500px; border-radius: 10px; padding: 20px; position: relative; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .close-modal { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; color: #94a3b8; }
+        .player-profile-header { text-align: center; margin-bottom: 20px; }
+        .player-avatar-large { width: 80px; height: 80px; background: #3b82f6; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 32px; }
+        .player-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #0f172a; padding: 15px; border-radius: 10px; }
+        .stat-box { text-align: center; } .stat-label { font-size: 12px; color: #94a3b8; } .stat-value { font-size: 18px; font-weight: bold; color: #f8fafc; }
+
+        /* Favorites on inicio */
+        .favs-section { margin-bottom: 22px; display: none; }
+        .favs-section.has-favs { display: block; }
+        .favs-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .favs-header h2 { font-size: 16px; font-weight: 700; color: #facc15; display: flex; align-items: center; gap: 8px; }
+        .favs-header h2 .dot { width: 7px; height: 7px; border-radius: 50%; background: #facc15; }
+        .favs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+        .fav-item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #111827; border: 1px solid #1f2937; border-radius: 10px; cursor: pointer; transition: all 0.25s; text-decoration: none; }
+        .fav-item:hover { border-color: #facc15; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
+        .fav-item .fi-icon { font-size: 22px; }
+        .fav-item .fi-info { flex: 1; }
+        .fav-item .fi-name { font-size: 13px; font-weight: 700; color: #f8fafc; }
+        .fav-item .fi-sport { font-size: 10px; color: #6b7280; display: flex; align-items: center; gap: 4px; margin-top: 1px; }
+        .fav-item .fi-sport .fi-dot { width: 5px; height: 5px; border-radius: 50%; }
+        .fav-item .fi-arrow { color: #4b5563; font-size: 12px; }
+
+        /* Sidebar favorites */
+        .sidebar-fav-title { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #facc15; font-weight: 700; margin: 12px 0 6px; padding: 0 8px; display: none; }
+        .sidebar-fav-title.has-items { display: block; }
+        .sidebar-fav-item { display: flex; align-items: center; gap: 8px; padding: 6px 12px; color: #9ca3af; font-size: 12px; text-decoration: none; border-radius: 6px; transition: all 0.2s; margin-bottom: 2px; }
+        .sidebar-fav-item:hover { background: #1f2937; color: #fff; }
+        .sidebar-fav-item .sfi-icon { font-size: 14px; width: 18px; text-align: center; }
+        .sidebar-fav-item .sfi-dot { width: 5px; height: 5px; border-radius: 50%; margin-left: auto; flex-shrink: 0; }
+
+        @media (max-width: 1100px) { .right-sidebar { display: none; } }
+        @media (max-width: 900px) { .left-sidebar { display: none; } .quick-stats { grid-template-columns: 1fr; } .promo-grid { grid-template-columns: 1fr; } .stats-grid-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Bet<span>Win</span></div>
+            <nav><ul>
+                <li><a href="#" style="color:#3b82f6;">Inicio</a></li>
+                <li><a href="/deportes">Deportes</a></li>
+                <li><a href="#">En Vivo</a></li>
+                <li><a href="#">Casino</a></li>
+            </ul></nav>
+            <div id="authArea" class="auth-buttons"></div>
+        </div>
+    </header>
+
+    <div class="main-layout">
+        <aside class="left-sidebar">
+            <div class="sidebar-title">Deportes</div>
+            <div class="sidebar-sport-btn active" onclick="toggleSport('futbol')" style="cursor:pointer;">
+                <span class="sb-icon">⚽</span> Fútbol <span class="sb-count">6</span>
+            </div>
+            <div class="sport-leagues" id="leagues-futbol" style="display:block;">
+                <a href="/premier-league" class="sidebar-league">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</a>
+                <a href="/laliga" class="sidebar-league">🇪🇸 LaLiga EA Sports</a>
+                <a href="/serie-a" class="sidebar-league">🇮🇹 Serie A</a>
+                <a href="/bundesliga" class="sidebar-league">🇩🇪 Bundesliga</a>
+                <a href="/liga-hypermotion" class="sidebar-league">🇪🇸 Liga Hypermotion</a>
+                <a href="/champions-league" class="sidebar-league">🏆 Champions League</a>
+            </div>
+
+            <div class="sidebar-sport-btn" onclick="toggleSport('basket')" style="cursor:pointer;">
+                <span class="sb-icon">🏀</span> Baloncesto <span class="sb-count">4</span>
+            </div>
+            <div class="sport-leagues" id="leagues-basket" style="display:none;">
+                <a href="/nba" class="sidebar-league">🇺🇸 NBA</a>
+                <a href="/euroliga" class="sidebar-league">🏀 Euroliga</a>
+                <a href="/acb" class="sidebar-league">🇪🇸 ACB Liga Endesa</a>
+                <a href="/fiba" class="sidebar-league">🌍 FIBA World Cup</a>
+            </div>
+
+            <div class="sidebar-sport-btn" onclick="toggleSport('tenis')" style="cursor:pointer;">
+                <span class="sb-icon">🎾</span> Tenis <span class="sb-count">6</span>
+            </div>
+            <div class="sport-leagues" id="leagues-tenis" style="display:none;">
+                <a href="/australian-open" class="sidebar-league">🇦🇺 Australian Open</a>
+                <a href="/roland-garros" class="sidebar-league">🇫🇷 Roland Garros</a>
+                <a href="/wimbledon" class="sidebar-league">🇬🇧 Wimbledon</a>
+                <a href="/us-open" class="sidebar-league">🇺🇸 US Open</a>
+                <a href="/atp" class="sidebar-league">👔 ATP Tour</a>
+                <a href="/wta" class="sidebar-league">👗 WTA Tour</a>
+            </div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-title">Accesos rápidos</div>
+            <a href="/deportes" class="sidebar-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                En Vivo
+            </a>
+            <a href="/deportes" class="sidebar-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                Clasificaciones
+            </a>
+            <a href="#" class="sidebar-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+                Favoritos
+            </a>
+            <div class="sidebar-fav-title" id="sidebarFavTitle">⭐ Mis Favoritos</div>
+            <div id="sidebarFavList"></div>
+        </aside>
+
+        <main class="main-content">
+            <div class="welcome-banner">
+                <h1>🏆 Bienvenido a BetWin</h1>
+                <p>Tu centro de deportes con estadísticas, resultados en vivo y las mejores competiciones del mundo.</p>
+                <a href="/deportes" class="btn-explore">Explorar Deportes →</a>
+            </div>
+
+            <!-- SPORT LEAGUES PANELS -->
+            <div id="panel-futbol" class="sport-panel">
+                <div class="section-header">
+                    <h2><span class="dot" style="background:#22c55e;"></span> ⚽ Ligas de Fútbol</h2>
+                    <a href="/deportes#seccion-futbol">Ver todo →</a>
+                </div>
+                <div class="leagues-grid">
+                    <a href="/premier-league" class="league-card">
+                        <span class="lc-icon">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+                        <span class="lc-info"><span class="lc-name">Premier League</span><span class="lc-desc">20 equipos · 38 jornadas</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/laliga" class="league-card">
+                        <span class="lc-icon">🇪🇸</span>
+                        <span class="lc-info"><span class="lc-name">LaLiga EA Sports</span><span class="lc-desc">20 equipos · 38 jornadas</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/serie-a" class="league-card">
+                        <span class="lc-icon">🇮🇹</span>
+                        <span class="lc-info"><span class="lc-name">Serie A</span><span class="lc-desc">20 equipos · 38 jornadas</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/bundesliga" class="league-card">
+                        <span class="lc-icon">🇩🇪</span>
+                        <span class="lc-info"><span class="lc-name">Bundesliga</span><span class="lc-desc">18 equipos · 34 jornadas</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/liga-hypermotion" class="league-card">
+                        <span class="lc-icon">🇪🇸</span>
+                        <span class="lc-info"><span class="lc-name">Liga Hypermotion</span><span class="lc-desc">22 equipos · 42 jornadas</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/champions-league" class="league-card">
+                        <span class="lc-icon">�</span>
+                        <span class="lc-info"><span class="lc-name">Champions League</span><span class="lc-desc">36 equipos · Fase de grupos</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="panel-basket" class="sport-panel" style="display:none;">
+                <div class="section-header">
+                    <h2><span class="dot" style="background:#f59e0b;"></span> 🏀 Baloncesto</h2>
+                    <a href="/deportes#seccion-baloncesto">Ver todo →</a>
+                </div>
+                <div class="leagues-grid">
+                    <a href="/nba" class="league-card">
+                        <span class="lc-icon">�🇸</span>
+                        <span class="lc-info"><span class="lc-name">NBA</span><span class="lc-desc">30 equipos · Temporada regular</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/euroliga" class="league-card">
+                        <span class="lc-icon">🏀</span>
+                        <span class="lc-info"><span class="lc-name">Euroliga</span><span class="lc-desc">18 equipos · Europa</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/acb" class="league-card">
+                        <span class="lc-icon">🇪🇸</span>
+                        <span class="lc-info"><span class="lc-name">ACB Liga Endesa</span><span class="lc-desc">18 equipos · España</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/fiba" class="league-card">
+                        <span class="lc-icon">🌍</span>
+                        <span class="lc-info"><span class="lc-name">FIBA World Cup</span><span class="lc-desc">32 selecciones · Mundial</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="panel-tenis" class="sport-panel" style="display:none;">
+                <div class="section-header">
+                    <h2><span class="dot" style="background:#eab308;"></span> 🎾 Tenis</h2>
+                    <a href="/deportes#seccion-tenis">Ver todo →</a>
+                </div>
+                <div class="leagues-grid">
+                    <a href="/australian-open" class="league-card">
+                        <span class="lc-icon">�🇺</span>
+                        <span class="lc-info"><span class="lc-name">Australian Open</span><span class="lc-desc">Grand Slam · Melbourne</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/roland-garros" class="league-card">
+                        <span class="lc-icon">🇫🇷</span>
+                        <span class="lc-info"><span class="lc-name">Roland Garros</span><span class="lc-desc">Grand Slam · París</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/wimbledon" class="league-card">
+                        <span class="lc-icon">🇬🇧</span>
+                        <span class="lc-info"><span class="lc-name">Wimbledon</span><span class="lc-desc">Grand Slam · Londres</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/us-open" class="league-card">
+                        <span class="lc-icon">🇺🇸</span>
+                        <span class="lc-info"><span class="lc-name">US Open</span><span class="lc-desc">Grand Slam · Nueva York</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/atp" class="league-card">
+                        <span class="lc-icon">👔</span>
+                        <span class="lc-info"><span class="lc-name">ATP Tour</span><span class="lc-desc">Rankings masculinos</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                    <a href="/wta" class="league-card">
+                        <span class="lc-icon">👗</span>
+                        <span class="lc-info"><span class="lc-name">WTA Tour</span><span class="lc-desc">Rankings femeninos</span></span>
+                        <span class="lc-arrow">›</span>
+                    </a>
+                </div>
+            </div>
+
+            <section class="stats-center" id="football-stats-section" style="display: none;">
+                <div class="section-header"><h2><span class="dot"></span> Resultados y Clasificaciones</h2></div>
+                <div class="league-tabs">
+                    <button class="tab-btn active" onclick="showLeague('premier')">Premier League</button>
+                    <button class="tab-btn" onclick="showLeague('seriea')">Serie A</button>
+                    <button class="tab-btn" onclick="showLeague('bundesliga')">Bundesliga</button>
+                    <button class="tab-btn" onclick="showLeague('laliga')">LALIGA EA SPORTS</button>
+                    <button class="tab-btn" onclick="showLeague('laliga2')">Liga Hypermotion</button>
+                </div>
+                <div id="league-content"></div>
+            </section>
+        </main>
+
+        <aside class="right-sidebar">
+            <h3>🏆 Ligas Populares</h3>
+            <a href="/deportes#seccion-futbol" class="top-league-item"><span class="tl-icon">🇪🇸</span><span class="tl-name">LaLiga EA Sports</span><span class="tl-arrow">›</span></a>
+            <a href="/deportes#seccion-futbol" class="top-league-item"><span class="tl-icon">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span><span class="tl-name">Premier League</span><span class="tl-arrow">›</span></a>
+            <a href="/deportes#seccion-futbol" class="top-league-item"><span class="tl-icon">🇮🇹</span><span class="tl-name">Serie A</span><span class="tl-arrow">›</span></a>
+            <a href="/deportes#seccion-futbol" class="top-league-item"><span class="tl-icon">🇩🇪</span><span class="tl-name">Bundesliga</span><span class="tl-arrow">›</span></a>
+            <a href="/deportes#seccion-baloncesto" class="top-league-item"><span class="tl-icon">🇺🇸</span><span class="tl-name">NBA</span><span class="tl-arrow">›</span></a>
+            <a href="/deportes#seccion-baloncesto" class="top-league-item"><span class="tl-icon">🏀</span><span class="tl-name">Euroliga</span><span class="tl-arrow">›</span></a>
+            <div style="height:1px; background:#1f2937; margin:16px 0;"></div>
+            <h3>🎾 Grand Slams</h3>
+            <a href="/australian-open" class="top-league-item"><span class="tl-icon">🇦🇺</span><span class="tl-name">Australian Open</span><span class="tl-arrow">›</span></a>
+            <a href="/roland-garros" class="top-league-item"><span class="tl-icon">🇫🇷</span><span class="tl-name">Roland Garros</span><span class="tl-arrow">›</span></a>
+            <a href="/wimbledon" class="top-league-item"><span class="tl-icon">🇬🇧</span><span class="tl-name">Wimbledon</span><span class="tl-arrow">›</span></a>
+            <a href="/us-open" class="top-league-item"><span class="tl-icon">🇺🇸</span><span class="tl-name">US Open</span><span class="tl-arrow">›</span></a>
+        </aside>
+    </div>
+
+    <div id="playerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-content">
+                <div class="footer-column"><h3>BetWin</h3><ul><li><a href="/footer/sobre-nosotros">Sobre Nosotros</a></li><li><a href="/footer/trabaja-con-nosotros">Trabaja con Nosotros</a></li><li><a href="/footer/terminos">Términos y Condiciones</a></li></ul></div>
+                <div class="footer-column"><h3>Deportes</h3><ul><li><a href="/deportes#seccion-futbol">Fútbol</a></li><li><a href="/deportes#seccion-baloncesto">Baloncesto</a></li><li><a href="/deportes#seccion-tenis">Tenis</a></li></ul></div>
+                <div class="footer-column"><h3>Ayuda</h3><ul><li><a href="/footer/faq">Preguntas Frecuentes</a></li><li><a href="/footer/contacto">Contacto</a></li></ul></div>
+                <div class="footer-column"><h3>Seguridad</h3><ul><li><a href="/footer/privacidad">Privacidad</a></li></ul></div>
+            </div>
+            <div class="copyright"><p>&copy; 2025 BetWin. Todos los derechos reservados. Juega con responsabilidad. +18</p></div>
+        </div>
+    </footer>
+
+    <script src="assets/js/leagues/init.js"></script>
+    <script src="assets/js/leagues/premier.js"></script>
+    <script src="assets/js/leagues/seriea.js"></script>
+    <script src="assets/js/leagues/bundesliga.js"></script>
+    <script src="assets/js/leagues/ligaEaSports.js"></script>
+    <script src="assets/js/leagues/Hypermotion.js"></script>
+    <script src="assets/js/league-stats.js"></script>
+
+    <script>
+        // Toggle sport leagues in sidebar
+        function toggleSport(sport) {
+            var ids = ['futbol', 'basket', 'tenis'];
+            // Toggle sidebar leagues
+            ids.forEach(function(id) {
+                var el = document.getElementById('leagues-' + id);
+                if (el) el.style.display = (id === sport) ? 'block' : 'none';
+                var panel = document.getElementById('panel-' + id);
+                if (panel) panel.style.display = (id === sport) ? 'block' : 'none';
+            });
+            // Update active class
+            document.querySelectorAll('.sidebar-sport-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+    <script>
+        function initAuthHeader() {
+            try {
+                const authArea = document.getElementById('authArea');
+                if (!authArea) return;
+                let currentUser = null;
+                try {
+                    const raw = localStorage.getItem('currentUser');
+                    if (raw) currentUser = JSON.parse(raw);
+                } catch(parseErr) {
+                    console.warn('Error leyendo currentUser:', parseErr);
+                    localStorage.removeItem('currentUser');
+                }
+                if (currentUser && currentUser.username) {
+                    const initial = currentUser.username.charAt(0).toUpperCase();
+                    authArea.innerHTML = `
+                        <div class="profile-container" id="profileContainer">
+                            <div class="profile-btn" onclick="toggleProfileMenu()">
+                                <div class="profile-avatar">${initial}</div>
+                                <span class="profile-name">${currentUser.username}</span>
+                                <span class="profile-arrow">&#9660;</span>
+                            </div>
+                            <div class="profile-dropdown">
+                                <a href="#" class="dropdown-item">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    Mi Perfil
+                                </a>
+                                <a href="#" class="dropdown-item">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    Configuración
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-item logout" onclick="logoutUser()">
+                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                                    Cerrar Sesión
+                                </div>
+                            </div>
+                        </div>`;
+                } else {
+                    authArea.innerHTML = `
+                        <a href="/login" class="btn-login-header">Iniciar Sesi&#243;n</a>
+                        <a href="/registro" class="btn-register-header">Reg&#237;strate</a>`;
+                }
+            } catch(err) {
+                console.error('Error en initAuthHeader:', err);
+                const authArea = document.getElementById('authArea');
+                if (authArea) authArea.innerHTML = '<a href="/login" class="btn-login-header">Iniciar Sesi&#243;n</a>';
+            }
+        }
+        function toggleProfileMenu() { const c = document.getElementById('profileContainer'); if (c) c.classList.toggle('open'); }
+        function logoutUser() { localStorage.removeItem('currentUser'); localStorage.removeItem('authToken'); window.location.href = '/inicio'; }
+        document.addEventListener('click', function(e) { const c = document.getElementById('profileContainer'); if (c && !c.contains(e.target)) c.classList.remove('open'); });
+        window.addEventListener('storage', function(e) { if (e.key === 'currentUser') initAuthHeader(); });
+        if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', function(){ initAuthHeader(); renderInicioFavs(); }); } else { initAuthHeader(); renderInicioFavs(); }
+
+        function renderInicioFavs() {
+            try {
+                var favs = JSON.parse(localStorage.getItem('betwin_favs') || '[]');
+                // Main content favs
+                var section = document.getElementById('inicioFavs');
+                var grid = document.getElementById('inicioFavGrid');
+                if (section && grid) {
+                    if (favs.length === 0) { section.classList.remove('has-favs'); grid.innerHTML=''; }
+                    else {
+                        section.classList.add('has-favs');
+                        grid.innerHTML = favs.map(function(f) {
+                            return '<a href="'+f.url+'" class="fav-item">'
+                                +'<span class="fi-icon">'+f.icon+'</span>'
+                                +'<span class="fi-info"><span class="fi-name">'+f.name+'</span>'
+                                +'<span class="fi-sport"><span class="fi-dot" style="background:'+f.color+'"></span>'+f.sportLabel+'</span></span>'
+                                +'<span class="fi-arrow">›</span></a>';
+                        }).join('');
+                    }
+                }
+                // Sidebar favs
+                var title = document.getElementById('sidebarFavTitle');
+                var list = document.getElementById('sidebarFavList');
+                if (title && list) {
+                    if (favs.length === 0) { title.classList.remove('has-items'); list.innerHTML=''; }
+                    else {
+                        title.classList.add('has-items');
+                        list.innerHTML = favs.map(function(f) {
+                            return '<a href="'+f.url+'" class="sidebar-fav-item">'
+                                +'<span class="sfi-icon">'+f.icon+'</span>'
+                                +f.name
+                                +'<span class="sfi-dot" style="background:'+f.color+'"></span></a>';
+                        }).join('');
+                    }
+                }
+            } catch(e) { console.error(e); }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    🚀 INICIO RÁPIDO - Selector de Jornadas                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  PASO 1: Iniciar el Servidor API                                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  Abre una terminal en: c:\Users\pc\Desktop\proyecto
+  
+  Ejecuta:
+  
+    python -m api.main
+  
+  ✅ Deberías ver:
+     INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  PASO 2: Abrir en el Navegador                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  Abre tu navegador favorito y ve a:
+  
+    http://localhost:8001/laliga
+  
+  ✅ La página debería cargar con la clasificación de LaLiga
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  PASO 3: Ir a la Pestaña de Resultados                                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  Haz clic en el botón:
+  
+    ⚽ Resultados
+  
+  ✅ Deberías ver el selector de jornadas con 38 botones
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  PASO 4: Probar el Selector                                                 │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  Prueba estas acciones:
+  
+  1. Haz clic en "J5"
+     → Solo se muestran los partidos de la Jornada 5
+  
+  2. Haz clic en "J1"
+     → Solo se muestran los partidos de la Jornada 1
+  
+  3. Haz clic en "Todas las Jornadas"
+     → Se muestran todas las jornadas nuevamente
+  
+  ✅ El filtrado debería ser instantáneo
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              ⚠️ SOLUCIÓN DE PROBLEMAS                        ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  PROBLEMA: "No se pudo conectar con la API"                                 │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  SOLUCIÓN:
+  1. Verifica que el servidor API esté corriendo
+  2. Revisa que esté en el puerto 8001
+  3. Intenta: python -m api.main
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  PROBLEMA: "Los botones no aparecen"                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  SOLUCIÓN:
+  1. Abre la consola del navegador (F12)
+  2. Busca errores en JavaScript
+  3. Refresca la página (Ctrl+F5)
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  PROBLEMA: "Al hacer clic no filtra"                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  SOLUCIÓN:
+  1. Verifica que la API esté respondiendo
+  2. Abre la consola del navegador (F12)
+  3. Verifica que no haya errores de JavaScript
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                           📊 VERIFICACIÓN DE DATOS                           ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Para verificar que la base de datos tiene datos:
+
+  python database\check_matchdays.py
+
+✅ Deberías ver:
+   - 38 jornadas con datos
+   - 399 partidos totales
+   - Distribución por jornada
+
+
+Para verificar que la API funciona:
+
+  python test_matchday_api.py
+
+✅ Deberías ver:
+   - Todos los partidos: 399
+   - Jornada 5: 10 partidos
+   - Jornada 1: 11 partidos
+   - Estructura de datos correcta
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                            📚 DOCUMENTACIÓN ADICIONAL                        ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+  📄 GUIA_PRUEBA_JORNADAS.md
+     → Guía completa de prueba con casos de uso detallados
+  
+  📄 RESUMEN_IMPLEMENTACION.md
+     → Resumen técnico de la implementación
+  
+  📄 DIAGRAMA_INTERFAZ.txt
+     → Diagrama visual de la interfaz
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              ✅ CHECKLIST FINAL                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+  ☐ Servidor API corriendo en puerto 8001
+  ☐ Página carga correctamente en http://localhost:8001/laliga
+  ☐ Pestaña "Resultados" muestra el selector de jornadas
+  ☐ 38 botones de jornadas visibles (J1 a J38)
+  ☐ Botón "Todas las Jornadas" visible con gradiente morado
+  ☐ Al hacer clic en J5, solo se muestran partidos de Jornada 5
+  ☐ Botón activo se pone naranja con sombra
+  ☐ Hover sobre botones muestra efecto de elevación
+  ☐ Filtrado es instantáneo sin recargar página
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                           🎉 ¡TODO LISTO!                                    ║
+║                                                                              ║
+║  El selector de jornadas está completamente implementado y funcional.       ║
+║  Ahora puedes navegar fácilmente por las 38 jornadas de LaLiga.            ║
+║                                                                              ║
+║  ¡Disfruta de tu nueva funcionalidad! ⚽                                     ║
+╚══════════════════════════════════════════════════════════════════════════════╝

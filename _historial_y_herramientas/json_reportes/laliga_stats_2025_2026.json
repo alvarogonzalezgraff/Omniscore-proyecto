@@ -1,0 +1,162 @@
+[
+    {
+        "nombre": "Robert Lewandowski",
+        "equipo": "Barcelona",
+        "goles": 22,
+        "asistencias": 0,
+        "partidos_jugados": 2,
+        "minutos_totales": 165
+    },
+    {
+        "nombre": "Kylian Mbappé",
+        "equipo": "Real Madrid",
+        "goles": 17,
+        "asistencias": 0,
+        "partidos_jugados": 2,
+        "minutos_totales": 180
+    },
+    {
+        "nombre": "Raphinha",
+        "equipo": "Barcelona",
+        "goles": 16,
+        "asistencias": 0,
+        "partidos_jugados": 17,
+        "minutos_totales": 1154
+    },
+    {
+        "nombre": "Vinícius Júnior",
+        "equipo": "Real Madrid",
+        "goles": 12,
+        "asistencias": 0,
+        "partidos_jugados": 4,
+        "minutos_totales": 255
+    },
+    {
+        "nombre": "Ayoze Pérez",
+        "equipo": "Villareal",
+        "goles": 12,
+        "asistencias": 0,
+        "partidos_jugados": 6,
+        "minutos_totales": 496
+    },
+    {
+        "nombre": "Ante Budimir",
+        "equipo": "Osasuna",
+        "goles": 10,
+        "asistencias": 0,
+        "partidos_jugados": 12,
+        "minutos_totales": 1080
+    },
+    {
+        "nombre": "Julián Alvarez",
+        "equipo": "Atlético de Madrid",
+        "goles": 10,
+        "asistencias": 0,
+        "partidos_jugados": 4,
+        "minutos_totales": 352
+    },
+    {
+        "nombre": "Lamine Yamal",
+        "equipo": "Barcelona",
+        "goles": 10,
+        "asistencias": 0,
+        "partidos_jugados": 16,
+        "minutos_totales": 1341
+    },
+    {
+        "nombre": "Dodi Lukébakio",
+        "equipo": "Sevilla",
+        "goles": 9,
+        "asistencias": 0,
+        "partidos_jugados": 4,
+        "minutos_totales": 360
+    },
+    {
+        "nombre": "Iago Aspas",
+        "equipo": "Celta de Vigo",
+        "goles": 9,
+        "asistencias": 0,
+        "partidos_jugados": 4,
+        "minutos_totales": 290
+    },
+    {
+        "nombre": "Alex Baena",
+        "equipo": "Villareal",
+        "goles": 0,
+        "asistencias": 9,
+        "partidos_jugados": 8,
+        "minutos_totales": 606
+    },
+    {
+        "nombre": "Óscar Mingueza",
+        "equipo": "Celta de Vigo",
+        "goles": 0,
+        "asistencias": 7,
+        "partidos_jugados": 3,
+        "minutos_totales": 270
+    },
+    {
+        "nombre": "Antoine Griezmann",
+        "equipo": "Atlético de Madrid",
+        "goles": 0,
+        "asistencias": 6,
+        "partidos_jugados": 10,
+        "minutos_totales": 872
+    },
+    {
+        "nombre": "Dani Olmo",
+        "equipo": "Barcelona",
+        "goles": 0,
+        "asistencias": 6,
+        "partidos_jugados": 18,
+        "minutos_totales": 1150
+    },
+    {
+        "nombre": "Bryan Gil",
+        "equipo": "Girona",
+        "goles": 0,
+        "asistencias": 4,
+        "partidos_jugados": 1,
+        "minutos_totales": 63
+    },
+    {
+        "nombre": "Iñaki Williams",
+        "equipo": "Athletic Club",
+        "goles": 0,
+        "asistencias": 4,
+        "partidos_jugados": 0,
+        "minutos_totales": 0
+    },
+    {
+        "nombre": "Jude Bellingham",
+        "equipo": "Real Madrid",
+        "goles": 0,
+        "asistencias": 4,
+        "partidos_jugados": 3,
+        "minutos_totales": 270
+    },
+    {
+        "nombre": "Sergio Gómez",
+        "equipo": "Real Sociedad",
+        "goles": 0,
+        "asistencias": 4,
+        "partidos_jugados": 3,
+        "minutos_totales": 110
+    },
+    {
+        "nombre": "Thierno Barry",
+        "equipo": "Villareal",
+        "goles": 0,
+        "asistencias": 4,
+        "partidos_jugados": 0,
+        "minutos_totales": 0
+    },
+    {
+        "nombre": "Pedri",
+        "equipo": "Barcelona",
+        "goles": 0,
+        "asistencias": 3,
+        "partidos_jugados": 13,
+        "minutos_totales": 952
+    }
+]

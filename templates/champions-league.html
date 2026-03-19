@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BetWin - Champions League</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: #0f172a;
+        color: #f8fafc;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background-color: #1e293b;
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #3b82f6;
+      }
+
+      .logo span {
+        color: #f59e0b;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+      }
+
+      nav ul li a {
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #3b82f6;
+      }
+
+      .btn-back {
+        background-color: #334155;
+        color: #f8fafc;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-back:hover {
+        background-color: #475569;
+      }
+
+      .hero {
+        background: linear-gradient(
+          rgba(255, 87, 34, 0.85),
+          rgba(15, 23, 42, 0.9)
+        );
+        padding: 50px 0;
+        text-align: center;
+        border-bottom: 4px solid #ff5722;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
+      .hero p {
+        font-size: 18px;
+        color: #cbd5e1;
+      }
+
+      .tabs-container {
+        background-color: #1e293b;
+        padding: 15px 0;
+        position: sticky;
+        top: 62px;
+        z-index: 99;
+      }
+
+      .tabs {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .tab-btn {
+        background-color: #334155;
+        color: #cbd5e1;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .tab-btn.active,
+      .tab-btn:hover {
+        background-color: #ff5722;
+        color: white;
+      }
+
+      .content-section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        color: #f8fafc;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(90deg, #ff5722, transparent);
+        margin-left: 15px;
+      }
+
+      .standings-table {
+        width: 100%;
+        background-color: #1e293b;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .standings-table table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .standings-table th {
+        background-color: #ff5722;
+        color: white;
+        padding: 15px 10px;
+        text-align: left;
+        font-size: 13px;
+        text-transform: uppercase;
+      }
+
+      .standings-table td {
+        padding: 12px 10px;
+        border-bottom: 1px solid #334155;
+        font-size: 14px;
+      }
+
+      .standings-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .standings-table tr:hover {
+        background-color: #263346;
+      }
+
+      .standings-table .pos {
+        font-weight: bold;
+        color: #94a3b8;
+        width: 40px;
+        text-align: center;
+      }
+
+      .standings-table .team-cell {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .standings-table .team-logo {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+      }
+
+      .standings-table .team-name {
+        font-weight: 600;
+        color: #f8fafc;
+      }
+
+      .standings-table .points {
+        font-weight: bold;
+        color: #22c55e;
+        font-size: 16px;
+      }
+
+      .champions-zone {
+        border-left: 4px solid #22c55e;
+      }
+
+      .europa-zone {
+        border-left: 4px solid #f59e0b;
+      }
+
+      .conference-zone {
+        border-left: 4px solid #3b82f6;
+      }
+
+      .relegation-zone {
+        border-left: 4px solid #ef4444;
+      }
+
+      .form-container {
+        display: flex;
+        gap: 3px;
+      }
+
+      .form-badge {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        text-align: center;
+        border-radius: 4px;
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+      }
+
+      .form-W {
+        background-color: #22c55e;
+      }
+
+      .form-D {
+        background-color: #f59e0b;
+      }
+
+      .form-L {
+        background-color: #ef4444;
+      }
+
+      .legend {
+        display: flex;
+        gap: 25px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        padding: 15px;
+        background-color: #1e293b;
+        border-radius: 10px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #94a3b8;
+      }
+
+      .legend-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 3px;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Selector de Jornadas */
+      .matchday-selector {
+        background-color: #1e293b;
+        border-radius: 15px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .matchday-selector-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #f8fafc;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .matchday-buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 10px;
+      }
+
+      .matchday-btn {
+        background-color: #334155;
+        color: #cbd5e1;
+        border: 2px solid transparent;
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s;
+        text-align: center;
+      }
+
+      .matchday-btn:hover {
+        background-color: #475569;
+        border-color: #ff5722;
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      .matchday-btn.active {
+        background-color: #ff5722;
+        color: white;
+        border-color: #ff5722;
+        box-shadow: 0 4px 12px rgba(255, 87, 34, 0.4);
+      }
+
+      .matchday-btn.all-matchdays {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        grid-column: span 2;
+      }
+
+      .matchday-btn.all-matchdays:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        border-color: #667eea;
+      }
+
+      .matchday-btn.all-matchdays.active {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+      }
+
+      .matchweek {
+        background-color: #1e293b;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        overflow: hidden;
+      }
+
+      .matchweek-header {
+        background-color: #ff5722;
+        padding: 15px 20px;
+        font-weight: 600;
+        color: white;
+      }
+
+      .match-row {
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        border-bottom: 1px solid #334155;
+      }
+
+      .match-row:last-child {
+        border-bottom: none;
+      }
+
+      .match-teams {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+      }
+
+      .match-team {
+        flex: 1;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .match-team.home {
+        text-align: right;
+      }
+
+      .match-team.away {
+        text-align: left;
+      }
+
+      .match-score {
+        background-color: #ff5722;
+        padding: 8px 15px;
+        border-radius: 6px;
+        font-weight: bold;
+        color: white;
+        min-width: 60px;
+        text-align: center;
+      }
+
+      .players-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 20px;
+      }
+
+      .player-card {
+        background-color: #1e293b;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: all 0.3s;
+        border: 1px solid #334155;
+      }
+
+      .player-card:hover {
+        transform: translateY(-3px);
+        border-color: #ff5722;
+      }
+
+      .player-rank {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ff5722;
+        min-width: 40px;
+      }
+
+      .player-info {
+        flex: 1;
+      }
+
+      .player-name {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .player-team {
+        font-size: 13px;
+        color: #94a3b8;
+      }
+
+      .player-stat {
+        text-align: center;
+      }
+
+      .player-stat-number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #22c55e;
+      }
+
+      .player-stat-label {
+        font-size: 11px;
+        color: #64748b;
+        text-transform: uppercase;
+      }
+
+      footer {
+        background-color: #1e293b;
+        padding: 30px 0;
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .copyright {
+        color: #94a3b8;
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .hero h1 {
+          font-size: 28px;
+        }
+
+        .standings-table {
+          overflow-x: auto;
+        }
+
+        .standings-table table {
+          min-width: 700px;
+        }
+
+        .players-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    
+/* Sport Top Navigation */
+.sport-top-nav { position: fixed; top: 70px; left: 16px; z-index: 150; display: flex; flex-direction: column; gap: 6px; }
+.sport-top-nav a { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(17,24,39,0.92); backdrop-filter: blur(12px); border: 1px solid #1f2937; border-radius: 8px; color: #9ca3af; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.25s; white-space: nowrap; }
+.sport-top-nav a:hover { color: #fff; background: rgba(17,24,39,0.98); transform: translateX(4px); border-color: var(--nav-accent, #3b82f6); box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
+.sport-top-nav a .nav-icon { font-size: 15px; }
+.sport-top-nav a.futbol-nav { --nav-accent: #22c55e; }
+.sport-top-nav a.basket-nav { --nav-accent: #f59e0b; }
+.sport-top-nav a.tenis-nav { --nav-accent: #eab308; }
+.sport-top-nav a.active-nav { color: #fff; border-color: var(--nav-accent); background: rgba(17,24,39,0.98); box-shadow: 0 0 10px rgba(59,130,246,0.15); }
+@media (max-width: 900px) { .sport-top-nav { position: fixed; top: auto; bottom: 0; left: 0; right: 0; flex-direction: row; justify-content: center; gap: 6px; padding: 10px; background: rgba(10,14,26,0.95); border-top: 1px solid #1f2937; border-radius: 0; } .sport-top-nav a .nav-label { display: none; } .sport-top-nav a { padding: 8px 12px; } }
+</style>
+  </head>
+
+  <body>
+<!-- Sport Top Navigation -->
+<div class="sport-top-nav">
+    <a href="/deportes#seccion-futbol" class="futbol-nav active-nav"><span class="nav-icon">⚽</span><span class="nav-label">Fútbol</span></a>
+    <a href="/deportes#seccion-baloncesto" class="basket-nav"><span class="nav-icon">🏀</span><span class="nav-label">Baloncesto</span></a>
+    <a href="/deportes#seccion-tenis" class="tenis-nav"><span class="nav-icon">🎾</span><span class="nav-label">Tenis</span></a>
+</div>
+
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="/inicio" class="logo">Bet<span>Win</span></a>
+          <nav>
+            <ul>
+              <li><a href="/inicio">Inicio</a></li>
+              <li><a href="/deportes">Deportes</a></li>
+              <li><a href="#">En Vivo</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <button class="btn-back" onclick="window.location.href = '/deportes'">
+          ← Volver a Deportes
+        </button>
+        <h1 style="margin-top: 20px">🏆 Champions League</h1>
+        <p>Temporada 2024/2025 - La máxima competición europea de clubes</p>
+      </div>
+    </section>
+
+    <div class="tabs-container">
+      <div class="container">
+        <div class="tabs">
+          <button class="tab-btn active" onclick="showTab('standings')">
+            📊 Clasificación
+          </button>
+          <button class="tab-btn" onclick="showTab('results')">
+            ⚽ Resultados
+          </button>
+          <button class="tab-btn" onclick="showTab('scorers')">
+            🏆 Goleadores
+          </button>
+          <button class="tab-btn" onclick="showTab('assists')">
+            🎯 Asistidores
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <section class="content-section">
+      <div class="container">
+        <div id="standings-content" class="tab-content active">
+          <h2 class="section-title">Clasificación</h2>
+          <div class="standings-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Equipo</th>
+                  <th>PJ</th>
+                  <th>G</th>
+                  <th>E</th>
+                  <th>P</th>
+                  <th>GF</th>
+                  <th>GC</th>
+                  <th>DG</th>
+                  <th>Pts</th>
+                  <th>Forma</th>
+                </tr>
+              </thead>
+              <tbody id="standings-body"></tbody>
+            </table>
+          </div>
+          <div class="legend">
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #22c55e"></div>
+              <span>Fase Siguiente</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #f59e0b"></div>
+              <span>Play-offs</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #ef4444"></div>
+              <span>Eliminados</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="results-content" class="tab-content">
+          <h2 class="section-title">Últimos Resultados</h2>
+
+          <!-- Selector de Jornadas -->
+          <div class="matchday-selector">
+            <div class="matchday-selector-title">📅 Selecciona una Jornada</div>
+            <div class="matchday-buttons" id="matchday-buttons">
+              <button
+                class="matchday-btn all-matchdays active"
+                onclick="filterByMatchday(null)"
+              >
+                Todas las Jornadas
+              </button>
+              <!-- Los botones de jornadas se generarán dinámicamente -->
+            </div>
+          </div>
+
+          <div id="results-body"></div>
+        </div>
+
+        <div id="scorers-content" class="tab-content">
+          <h2 class="section-title">Máximos Goleadores</h2>
+          <div class="players-grid" id="scorers-body"></div>
+        </div>
+
+        <div id="assists-content" class="tab-content">
+          <h2 class="section-title">Máximos Asistentes</h2>
+          <div class="players-grid" id="assists-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p class="copyright">
+          © 2026 BetWin - Champions League - Todos los derechos reservados
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const API_BASE = "http://localhost:8001/api";
+      const LEAGUE_ID = 99; // Champions League
+      const LEAGUE_NAME = "Champions";
+      const TOTAL_MATCHDAYS = 8;
+
+      let allMatches = [];
+
+      async function init() {
+        try {
+          // Fetch standings, scraped-matches, scraped-scorers, scraped-assisters
+          const [standings, matchRes, scorersRes, assistersRes] =
+            await Promise.all([
+              fetch(
+                `${API_BASE}/scraped-standings/${encodeURIComponent(LEAGUE_NAME)}`,
+              ).then((r) => r.json()),
+              fetch(
+                `${API_BASE}/scraped-matches/${encodeURIComponent(LEAGUE_NAME)}?season=2024%2F25`,
+              ),
+              fetch(
+                `${API_BASE}/scraped-scorers/${encodeURIComponent(LEAGUE_NAME)}`,
+              ),
+              fetch(
+                `${API_BASE}/scraped-assisters/${encodeURIComponent(LEAGUE_NAME)}`,
+              ),
+            ]);
+
+          allMatches = await matchRes.json();
+          const scorers = await scorersRes.json();
+          const assisters = await assistersRes.json();
+
+          renderStandings(standings);
+          generateMatchdaySelector();
+          renderMatches("all");
+          renderScorers(scorers);
+          renderAssists(assisters);
+        } catch (error) {
+          console.error("Error loading API data:", error);
+          document.querySelector(".content-section .container").innerHTML = `
+            <div style="text-align:center; padding: 40px; color: #ef4444;">
+              <h2>Error de conexión</h2>
+              <p>No se pudo conectar con la API local.</p>
+            </div>
+          `;
+        }
+      }
+
+      function showTab(tabName) {
+        document.querySelectorAll(".tab-content").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        const content = document.getElementById(`${tabName}-content`);
+        if (content) content.classList.add("active");
+
+        const buttons = document.querySelectorAll(".tab-btn");
+        for (let btn of buttons) {
+          if (btn.getAttribute("onclick").includes(`'${tabName}'`)) {
+            btn.classList.add("active");
+            break;
+          }
+        }
+      }
+
+      function renderStandings(data) {
+        const tbody = document.getElementById("standings-body");
+        tbody.innerHTML = data
+          .map((team) => {
+            let zoneClass = "";
+            if (team.position <= 8) zoneClass = "champions-zone";
+            else if (team.position >= 9 && team.position <= 24) zoneClass = "europa-zone";
+            else if (team.position >= 25) zoneClass = "relegation-zone";
+
+            const formHtml = ["-", "-", "-", "-", "-"]
+              .map(
+                (f) =>
+                  `<span class="form-badge" style="background:#334155">${f}</span>`,
+              )
+              .join("");
+
+            return `
+              <tr class="${zoneClass}">
+                  <td class="pos">${team.position}</td>
+                  <td>
+                      <div class="team-cell">
+                          <img src="${team.logo || "https://via.placeholder.com/28"}" class="team-logo" onerror="this.src='https://via.placeholder.com/28'">
+                          <span class="team-name">${team.team_name}</span>
+                      </div>
+                  </td>
+                  <td>${team.matches_played}</td>
+                  <td>${team.wins}</td>
+                  <td>${team.draws}</td>
+                  <td>${team.losses}</td>
+                  <td>${team.goals_for}</td>
+                  <td>${team.goals_against}</td>
+                  <td>${team.goal_difference || team.goals_for - team.goals_against}</td>
+                  <td class="points">${team.points}</td>
+                  <td><div class="form-container">${formHtml}</div></td>
+              </tr>
+            `;
+          })
+          .join("");
+      }
+
+      function generateMatchdaySelector() {
+        const container = document.getElementById("matchday-buttons");
+        const allBtn = container.querySelector(".all-matchdays");
+        if (allBtn) {
+          allBtn.onclick = () => filterMatches("all", allBtn);
+        }
+
+        const matchdaysWithData = new Set(allMatches.map((m) => m.matchday));
+        
+        const regularMatchdays = [];
+        for (let i = 1; i <= TOTAL_MATCHDAYS; i++) regularMatchdays.push(`Jornada ${i}`);
+        
+        const knockouts = [
+            "Play-offs (Ida)", "Play-offs (Vuelta)",
+            "Octavos (Ida)", "Octavos (Vuelta)",
+            "Cuartos (Ida)", "Cuartos (Vuelta)",
+            "Semifinales (Ida)", "Semifinales (Vuelta)",
+            "Final"
+        ];
+        
+        const allDaysToRender = [...regularMatchdays, ...knockouts];
+
+        allDaysToRender.forEach(day => {
+          const button = document.createElement("button");
+          button.className = "matchday-btn";
+          if (matchdaysWithData.has(day)) {
+            button.classList.add("has-data");
+          } else {
+            button.style.opacity = "0.4";
+          }
+          
+          let btnText = day;
+          if (btnText.startsWith("Jornada")) {
+             btnText = btnText.replace("Jornada ", "J");
+          } else {
+             // Shorten long knockout names
+             btnText = btnText.replace("Play-offs", "PO");
+             btnText = btnText.replace("Octavos", "Oct");
+             btnText = btnText.replace("Cuartos", "Cua");
+             btnText = btnText.replace("Semifinales", "Sem");
+          }
+          
+          button.textContent = btnText;
+          button.onclick = () => filterMatches(day, button);
+          container.appendChild(button);
+        });
+      }
+
+      function filterMatches(day, btn) {
+        document
+          .querySelectorAll(".matchday-btn")
+          .forEach((b) => b.classList.remove("active"));
+        if (btn) btn.classList.add("active");
+        renderMatches(day);
+      }
+
+      function renderMatches(filterDay) {
+        const container = document.getElementById("results-body");
+
+        if (!allMatches || allMatches.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: #94a3b8; background-color: #1e293b; border-radius: 10px;">
+              <p style="font-size: 18px;">📭 No hay partidos disponibles</p>
+            </div>
+          `;
+          return;
+        }
+
+        const grouped = {};
+        allMatches.forEach((m) => {
+          if (!grouped[m.matchday]) grouped[m.matchday] = [];
+          grouped[m.matchday].push(m);
+        });
+
+        const order = [
+          "Final",
+          "Semifinales (Vuelta)", "Semifinales (Ida)",
+          "Cuartos (Vuelta)", "Cuartos (Ida)",
+          "Octavos (Vuelta)", "Octavos (Ida)",
+          "Play-offs (Vuelta)", "Play-offs (Ida)"
+        ];
+        for (let i = TOTAL_MATCHDAYS; i >= 1; i--) {
+            order.push(`Jornada ${i}`);
+        }
+
+        let matchdaysToShow = Object.keys(grouped).sort((a, b) => {
+          let idxA = order.indexOf(a);
+          let idxB = order.indexOf(b);
+          if (idxA === -1) idxA = 999;
+          if (idxB === -1) idxB = 999;
+          return idxA - idxB;
+        });
+
+        if (filterDay !== "all") {
+          matchdaysToShow = [filterDay].filter((d) => grouped[d]);
+        }
+
+        if (matchdaysToShow.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 40px; color: #94a3b8; background-color: #1e293b; border-radius: 10px;">
+              <p style="font-size: 18px;">📭 No hay partidos para esta jornada</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = matchdaysToShow
+          .map(
+            (day) => `
+              <div class="matchweek">
+                  <div class="matchweek-header">${day}</div>
+                  ${grouped[day].map((m) => renderMatchCard(m)).join("")}
+              </div>
+            `,
+          )
+          .join("");
+      }
+
+      function renderMatchCard(m) {
+        const homeEvents = [];
+        const awayEvents = [];
+        const homeTeam = (m.home_team || '').toLowerCase();
+        const awayTeam = (m.away_team || '').toLowerCase();
+
+        // Helper: detect if a text belongs to home or away team
+        function detectSide(text, idx) {
+          const t = (text || '').toLowerCase();
+          if (homeTeam && t.includes(homeTeam)) return 'home';
+          if (awayTeam && t.includes(awayTeam)) return 'away';
+          return idx % 2 === 0 ? 'home' : 'away';
+        }
+
+        // ── GOLES ──────────
+        const goalsRaw = Array.isArray(m.goals_details) ? [...m.goals_details] : [];
+        goalsRaw.sort((a, b) => (a.minute || 0) - (b.minute || 0));
+
+        const homeCount = parseInt(m.home_score) || 0;
+        let hAdded = 0;
+
+        goalsRaw.forEach(g => {
+          const playerName = (g && g.player) ? g.player : "Jugador";
+          let txt = `⚽ <strong>${playerName}</strong> ${g.minute || 0}'`;
+          if (g && g.is_penalty) txt += ' <span style="color:#fbbf24;">(P)</span>';
+          if (g && g.is_own)     txt += ' <span style="color:#ef4444;">(PP)</span>';
+          if (g && g.assist)     txt += ` <span style="color:#a5b4fc;">🅰️ ${g.assist}</span>`;
+          const ev = { minute: (g && g.minute) || 0, text: txt };
+          if (hAdded < homeCount) { homeEvents.push(ev); hAdded++; }
+          else                    { awayEvents.push(ev); }
+        });
+
+        // ── TARJETAS ──────────
+        if (Array.isArray(m.cards) && m.cards.length > 0) {
+          m.cards.forEach((c, idx) => {
+            let txt, playerName;
+            if (c && c.formatted) {
+              txt = c.formatted;
+              playerName = c.formatted;
+            } else {
+              const isRed = (c && c.type && typeof c.type === 'string' && c.type.toLowerCase().includes('roja'));
+              const icon = isRed ? '🟥' : '🟨';
+              playerName = (c && c.player) ? c.player : (typeof c === 'string' ? c : "Jugador");
+              txt = `${icon} <strong>${playerName}</strong> ${(c && c.minute) || 0}'`;
+            }
+            const ev = { minute: (c && c.minute) || 0, text: txt };
+            const side = detectSide(playerName, idx);
+            if (side === 'home') homeEvents.push(ev);
+            else awayEvents.push(ev);
+          });
+        } else {
+          let yc = [], rc = [];
+          try { if (m.yellow_cards && typeof m.yellow_cards === 'string') yc = JSON.parse(m.yellow_cards); } catch (e) {}
+          try { if (m.red_cards && typeof m.red_cards === 'string') rc = JSON.parse(m.red_cards); } catch (e) {}
+          if (Array.isArray(yc)) {
+            yc.forEach((c, idx) => {
+              const side = detectSide(c, idx);
+              if (side === 'home') homeEvents.push({ minute: 0, text: `🟨 ${c}` });
+              else awayEvents.push({ minute: 0, text: `🟨 ${c}` });
+            });
+          }
+          if (Array.isArray(rc)) {
+            rc.forEach((c, idx) => {
+              const side = detectSide(c, idx);
+              if (side === 'home') homeEvents.push({ minute: 0, text: `🟥 ${c}` });
+              else awayEvents.push({ minute: 0, text: `🟥 ${c}` });
+            });
+          }
+        }
+
+        // ── SUSTITUCIONES ──────────
+        if (Array.isArray(m.substitutions) && m.substitutions.length > 0) {
+          m.substitutions.forEach((s, idx) => {
+            if (typeof s === "string") {
+              const side = detectSide(s, idx);
+              if (side === 'home') homeEvents.push({ minute: 0, text: `🔄 ${s}`});
+              else awayEvents.push({ minute: 0, text: `🔄 ${s}`});
+            } else {
+              const playerIn = (s && s.player_in) ? s.player_in : "Jugador";
+              const playerOut = (s && s.player_out) ? s.player_out : "Jugador";
+              const txt = `🔄 <span style="color:#22c55e;">${playerIn} ⬆</span> <span style="color:#ef4444;">${playerOut} ⬇</span> ${(s && s.minute) || 0}'`;
+              const ev = { minute: (s && s.minute) || 0, text: txt };
+              const side = detectSide(playerIn, idx);
+              if (side === 'home') homeEvents.push(ev);
+              else awayEvents.push(ev);
+            }
+          });
+        }
+
+        // ── LESIONES ──────────
+        if (Array.isArray(m.injuries) && m.injuries.length > 0) {
+          m.injuries.forEach((i, idx) => {
+            const playerName = (i && i.player) ? i.player : "Jugador";
+            const txt = `🚑 <strong>${playerName}</strong> ${(i && i.minute) || 0}' <span style="color:#f87171;">Lesión</span>`;
+            const ev = { minute: (i && i.minute) || 0, text: txt };
+            const side = detectSide(playerName, idx);
+            if (side === 'home') homeEvents.push(ev);
+            else awayEvents.push(ev);
+          });
+        }
+
+        homeEvents.sort((a, b) => a.minute - b.minute);
+        awayEvents.sort((a, b) => a.minute - b.minute);
+
+        let eventsHtml = '';
+        if (homeEvents.length > 0 || awayEvents.length > 0) {
+          const maxRows = Math.max(homeEvents.length, awayEvents.length);
+          let rows = '';
+          for (let i = 0; i < maxRows; i++) {
+            const hTxt = homeEvents[i] ? homeEvents[i].text : '';
+            const aTxt = awayEvents[i] ? awayEvents[i].text : '';
+            rows += `<tr>
+              <td style="text-align:right;padding:2px 12px 2px 0;width:50%;vertical-align:top;">${hTxt}</td>
+              <td style="text-align:left;padding:2px 0 2px 12px;width:50%;border-left:2px solid #334155;vertical-align:top;">${aTxt}</td>
+            </tr>`;
+          }
+          eventsHtml = `
+            <table style="width:100%;border-collapse:collapse;margin-top:8px;font-size:11.5px;color:#cbd5e1;line-height:1.75;">
+              <tr>
+                <th style="text-align:right;padding:2px 12px;font-size:10px;color:#64748b;font-weight:500;width:50%;">${m.home_team || 'Local'}</th>
+                <th style="text-align:left;padding:2px 12px;font-size:10px;color:#64748b;font-weight:500;width:50%;border-left:2px solid #334155;">${m.away_team || 'Visitante'}</th>
+              </tr>
+              ${rows}
+            </table>`;
+        } else if (m.scorers && typeof m.scorers === 'string' && m.scorers.trim() && m.scorers !== 'Simulated') {
+          eventsHtml = `<div style="text-align:center;margin-top:8px;font-size:11.5px;color:#94a3b8;">⚽ ${m.scorers}</div>`;
+        }
+
+        const detailsId = `details-${m.id}`;
+
+        return `
+          <div style="border-bottom:1px solid #334155;padding:14px 20px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+              <div style="font-weight:700;flex:1;text-align:right;">${m.home_team || 'Local'}</div>
+              <div style="background:#ff5722;color:#fff;padding:7px 18px;border-radius:7px;font-weight:bold;font-size:16px;min-width:64px;text-align:center;">${m.home_score !== null ? m.home_score : '-'} - ${m.away_score !== null ? m.away_score : '-'}</div>
+              <div style="font-weight:700;flex:1;text-align:left;">${m.away_team || 'Visitante'}</div>
+            </div>
+            ${eventsHtml ? `<div style="border-top:1px solid #263346;margin-top:8px;padding-top:6px;">${eventsHtml}</div>` : ''}
+            <div style="text-align:center;font-size:11px;color:#475569;margin-top:6px;">📅 ${new Date(m.date || Date.now()).toLocaleDateString()}</div>
+          </div>`;
+      }
+
+      function renderScorers(data) {
+        document.getElementById("scorers-body").innerHTML = data
+          .map(
+            (p, i) => `
+            <div class="player-card">
+              <div class="player-rank">#${i + 1}</div>
+              <div class="player-info">
+                <div class="player-name">${p.player_name}</div>
+                <div class="player-team">${p.team_name}</div>
+              </div>
+              <div class="player-stat">
+                <div class="player-stat-number">${p.goals}</div>
+                <div class="player-stat-label">Goles</div>
+              </div>
+            </div>
+          `,
+          )
+          .join("");
+      }
+
+      function renderAssists(data) {
+        document.getElementById("assists-body").innerHTML = data
+          .map(
+            (p, i) => `
+            <div class="player-card">
+              <div class="player-rank">#${i + 1}</div>
+              <div class="player-info">
+                <div class="player-name">${p.player_name}</div>
+                <div class="player-team">${p.team_name}</div>
+              </div>
+              <div class="player-stat">
+                <div class="player-stat-number">${p.assists}</div>
+                <div class="player-stat-label">Asistencias</div>
+              </div>
+            </div>
+          `,
+          )
+          .join("");
+      }
+
+      document.addEventListener("DOMContentLoaded", init);
+    </script>
+  </body>
+</html>

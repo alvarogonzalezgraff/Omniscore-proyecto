@@ -1,9 +1,13 @@
 /* ===== BODY Y FONDO ===== */
 body {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    background: var(--bg-gradient);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    transition: background var(--transition-base);
 }

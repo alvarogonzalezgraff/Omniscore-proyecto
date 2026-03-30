@@ -1,4 +1,5 @@
 @import url(reset.css);
+@import url(theme-variables.css);
 @import url(body.css);
 @import url(contenedorprin.css);
 @import url(header.css);

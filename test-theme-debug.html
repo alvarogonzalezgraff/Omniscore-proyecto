@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Debug Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .test-button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .test-button:hover {
+            background: #2563eb;
+        }
+        .debug-output {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+        .status.success { background: #d4edda; color: #155724; }
+        .status.error { background: #f8d7da; color: #721c24; }
+        .status.warning { background: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔬 Theme Debug Test Suite</h1>
+        <p>Esta página ayuda a diagnosticar problemas con el sistema de detección de cambios.</p>
+
+        <div class="test-section">
+            <h2>📊 Estado Actual</h2>
+            <button class="test-button" onclick="checkCurrentState()">Verificar Estado Actual</button>
+            <button class="test-button" onclick="clearDebugLogs()">Limpiar Logs</button>
+            <div id="currentState" class="debug-output"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🧪 Pruebas de Comparación</h2>
+            <button class="test-button" onclick="testObjectComparison()">Probar Comparación de Objetos</button>
+            <button class="test-button" onclick="testDeepComparison()">Probar Comparación Profunda</button>
+            <button class="test-button" onclick="testReferenceIssues()">Probar Problemas de Referencia</button>
+            <div id="comparisonTests" class="debug-output"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎨 Simulación del Panel</h2>
+            <button class="test-button" onclick="simulatePanelChanges()">Simular Cambios en Panel</button>
+            <button class="test-button" onclick="simulateSaveAttempt()">Simular Intento de Guardado</button>
+            <button class="test-button" onclick="simulateFormValues()">Simular Valores del Formulario</button>
+            <div id="panelSimulation" class="debug-output"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 Herramientas de Debug</h2>
+            <button class="test-button" onclick="exportAllLogs()">Exportar Todos los Logs</button>
+            <button class="test-button" onclick="showDebugSummary()">Mostrar Resumen</button>
+            <button class="test-button" onclick="testDataIntegrity()">Probar Integridad de Datos</button>
+            <div id="debugTools" class="debug-output"></div>
+        </div>
+
+        <div id="statusMessages"></div>
+    </div>
+
+    <!-- Cargar los scripts del tema -->
+    <script src="assets/js/components/ThemeDebugger.js"></script>
+    <script src="assets/js/components/ThemeManager.js"></script>
+    <script src="assets/js/components/AppearanceSettingsPanel.js"></script>
+
+    <script>
+        // Funciones de prueba
+        function showStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('statusMessages');
+            const status = document.createElement('div');
+            status.className = `status ${type}`;
+            status.textContent = message;
+            statusDiv.appendChild(status);
+            
+            setTimeout(() => status.remove(), 5000);
+        }
+
+        function updateOutput(elementId, content) {
+            document.getElementById(elementId).textContent = content;
+        }
+
+        function checkCurrentState() {
+            if (!window.themeDebugger) {
+                updateOutput('currentState', '❌ ThemeDebugger no está disponible');
+                return;
+            }
+
+            const panel = window.getAppearanceSettingsPanel?.();
+            if (!panel) {
+                updateOutput('currentState', '❌ AppearanceSettingsPanel no está disponible');
+                return;
+            }
+
+            const analysis = window.themeDebugger.analyzePanelState(panel);
+            updateOutput('currentState', JSON.stringify(analysis, null, 2));
+            showStatus('Estado actual analizado', 'success');
+        }
+
+        function clearDebugLogs() {
+            if (window.themeDebugger) {
+                window.themeDebugger.clearLogs();
+                showStatus('Logs limpiados', 'success');
+            }
+        }
+
+        function testObjectComparison() {
+            if (!window.themeDebugger) {
+                updateOutput('comparisonTests', '❌ ThemeDebugger no disponible');
+                return;
+            }
+
+            const obj1 = { backgroundColor: '#ffffff', fontSize: 'normal' };
+            const obj2 = { backgroundColor: '#ffffff', fontSize: 'large' };
+            const obj3 = { backgroundColor: '#ffffff', fontSize: 'normal' };
+
+            const tests = {
+                'Obj1 vs Obj2 (diferentes)': window.themeDebugger.compareObjects(obj1, obj2),
+                'Obj1 vs Obj3 (iguales)': window.themeDebugger.compareObjects(obj1, obj3),
+                'Obj1 vs null': window.themeDebugger.compareObjects(obj1, null),
+                'null vs null': window.themeDebugger.compareObjects(null, null)
+            };
+
+            updateOutput('comparisonTests', JSON.stringify(tests, null, 2));
+            showStatus('Pruebas de comparación completadas', 'success');
+        }
+
+        function testDeepComparison() {
+            if (!window.themeDebugger) {
+                updateOutput('comparisonTests', '❌ ThemeDebugger no disponible');
+                return;
+            }
+
+            const complex1 = {
+                theme: { backgroundColor: '#fff', accentColor: '#blue' },
+                layout: { sidebarCollapsed: true }
+            };
+            const complex2 = {
+                theme: { backgroundColor: '#fff', accentColor: '#red' },
+                layout: { sidebarCollapsed: true }
+            };
+
+            const result = window.themeDebugger.compareObjects(complex1, complex2, 'Complejos');
+            updateOutput('comparisonTests', JSON.stringify(result, null, 2));
+            showStatus('Comparación profunda completada', 'success');
+        }
+
+        function testReferenceIssues() {
+            const original = { color: '#fff' };
+            const reference = original; // Misma referencia
+            const clone = { ...original }; // Clon superficial
+            const deepClone = JSON.parse(JSON.stringify(original)); // Clon profundo
+
+            const tests = {
+                'Original vs Reference': window.themeDebugger.compareObjects(original, reference),
+                'Original vs Clone': window.themeDebugger.compareObjects(original, clone),
+                'Original vs DeepClone': window.themeDebugger.compareObjects(original, deepClone)
+            };
+
+            // Modificar el original para ver efectos
+            original.color = '#000';
+            
+            tests['Original (modificado) vs Reference'] = window.themeDebugger.compareObjects(original, reference);
+            tests['Original (modificado) vs Clone'] = window.themeDebugger.compareObjects(original, clone);
+            tests['Original (modificado) vs DeepClone'] = window.themeDebugger.compareObjects(original, deepClone);
+
+            updateOutput('comparisonTests', JSON.stringify(tests, null, 2));
+            showStatus('Pruebas de referencia completadas', 'warning');
+        }
+
+        function simulatePanelChanges() {
+            const panel = window.getAppearanceSettingsPanel?.();
+            if (!panel) {
+                updateOutput('panelSimulation', '❌ Panel no disponible');
+                return;
+            }
+
+            // Simular cambios
+            panel.updatePreview('theme.backgroundColor', '#ff0000');
+            panel.updatePreview('theme.fontSize', 'large');
+            panel.updatePreview('theme.accentColor', '#00ff00');
+
+            const analysis = window.themeDebugger.analyzePanelState(panel);
+            updateOutput('panelSimulation', JSON.stringify(analysis, null, 2));
+            showStatus('Cambios simulados en el panel', 'success');
+        }
+
+        function simulateSaveAttempt() {
+            const panel = window.getAppearanceSettingsPanel?.();
+            if (!panel) {
+                updateOutput('panelSimulation', '❌ Panel no disponible');
+                return;
+            }
+
+            // Intentar guardar sin cambios
+            try {
+                panel.saveSettings();
+                updateOutput('panelSimulation', '✅ Intento de guardado completado (revisa la consola)');
+                showStatus('Intento de guardado simulado', 'success');
+            } catch (error) {
+                updateOutput('panelSimulation', `❌ Error: ${error.message}`);
+                showStatus('Error en el guardado', 'error');
+            }
+        }
+
+        function simulateFormValues() {
+            const panel = window.getAppearanceSettingsPanel?.();
+            if (!panel) {
+                updateOutput('panelSimulation', '❌ Panel no disponible');
+                return;
+            }
+
+            const formValues = panel.getFormValues?.();
+            const currentTheme = panel.getCurrentTheme?.();
+
+            const simulation = {
+                formValues,
+                currentTheme,
+                hasChanges: panel.hasChanges?.(currentTheme, formValues)
+            };
+
+            updateOutput('panelSimulation', JSON.stringify(simulation, null, 2));
+            showStatus('Valores del formulario simulados', 'success');
+        }
+
+        function exportAllLogs() {
+            if (!window.themeDebugger) {
+                updateOutput('debugTools', '❌ ThemeDebugger no disponible');
+                return;
+            }
+
+            const logs = window.themeDebugger.exportLogs();
+            updateOutput('debugTools', logs);
+            showStatus('Logs exportados', 'success');
+        }
+
+        function showDebugSummary() {
+            if (!window.themeDebugger) {
+                updateOutput('debugTools', '❌ ThemeDebugger no disponible');
+                return;
+            }
+
+            const summary = window.themeDebugger.showSummary();
+            updateOutput('debugTools', JSON.stringify(summary, null, 2));
+            showStatus('Resumen mostrado', 'success');
+        }
+
+        function testDataIntegrity() {
+            if (!window.themeDebugger) {
+                updateOutput('debugTools', '❌ ThemeDebugger no disponible');
+                return;
+            }
+
+            const testCases = [
+                { name: 'Objeto válido', data: { backgroundColor: '#fff', fontSize: 'normal' } },
+                { name: 'Objeto con undefined', data: { backgroundColor: undefined, fontSize: 'normal' } },
+                { name: 'Objeto null', data: null },
+                { name: 'String en lugar de objeto', data: 'not an object' },
+                { name: 'Objeto vacío', data: {} }
+            ];
+
+            const results = {};
+            testCases.forEach(testCase => {
+                results[testCase.name] = window.themeDebugger.checkDataIntegrity(testCase.data, testCase.name);
+            });
+
+            updateOutput('debugTools', JSON.stringify(results, null, 2));
+            showStatus('Pruebas de integridad completadas', 'success');
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            showStatus('Página de debugging cargada correctamente', 'success');
+        });
+    </script>
+</body>
+</html>

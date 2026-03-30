@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Depends, status, Request, Response
+# trigger reload to pick up updated .env for sqlite
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.middleware.sessions import SessionMiddleware
+from starlette.middleware.sessions import SessionMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -62,8 +63,7 @@ app.add_middleware(
     session_cookie="betwin_session",
     max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,  # Convertir a segundos
     same_site="lax",
-    https_only=False,  # En producción poner True
-    httponly=True
+    https_only=False  # En producción poner True
 )
 
 # Configurar templates
@@ -1163,103 +1163,107 @@ async def api_info():
 # Rutas para servir páginas HTML
 @app.get("/inicio", response_class=HTMLResponse)
 async def inicio(request: Request):
-    return templates.TemplateResponse("inicio.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="inicio.html", context={"request": request})
 
 @app.get("/deportes", response_class=HTMLResponse)
 async def deportes(request: Request):
-    return templates.TemplateResponse("deportes.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="deportes.html", context={"request": request})
 
 @app.get("/champions-league", response_class=HTMLResponse)
 async def champions_league(request: Request):
-    return templates.TemplateResponse("champions-league.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="champions-league.html", context={"request": request})
 
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request):
-    return templates.TemplateResponse("IniciarSesion.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="IniciarSesion.html", context={"request": request})
 
 @app.get("/registro", response_class=HTMLResponse)
 async def registro_page(request: Request):
-    return templates.TemplateResponse("registro.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="registro.html", context={"request": request})
+
+@app.get("/configuracion", response_class=HTMLResponse)
+async def configuracion_page(request: Request):
+    return templates.TemplateResponse(request=request, name="configuracion.html", context={"request": request})
 
 @app.get("/premier-league", response_class=HTMLResponse)
 async def premier_league(request: Request):
-    return templates.TemplateResponse("premier-league.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="premier-league.html", context={"request": request})
 
 @app.get("/serie-a", response_class=HTMLResponse)
 async def serie_a(request: Request):
-    return templates.TemplateResponse("serie-a.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="serie-a.html", context={"request": request})
 
 @app.get("/bundesliga", response_class=HTMLResponse)
 async def bundesliga(request: Request):
-    return templates.TemplateResponse("bundesliga.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="bundesliga.html", context={"request": request})
 
 @app.get("/laliga", response_class=HTMLResponse)
 async def laliga(request: Request):
-    return templates.TemplateResponse("laliga.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="laliga.html", context={"request": request})
 
 @app.get("/liga-hypermotion", response_class=HTMLResponse)
 async def liga_hypermotion(request: Request):
-    return templates.TemplateResponse("liga-hypermotion.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="liga-hypermotion.html", context={"request": request})
 
 @app.get("/api-demo", response_class=HTMLResponse)
 async def api_demo(request: Request):
-    return templates.TemplateResponse("api_demo.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="api_demo.html", context={"request": request})
 
 @app.get("/acb", response_class=HTMLResponse)
 async def acb_page(request: Request):
-    return templates.TemplateResponse("acb.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="acb.html", context={"request": request})
 
 @app.get("/nba", response_class=HTMLResponse)
 async def nba_page(request: Request):
-    return templates.TemplateResponse("nba.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="nba.html", context={"request": request})
 
 @app.get("/euroliga", response_class=HTMLResponse)
 async def euroliga_page(request: Request):
-    return templates.TemplateResponse("euroliga.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="euroliga.html", context={"request": request})
 
 @app.get("/fiba", response_class=HTMLResponse)
 async def fiba_page(request: Request):
-    return templates.TemplateResponse("fiba.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="fiba.html", context={"request": request})
 
 @app.get("/atp", response_class=HTMLResponse)
 async def atp_page(request: Request):
-    return templates.TemplateResponse("atp.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="atp.html", context={"request": request})
 
 @app.get("/wimbledon", response_class=HTMLResponse)
 async def wimbledon_page(request: Request):
-    return templates.TemplateResponse("wimbledon.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="wimbledon.html", context={"request": request})
 
 @app.get("/roland-garros", response_class=HTMLResponse)
 async def roland_garros_page(request: Request):
-    return templates.TemplateResponse("roland-garros.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="roland-garros.html", context={"request": request})
 
 @app.get("/australian-open", response_class=HTMLResponse)
 async def australian_open_page(request: Request):
-    return templates.TemplateResponse("australian-open.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="australian-open.html", context={"request": request})
 
 @app.get("/us-open", response_class=HTMLResponse)
 async def us_open_page(request: Request):
-    return templates.TemplateResponse("us-open.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="us-open.html", context={"request": request})
 
 @app.get("/wta", response_class=HTMLResponse)
 async def wta_page(request: Request):
-    return templates.TemplateResponse("wta.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="wta.html", context={"request": request})
 
 @app.get("/liga-hypermotion", response_class=HTMLResponse)
 async def hypermotion_page(request: Request):
-    return templates.TemplateResponse("liga-hypermotion.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="liga-hypermotion.html", context={"request": request})
 
 @app.get("/premier-league", response_class=HTMLResponse)
 async def premier_page(request: Request):
-    return templates.TemplateResponse("premier-league.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="premier-league.html", context={"request": request})
 
 @app.get("/serie-a", response_class=HTMLResponse)
 async def serie_a_page(request: Request):
-    return templates.TemplateResponse("serie-a.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="serie-a.html", context={"request": request})
 
 @app.get("/bundesliga", response_class=HTMLResponse)
 async def bundesliga_page(request: Request):
-    return templates.TemplateResponse("bundesliga.html", {"request": request})
+    return templates.TemplateResponse(request=request, name="bundesliga.html", context={"request": request})
 
 # Paginas del footer
 @app.get("/footer/{page}", response_class=HTMLResponse)
@@ -1271,7 +1275,7 @@ async def footer_pages(page: str, request: Request):
     ]
     if page in allowed_pages:
         from fastapi.responses import RedirectResponse
-        return templates.TemplateResponse(f"footer/{page}.html", {"request": request})
+        return templates.TemplateResponse(request=request, name=f"footer/{page}.html", context={"request": request})
     
     from fastapi.responses import RedirectResponse
     return RedirectResponse(url="/inicio")

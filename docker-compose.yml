@@ -1,6 +1,16 @@
 version: '3.8'
 
 services:
+  sqlite-viewer:
+    image: coleifer/sqlite-web
+    container_name: omniscore_sqlite_viewer
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./database:/data
+    environment:
+      - SQLITE_DATABASE=app.db
   db:
     image: postgres:16-alpine
     container_name: betwin_postgres

@@ -20,14 +20,40 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 
+from api.config import USE_POSTGRES, DB_PATH
+import sqlite3
+
+class SQLiteCursorWrapper:
+    def __init__(self, cursor):
+        self.cursor = cursor
+    def execute(self, sql, params=None):
+        if params is not None:
+            sql = sql.replace('%s', '?')
+        return self.cursor.execute(sql, params or ())
+    def fetchall(self): return self.cursor.fetchall()
+    def fetchone(self): return self.cursor.fetchone()
+    def close(self): self.cursor.close()
+
+class SQLiteConnWrapper:
+    def __init__(self, conn):
+        self.conn = conn
+    def cursor(self): return SQLiteCursorWrapper(self.conn.cursor())
+    def commit(self): self.conn.commit()
+    def close(self): self.conn.close()
+
 def get_db_connection():
-    return psycopg2.connect(
-        host=os.getenv('DB_HOST', 'localhost'),
-        port=os.getenv('DB_PORT', '5432'),
-        dbname=os.getenv('DB_NAME', 'betwin_db'),
-        user=os.getenv('DB_USER', 'postgres'),
-        password=os.getenv('DB_PASSWORD', '')
-    )
+    if USE_POSTGRES:
+        import psycopg2
+        return psycopg2.connect(
+            host=os.getenv('DB_HOST', 'localhost'),
+            port=os.getenv('DB_PORT', '5432'),
+            dbname=os.getenv('DB_NAME', 'betwin_db'),
+            user=os.getenv('DB_USER', 'postgres'),
+            password=os.getenv('DB_PASSWORD', '')
+        )
+    else:
+        conn = sqlite3.connect(str(DB_PATH))
+        return SQLiteConnWrapper(conn)
 
 def scrape_laliga_standings():
     logger.info(f"Scraping LaLiga stats from {LALIGA_URL}")

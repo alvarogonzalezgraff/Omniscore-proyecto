@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Perfil - BetWin</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #0a0e1a;
+            color: #f8fafc;
+        }
+        .demo-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #111827;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+        }
+        .demo-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .demo-header h1 {
+            color: #3b82f6;
+            margin-bottom: 10px;
+        }
+        .demo-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .demo-btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+        }
+        .demo-btn.secondary {
+            background: #334155;
+        }
+        .features-list {
+            margin-top: 30px;
+            padding: 20px;
+            background: #1e293b;
+            border-radius: 12px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #334155;
+            border-radius: 8px;
+        }
+        .feature-icon {
+            color: #10b981;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🏆 BetWin - Demo Perfil de Usuario</h1>
+            <p>Página de perfil moderna con todas las mejoras implementadas</p>
+        </div>
+
+        <div class="demo-buttons">
+            <a href="perfil.html" class="demo-btn">
+                🚀 Ver Perfil Completo
+            </a>
+            <a href="configuracion.html" class="demo-btn secondary">
+                ⚙️ Ver Configuración
+            </a>
+        </div>
+
+        <div class="features-list">
+            <h3>✨ Mejoras Implementadas:</h3>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Navegación separada: Perfil | Configuración</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Avatar prominente (140px) con upload</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Modo claro/oscuro con toggle flotante</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Edición inline con validación en tiempo real</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Selección de deportes favoritos</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Diseño 100% responsive</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Sistema de mensajes feedback</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">✓</span>
+                <span>Usuario demo automático para pruebas</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; border-radius: 12px;">
+            <h4>📝 Notas de la Demo:</h4>
+            <ul style="margin: 10px 0; padding-left: 20px;">
+                <li>Se crea automáticamente un usuario demo: "Usuario Demo"</li>
+                <li>El perfil se carga con datos de ejemplo</li>
+                <li>Puedes editar el perfil y subir avatar</li>
+                <li>Los cambios se guardan en localStorage</li>
+                <li>Prueba el modo claro/oscuro (botón flotante)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

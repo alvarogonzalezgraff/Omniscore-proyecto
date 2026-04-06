@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Perfil - BetWin</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #0a0e1a;
+            color: #f8fafc;
+        }
+        .test-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #111827;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #334155;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        .success { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid #10b981; }
+        .error { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; }
+        .info { background: rgba(59, 130, 246, 0.1); color: #3b82f6; border: 1px solid #3b82f6; }
+        .btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.4);
+        }
+        .user-info {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔍 Diagnóstico del Perfil</h1>
+        
+        <div id="statusContainer"></div>
+        
+        <div class="user-info">
+            <h3>👤 Usuario Actual:</h3>
+            <div id="userInfo">Cargando...</div>
+        </div>
+        
+        <div>
+            <button class="btn" onclick="createDemoUser()">Crear Usuario Demo</button>
+            <button class="btn" onclick="goToProfile()">Ir al Perfil</button>
+            <button class="btn" onclick="clearStorage()">Limpiar Storage</button>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <h3>📋 Pasos para Solucionar:</h3>
+            <ol>
+                <li>Haz clic en "Crear Usuario Demo"</li>
+                <li>Verifica que aparezca "Usuario Demo" en la sección de usuario</li>
+                <li>Haz clic en "Ir al Perfil"</li>
+                <li>Si no funciona, abre la consola (F12) para ver errores</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function showStatus(message, type = 'info') {
+            const container = document.getElementById('statusContainer');
+            const status = document.createElement('div');
+            status.className = `status ${type}`;
+            status.textContent = message;
+            container.appendChild(status);
+            
+            setTimeout(() => status.remove(), 5000);
+        }
+
+        function updateUserInfo() {
+            const userInfo = document.getElementById('userInfo');
+            try {
+                const raw = localStorage.getItem('currentUser');
+                if (raw) {
+                    const user = JSON.parse(raw);
+                    userInfo.innerHTML = `
+                        <p><strong>Nombre:</strong> ${user.fullName || user.username || 'N/A'}</p>
+                        <p><strong>Email:</strong> ${user.email || 'N/A'}</p>
+                        <p><strong>Teléfono:</strong> ${user.phone || 'N/A'}</p>
+                        <p><strong>Deportes:</strong> ${user.favoriteSports ? user.favoriteSports.join(', ') : 'N/A'}</p>
+                    `;
+                    showStatus('Usuario cargado correctamente', 'success');
+                } else {
+                    userInfo.innerHTML = '<p style="color: #ef4444;">No hay usuario en localStorage</p>';
+                    showStatus('No se encontró usuario', 'error');
+                }
+            } catch (error) {
+                userInfo.innerHTML = `<p style="color: #ef4444;">Error: ${error.message}</p>`;
+                showStatus('Error al cargar usuario', 'error');
+            }
+        }
+
+        function createDemoUser() {
+            try {
+                const demoUser = {
+                    username: 'usuario_demo',
+                    fullName: 'Usuario Demo',
+                    email: 'usuario@betwin.com',
+                    phone: '+34 600 000 000',
+                    avatar: null,
+                    favoriteSports: ['football'],
+                    memberSince: 'enero 2024'
+                };
+                localStorage.setItem('currentUser', JSON.stringify(demoUser));
+                showStatus('Usuario demo creado exitosamente', 'success');
+                updateUserInfo();
+            } catch (error) {
+                showStatus('Error al crear usuario: ' + error.message, 'error');
+            }
+        }
+
+        function goToProfile() {
+            const raw = localStorage.getItem('currentUser');
+            if (!raw) {
+                showStatus('Primero crea un usuario demo', 'error');
+                return;
+            }
+            
+            showStatus('Redirigiendo al perfil...', 'info');
+            setTimeout(() => {
+                window.location.href = 'templates/perfil.html';
+            }, 1000);
+        }
+
+        function clearStorage() {
+            localStorage.removeItem('currentUser');
+            showStatus('Storage limpiado', 'info');
+            updateUserInfo();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            showStatus('Página de diagnóstico cargada', 'info');
+            updateUserInfo();
+        });
+    </script>
+</body>
+</html>

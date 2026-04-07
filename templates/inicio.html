@@ -214,32 +214,10 @@
     <div class="main-layout">
         <aside class="left-sidebar">
             <div class="sidebar-title">Deportes</div>
-            <div class="sidebar-sport-btn active" onclick="toggleSport('futbol')" style="cursor:pointer;">
-                <span class="sb-icon">⚽</span> Fútbol <span class="sb-count">6</span>
+            <div class="sidebar-sport-btn active" onclick="toggleSport('tenis')" style="cursor:pointer;">
+                <span class="sb-icon"></span> Tenis <span class="sb-count">6</span>
             </div>
-            <div class="sport-leagues" id="leagues-futbol" style="display:block;">
-                <a href="/premier-league" class="sidebar-league"><img src="images/Leagues/premier-league.svg" alt="Premier League" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Premier League</a>
-                <a href="/laliga" class="sidebar-league"><img src="images/Leagues/laliga.svg" alt="LaLiga EA Sports" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> LaLiga EA Sports</a>
-                <a href="/serie-a" class="sidebar-league"><img src="images/Leagues/serie-a.svg" alt="Serie A" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Serie A</a>
-                <a href="/bundesliga" class="sidebar-league"><img src="images/Leagues/bundesliga.svg" alt="Bundesliga" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Bundesliga</a>
-                <a href="/liga-hypermotion" class="sidebar-league"><img src="images/Leagues/liga-hypermotion.svg" alt="Liga Hypermotion" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Liga Hypermotion</a>
-                <a href="/champions-league" class="sidebar-league"><img src="images/Leagues/champions-league.svg" alt="Champions League" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Champions League</a>
-            </div>
-
-            <div class="sidebar-sport-btn" onclick="toggleSport('basket')" style="cursor:pointer;">
-                <span class="sb-icon">🏀</span> Baloncesto <span class="sb-count">4</span>
-            </div>
-            <div class="sport-leagues" id="leagues-basket" style="display:none;">
-                <a href="/nba" class="sidebar-league"><img src="images/Leagues/nba.svg" alt="NBA" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> NBA</a>
-                <a href="/euroliga" class="sidebar-league"><img src="images/Leagues/euroliga.svg" alt="Euroliga" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Euroliga</a>
-                <a href="/acb" class="sidebar-league"><img src="images/Leagues/acb.svg" alt="ACB Liga Endesa" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> ACB Liga Endesa</a>
-                <a href="/fiba" class="sidebar-league"><img src="images/Leagues/fiba.svg" alt="FIBA World Cup" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> FIBA World Cup</a>
-            </div>
-
-            <div class="sidebar-sport-btn" onclick="toggleSport('tenis')" style="cursor:pointer;">
-                <span class="sb-icon">🎾</span> Tenis <span class="sb-count">6</span>
-            </div>
-            <div class="sport-leagues" id="leagues-tenis" style="display:none;">
+            <div class="sport-leagues" id="leagues-tenis" style="display:block;">
                 <a href="/australian-open" class="sidebar-league"><img src="images/Leagues/australian-open.svg" alt="Australian Open" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Australian Open</a>
                 <a href="/roland-garros" class="sidebar-league"><img src="images/Leagues/roland-garros.svg" alt="Roland Garros" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Roland Garros</a>
                 <a href="/wimbledon" class="sidebar-league"><img src="images/Leagues/wimbledon.svg" alt="Wimbledon" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Wimbledon</a>
@@ -249,11 +227,7 @@
             </div>
             <div class="sidebar-divider"></div>
             <div class="sidebar-title">Accesos rápidos</div>
-            <a href="/deportes" class="sidebar-link">
-                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                En Vivo
-            </a>
-            <a href="/deportes" class="sidebar-link">
+                        <a href="/deportes" class="sidebar-link">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                 Clasificaciones
             </a>
@@ -273,75 +247,7 @@
             </div>
 
             <!-- SPORT LEAGUES PANELS -->
-            <div id="panel-futbol" class="sport-panel">
-                <div class="section-header">
-                    <h2><span class="dot" style="background:#22c55e;"></span> ⚽ Ligas de Fútbol</h2>
-                    <a href="/deportes#seccion-futbol">Ver todo →</a>
-                </div>
-                <div class="leagues-grid">
-                    <a href="/premier-league" class="league-card">
-                        <img src="images/Leagues/premier-league.svg" alt="Premier League" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">Premier League</span><span class="lc-desc">20 equipos · 38 jornadas</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                    <a href="/laliga" class="league-card">
-                        <img src="images/Leagues/laliga.svg" alt="LaLiga EA Sports" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">LaLiga EA Sports</span><span class="lc-desc">20 equipos · 38 jornadas</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                    <a href="/serie-a" class="league-card">
-                        <img src="images/Leagues/serie-a.svg" alt="Serie A" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">Serie A</span><span class="lc-desc">20 equipos · 38 jornadas</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                    <a href="/bundesliga" class="league-card">
-                        <img src="images/Leagues/bundesliga.svg" alt="Bundesliga" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">Bundesliga</span><span class="lc-desc">18 equipos · 34 jornadas</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                    <a href="/liga-hypermotion" class="league-card">
-                        <img src="images/Leagues/liga-hypermotion.svg" alt="Liga Hypermotion" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">Liga Hypermotion</span><span class="lc-desc">22 equipos · 42 jornadas</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                    <a href="/champions-league" class="league-card">
-                        <img src="images/Leagues/champions-league.svg" alt="Champions League" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">Champions League</span><span class="lc-desc">36 equipos · Fase de grupos</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                </div>
-            </div>
-
-            <div id="panel-basket" class="sport-panel" style="display:none;">
-                <div class="section-header">
-                    <h2><span class="dot" style="background:#f59e0b;"></span> 🏀 Baloncesto</h2>
-                    <a href="/deportes#seccion-baloncesto">Ver todo →</a>
-                </div>
-                <div class="leagues-grid">
-                    <a href="/nba" class="league-card">
-                        <img src="images/Leagues/nba.svg" alt="NBA" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">NBA</span><span class="lc-desc">30 equipos · Temporada regular</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                    <a href="/euroliga" class="league-card">
-                        <img src="images/Leagues/euroliga.svg" alt="Euroliga" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">Euroliga</span><span class="lc-desc">18 equipos · Europa</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                    <a href="/acb" class="league-card">
-                        <img src="images/Leagues/acb.svg" alt="ACB Liga Endesa" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">ACB Liga Endesa</span><span class="lc-desc">18 equipos · España</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                    <a href="/fiba" class="league-card">
-                        <img src="images/Leagues/fiba.svg" alt="FIBA World Cup" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">FIBA World Cup</span><span class="lc-desc">32 selecciones · Mundial</span></span>
-                        <span class="lc-arrow">›</span>
-                    </a>
-                </div>
-            </div>
-
-            <div id="panel-tenis" class="sport-panel" style="display:none;">
+            <div id="panel-tenis" class="sport-panel" style="display:block;">
                 <div class="section-header">
                     <h2><span class="dot" style="background:#eab308;"></span> 🎾 Tenis</h2>
                     <a href="/deportes#seccion-tenis">Ver todo →</a>

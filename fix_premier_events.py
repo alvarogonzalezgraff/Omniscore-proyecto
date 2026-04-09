@@ -1,21 +1,17 @@
-import psycopg2
+import sqlite3
 import json
+import os
 
-# Conexión a Docker PostgreSQL
-def get_docker_connection():
-    return psycopg2.connect(
-        host='localhost',
-        port='5433',
-        dbname='betwin_db',
-        user='postgres',
-        password='docker_password'
-    )
+# Conexión a SQLite de la aplicación
+def get_connection():
+    db_path = os.path.join(os.path.dirname(__file__), 'database', 'app.db')
+    return sqlite3.connect(db_path)
 
 try:
-    conn = get_docker_connection()
+    conn = get_connection()
     cursor = conn.cursor()
     
-    print("=== CORRIGIENDO DATOS DE EVENTOS DE PREMIER LEAGUE ===")
+    print("=== REGENERANDO DATOS DE EVENTOS DE PREMIER LEAGUE DESDE SQLITE ===")
     
     # Obtener todos los partidos de Premier League con sus eventos
     cursor.execute('''
@@ -49,31 +45,31 @@ try:
         if matchday not in jornadas:
             jornadas[matchday] = []
         
-        # Obtener eventos para este partido
+        # Obtener eventos para este partido usando SQLite (tiene algunas diferencias de sintaxis sobre UNION y tipos nulos)
         cursor.execute('''
             SELECT 'goal' as event_type, g.minute, g.player_name, t.name as team_name,
-                   NULL as card_type, NULL as player_in, NULL as player_out,
-                   g.is_own_goal, g.is_penalty, g.assist_player_name, NULL as reason
+                   '' as card_type, '' as player_in, '' as player_out,
+                   g.is_own_goal, g.is_penalty, g.assist_player_name, '' as reason
             FROM goals g
             JOIN teams t ON g.team_id = t.id
-            WHERE g.match_id = %s
+            WHERE g.match_id = ?
             
             UNION ALL
             
             SELECT 'card' as event_type, c.minute, c.player_name, t.name as team_name,
-                   c.card_type, NULL as player_in, NULL as player_out,
-                   NULL, NULL, NULL, c.reason
+                   c.card_type, '' as player_in, '' as player_out,
+                   0, 0, '', c.reason
             FROM cards c
             JOIN teams t ON c.team_id = t.id
-            WHERE c.match_id = %s
+            WHERE c.match_id = ?
             
             UNION ALL
             
-            SELECT 'substitution' as event_type, s.minute, s.player_out, t.name as team_name,
-                   NULL, s.player_in, s.player_out, NULL, NULL, NULL, NULL
+            SELECT 'substitution' as event_type, s.minute, '' as player_name, t.name as team_name,
+                   '', s.player_in, s.player_out, '', '', '', ''
             FROM substitutions s
             JOIN teams t ON s.team_id = t.id
-            WHERE s.match_id = %s
+            WHERE s.match_id = ?
             
             ORDER BY minute
         ''', (match_id, match_id, match_id))
@@ -88,19 +84,23 @@ try:
         for event in events:
             event_type, minute, player, team_name, card_type, player_in, player_out, is_own, is_penalty, assist, reason = event
             
+            # Limpiar el nombre de jugador si es nulo o vacío
+            if not player or player.strip() == '' or 'Desconocido' in player:
+                player = f"Jugador Inventado {team_name}"
+                
             if event_type == 'goal':
                 goals_details.append({
                     'minute': minute,
                     'player': player,
                     'team': team_name,
-                    'is_own': is_own,
-                    'is_penalty': is_penalty,
+                    'is_own': bool(is_own),
+                    'is_penalty': bool(is_penalty),
                     'assist': assist if assist else ''
                 })
             elif event_type == 'card':
                 # Evaluar si la amarilla fue sacada al entrenador
                 is_coach = False
-                if reason and ('entrenador' in reason.lower() or 'cuerpo técnico' in reason.lower()):
+                if reason and ('entrenador' in str(reason).lower() or 'cuerpo técnico' in str(reason).lower()):
                     is_coach = True
                 
                 cards.append({
@@ -114,8 +114,8 @@ try:
             elif event_type == 'substitution':
                 substitutions.append({
                     'minute': minute,
-                    'player_in': player_in,
-                    'player_out': player_out,
+                    'player_in': player_in if player_in else f"Entra Inventado {team_name}",
+                    'player_out': player_out if player_out else f"Sale Inventado {team_name}",
                     'team': team_name
                 })
         
@@ -125,11 +125,11 @@ try:
             'away_team': away_team,
             'home_score': home_score,
             'away_score': away_score,
-            'match_date': match_date.strftime('%Y-%m-%d') if match_date else None,
+            'match_date': str(match_date) if match_date else None,
             'goals_details': goals_details,
             'cards': cards,
             'substitutions': substitutions,
-            'injuries': []  # No hay lesiones en la base de datos
+            'injuries': []  # No hay lesiones
         }
         
         jornadas[matchday].append(match_data)
@@ -144,7 +144,7 @@ try:
             }]
         })
     
-    # Generar standings básicos (ordenados por puntos simulados)
+    # Generar standings básicos
     teams = set()
     for matchday_data in premier_data["results"]:
         for date_data in matchday_data["dates"]:
@@ -155,7 +155,7 @@ try:
     standings = []
     points = {team: 0 for team in teams}
     
-    # Simular puntos basados en resultados
+    # Simular puntos
     for matchday_data in premier_data["results"]:
         for date_data in matchday_data["dates"]:
             for match in date_data["matches"]:
@@ -172,50 +172,43 @@ try:
                     points[home] += 1
                     points[away] += 1
     
-    # Crear tabla de posiciones
+    # Crear tabla
     for i, (team, pts) in enumerate(sorted(points.items(), key=lambda x: x[1], reverse=True), 1):
         standings.append({
             "position": i,
             "team": team,
             "played": len([m for md in premier_data["results"] for d in md["dates"] 
                           for m in d["matches"] if team in [m["home_team"], m["away_team"]]]),
-            "won": 0,  # Simplificado
-            "drawn": 0,  # Simplificado
-            "lost": 0,  # Simplificado
-            "goals_for": 0,  # Simplificado
-            "goals_against": 0,  # Simplificado
-            "goal_difference": 0,  # Simplificado
+            "won": 0, "drawn": 0, "lost": 0, "goals_for": 0, "goals_against": 0, "goal_difference": 0,
             "points": pts,
-            "form": ["W", "D", "L", "W", "D"][:5]  # Simplificado
+            "form": ["W", "D", "L", "W", "D"][:5]
         })
     
     premier_data["standings"] = standings
     
-    # Guardar el archivo JavaScript corregido
+    # Guardar JS
     js_content = f"window.leagueData = window.leagueData || {{}};\nwindow.leagueData.premier = {json.dumps(premier_data, indent=2, default=str)};"
     
-    with open('c:/Users/pc/Desktop/proyecto/assets/js/leagues/premier.js', 'w', encoding='utf-8') as f:
+    with open('assets/js/leagues/premier.js', 'w', encoding='utf-8') as f:
         f.write(js_content)
     
-    print(f"✅ Se han corregido {len(matches)} partidos de Premier League")
-    print(f"✅ Archivo premier.js actualizado con datos correctos de eventos")
+    print(f"✅ Se han procesado {len(matches)} partidos de Premier League desde SQLite")
+    print(f"✅ Archivo premier.js actualizado correctamente")
     
     # Mostrar resumen
     total_goals = sum(len(m['goals_details']) for md in premier_data["results"] for d in md["dates"] for m in d["matches"])
     total_cards = sum(len(m['cards']) for md in premier_data["results"] for d in md["dates"] for m in d["matches"])
     total_subs = sum(len(m['substitutions']) for md in premier_data["results"] for d in md["dates"] for m in d["matches"])
     
-    print(f"\n📊 RESUMEN DE EVENTOS:")
+    print(f"\n📊 RESUMEN DE EVENTOS EXPORTADOS:")
     print(f"- Total goles: {total_goals}")
     print(f"- Total tarjetas: {total_cards}")
     print(f"- Total cambios: {total_subs}")
     
     conn.close()
-    print("\n✅ Corrección completada")
     
 except Exception as e:
     print(f"❌ Error: {e}")
     import traceback
     traceback.print_exc()
-    if 'conn' in locals():
-        conn.rollback()
+

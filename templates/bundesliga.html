@@ -167,10 +167,13 @@
 
       .standings-table {
         width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
         background-color: #1e293b;
         border-radius: 15px;
         overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        border: 1px solid #334155;
       }
 
       .standings-table table {
@@ -179,18 +182,22 @@
       }
 
       .standings-table th {
-        background-color: #dc0022;
+        background: linear-gradient(135deg, #dc0022, #b3001b);
         color: white;
-        padding: 15px 10px;
+        padding: 18px 12px;
         text-align: left;
         font-size: 13px;
         text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        border-bottom: 2px solid #dc0022;
       }
 
       .standings-table td {
-        padding: 12px 10px;
+        padding: 16px 12px;
         border-bottom: 1px solid #334155;
         font-size: 14px;
+        transition: background-color 0.2s ease;
       }
 
       .standings-table tr:last-child td {
@@ -211,24 +218,32 @@
       .standings-table .team-cell {
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 15px;
+        padding: 5px 0;
       }
 
       .standings-table .team-logo {
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
         object-fit: contain;
+        border-radius: 50%;
+        background-color: #fff;
+        padding: 2px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       }
 
       .standings-table .team-name {
         font-weight: 600;
         color: #f8fafc;
+        font-size: 15px;
+        letter-spacing: 0.3px;
       }
 
       .standings-table .points {
-        font-weight: bold;
+        font-weight: 800;
         color: #22c55e;
-        font-size: 16px;
+        font-size: 18px;
+        text-shadow: 0 1px 2px rgba(34, 197, 94, 0.3);
       }
 
       .champions-zone {
@@ -968,10 +983,6 @@
             </table>
           </div>
           <div class="legend">
-            <div class="legend-item">
-              <div class="legend-color" style="background-color: #22c55e"></div>
-              <span>Champions League</span>
-            </div>
             <div class="legend-item">
               <div class="legend-color" style="background-color: #f59e0b"></div>
               <span>Europa League</span>

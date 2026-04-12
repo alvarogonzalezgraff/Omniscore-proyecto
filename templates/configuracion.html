@@ -4,31 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuración - BetWin</title>
-    <!-- Scripts de configuración de apariencia -->
-    <script src="/assets/js/stores/theme.js"></script>
-    <script src="/assets/js/stores/settings.js"></script>
-    <script src="/assets/js/components/ThemeProvider.js"></script>
-    <script src="/assets/js/components/AppearanceSettingsPanel.js"></script>
     <style>
-        /* CSS Variables for Dynamic Theming */
+        /* CSS Variables for Dynamic Theming - Esquema oscuro como inicio.html */
         :root {
-            --bg-primary: #f8fafc;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --text-muted: #9ca3af;
+            --bg-primary: #0a0e1a;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #6b7280;
             --text-inverse: #ffffff;
             --accent-color: #3b82f6;
-            --border-color: #e5e7eb;
-            --surface-color: #ffffff;
-            --header-bg: #ffffff;
-            --footer-bg: #1f2937;
-            --bg-surface: #ffffff;
-            --bg-elevated: #f8fafc;
-            --bg-overlay: rgba(0, 0, 0, 0.5);
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --border-color: #1f2937;
+            --surface-color: #111827;
+            --header-bg: #111827;
+            --footer-bg: #111827;
+            --bg-surface: #111827;
+            --bg-elevated: #1f2937;
+            --bg-overlay: rgba(0, 0, 0, 0.8);
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
             --transition-base: all 0.2s ease-in-out;
             --transition-fast: all 0.15s ease-in-out;
             --transition-slow: all 0.3s ease-in-out;
@@ -49,7 +44,7 @@
 
         header { background: var(--header-bg); padding: 12px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--border-color); box-shadow: var(--shadow-base); transition: var(--transition-base); }
         .header-content { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 26px; font-weight: bold; color: var(--accent-color); }
+        .logo { font-size: 26px; font-weight: bold; color: #3b82f6; }
         .logo span { color: #f59e0b; }
         nav ul { display: flex; list-style: none; gap: 24px; }
         nav ul li a { font-weight: 500; font-size: 14px; color: var(--text-secondary); transition: var(--transition-base); }
@@ -63,12 +58,75 @@
 
         .main-layout { display: flex; max-width: 1400px; margin: 0 auto; min-height: calc(100vh - 55px); }
 
+        /* Sidebar para configuración */
+        .config-sidebar {
+            width: 260px;
+            background: var(--surface-color);
+            border-right: 1px solid var(--border-color);
+            padding: 24px 16px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 55px;
+            height: calc(100vh - 55px);
+            overflow-y: auto;
+        }
+
+        .sidebar-section {
+            margin-bottom: 32px;
+        }
+
+        .sidebar-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 4px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: var(--transition-base);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .sidebar-menu a:hover {
+            background: var(--bg-elevated);
+            color: var(--accent-color);
+        }
+
+        .sidebar-menu a.active {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-color);
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .sidebar-menu a svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
 
         .main-content { 
             flex: 1; 
             padding: 40px; 
             overflow-y: auto; 
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -84,62 +142,388 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        footer { background: var(--footer-bg); padding: 36px 0 16px; border-top: 1px solid var(--border-color); transition: var(--transition-base); }
-        .footer-inner { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 24px; margin-bottom: 24px; }
-        .footer-column h3 { font-size: 14px; margin-bottom: 14px; color: var(--accent-color); }
-        .footer-column ul { list-style: none; }
-        .footer-column ul li { margin-bottom: 6px; }
-        .footer-column ul li a { color: #9ca3af; font-size: 12px; transition: var(--transition-base); }
-        .footer-column ul li a:hover { color: var(--accent-color); }
-        .copyright { text-align: center; padding-top: 16px; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 12px; }
+        /* Eliminamos footer completamente */
 
         /* Estilos específicos de configuración */
-        .config-section {
+        .settings-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .settings-card {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 32px;
-            margin-bottom: 32px;
             box-shadow: var(--shadow-sm);
             transition: var(--transition-base);
         }
 
-        .config-section:hover {
+        .settings-card:hover {
             box-shadow: var(--shadow-md);
             border-color: var(--accent-color);
         }
 
-        .config-section h2 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 20px;
+        .card-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--accent-color);
-        }
-
-        .config-section h2::before {
-            content: '';
-            width: 6px;
-            height: 24px;
-            background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
-            border-radius: 3px;
-            box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
-        }
-
-        .config-description {
-            color: var(--text-secondary);
-            font-size: 15px;
+            gap: 16px;
             margin-bottom: 24px;
-            line-height: 1.6;
-            padding: 16px;
-            background: rgba(59, 130, 246, 0.05);
-            border-left: 4px solid var(--accent-color);
-            border-radius: 0 8px 8px 0;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card-title h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .card-title p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: var(--transition-base);
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+
+        .input-with-icon .form-input {
+            padding-left: 48px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+            border-color: var(--accent-color);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 24px;
+            background: var(--bg-elevated);
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .profile-avatar-large {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            position: relative;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .profile-avatar-large:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .avatar-upload {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .profile-info h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .profile-info p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .toggle-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .toggle-item:last-child {
+            border-bottom: none;
+        }
+
+        .toggle-info {
+            flex: 1;
+        }
+
+        .toggle-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .toggle-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 48px;
+            height: 24px;
+            background: var(--border-color);
+            border-radius: 24px;
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .toggle-switch.active {
+            background: var(--accent-color);
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(24px);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .notification-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background: var(--bg-elevated);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            transition: var(--transition-base);
+        }
+
+        .notification-item:hover {
+            background: var(--border-color);
+        }
+
+        .notification-info {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notification-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkbox.checked {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        .checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .config-sidebar {
+                display: none;
+            }
+            
+            .main-content {
+                padding: 24px 20px;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 20px 16px;
+            }
+            
+            .settings-card {
+                padding: 20px 16px;
+            }
+            
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .notification-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
         }
 
         .back-link {
@@ -169,10 +553,6 @@
             border: 1px solid var(--border-color);
         }
 
-        /* Estilos para contenedor del panel de apariencia */
-        #appearanceSettingsContainer {
-            min-height: 400px;
-        }
 
         /* Estilos para perfil de usuario */
         .profile-container {
@@ -377,21 +757,30 @@
             <div class="logo">
                 Bet<span>Win</span>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="/inicio">Inicio</a></li>
-                    <li><a href="/deportes">Deportes</a></li>
-                    <li><a href="/premier-league">Premier League</a></li>
-                    <li><a href="/configuracion" class="active">Configuración</a></li>
-                </ul>
-            </nav>
-            <div class="auth-buttons" id="authArea">
-                <!-- Se llenará dinámicamente -->
-            </div>
         </div>
     </header>
 
     <div class="main-layout">
+        <!-- Sidebar de Configuración -->
+        <aside class="config-sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Configuración</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#account" class="active" onclick="showSection('account')">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        Cuenta
+                    </a></li>
+                    <li><a href="#privacy" onclick="showSection('privacy')">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        Privacidad
+                    </a></li>
+                    <li><a href="#notifications" onclick="showSection('notifications')">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                        Notificaciones
+                    </a></li>
+                </ul>
+            </div>
+        </aside>
 
         <!-- Main Content -->
         <main class="main-content">
@@ -403,80 +792,167 @@
                 <p>Personaliza tu experiencia en BetWin</p>
             </div>
 
-            <!-- Tabs de Configuración -->
-            <div class="config-tabs">
-                <button class="tab-btn active" onclick="showTab('appearance')">Apariencia</button>
-                <button class="tab-btn" onclick="showTab('account')">Cuenta</button>
-                <button class="tab-btn" onclick="showTab('privacy')">Privacidad</button>
-                <button class="tab-btn" onclick="showTab('notifications')">Notificaciones</button>
-            </div>
-
-            <!-- Contenido de Tabs -->
-            <div id="appearance-tab" class="tab-content active">
-                <div class="config-section">
-                    <h2>Apariencia Visual</h2>
-                    <p class="config-description">
-                        Personaliza los colores, tipografía y diseño de la interfaz para adaptarla a tus preferencias.
-                    </p>
-                    
-                    <!-- Panel de configuración de apariencia -->
-                    <div id="appearanceSettingsContainer">
-                        <div class="loading-spinner">
-                            <div>Cargando panel de configuración...</div>
+            <!-- Sección Cuenta -->
+            <div id="account-section" class="settings-grid">
+                <div class="settings-card">
+                    <div class="card-header">
+                        <div class="card-icon">👤</div>
+                        <div class="card-title">
+                            <h2>Perfil de Usuario</h2>
+                            <p>Gestiona tu información personal y foto de perfil</p>
                         </div>
+                    </div>
+
+                    <div class="profile-section">
+                        <div class="profile-avatar-large" onclick="changeAvatar()">
+                            <span id="avatarInitial">U</span>
+                            <div class="avatar-upload">📷</div>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="profileName">Usuario</h3>
+                            <p id="profileEmail">usuario@betwin.com</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Nombre de Usuario</label>
+                        <div class="input-with-icon">
+                            <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            <input type="text" class="form-input" id="usernameInput" placeholder="Tu nombre de usuario">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <div class="input-with-icon">
+                            <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <input type="email" class="form-input" id="emailInput" placeholder="tu@email.com">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Contraseña</label>
+                        <div class="input-with-icon">
+                            <svg class="input-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            <input type="password" class="form-input" id="passwordInput" placeholder="••••••••">
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="saveAccountSettings()">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            Guardar Cambios
+                        </button>
+                        <button class="btn btn-danger" onclick="logoutUser()">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                            Cerrar Sesión
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div id="account-tab" class="tab-content">
-                <div class="config-section">
-                    <h2>Configuración de Cuenta</h2>
-                    <p class="config-description">
-                        Gestiona tu perfil, contraseña y preferencias de cuenta.
-                    </p>
-                    <!-- TODO: Implementar configuración de cuenta -->
-                    <div style="text-align: center; padding: 60px 40px; color: #6b7280;">
-                        <div style="font-size: 48px; margin-bottom: 16px;">👤</div>
-                        <h3 style="color: #1f2937; margin-bottom: 12px; font-size: 20px; font-weight: 600;">Configuración de Cuenta</h3>
-                        <p style="margin-bottom: 24px; font-size: 16px; line-height: 1.6;">Gestiona tu perfil, contraseña y preferencias de cuenta.</p>
-                        <div style="background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; font-size: 14px; color: #6b7280;">
-                            <strong>Próximamente disponible:</strong> Esta sección estará disponible en futuras actualizaciones.
+            <!-- Sección Privacidad -->
+            <div id="privacy-section" class="settings-grid" style="display: none;">
+                <div class="settings-card">
+                    <div class="card-header">
+                        <div class="card-icon">🔒</div>
+                        <div class="card-title">
+                            <h2>Privacidad y Seguridad</h2>
+                            <p>Controla tu privacidad y ajustes de seguridad</p>
                         </div>
+                    </div>
+
+                    <div class="toggle-item">
+                        <div class="toggle-info">
+                            <div class="toggle-label">Perfil Público</div>
+                            <div class="toggle-description">Permite que otros usuarios vean tu perfil</div>
+                        </div>
+                        <div class="toggle-switch" onclick="toggleSwitch(this)" data-setting="publicProfile"></div>
+                    </div>
+
+                    <div class="toggle-item">
+                        <div class="toggle-info">
+                            <div class="toggle-label">Mostrar Actividad Online</div>
+                            <div class="toggle-description">Muestra cuándo estás en línea</div>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)" data-setting="showOnline"></div>
+                    </div>
+
+                    <div class="toggle-item">
+                        <div class="toggle-info">
+                            <div class="toggle-label">Permitir Búsqueda por Email</div>
+                            <div class="toggle-description">Otros usuarios pueden encontrarte por tu email</div>
+                        </div>
+                        <div class="toggle-switch" onclick="toggleSwitch(this)" data-setting="emailSearch"></div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" onclick="downloadUserData()">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            Descargar Mis Datos
+                        </button>
+                        <button class="btn btn-danger" onclick="confirmDeleteAccount()">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            Eliminar Cuenta
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div id="privacy-tab" class="tab-content">
-                <div class="config-section">
-                    <h2>Privacidad y Seguridad</h2>
-                    <p class="config-description">
-                        Controla tu privacidad y ajustes de seguridad.
-                    </p>
-                    <!-- TODO: Implementar configuración de privacidad -->
-                    <div style="text-align: center; padding: 60px 40px; color: #6b7280;">
-                        <div style="font-size: 48px; margin-bottom: 16px;">🔒</div>
-                        <h3 style="color: #1f2937; margin-bottom: 12px; font-size: 20px; font-weight: 600;">Privacidad y Seguridad</h3>
-                        <p style="margin-bottom: 24px; font-size: 16px; line-height: 1.6;">Controla tu privacidad y ajustes de seguridad.</p>
-                        <div style="background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; font-size: 14px; color: #6b7280;">
-                            <strong>Próximamente disponible:</strong> Esta sección estará disponible en futuras actualizaciones.
+            <!-- Sección Notificaciones -->
+            <div id="notifications-section" class="settings-grid" style="display: none;">
+                <div class="settings-card">
+                    <div class="card-header">
+                        <div class="card-icon">🔔</div>
+                        <div class="card-title">
+                            <h2>Notificaciones</h2>
+                            <p>Configura cómo y cuándo quieres recibir notificaciones</p>
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div id="notifications-tab" class="tab-content">
-                <div class="config-section">
-                    <h2>Notificaciones</h2>
-                    <p class="config-description">
-                        Configura cómo y cuándo quieres recibir notificaciones.
-                    </p>
-                    <!-- TODO: Implementar configuración de notificaciones -->
-                    <div style="text-align: center; padding: 60px 40px; color: #6b7280;">
-                        <div style="font-size: 48px; margin-bottom: 16px;">🔔</div>
-                        <h3 style="color: #1f2937; margin-bottom: 12px; font-size: 20px; font-weight: 600;">Notificaciones</h3>
-                        <p style="margin-bottom: 24px; font-size: 16px; line-height: 1.6;">Configura cómo y cuándo quieres recibir notificaciones.</p>
-                        <div style="background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px; font-size: 14px; color: #6b7280;">
-                            <strong>Próximamente disponible:</strong> Esta sección estará disponible en futuras actualizaciones.
+                    <div class="notification-item">
+                        <div class="notification-info">
+                            <div class="notification-title">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                                Notificaciones por Email
+                            </div>
+                            <div class="notification-description">Recibe actualizaciones importantes en tu correo</div>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)" data-setting="emailNotifications"></div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-info">
+                            <div class="notification-title">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+                                Notificaciones Push
+                            </div>
+                            <div class="notification-description">Alertas instantáneas en tu dispositivo</div>
+                        </div>
+                        <div class="toggle-switch" onclick="toggleSwitch(this)" data-setting="pushNotifications"></div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-info">
+                            <div class="notification-title">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                Alertas de Actividad
+                            </div>
+                            <div class="notification-description">Comentarios, menciones y nuevas interacciones</div>
+                        </div>
+                        <div class="toggle-switch active" onclick="toggleSwitch(this)" data-setting="activityAlerts"></div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-info">
+                            <div class="notification-title">
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                                Resumen Semanal
+                            </div>
+                            <div class="notification-description">Recibe un resumen semanal de tu actividad</div>
+                        </div>
+                        <div class="checkbox-wrapper">
+                            <div class="checkbox checked" onclick="toggleCheckbox(this)" data-setting="weeklySummary"></div>
                         </div>
                     </div>
                 </div>
@@ -484,64 +960,291 @@
         </main>
     </div>
 
-    <!-- Footer (similar a inicio.html) -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-content">
-                <div class="footer-column"><h3>BetWin</h3><ul><li><a href="/footer/sobre-nosotros">Sobre Nosotros</a></li><li><a href="/footer/trabaja-con-nosotros">Trabaja con Nosotros</a></li><li><a href="/footer/terminos">Términos y Condiciones</a></li></ul></div>
-                <div class="footer-column"><h3>Deportes</h3><ul><li><a href="/deportes#seccion-futbol">Fútbol</a></li><li><a href="/deportes#seccion-baloncesto">Baloncesto</a></li><li><a href="/deportes#seccion-tenis">Tenis</a></li></ul></div>
-                <div class="footer-column"><h3>Ayuda</h3><ul><li><a href="/footer/faq">Preguntas Frecuentes</a></li><li><a href="/footer/contacto">Contacto</a></li></ul></div>
-                <div class="footer-column"><h3>Seguridad</h3><ul><li><a href="/footer/privacidad">Privacidad</a></li></ul></div>
-            </div>
-            <div class="copyright"><p>&copy; 2025 BetWin. Todos los derechos reservados. Juega con responsabilidad. +18</p></div>
-        </div>
-    </footer>
 
     <!-- Scripts -->
     <script>
-        // Función para cambiar tabs
-        function showTab(tabName) {
-            // Ocultar todos los tabs
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Desactivar todos los botones de tab
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Mostrar tab seleccionado
-            document.getElementById(tabName + '-tab').classList.add('active');
-            
-            // Activar botón correspondiente
-            event.target.classList.add('active');
+        // Configuración inicial
+        let currentUser = null;
+        let userSettings = {
+            publicProfile: false,
+            showOnline: true,
+            emailSearch: false,
+            emailNotifications: true,
+            pushNotifications: false,
+            activityAlerts: true,
+            weeklySummary: true
+        };
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', function() {
+            initAuthHeader();
+            loadUserData();
+            loadUserSettings();
+        });
+
+        // Cargar datos del usuario
+        function loadUserData() {
+            try {
+                const userData = localStorage.getItem('currentUser');
+                if (userData) {
+                    currentUser = JSON.parse(userData);
+                    updateProfileDisplay();
+                }
+            } catch (error) {
+                console.error('Error cargando datos del usuario:', error);
+            }
         }
 
-        // Inicializar panel de apariencia
-        document.addEventListener('DOMContentLoaded', function() {
-            // Inicializar panel de configuración de apariencia
-            setTimeout(() => {
-                try {
-                    const panel = getAppearanceSettingsPanel();
-                    const container = document.getElementById('appearanceSettingsContainer');
-                    
-                    if (container && panel) {
-                        panel.mount(container);
-                    }
-                } catch (error) {
-                    console.error('Error cargando panel de configuración:', error);
-                    const container = document.getElementById('appearanceSettingsContainer');
-                    if (container) {
-                        container.innerHTML = `
-                            <div style="text-align: center; padding: 40px; color: var(--text-secondary, #94a3b8);">
-                                <p>Error al cargar el panel de configuración. Por favor, recarga la página.</p>
-                            </div>
-                        `;
+        // Actualizar display del perfil
+        function updateProfileDisplay() {
+            if (currentUser) {
+                const username = currentUser.username || 'Usuario';
+                const email = currentUser.email || 'usuario@betwin.com';
+                
+                document.getElementById('profileName').textContent = username;
+                document.getElementById('profileEmail').textContent = email;
+                document.getElementById('avatarInitial').textContent = username.charAt(0).toUpperCase();
+                document.getElementById('usernameInput').value = username;
+                document.getElementById('emailInput').value = email;
+            }
+        }
+
+        // Cargar configuración del usuario
+        function loadUserSettings() {
+            try {
+                const settings = localStorage.getItem('userSettings');
+                if (settings) {
+                    userSettings = { ...userSettings, ...JSON.parse(settings) };
+                }
+                updateSettingsUI();
+            } catch (error) {
+                console.error('Error cargando configuración:', error);
+            }
+        }
+
+        // Actualizar UI de configuración
+        function updateSettingsUI() {
+            // Actualizar toggles
+            Object.keys(userSettings).forEach(setting => {
+                const element = document.querySelector(`[data-setting="${setting}"]`);
+                if (element) {
+                    if (element.classList.contains('toggle-switch')) {
+                        if (userSettings[setting]) {
+                            element.classList.add('active');
+                        } else {
+                            element.classList.remove('active');
+                        }
+                    } else if (element.classList.contains('checkbox')) {
+                        if (userSettings[setting]) {
+                            element.classList.add('checked');
+                        } else {
+                            element.classList.remove('checked');
+                        }
                     }
                 }
-            }, 1000);
-        });
+            });
+        }
+
+        // Mostrar sección
+        function showSection(sectionName) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.settings-grid').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Desactivar todos los enlaces del sidebar
+            document.querySelectorAll('.sidebar-menu a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Mostrar sección seleccionada
+            const selectedSection = document.getElementById(sectionName + '-section');
+            if (selectedSection) {
+                selectedSection.style.display = 'grid';
+            }
+            
+            // Activar enlace correspondiente
+            const activeLink = document.querySelector(`[onclick="showSection('${sectionName}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        // Toggle switch
+        function toggleSwitch(element) {
+            element.classList.toggle('active');
+            const setting = element.dataset.setting;
+            userSettings[setting] = element.classList.contains('active');
+            saveUserSettings();
+        }
+
+        // Toggle checkbox
+        function toggleCheckbox(element) {
+            element.classList.toggle('checked');
+            const setting = element.dataset.setting;
+            userSettings[setting] = element.classList.contains('checked');
+            saveUserSettings();
+        }
+
+        // Guardar configuración del usuario
+        function saveUserSettings() {
+            try {
+                localStorage.setItem('userSettings', JSON.stringify(userSettings));
+                showNotification('Configuración guardada exitosamente', 'success');
+            } catch (error) {
+                console.error('Error guardando configuración:', error);
+                showNotification('Error al guardar la configuración', 'error');
+            }
+        }
+
+        // Guardar configuración de cuenta
+        function saveAccountSettings() {
+            try {
+                const username = document.getElementById('usernameInput').value.trim();
+                const email = document.getElementById('emailInput').value.trim();
+                const password = document.getElementById('passwordInput').value;
+                
+                if (!username || !email) {
+                    showNotification('Por favor completa todos los campos requeridos', 'error');
+                    return;
+                }
+                
+                // Validar email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    showNotification('Por favor ingresa un email válido', 'error');
+                    return;
+                }
+                
+                // Actualizar datos del usuario
+                if (currentUser) {
+                    currentUser.username = username;
+                    currentUser.email = email;
+                    
+                    if (password) {
+                        // En una aplicación real, aquí se enviaría la contraseña al servidor
+                        showNotification('Contraseña actualizada', 'success');
+                    }
+                    
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                    updateProfileDisplay();
+                    initAuthHeader(); // Actualizar header
+                    showNotification('Datos de cuenta actualizados exitosamente. Redirigiendo...', 'success');
+                    
+                    // Redirigir a la página de inicio después de 2 segundos
+                    setTimeout(() => {
+                        window.location.href = '/inicio';
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Error guardando configuración de cuenta:', error);
+                showNotification('Error al guardar los cambios', 'error');
+            }
+        }
+
+        // Cambiar avatar
+        function changeAvatar() {
+            // Simular cambio de avatar
+            const colors = ['#3b82f6', '#8b5cf6', '#ef4444', '#10b981', '#f59e0b'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            const avatar = document.querySelector('.profile-avatar-large');
+            if (avatar) {
+                avatar.style.background = `linear-gradient(135deg, ${randomColor}, #8b5cf6)`;
+                showNotification('Avatar actualizado', 'success');
+            }
+        }
+
+        // Descargar datos del usuario
+        function downloadUserData() {
+            try {
+                const userData = {
+                    profile: currentUser,
+                    settings: userSettings,
+                    exportDate: new Date().toISOString()
+                };
+                
+                const dataStr = JSON.stringify(userData, null, 2);
+                const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+                
+                const exportFileDefaultName = `betwin-data-${new Date().toISOString().split('T')[0]}.json`;
+                
+                const linkElement = document.createElement('a');
+                linkElement.setAttribute('href', dataUri);
+                linkElement.setAttribute('download', exportFileDefaultName);
+                linkElement.click();
+                
+                showNotification('Datos descargados exitosamente', 'success');
+            } catch (error) {
+                console.error('Error descargando datos:', error);
+                showNotification('Error al descargar los datos', 'error');
+            }
+        }
+
+        // Confirmar eliminación de cuenta
+        function confirmDeleteAccount() {
+            if (confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.')) {
+                if (confirm('Esta es tu última oportunidad. ¿Deseas continuar?')) {
+                    deleteAccount();
+                }
+            }
+        }
+
+        // Eliminar cuenta
+        function deleteAccount() {
+            try {
+                // Eliminar datos del localStorage
+                localStorage.removeItem('currentUser');
+                localStorage.removeItem('userSettings');
+                
+                showNotification('Cuenta eliminada exitosamente', 'success');
+                
+                // Redirigir al login después de un breve retraso
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 2000);
+            } catch (error) {
+                console.error('Error eliminando cuenta:', error);
+                showNotification('Error al eliminar la cuenta', 'error');
+            }
+        }
+
+        // Sistema de notificaciones
+        function showNotification(message, type = 'info') {
+            // Crear elemento de notificación
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.innerHTML = `
+                <div class="notification-content">
+                    <span class="notification-message">${message}</span>
+                    <button class="notification-close" onclick="this.parentElement.parentElement.remove()">×</button>
+                </div>
+            `;
+            
+            // Estilos para la notificación
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 10000;
+                background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
+                color: white;
+                padding: 16px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                max-width: 400px;
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            // Añadir al DOM
+            document.body.appendChild(notification);
+            
+            // Auto-eliminar después de 5 segundos
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }
 
         // Función de logout (copiada de inicio.html)
         function logoutUser() {
@@ -604,8 +1307,48 @@
             if (c) c.classList.toggle('open'); 
         }
 
-        // Inicializar cuando el DOM esté listo
-        document.addEventListener('DOMContentLoaded', initAuthHeader);
+        // Añadir animación CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            .notification-content {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+            }
+            
+            .notification-close {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 18px;
+                cursor: pointer;
+                padding: 0;
+                width: 20px;
+                height: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                transition: background 0.2s;
+            }
+            
+            .notification-close:hover {
+                background: rgba(255,255,255,0.2);
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>

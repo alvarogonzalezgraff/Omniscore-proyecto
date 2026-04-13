@@ -616,120 +616,6 @@
         box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
       }
 
-      /* ===== SIDEBAR NAVIGATION ===== */
-      .sport-sidebar {
-        position: absolute;
-        left: 20px;
-        top: 80px;
-        z-index: 50;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .sport-sidebar .sidebar-btn {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 14px;
-        background: rgba(30, 41, 59, 0.85);
-        backdrop-filter: blur(16px);
-        border: 1px solid #334155;
-        border-radius: 10px;
-        color: #94a3b8;
-        font-size: 13px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        white-space: nowrap;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      .sport-sidebar .sidebar-btn:hover {
-        transform: translateX(6px);
-        border-color: var(--sidebar-accent);
-        color: #fff;
-        background: rgba(30, 41, 59, 0.95);
-        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4), 0 0 15px var(--sidebar-glow);
-      }
-
-      .sport-sidebar .sidebar-btn.active {
-        border-color: var(--sidebar-accent);
-        color: #fff;
-        background: rgba(30, 41, 59, 0.95);
-        transform: translateX(6px);
-        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4), 0 0 20px var(--sidebar-glow);
-      }
-
-      .sport-sidebar .sidebar-btn .sidebar-icon {
-        font-size: 18px;
-        flex-shrink: 0;
-      }
-
-      .sport-sidebar .sidebar-btn .sidebar-label {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        letter-spacing: 0.3px;
-      }
-
-      .sport-sidebar .sidebar-btn .sidebar-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: var(--sidebar-accent);
-        margin-left: auto;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .sport-sidebar .sidebar-btn:hover .sidebar-dot,
-      .sport-sidebar .sidebar-btn.active .sidebar-dot {
-        opacity: 1;
-      }
-
-      .sidebar-btn.futbol-btn { --sidebar-accent: #22c55e; --sidebar-glow: rgba(34, 197, 94, 0.2); }
-      .sidebar-btn.basket-btn { --sidebar-accent: #f59e0b; --sidebar-glow: rgba(245, 158, 11, 0.2); }
-      
-      /* Adjust main container to not overlap with sidebar */
-      @media (min-width: 1400px) {
-        .sport-sidebar {
-          left: calc(50% - 700px - 80px);
-        }
-      }
-
-      @media (max-width: 900px) {
-        .sport-sidebar {
-          position: fixed;
-          left: auto;
-          right: 0;
-          top: auto;
-          bottom: 0;
-          transform: none;
-          flex-direction: row;
-          justify-content: center;
-          gap: 8px;
-          padding: 12px 16px;
-          width: 100%;
-          background: rgba(15, 23, 42, 0.95);
-          backdrop-filter: blur(16px);
-          border-top: 1px solid #334155;
-          border-radius: 0;
-          z-index: 200;
-        }
-        .sport-sidebar .sidebar-btn {
-          padding: 10px 16px;
-          border-radius: 10px;
-          font-size: 14px;
-        }
-        .sport-sidebar .sidebar-btn .sidebar-label {
-          display: none;
-        }
-        .sport-sidebar .sidebar-btn .sidebar-dot {
-          display: none;
-        }
-        .sports-index {
-          padding-bottom: 100px;
-        }
-      }
     </style>
   </head>
 
@@ -763,19 +649,6 @@
       </div>
     </section>
 
-    <!-- SIDEBAR NAVIGATION -->
-    <div class="sport-sidebar" id="sportSidebar">
-      <button class="sidebar-btn futbol-btn active" onclick="scrollToSection('seccion-futbol', this)">
-        <span class="sidebar-icon">⚽</span>
-        <span class="sidebar-label">Fútbol</span>
-        <span class="sidebar-dot"></span>
-      </button>
-      <button class="sidebar-btn basket-btn" onclick="scrollToSection('seccion-baloncesto', this)">
-        <span class="sidebar-icon">🏀</span>
-        <span class="sidebar-label">Baloncesto</span>
-        <span class="sidebar-dot"></span>
-      </button>
-          </div>
 
     <!-- Sección Principal de Deportes -->
     <section class="sports-index">
@@ -1285,48 +1158,6 @@
             class="event-mini-card"
             style="cursor: pointer"
             onclick="
-              openMatchModal(
-                'Premier League',
-                'Liverpool',
-                'Man City',
-                '1 - 1',
-                '/premier-league',
-              )
-            "
-          >
-            <span class="event-sport-tag" style="background-color: #3d195b"
-              >🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</span
-            >
-            <div class="teams">
-              <div
-                class="team"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  width: 100%;
-                "
-              >
-                <span>Liverpool</span> <strong>1</strong>
-              </div>
-              <div class="vs" style="margin: 4px 0"></div>
-              <div
-                class="team"
-                style="
-                  display: flex;
-                  justify-content: space-between;
-                  width: 100%;
-                "
-              >
-                <span>Man City</span> <strong>1</strong>
-              </div>
-            </div>
-            <div class="event-time" style="color: #64748b">Ayer, 17:30</div>
-          </div>
-
-          <div
-            class="event-mini-card"
-            style="cursor: pointer"
-            onclick="
               openMatchModal('ACB', 'Unicaja', 'Baskonia', '95 - 91', '/acb')
             "
           >
@@ -1418,40 +1249,33 @@
             <h3>BetWin</h3>
             <ul>
               <li><a href="/footer/sobre-nosotros">Sobre Nosotros</a></li>
-              <li><a href="/footer/contacto">Contacto</a></li>
+              <li><a href="/footer/trabaja-con-nosotros">Trabaja con Nosotros</a></li>
               <li><a href="/footer/terminos">Términos y Condiciones</a></li>
-              <li><a href="#">Política de Privacidad</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h3>Deportes</h3>
             <ul>
-              <li><a href="#futbol">Fútbol</a></li>
-              <li><a href="#baloncesto">Baloncesto</a></li>
-              <li><a href="#tenis">Tenis</a></li>
+              <li><a href="#seccion-futbol">Fútbol</a></li>
+              <li><a href="#seccion-baloncesto">Baloncesto</a></li>
+              <li><a href="#seccion-tenis">Tenis</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h3>Ayuda</h3>
             <ul>
-              <li><a href="#">Centro de Ayuda</a></li>
-              <li><a href="/footer/juego-responsable">Juego Responsable</a></li>
-              <li><a href="#">FAQ</a></li>
+              <li><a href="/footer/faq">Preguntas Frecuentes</a></li>
+              <li><a href="/footer/contacto">Contacto</a></li>
             </ul>
           </div>
           <div class="footer-column">
-            <h3>Síguenos</h3>
+            <h3>Seguridad</h3>
             <ul>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">Facebook</a></li>
+              <li><a href="/footer/privacidad">Privacidad</a></li>
             </ul>
           </div>
         </div>
-        <div class="copyright">
-          <p>© 2026 BetWin - Todos los derechos reservados</p>
-        </div>
-      </div>
+              </div>
     </footer>
     <script>
       function toggleChampionsButtons(event) {
@@ -1587,15 +1411,6 @@
 
     <script>
       // Sidebar navigation
-      function scrollToSection(sectionId, btn) {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        // Update active state
-        document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
-        if (btn) btn.classList.add('active');
-      }
 
       // Auto-detect which section is in view
       window.addEventListener('scroll', function() {
@@ -1615,9 +1430,6 @@
           }
         });
         
-        document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
-        const activeBtn = document.querySelector(currentSection);
-        if (activeBtn) activeBtn.classList.add('active');
       });
 
       // Auto-scroll if arriving from another page with hash

@@ -1,5 +1,5 @@
 {
-  "9vWIXfcQf66BbUwZoxQi4uyJB8_7pSbigtv2K9u9AY4": {
+  "-uicNObQsaxvQ7OKFfNnsGIQYim43WUl6gpWs7_IKJo": {
     "user_data": {
       "id": 2,
       "username": "alvaro",
@@ -8,11 +8,11 @@
       "full_name": "Alvaro",
       "created_at": "2026-03-02 09:57:50"
     },
-    "created_at": "2026-04-11T08:41:28.761831",
-    "expires_at": "2026-04-11T09:11:28.767503",
-    "last_accessed": "2026-04-11T08:41:28.767503"
+    "created_at": "2026-04-13T07:56:09.610216",
+    "expires_at": "2026-04-13T08:26:09.617227",
+    "last_accessed": "2026-04-13T07:56:09.617227"
   },
-  "RgvUefo-SieDone_wW8NryiKxj5DZ9iFJ8HYrVZqUCI": {
+  "K-i2OeeU12-b2XaNPZWTExhCq-NilPEp0VFerGAJ0aI": {
     "user_data": {
       "id": 2,
       "username": "alvaro",
@@ -21,21 +21,8 @@
       "full_name": "Alvaro",
       "created_at": "2026-03-02 09:57:50"
     },
-    "created_at": "2026-04-09T07:27:49.865523",
-    "expires_at": "2026-04-09T07:57:49.880520",
-    "last_accessed": "2026-04-09T07:27:49.880520"
-  },
-  "M8RyaTr-ua9EdSuoElFr0nm6OgSJ6J_u5d79VIWggmg": {
-    "user_data": {
-      "id": 2,
-      "username": "alvaro",
-      "email": "admin@example.com",
-      "password": "$2b$12$McdlBqICogLMi29lbB9d/uazUwZALdTnITujAQAXeFLwPAGww96gW",
-      "full_name": "Alvaro",
-      "created_at": "2026-03-02 09:57:50"
-    },
-    "created_at": "2026-04-09T07:44:02.925682",
-    "expires_at": "2026-04-09T08:14:02.931052",
-    "last_accessed": "2026-04-09T07:44:02.931052"
+    "created_at": "2026-04-13T08:11:21.287337",
+    "expires_at": "2026-04-13T08:41:21.293917",
+    "last_accessed": "2026-04-13T08:11:21.293917"
   }
 }

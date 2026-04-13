@@ -833,98 +833,10 @@
         .m-tab-btn { padding: 12px 10px; font-size: 12px; }
       }
 
-      /* Sport Top Navigation */
-      .sport-top-nav {
-        position: fixed;
-        top: 70px;
-        left: 16px;
-        z-index: 150;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-      .sport-top-nav a {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 14px;
-        background: rgba(17, 24, 39, 0.92);
-        backdrop-filter: blur(12px);
-        border: 1px solid #1f2937;
-        border-radius: 8px;
-        color: #9ca3af;
-        font-size: 12px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.25s;
-        white-space: nowrap;
-      }
-      .sport-top-nav a:hover {
-        color: #fff;
-        background: rgba(17, 24, 39, 0.98);
-        transform: translateX(4px);
-        border-color: var(--nav-accent, #3b82f6);
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-      }
-      .sport-top-nav a .nav-icon {
-        font-size: 15px;
-      }
-      .sport-top-nav a.futbol-nav {
-        --nav-accent: #22c55e;
-      }
-      .sport-top-nav a.basket-nav {
-        --nav-accent: #f59e0b;
-      }
-      .sport-top-nav a.tenis-nav {
-        --nav-accent: #eab308;
-      }
-      .sport-top-nav a.active-nav {
-        color: #fff;
-        border-color: var(--nav-accent);
-        background: rgba(17, 24, 39, 0.98);
-        box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
-      }
-      @media (max-width: 900px) {
-        .sport-top-nav {
-          position: fixed;
-          top: auto;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          flex-direction: row;
-          justify-content: center;
-          gap: 6px;
-          padding: 10px;
-          background: rgba(10, 14, 26, 0.95);
-          border-top: 1px solid #1f2937;
-          border-radius: 0;
-        }
-        .sport-top-nav a .nav-label {
-          display: none;
-        }
-        .sport-top-nav a {
-          padding: 8px 12px;
-        }
-      }
     </style>
   </head>
 
   <body>
-    <!-- Sport Top Navigation -->
-    <div class="sport-top-nav">
-      <a href="/deportes#seccion-futbol" class="futbol-nav active-nav"
-        ><span class="nav-icon">⚽</span
-        ><span class="nav-label">Fútbol</span></a
-      >
-      <a href="/deportes#seccion-baloncesto" class="basket-nav"
-        ><span class="nav-icon">🏀</span
-        ><span class="nav-label">Baloncesto</span></a
-      >
-      <a href="/deportes#seccion-tenis" class="tenis-nav"
-        ><span class="nav-icon">🎾</span><span class="nav-label">Tenis</span></a
-      >
-    </div>
-
     <header>
       <div class="container">
         <div class="header-content">

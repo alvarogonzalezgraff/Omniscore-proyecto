@@ -214,10 +214,30 @@
     <div class="main-layout">
         <aside class="left-sidebar">
             <div class="sidebar-title">Deportes</div>
-            <div class="sidebar-sport-btn active" onclick="toggleSport('tenis')" style="cursor:pointer;">
-                <span class="sb-icon"></span> Tenis <span class="sb-count">6</span>
+            <div class="sidebar-sport-btn" onclick="toggleSport('futbol')" style="cursor:pointer;">
+                <span class="sb-icon">⚽</span> Fútbol <span class="sb-count">4</span>
             </div>
-            <div class="sport-leagues" id="leagues-tenis" style="display:block;">
+            <div class="sport-leagues" id="leagues-futbol" style="display:none;">
+                <a href="/laliga" class="sidebar-league"><img src="images/Leagues/laliga.svg" alt="LaLiga EA Sports" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> LaLiga EA Sports</a>
+                <a href="/premier-league" class="sidebar-league"><img src="images/Leagues/premier-league.svg" alt="Premier League" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Premier League</a>
+                <a href="/serie-a" class="sidebar-league"><img src="images/Leagues/serie-a.svg" alt="Serie A" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Serie A</a>
+                <a href="/bundesliga" class="sidebar-league"><img src="images/Leagues/bundesliga.svg" alt="Bundesliga" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Bundesliga</a>
+            </div>
+            
+            <div class="sidebar-sport-btn" onclick="toggleSport('baloncesto')" style="cursor:pointer;">
+                <span class="sb-icon">🏀</span> Baloncesto <span class="sb-count">4</span>
+            </div>
+            <div class="sport-leagues" id="leagues-baloncesto" style="display:none;">
+                <a href="/nba" class="sidebar-league"><img src="images/Leagues/nba.svg" alt="NBA" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> NBA</a>
+                <a href="/euroliga" class="sidebar-league"><img src="images/Leagues/euroliga.svg" alt="Euroliga" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Euroliga</a>
+                <a href="/acb" class="sidebar-league"><img src="images/Leagues/acb.svg" alt="Liga ACB" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Liga ACB</a>
+                <a href="/fiba" class="sidebar-league"><img src="images/Leagues/fiba.svg" alt="FIBA World Cup" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> FIBA World Cup</a>
+            </div>
+            
+            <div class="sidebar-sport-btn" onclick="toggleSport('tenis')" style="cursor:pointer;">
+                <span class="sb-icon">🎾</span> Tenis <span class="sb-count">6</span>
+            </div>
+            <div class="sport-leagues" id="leagues-tenis" style="display:none;">
                 <a href="/australian-open" class="sidebar-league"><img src="images/Leagues/australian-open.svg" alt="Australian Open" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Australian Open</a>
                 <a href="/roland-garros" class="sidebar-league"><img src="images/Leagues/roland-garros.svg" alt="Roland Garros" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Roland Garros</a>
                 <a href="/wimbledon" class="sidebar-league"><img src="images/Leagues/wimbledon.svg" alt="Wimbledon" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Wimbledon</a>
@@ -247,7 +267,65 @@
             </div>
 
             <!-- SPORT LEAGUES PANELS -->
-            <div id="panel-tenis" class="sport-panel" style="display:block;">
+            <div id="panel-futbol" class="sport-panel" style="display:none;">
+                <div class="section-header">
+                    <h2><span class="dot" style="background:#22c55e;"></span> Fútbol</h2>
+                    <a href="/deportes#seccion-futbol">Ver todo</a>
+                </div>
+                <div class="leagues-grid">
+                    <a href="/laliga" class="league-card">
+                        <img src="images/Leagues/laliga.svg" alt="LaLiga EA Sports" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span class="lc-info"><span class="lc-name">LaLiga EA Sports</span><span class="lc-desc">España · Primera División</span></span>
+                        <span class="lc-arrow">></span>
+                    </a>
+                    <a href="/premier-league" class="league-card">
+                        <img src="images/Leagues/premier-league.svg" alt="Premier League" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span class="lc-info"><span class="lc-name">Premier League</span><span class="lc-desc">Inglaterra · Primera División</span></span>
+                        <span class="lc-arrow">></span>
+                    </a>
+                    <a href="/serie-a" class="league-card">
+                        <img src="images/Leagues/serie-a.svg" alt="Serie A" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span class="lc-info"><span class="lc-name">Serie A</span><span class="lc-desc">Italia · Primera División</span></span>
+                        <span class="lc-arrow">></span>
+                    </a>
+                    <a href="/bundesliga" class="league-card">
+                        <img src="images/Leagues/bundesliga.svg" alt="Bundesliga" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span class="lc-info"><span class="lc-name">Bundesliga</span><span class="lc-desc">Alemania · Primera División</span></span>
+                        <span class="lc-arrow">></span>
+                    </a>
+                </div>
+            </div>
+            
+            <div id="panel-baloncesto" class="sport-panel" style="display:none;">
+                <div class="section-header">
+                    <h2><span class="dot" style="background:#f97316;"></span> Baloncesto</h2>
+                    <a href="/deportes#seccion-baloncesto">Ver todo</a>
+                </div>
+                <div class="leagues-grid">
+                    <a href="/nba" class="league-card">
+                        <img src="images/Leagues/nba.svg" alt="NBA" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span class="lc-info"><span class="lc-name">NBA</span><span class="lc-desc">Estados Unidos · Liga Profesional</span></span>
+                        <span class="lc-arrow">></span>
+                    </a>
+                    <a href="/euroliga" class="league-card">
+                        <img src="images/Leagues/euroliga.svg" alt="Euroliga" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span class="lc-info"><span class="lc-name">Euroliga</span><span class="lc-desc">Europa · Máxima Competición</span></span>
+                        <span class="lc-arrow">></span>
+                    </a>
+                    <a href="/acb" class="league-card">
+                        <img src="images/Leagues/acb.svg" alt="Liga ACB" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span class="lc-info"><span class="lc-name">Liga ACB</span><span class="lc-desc">España · Primera División</span></span>
+                        <span class="lc-arrow">></span>
+                    </a>
+                    <a href="/fiba" class="league-card">
+                        <img src="images/Leagues/fiba.svg" alt="FIBA World Cup" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span class="lc-info"><span class="lc-name">FIBA World Cup</span><span class="lc-desc">Mundial · Selecciones Nacionales</span></span>
+                        <span class="lc-arrow">></span>
+                    </a>
+                </div>
+            </div>
+            
+            <div id="panel-tenis" class="sport-panel" style="display:none;">
                 <div class="section-header">
                     <h2><span class="dot" style="background:#eab308;"></span> 🎾 Tenis</h2>
                     <a href="/deportes#seccion-tenis">Ver todo →</a>
@@ -344,7 +422,7 @@
     <script>
         // Toggle sport leagues in sidebar
         function toggleSport(sport) {
-            var ids = ['futbol', 'basket', 'tenis'];
+            var ids = ['futbol', 'baloncesto', 'tenis'];
             // Toggle sidebar leagues
             ids.forEach(function(id) {
                 var el = document.getElementById('leagues-' + id);
@@ -382,10 +460,6 @@
                                 <span class="profile-arrow">&#9660;</span>
                             </div>
                             <div class="profile-dropdown">
-                                <a href="#" class="dropdown-item">
-                                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                                    Mi Perfil
-                                </a>
                                 <a href="/configuracion" class="dropdown-item">
                                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                                     Configuración

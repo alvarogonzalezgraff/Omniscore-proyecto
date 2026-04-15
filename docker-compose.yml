@@ -1,4 +1,4 @@
-version: '3.8'
+﻿version: '3.8'
 
 services:
   sqlite-viewer:
@@ -13,17 +13,17 @@ services:
       - SQLITE_DATABASE=app.db
   db:
     image: postgres:16-alpine
-    container_name: betwin_postgres
+    container_name: Omniscore_postgres
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: betwin_db
+      POSTGRES_DB: Omniscore_db
     ports:
       - "5433:5432"
     volumes:
-      - betwin_postgres_data:/var/lib/postgresql/data
+      - Omniscore_postgres_data:/var/lib/postgresql/data
 
 volumes:
-  betwin_postgres_data:
+  Omniscore_postgres_data:
     external: true

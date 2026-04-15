@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Script para mostrar los goles de la jornada 1 de Premier League
 desde la base de datos Docker PostgreSQL
@@ -18,7 +18,7 @@ def get_premier_league_j1_goals():
     conn = psycopg2.connect(
         host="localhost",
         port="5433",
-        database="betwin_db",
+        database="Omniscore_db",
         user="postgres",
         password="docker_password"
     )
@@ -116,7 +116,7 @@ def save_to_database():
     conn = psycopg2.connect(
         host="localhost",
         port="5433",
-        database="betwin_db",
+        database="Omniscore_db",
         user="postgres",
         password="docker_password"
     )

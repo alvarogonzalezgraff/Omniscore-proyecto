@@ -1,4 +1,4 @@
-import psycopg2
+﻿import psycopg2
 import json
 
 # Conexión a Docker PostgreSQL
@@ -6,7 +6,7 @@ def get_docker_connection():
     return psycopg2.connect(
         host='localhost',
         port='5433',
-        dbname='betwin_db',
+        dbname='Omniscore_db',
         user='postgres',
         password='docker_password'
     )

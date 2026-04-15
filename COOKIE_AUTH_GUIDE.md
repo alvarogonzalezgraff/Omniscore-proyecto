@@ -1,4 +1,4 @@
-# Guía de Migración - JWT a Cookies de Sesión
+﻿# Guía de Migración - JWT a Cookies de Sesión
 
 ## 🔄 Cambio Completado: Autenticación con Cookies
 
@@ -28,8 +28,8 @@ GET /api/auth/me -> User data (requiere cookie)
 ```python
 app.add_middleware(
     SessionMiddleware,
-    secret_key="betwin_session_secret_key_change_in_production",
-    session_cookie="betwin_session",
+    secret_key="Omniscore_session_secret_key_change_in_production",
+    session_cookie="Omniscore_session",
     max_age=1800,  # 30 minutos
     httponly=True,
     samesite="lax"
@@ -166,7 +166,7 @@ curl -X POST "http://localhost:8001/api/auth/logout" \
 app.add_middleware(
     SessionMiddleware,
     secret_key=os.getenv("SESSION_SECRET_KEY"),  # Variable de entorno
-    session_cookie="betwin_session",
+    session_cookie="Omniscore_session",
     max_age=1800,
     httponly=True,
     samesite="strict",

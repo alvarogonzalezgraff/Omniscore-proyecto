@@ -1,4 +1,4 @@
-import psycopg2
+﻿import psycopg2
 import os
 from dotenv import load_dotenv
 from pathlib import Path
@@ -9,7 +9,7 @@ load_dotenv(ROOT_DIR / '.env')
 conn = psycopg2.connect(
     host=os.getenv('DB_HOST', 'localhost'),
     port=os.getenv('DB_PORT', '5433'),
-    dbname=os.getenv('DB_NAME', 'betwin_db'),
+    dbname=os.getenv('DB_NAME', 'Omniscore_db'),
     user=os.getenv('DB_USER', 'postgres'),
     password=os.getenv('DB_PASSWORD', '')
 )

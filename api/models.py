@@ -24,6 +24,10 @@ class User(BaseModel):
     full_name: Optional[str] = None
     created_at: Optional[str] = None
 
+class PasswordReset(BaseModel):
+    username: str
+    new_password: str
+
 # League Models
 class League(BaseModel):
     id: int

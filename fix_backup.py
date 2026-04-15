@@ -1,4 +1,4 @@
-import re
+﻿import re
 import json
 
 def fix_backup():
@@ -81,9 +81,9 @@ def fix_backup():
     content = content.replace('COPY public.basketball_leagues (id, name, country, level) FROM stdin;\n\t', 
                               'COPY public.basketball_leagues (id, name, country, level) FROM stdin;\n\\N\t')
 
-    # Save over original betwin db
-    open('backup_betwin_db.sql', 'w', encoding='utf-8').write(content)
-    print("Fixed backup_betwin_db.sql")
+    # Save over original Omniscore db
+    open('backup_Omniscore_db.sql', 'w', encoding='utf-8').write(content)
+    print("Fixed backup_Omniscore_db.sql")
 
 if __name__ == '__main__':
     fix_backup()

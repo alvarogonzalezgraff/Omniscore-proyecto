@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Global Theme Management System
  * Manages application-wide theme state with real-time updates and persistence
  */
@@ -60,7 +60,7 @@ class ThemeStore {
      */
     loadFromLocalStorage() {
         try {
-            const stored = localStorage.getItem('betwin_theme');
+            const stored = localStorage.getItem('Omniscore_theme');
             return stored ? JSON.parse(stored) : null;
         } catch (error) {
             console.warn('Error loading theme from localStorage:', error);
@@ -73,7 +73,7 @@ class ThemeStore {
      */
     saveToLocalStorage(theme) {
         try {
-            localStorage.setItem('betwin_theme', JSON.stringify(theme));
+            localStorage.setItem('Omniscore_theme', JSON.stringify(theme));
         } catch (error) {
             console.warn('Error saving theme to localStorage:', error);
         }

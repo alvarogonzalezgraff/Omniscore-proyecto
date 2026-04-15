@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Perfil - BetWin</title>
+    <title>Mi Perfil - Omniscore</title>
     <script>
         // Auth guard: redirect to login if not authenticated
         (function() {
@@ -14,7 +14,7 @@
                     var demoUser = {
                         username: 'usuario_demo',
                         fullName: 'Usuario Demo',
-                        email: 'usuario@betwin.com',
+                        email: 'usuario@Omniscore.com',
                         phone: '+34 600 000 000',
                         avatar: null,
                         favoriteSports: ['football'],
@@ -852,7 +852,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                Bet<span>Win</span>
+                Omni<span>score</span>
             </div>
 
             <!-- Navigation Tabs -->
@@ -930,7 +930,7 @@
                     <div class="profile-info-section">
                         <h1 class="profile-name-display" id="profileNameDisplay">Usuario Demo</h1>
                         <div class="profile-email-display">
-                            <span id="profileEmailDisplay">usuario@betwin.com</span>
+                            <span id="profileEmailDisplay">usuario@Omniscore.com</span>
                             <div class="verified-badge">
                                 <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
                                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
@@ -1118,7 +1118,7 @@
 
             // Update profile header
             document.getElementById('profileNameDisplay').textContent = user.fullName || 'Usuario Demo';
-            document.getElementById('profileEmailDisplay').textContent = user.email || 'usuario@betwin.com';
+            document.getElementById('profileEmailDisplay').textContent = user.email || 'usuario@Omniscore.com';
             document.getElementById('avatarInitial').textContent = (user.fullName || user.username || 'U')[0].toUpperCase();
 
             // Update form

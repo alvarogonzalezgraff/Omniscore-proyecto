@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Iniciar Sesión - Omniscore</title>
+    <title>Recuperar Contraseña - Omniscore</title>
     <style>
       /* Estilos generales copiados de inicio.html */
       * {
@@ -214,63 +214,6 @@
         color: #3b82f6;
       }
 
-      .divider {
-        display: flex;
-        align-items: center;
-        margin: 25px 0;
-        color: #64748b;
-        font-size: 14px;
-      }
-
-      .divider::before,
-      .divider::after {
-        content: "";
-        flex: 1;
-        border-bottom: 1px solid #334155;
-      }
-
-      .divider span {
-        padding: 0 10px;
-      }
-
-      .social-login {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-      }
-
-      .social-btn {
-        width: 40px;
-        height: 40px;
-        background-color: #0f172a;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      .social-btn:hover {
-        background-color: #334155;
-      }
-
-      .signup-link {
-        text-align: center;
-        margin-top: 25px;
-        color: #cbd5e1;
-        font-size: 15px;
-      }
-
-      .signup-link a {
-        color: #3b82f6;
-        font-weight: 600;
-      }
-
-      .signup-link a:hover {
-        text-decoration: underline;
-      }
-
       /* Responsive */
       @media (max-width: 768px) {
         .header-content {
@@ -290,23 +233,20 @@
       <div class="container">
         <div class="header-content">
           <div class="logo">Omni<span>score</span></div>
-          <nav>
-            <!-- Navegación eliminada para página de login -->
-          </nav>
         </div>
       </div>
     </header>
 
-    <!-- Login Section -->
+    <!-- Reset Section -->
     <section class="login-section">
       <div class="container" style="display: flex; justify-content: center">
         <div class="login-container">
           <div class="login-header">
-            <h1>Iniciar Sesión</h1>
-            <p>Ingresa a tu cuenta para continuar</p>
+            <h1>Cambiar Contraseña</h1>
+            <p>Ingresa tu usuario y tu nueva contraseña</p>
           </div>
 
-          <form id="loginForm">
+          <form id="resetForm">
             <div class="form-group">
               <label for="username">Usuario / Email</label>
               <input
@@ -318,24 +258,29 @@
             </div>
 
             <div class="form-group">
-              <label for="password">Contraseña</label>
+              <label for="new_password">Nueva Contraseña</label>
               <input
                 type="password"
-                id="password"
-                placeholder="Ingresa tu contraseña"
+                id="new_password"
+                placeholder="Ingresa tu nueva contraseña"
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <label for="confirm_password">Confirmar Contraseña</label>
+              <input
+                type="password"
+                id="confirm_password"
+                placeholder="Confirma tu nueva contraseña"
                 required
               />
             </div>
 
-            <button type="submit" class="btn-login">Iniciar Sesión</button>
+            <button type="submit" class="btn-login">Cambiar Contraseña</button>
 
             <div class="forgot-password">
-              <a href="/recuperar-contrasena">¿Has olvidado tu contraseña?</a>
-            </div>
-
-            
-            <div class="signup-link">
-              ¿No tienes una cuenta? <a href="/registro">Regístrate</a>
+               <a href="/login">Volver a iniciar sesión</a>
             </div>
           </form>
         </div>
@@ -388,7 +333,7 @@
 
     <script>
         const btnLogin = document.querySelector('.btn-login');
-        const loginForm = document.getElementById('loginForm');
+        const resetForm = document.getElementById('resetForm');
 
         function showMessage(msg, isError) {
             let msgEl = document.getElementById('loginMsg');
@@ -396,7 +341,7 @@
                 msgEl = document.createElement('div');
                 msgEl.id = 'loginMsg';
                 msgEl.style.cssText = 'margin-top:14px;padding:10px 16px;border-radius:6px;font-size:14px;text-align:center;font-weight:500;';
-                loginForm.appendChild(msgEl);
+                resetForm.appendChild(msgEl);
             }
             msgEl.textContent = msg;
             msgEl.style.backgroundColor = isError ? 'rgba(239,68,68,0.15)' : 'rgba(34,197,94,0.15)';
@@ -404,80 +349,52 @@
             msgEl.style.border = isError ? '1px solid rgba(239,68,68,0.3)' : '1px solid rgba(34,197,94,0.3)';
         }
 
-        loginForm.addEventListener('submit', async function (e) {
+        resetForm.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value;
+            const new_password = document.getElementById('new_password').value;
+            const confirm_password = document.getElementById('confirm_password').value;
 
-            if (!username || !password) {
-                showMessage('Por favor, ingresa tu usuario y contraseña.', true);
+            if (!username || !new_password || !confirm_password) {
+                showMessage('Por favor, completa todos los campos.', true);
+                return;
+            }
+
+            if (new_password !== confirm_password) {
+                showMessage('Las contraseñas no coinciden.', true);
                 return;
             }
 
             btnLogin.disabled = true;
-            btnLogin.textContent = 'Iniciando sesión...';
+            btnLogin.textContent = 'Cambiando...';
 
             try {
-                // Paso 1: Login -> obtener token
-                const response = await fetch('/api/auth/login', {
+                const response = await fetch('/api/auth/reset-password', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
+                    body: JSON.stringify({ username, new_password })
                 });
 
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({}));
-                    showMessage(errorData.detail || 'Usuario o contraseña incorrectos', true);
+                    showMessage(errorData.detail || 'Error al cambiar contraseña', true);
                     btnLogin.disabled = false;
-                    btnLogin.textContent = 'Iniciar Sesión';
+                    btnLogin.textContent = 'Cambiar Contraseña';
                     return;
                 }
 
-                const data = await response.json();
-                const token = data.access_token;
-
-                // Guardar token
-                localStorage.setItem('authToken', token);
-
-                // Paso 2: Obtener datos del usuario
-                let userToSave = { username: username, loggedAt: new Date().toISOString() };
-
-                try {
-                    const meResponse = await fetch('/api/auth/me', {
-                        headers: { 'Authorization': `Bearer ${token}` }
-                    });
-                    if (meResponse.ok) {
-                        const userData = await meResponse.json();
-                        userToSave = {
-                            id: userData.id,
-                            username: userData.username,
-                            email: userData.email,
-                            full_name: userData.full_name,
-                            loggedAt: new Date().toISOString()
-                        };
-                    }
-                } catch (meErr) {
-                    console.warn('No se pudo obtener info del usuario, usando username básico:', meErr);
-                }
-
-                // Guardar en localStorage ANTES de redirigir
-                localStorage.setItem('currentUser', JSON.stringify(userToSave));
-
-                // Mostrar mensaje de éxito y redirigir
-                showMessage('¡Bienvenido, ' + userToSave.username + '! Redirigiendo...', false);
-                setTimeout(() => { window.location.href = '/inicio'; }, 600);
+                showMessage('¡Contraseña cambiada! Redirigiendo al login...', false);
+                setTimeout(() => { window.location.href = '/login'; }, 1500);
 
             } catch (error) {
-                console.error('Error de conexión:', error);
-                showMessage('Error de conexión con el servidor. Verifica que esté ejecutándose.', true);
+                console.error('Error:', error);
+                showMessage('Error de conexión con el servidor.', true);
                 btnLogin.disabled = false;
-                btnLogin.textContent = 'Iniciar Sesión';
+                btnLogin.textContent = 'Cambiar Contraseña';
             }
         });
     </script>
-    
-    <!-- FooterWrapper para ocultar footer en página de login -->
     <script src="/assets/js/FooterWrapper.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import sqlite3
+﻿import sqlite3
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import sys
@@ -43,29 +43,29 @@ except Exception as e:
 
 # 4. Crear base de datos si no existe
 try:
-    pg_cursor.execute('CREATE DATABASE betwin_db')
+    pg_cursor.execute('CREATE DATABASE Omniscore_db')
     pg_conn.commit()
-    print('✅ Base de datos betwin_db creada')
+    print('✅ Base de datos Omniscore_db creada')
 except Exception as e:
     if 'already exists' in str(e):
-        print('✅ Base de datos betwin_db ya existe')
+        print('✅ Base de datos Omniscore_db ya existe')
     else:
         print(f'❌ Error creando base de datos: {e}')
 
-# 5. Conectarse a la base de datos betwin_db
+# 5. Conectarse a la base de datos Omniscore_db
 try:
     pg_conn.close()
     pg_conn = psycopg2.connect(
         host='localhost',
         port=5433,
-        database='betwin_db',
+        database='Omniscore_db',
         user='postgres',
         password='1234'
     )
     pg_cursor = pg_conn.cursor()
-    print('✅ Conectado a betwin_db')
+    print('✅ Conectado a Omniscore_db')
 except Exception as e:
-    print(f'❌ Error conectando a betwin_db: {e}')
+    print(f'❌ Error conectando a Omniscore_db: {e}')
     sys.exit(1)
 
 # 6. Crear tablas si no existen
@@ -378,7 +378,7 @@ else:
 
 print()
 print('🔍 Verificación del volumen persistente:')
-print('✅ Los datos están ahora en el volumen Docker betwin_postgres_data')
+print('✅ Los datos están ahora en el volumen Docker Omniscore_postgres_data')
 print('✅ El contenedor puede reiniciarse sin perder datos')
 print('✅ Los cambios futuros se guardarán en el volumen persistente')
 

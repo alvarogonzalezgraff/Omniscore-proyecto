@@ -1,6 +1,6 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
-Script de desarrollo para BetWin con opciones de recarga controlada
+Script de desarrollo para Omniscore con opciones de recarga controlada
 """
 import uvicorn
 import sys
@@ -8,7 +8,7 @@ import argparse
 from pathlib import Path
 
 def main():
-    parser = argparse.ArgumentParser(description="Servidor de desarrollo BetWin")
+    parser = argparse.ArgumentParser(description="Servidor de desarrollo Omniscore")
     parser.add_argument("--no-reload", action="store_true", 
                        help="Desactivar recarga automática (mantiene sesiones)")
     parser.add_argument("--port", type=int, default=8001,
@@ -19,7 +19,7 @@ def main():
     args = parser.parse_args()
     
     print("=" * 60)
-    print(">> BetWin - Modo Desarrollo")
+    print(">> Omniscore - Modo Desarrollo")
     print("=" * 60)
     print(f"API: http://{args.host}:{args.port}/docs")
     print(f"Web: http://{args.host}:{args.port}/")

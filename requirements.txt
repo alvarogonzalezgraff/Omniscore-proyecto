@@ -1,4 +1,4 @@
-# BetWin - Aplicación de Apuestas Deportivas
+﻿# Omniscore - Aplicación de Apuestas Deportivas
 # Dependencias principales del proyecto
 
 fastapi==0.109.0

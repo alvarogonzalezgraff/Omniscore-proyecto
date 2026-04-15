@@ -1,4 +1,4 @@
-# 🚀 Instrucciones finales para arrancar BetWin
+﻿# 🚀 Instrucciones finales para arrancar Omniscore
 
 ## Estado actual del proyecto
 

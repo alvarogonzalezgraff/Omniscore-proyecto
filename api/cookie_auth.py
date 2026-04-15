@@ -1,5 +1,5 @@
-"""
-Sistema de autenticación basado en cookies de sesión para BetWin
+﻿"""
+Sistema de autenticación basado en cookies de sesión para Omniscore
 Reemplaza el sistema JWT por cookies tradicionales con persistencia.
 """
 import secrets

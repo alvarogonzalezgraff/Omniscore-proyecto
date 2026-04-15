@@ -1,4 +1,4 @@
-import os
+﻿import os
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -14,7 +14,7 @@ if USE_POSTGRES:
     # Configuración PostgreSQL
     DB_HOST = os.getenv("DB_HOST", "localhost")
     DB_PORT = os.getenv("DB_PORT", "5432")
-    DB_NAME = os.getenv("DB_NAME", "betwin_db")
+    DB_NAME = os.getenv("DB_NAME", "Omniscore_db")
     DB_USER = os.getenv("DB_USER", "postgres")
     DB_PASSWORD = os.getenv("DB_PASSWORD", "")
     

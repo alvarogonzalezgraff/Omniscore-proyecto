@@ -1,4 +1,4 @@
-# Panel de Configuración de Apariencia - Documentación Completa
+﻿# Panel de Configuración de Apariencia - Documentación Completa
 
 ## 📋 Resumen de Implementación
 
@@ -104,7 +104,7 @@ assets/js/
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuración - BetWin</title>
+    <title>Configuración - Omniscore</title>
 </head>
 <body>
     <!-- Tu header existente -->

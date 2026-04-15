@@ -1,4 +1,4 @@
-# Guía de Desarrollo - BetWin
+﻿# Guía de Desarrollo - Omniscore
 
 ## Gestión de Sesiones y Reinicios del Servidor
 

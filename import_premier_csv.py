@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Script para importar datos del CSV premier_24_25_mix.csv a PostgreSQL
 Importa partidos, goles, tarjetas, alineaciones y otros eventos
@@ -14,7 +14,7 @@ from typing import List, Dict, Optional, Tuple
 DB_CONFIG = {
     'host': 'localhost',
     'port': '5433',
-    'dbname': 'betwin_db',
+    'dbname': 'Omniscore_db',
     'user': 'postgres',
     'password': '1234'
 }

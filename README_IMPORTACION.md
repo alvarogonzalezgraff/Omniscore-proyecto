@@ -1,4 +1,4 @@
-# Importación Premier League CSV - Guía Completa
+﻿# Importación Premier League CSV - Guía Completa
 
 ## 📋 Resumen de la Importación
 
@@ -18,7 +18,7 @@
 
 ### 🗄️ Base de Datos PostgreSQL:
 - **Host**: localhost:5433
-- **Base de datos**: betwin_db
+- **Base de datos**: Omniscore_db
 - **Usuario**: postgres
 - **Contraseña**: 1234
 

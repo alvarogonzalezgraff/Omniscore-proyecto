@@ -1,9 +1,9 @@
-# Guía para Ver Goles de Premier League en pgAdmin4
+﻿# Guía para Ver Goles de Premier League en pgAdmin4
 
 ## Configuración de Conexión
 1. **Servidor**: localhost
 2. **Puerto**: 5433
-3. **Base de datos**: betwin_db
+3. **Base de datos**: Omniscore_db
 4. **Usuario**: postgres
 5. **Contraseña**: 1234
 
@@ -12,10 +12,10 @@
 ### 1. Conectarse a la Base de Datos
 - Abre pgAdmin4
 - Crea una nueva conexión o usa la existente con los datos arriba
-- Navega a `betwin_db` > `Schemas` > `public`
+- Navega a `Omniscore_db` > `Schemas` > `public`
 
 ### 2. Abrir Editor SQL
-- Haz clic derecho en `betwin_db`
+- Haz clic derecho en `Omniscore_db`
 - Selecciona `Query Tool`
 - Esto abrirá un editor SQL donde puedes pegar las consultas
 

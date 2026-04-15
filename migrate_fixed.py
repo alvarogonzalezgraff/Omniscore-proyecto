@@ -1,4 +1,4 @@
-import sqlite3
+﻿import sqlite3
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import sys
@@ -314,8 +314,8 @@ else:
 print()
 print('🔍 VERIFICACIÓN POST-MIGRACIÓN:')
 print('Puedes verificar los datos migrados con:')
-print('  docker exec -it betwin_postgres psql -U postgres -d postgres -c "SELECT COUNT(*) FROM leagues;"')
-print('  docker exec -it betwin_postgres psql -U postgres -d postgres -c "SELECT COUNT(*) FROM scraped_matches;"')
+print('  docker exec -it Omniscore_postgres psql -U postgres -d postgres -c "SELECT COUNT(*) FROM leagues;"')
+print('  docker exec -it Omniscore_postgres psql -U postgres -d postgres -c "SELECT COUNT(*) FROM scraped_matches;"')
 
 # Cerrar conexiones
 sqlite_conn.close()

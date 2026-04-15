@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends, status, Request, Response
+﻿from fastapi import FastAPI, HTTPException, Depends, status, Request, Response
 # trigger reload to pick up updated .env for sqlite
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
@@ -59,8 +59,8 @@ app.add_middleware(
 # Configurar SessionMiddleware para cookies
 app.add_middleware(
     SessionMiddleware,
-    secret_key="betwin_session_secret_key_change_in_production",
-    session_cookie="betwin_session",
+    secret_key="Omniscore_session_secret_key_change_in_production",
+    session_cookie="Omniscore_session",
     max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,  # Convertir a segundos
     same_site="lax",
     https_only=False  # En producción poner True
@@ -125,7 +125,7 @@ async def login(user_login: UserLogin, request: Request, response: Response):
     
     # Establecer cookie
     response.set_cookie(
-        key="betwin_session",
+        key="Omniscore_session",
         value=session_id,
         max_age=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
         expires=timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES),
@@ -150,7 +150,7 @@ async def logout(request: Request, response: Response):
     
     # Eliminar cookie
     response.delete_cookie(
-        key="betwin_session",
+        key="Omniscore_session",
         path="/",
         samesite="lax"
     )
@@ -160,12 +160,26 @@ async def logout(request: Request, response: Response):
     
     return {"message": "Logout exitoso"}
 
+@app.post("/api/auth/reset-password")
+async def reset_password(data: PasswordReset):
+    """Restablecer la contraseña"""
+    with SessionLocal() as session:
+        user = session.query(UserORM).filter(
+            (UserORM.username == data.username) | (UserORM.email == data.username)
+        ).first()
+        if not user:
+            raise HTTPException(status_code=404, detail="Usuario no encontrado")
+        
+        user.password = get_password_hash(data.new_password)
+        session.commit()
+        return {"message": "Contraseña actualizada correctamente"}
+
 async def get_current_user(request: Request) -> User:
     """Obtiene el usuario actual desde cookie de sesión"""
     session_id = request.session.get("session_id")
     if not session_id:
         # Verificar si existe en cookie HTTP
-        session_id = request.cookies.get("betwin_session")
+        session_id = request.cookies.get("Omniscore_session")
     
     if not session_id:
         raise HTTPException(
@@ -1176,6 +1190,10 @@ async def champions_league(request: Request):
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request):
     return templates.TemplateResponse(request=request, name="IniciarSesion.html", context={"request": request})
+
+@app.get("/recuperar-contrasena", response_class=HTMLResponse)
+async def recuperar_contrasena_page(request: Request):
+    return templates.TemplateResponse(request=request, name="recuperar-contrasena.html", context={"request": request})
 
 @app.get("/registro", response_class=HTMLResponse)
 async def registro_page(request: Request):

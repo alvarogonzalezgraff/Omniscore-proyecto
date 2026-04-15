@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuración - BetWin</title>
+    <title>Configuración - Omniscore</title>
     <style>
         /* CSS Variables for Dynamic Theming - Esquema oscuro como inicio.html */
         :root {
@@ -755,7 +755,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                Bet<span>Win</span>
+                Omni<span>score</span>
             </div>
         </div>
     </header>
@@ -789,7 +789,7 @@
                     ← Volver al inicio
                 </a>
                 <h1>Configuración</h1>
-                <p>Personaliza tu experiencia en BetWin</p>
+                <p>Personaliza tu experiencia en Omniscore</p>
             </div>
 
             <!-- Sección Cuenta -->
@@ -810,7 +810,7 @@
                         </div>
                         <div class="profile-info">
                             <h3 id="profileName">Usuario</h3>
-                            <p id="profileEmail">usuario@betwin.com</p>
+                            <p id="profileEmail">usuario@Omniscore.com</p>
                         </div>
                     </div>
 
@@ -999,7 +999,7 @@
         function updateProfileDisplay() {
             if (currentUser) {
                 const username = currentUser.username || 'Usuario';
-                const email = currentUser.email || 'usuario@betwin.com';
+                const email = currentUser.email || 'usuario@Omniscore.com';
                 
                 document.getElementById('profileName').textContent = username;
                 document.getElementById('profileEmail').textContent = email;
@@ -1166,7 +1166,7 @@
                 const dataStr = JSON.stringify(userData, null, 2);
                 const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
                 
-                const exportFileDefaultName = `betwin-data-${new Date().toISOString().split('T')[0]}.json`;
+                const exportFileDefaultName = `Omniscore-data-${new Date().toISOString().split('T')[0]}.json`;
                 
                 const linkElement = document.createElement('a');
                 linkElement.setAttribute('href', dataUri);

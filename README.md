@@ -1,4 +1,4 @@
-# BetWin - Aplicación de Apuestas Deportivas
+﻿# Omniscore - Aplicación de Apuestas Deportivas
 
 Aplicación web para consultar estadísticas de ligas de fútbol europeas.
 

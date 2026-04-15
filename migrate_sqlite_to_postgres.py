@@ -1,4 +1,4 @@
-import sqlite3
+﻿import sqlite3
 import sys
 import os
 from pathlib import Path
@@ -16,7 +16,7 @@ SQLITE_PATH = ROOT_DIR / "database" / "app.db"
 
 PG_HOST     = os.getenv("DB_HOST", "localhost")
 PG_PORT     = os.getenv("DB_PORT", "5432")
-PG_DB       = os.getenv("DB_NAME", "betwin_db")
+PG_DB       = os.getenv("DB_NAME", "Omniscore_db")
 PG_USER     = os.getenv("DB_USER", "postgres")
 PG_PASSWORD = os.getenv("DB_PASSWORD", "")
 

@@ -1,6 +1,6 @@
-@echo off
+﻿@echo off
 echo ========================================
-echo BetWin - Servidor de Desarrollo
+echo Omniscore - Servidor de Desarrollo
 echo ========================================
 echo.
 echo Opciones disponibles:

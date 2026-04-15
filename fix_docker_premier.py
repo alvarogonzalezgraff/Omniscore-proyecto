@@ -1,10 +1,10 @@
-import psycopg2
+﻿import psycopg2
 
 def get_connection():
     try:
-        return psycopg2.connect(host='localhost', port='5433', dbname='betwin_db', user='postgres', password='1234')
+        return psycopg2.connect(host='localhost', port='5433', dbname='Omniscore_db', user='postgres', password='1234')
     except:
-        return psycopg2.connect(host='localhost', port='5433', dbname='betwin_db', user='postgres', password='docker_password')
+        return psycopg2.connect(host='localhost', port='5433', dbname='Omniscore_db', user='postgres', password='docker_password')
 
 def run_fix():
     print("=== FIXING PREMIER LEAGUE DATA IN DOCKER POSTGRES ===")

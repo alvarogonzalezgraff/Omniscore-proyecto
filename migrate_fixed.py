@@ -1,4 +1,4 @@
-﻿import sqlite3
+import sqlite3
 import psycopg2
 from psycopg2.extras import RealDictCursor
 import sys
@@ -21,7 +21,7 @@ try:
     pg_conn = psycopg2.connect(
         host='localhost',
         port=5433,
-        database='postgres',
+        database='Omniscore_db',
         user='postgres',
         password='1234'
     )
@@ -32,6 +32,8 @@ except Exception as e:
     sys.exit(1)
 
 print()
+
+import re
 
 # 3. Función para limpiar y preparar datos
 def clean_value(value, column_name=None):
@@ -44,11 +46,21 @@ def clean_value(value, column_name=None):
             return bool(value)
         elif isinstance(value, str):
             return value.lower() in ('1', 'true', 't', 'yes', 'y')
-    
+            
+    # Fix dates
+    if column_name in ['match_date', 'date', 'updated_at', 'start_date', 'end_date', 'birth_date', 'created_at']:
+        if isinstance(value, str):
+            value = value.strip()
+            # If it's DD/MM/YYYY
+            match = re.match(r'^(\d{2})/(\d{2})/(\d{4})(.*)$', value)
+            if match:
+                value = f"{match.group(3)}-{match.group(2)}-{match.group(1)}{match.group(4)}"
+            
     # Para otros tipos
     if isinstance(value, str):
         return value.strip()
     return value
+
 
 # 4. Migración de tablas principales con manejo especial
 print('📊 INICIANDO MIGRACIÓN CORREGIDA:')
@@ -101,7 +113,7 @@ for table_name, primary_key, columns in tables_to_migrate:
         print(f'   📥 Obtenidos {len(rows)} registros de SQLite')
         
         # Limpiar tabla destino en PostgreSQL
-        pg_cursor.execute(f'DELETE FROM {table_name}')
+        pg_cursor.execute(f'TRUNCATE TABLE {table_name} CASCADE')
         print(f'   🗑️ Tabla {table_name} limpiada en PostgreSQL')
         
         # Preparar inserción
@@ -175,7 +187,7 @@ for table_name, primary_key, columns in basketball_tables:
         
         print(f'   📥 Obtenidos {len(rows)} registros')
         
-        pg_cursor.execute(f'DELETE FROM {table_name}')
+        pg_cursor.execute(f'TRUNCATE TABLE {table_name} CASCADE')
         
         placeholders = ', '.join(['%s'] * len(columns))
         insert_query = f'INSERT INTO {table_name} ({", ".join(columns)}) VALUES ({placeholders})'
@@ -232,7 +244,7 @@ for table_name, primary_key, columns in tennis_tables:
         
         print(f'   📥 Obtenidos {len(rows)} registros')
         
-        pg_cursor.execute(f'DELETE FROM {table_name}')
+        pg_cursor.execute(f'TRUNCATE TABLE {table_name} CASCADE')
         
         placeholders = ', '.join(['%s'] * len(columns))
         insert_query = f'INSERT INTO {table_name} ({", ".join(columns)}) VALUES ({placeholders})'
@@ -272,7 +284,7 @@ try:
         users = sqlite_cursor.fetchall()
         
         if users:
-            pg_cursor.execute('DELETE FROM users')
+            pg_cursor.execute('TRUNCATE TABLE users CASCADE')
             
             for user in users:
                 pg_cursor.execute('''

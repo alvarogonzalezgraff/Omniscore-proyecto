@@ -14,7 +14,7 @@ print('✅ Conectado a SQLite para obtener estructura')
 pg_conn = psycopg2.connect(
     host='localhost',
     port=5433,
-    database='postgres',
+    database='Omniscore_db',
     user='postgres',
     password='1234'
 )
@@ -153,6 +153,7 @@ for table_name in tables_to_create:
         
         # Ejecutar CREATE TABLE
         pg_cursor.execute(create_sql)
+        pg_conn.commit()
         
         print(f'   ✅ Tabla {table_name} creada con {len(columns)} columnas')
         created_tables += 1

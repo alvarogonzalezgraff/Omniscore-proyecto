@@ -265,35 +265,6 @@
         background: linear-gradient(90deg, rgba(239, 68, 68, 0.1), transparent);
       }
 
-      .form-container {
-        display: flex;
-        gap: 3px;
-      }
-
-      .form-badge {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        line-height: 24px;
-        text-align: center;
-        border-radius: 6px;
-        color: white;
-        font-size: 11px;
-        font-weight: bold;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-      }
-
-      .form-W {
-        background-color: #22c55e;
-      }
-
-      .form-D {
-        background-color: #f59e0b;
-      }
-
-      .form-L {
-        background-color: #ef4444;
-      }
 
       .legend {
         display: flex;
@@ -901,7 +872,6 @@
                   <th>GC</th>
                   <th>DG</th>
                   <th>Pts</th>
-                  <th>Forma</th>
                 </tr>
               </thead>
               <tbody id="standings-body"></tbody>
@@ -1050,19 +1020,20 @@
             else if (team.position === 6) zoneClass = "conference-zone";
             else if (team.position >= 18) zoneClass = "relegation-zone";
 
-            const formHtml = ["-", "-", "-", "-", "-"]
-              .map(
-                (f) =>
-                  `<span class="form-badge" style="background:#334155">${f}</span>`,
-              )
-              .join("");
+            // Mapeo específico para escudos locales
+            let logoSrc = team.logo;
+            if (team.team_name === "Atlético Madrid") {
+              logoSrc = "images/Liga EaSports/atletico de madrid .png";
+            } else if (team.team_name === "Athletic Bilbao") {
+              logoSrc = "images/Liga EaSports/athletic de bilbao.png";
+            }
 
             return `
               <tr class="${zoneClass}">
                   <td class="pos">${team.position}</td>
                   <td>
                       <div class="team-cell">
-                          <img src="${team.logo || "https://via.placeholder.com/28"}" class="team-logo" onerror="this.src='https://via.placeholder.com/28'">
+                          <img src="${logoSrc || "https://via.placeholder.com/28"}" class="team-logo" onerror="this.src='https://via.placeholder.com/28'">
                           <span class="team-name">${team.team_name}</span>
                       </div>
                   </td>
@@ -1074,7 +1045,6 @@
                   <td>${team.goals_against}</td>
                   <td>${team.goal_difference || team.goals_for - team.goals_against}</td>
                   <td class="points">${team.points}</td>
-                  <td><div class="form-container">${formHtml}</div></td>
               </tr>
             `;
           })

@@ -3,8 +3,8 @@ window.leagueData.laliga = {
     standings: [
         { pos: 1, team: "Barcelona", logo: "https://assets.laliga.com/assets/2019/06/07/small/barcelona.png", played: 38, won: 28, drawn: 4, lost: 6, gf: 102, ga: 39, gd: 63, points: 88, form: [\"W\", \"W\", \"D\", \"L\", \"W\"] },
         { pos: 2, team: "Real Madrid", logo: "https://assets.laliga.com/assets/2019/06/07/small/real-madrid.png", played: 38, won: 26, drawn: 6, lost: 6, gf: 78, ga: 38, gd: 40, points: 84, form: [\"W\", \"W\", \"D\", \"L\", \"W\"] },
-        { pos: 3, team: "Atlético Madrid", logo: "https://assets.laliga.com/assets/2019/06/07/small/atletico.png", played: 38, won: 22, drawn: 10, lost: 6, gf: 68, ga: 30, gd: 38, points: 76, form: [\"W\", \"W\", \"D\", \"L\", \"W\"] },
-        { pos: 4, team: "Athletic Bilbao", logo: "https://assets.laliga.com/assets/2019/06/07/small/athletic.png", played: 38, won: 19, drawn: 13, lost: 6, gf: 54, ga: 29, gd: 25, points: 70, form: [\"W\", \"W\", \"D\", \"L\", \"W\"] },
+        { pos: 3, team: "Atlético Madrid", logo: "images/Liga EaSports/atletico de madrid .png", played: 38, won: 22, drawn: 10, lost: 6, gf: 68, ga: 30, gd: 38, points: 76, form: [\"W\", \"W\", \"D\", \"L\", \"W\"] },
+        { pos: 4, team: "Athletic Bilbao", logo: "images/Liga EaSports/athletic de bilbao.png", played: 38, won: 19, drawn: 13, lost: 6, gf: 54, ga: 29, gd: 25, points: 70, form: [\"W\", \"W\", \"D\", \"L\", \"W\"] },
         { pos: 5, team: "Villarreal", logo: "https://assets.laliga.com/assets/2019/06/07/small/villarreal.png", played: 38, won: 20, drawn: 10, lost: 8, gf: 71, ga: 51, gd: 20, points: 70, form: [\"W\", \"W\", \"D\", \"L\", \"W\"] },
         { pos: 6, team: "Real Betis", logo: "https://assets.laliga.com/assets/2019/06/07/small/betis.png", played: 38, won: 16, drawn: 12, lost: 10, gf: 57, ga: 50, gd: 7, points: 60, form: [\"W\", \"W\", \"D\", \"L\", \"W\"] },
         { pos: 7, team: "Celta Vigo", logo: "https://assets.laliga.com/assets/2019/06/07/small/celta.png", played: 38, won: 16, drawn: 7, lost: 15, gf: 59, ga: 57, gd: 2, points: 55, form: [\"W\", \"W\", \"D\", \"L\", \"W\"] },

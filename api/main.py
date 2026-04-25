@@ -1,4 +1,4 @@
-﻿from fastapi import FastAPI, HTTPException, Depends, status, Request, Response
+from fastapi import FastAPI, HTTPException, Depends, status, Request, Response
 # trigger reload to pick up updated .env for sqlite
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
@@ -33,7 +33,7 @@ IMAGES_DIR = BASE_DIR / "images"
 
 app = FastAPI(
     title="Football Leagues API",
-    description="API para estadísticas de LaLiga EA Sports, Hypermotion, Bundesliga, Serie A y Premier League",
+    description="API para estadísticas de LaLiga EA Sports, Hypermotion, Bundesliga y Serie A",
     version="1.0.0"
 )
 
@@ -1171,7 +1171,7 @@ async def api_info():
         "message": "Football Leagues API",
         "version": "1.0.0",
         "documentation": "/docs",
-        "leagues": ["LaLiga EA Sports", "Hypermotion", "Bundesliga", "Serie A", "Premier League", "NBA", "FIBA World Cup", "Euroliga", "ACB"]
+        "leagues": ["LaLiga EA Sports", "Hypermotion", "Bundesliga", "Serie A", "NBA", "FIBA World Cup", "Euroliga", "ACB"]
     }
 
 # Rutas para servir páginas HTML
@@ -1202,10 +1202,6 @@ async def registro_page(request: Request):
 @app.get("/configuracion", response_class=HTMLResponse)
 async def configuracion_page(request: Request):
     return templates.TemplateResponse(request=request, name="configuracion.html", context={"request": request})
-
-@app.get("/premier-league", response_class=HTMLResponse)
-async def premier_league(request: Request):
-    return templates.TemplateResponse(request=request, name="premier-league.html", context={"request": request})
 
 @app.get("/serie-a", response_class=HTMLResponse)
 async def serie_a(request: Request):
@@ -1270,10 +1266,6 @@ async def wta_page(request: Request):
 @app.get("/liga-hypermotion", response_class=HTMLResponse)
 async def hypermotion_page(request: Request):
     return templates.TemplateResponse(request=request, name="liga-hypermotion.html", context={"request": request})
-
-@app.get("/premier-league", response_class=HTMLResponse)
-async def premier_page(request: Request):
-    return templates.TemplateResponse(request=request, name="premier-league.html", context={"request": request})
 
 @app.get("/serie-a", response_class=HTMLResponse)
 async def serie_a_page(request: Request):

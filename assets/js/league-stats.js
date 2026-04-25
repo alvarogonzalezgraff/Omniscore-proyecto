@@ -19,6 +19,11 @@ function showLeague(league) {
 
     const container = document.getElementById('league-content');
 
+    const getLogoHtml = (teamName, standings) => {
+        const team = standings.find(t => t.team.toLowerCase().includes(teamName.toLowerCase()) || teamName.toLowerCase().includes(t.team.toLowerCase()));
+        return team && team.logo ? `<img src="${team.logo}" alt="${teamName}" class="team-logo-img" style="width:18px;height:18px;object-fit:contain;border-radius:50%;">` : `<div class="team-logo">${teamName.substring(0, 1)}</div>`;
+    };
+
     // Updated header to 25/26
     let html = `
         <div class="stats-grid-layout">
@@ -89,13 +94,13 @@ function showLeague(league) {
                                     ${dateGroup.matches.map(match => `
                                         <div class="match-result" style="border-bottom: 1px solid #1e293b;">
                                             <div class="team-cell">
-                                                <div class="team-logo">${match.home.substring(0, 1)}</div>
+                                                ${getLogoHtml(match.home, data.standings)}
                                                 <span>${match.home}</span>
                                             </div>
                                             <div class="match-score">${match.score}</div>
                                             <div class="team-cell">
                                                 <span>${match.away}</span>
-                                                <div class="team-logo">${match.away.substring(0, 1)}</div>
+                                                ${getLogoHtml(match.away, data.standings)}
                                             </div>
                                             <div style="font-size: 11px; color: #64748b; margin-left: 10px; width: 100%; display: flex; justify-content: space-between; margin-top: 4px;">
                                                 <span>${match.scorers && match.scorers.length > 0 ? '⚽ ' + match.scorers.join(', ') : ''}</span>
@@ -107,13 +112,13 @@ function showLeague(league) {
                     mw.matches.map(match => `
                                 <div class="match-result" style="border-bottom: 1px solid #1e293b;">
                                     <div class="team-cell">
-                                        <div class="team-logo">${match.home.substring(0, 1)}</div>
+                                        ${getLogoHtml(match.home, data.standings)}
                                         <span>${match.home}</span>
                                     </div>
                                     <div class="match-score">${match.score}</div>
                                     <div class="team-cell">
                                         <span>${match.away}</span>
-                                        <div class="team-logo">${match.away.substring(0, 1)}</div>
+                                        ${getLogoHtml(match.away, data.standings)}
                                     </div>
                                     <div style="font-size: 11px; color: #64748b; margin-left: 10px; width: 100%; display: flex; justify-content: space-between; margin-top: 4px;">
                                         <span>${match.scorers && match.scorers.length > 0 ? '⚽ ' + match.scorers.join(', ') : ''}</span>
@@ -126,13 +131,13 @@ function showLeague(league) {
             data.results.map(match => `
                         <div class="match-result">
                             <div class="team-cell">
-                                <div class="team-logo">${match.home.substring(0, 1)}</div>
+                                ${getLogoHtml(match.home, data.standings)}
                                         <span>${match.home}</span>
                                     </div>
                                     <div class="match-score">${match.score}</div>
                                     <div class="team-cell">
                                         <span>${match.away}</span>
-                                        <div class="team-logo">${match.away.substring(0, 1)}</div>
+                                        ${getLogoHtml(match.away, data.standings)}
                                     </div>
                             <div style="font-size: 11px; color: #64748b; margin-left: 10px;">
                                 <div>${match.date}</div>

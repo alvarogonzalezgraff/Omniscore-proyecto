@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -219,7 +219,8 @@
             </div>
             <div class="sport-leagues" id="leagues-futbol" style="display:none;">
                 <a href="/laliga" class="sidebar-league"><img src="images/Leagues/laliga.svg" alt="LaLiga EA Sports" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> LaLiga EA Sports</a>
-                <a href="/premier-league" class="sidebar-league"><img src="images/Leagues/premier-league.svg" alt="Premier League" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Premier League</a>
+                <a href="/liga-hypermotion" class="sidebar-league"><img src="images/Leagues/liga-hypermotion.svg" alt="Liga Hypermotion" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Liga Hypermotion</a>
+
                 <a href="/serie-a" class="sidebar-league"><img src="images/Leagues/serie-a.svg" alt="Serie A" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Serie A</a>
                 <a href="/bundesliga" class="sidebar-league"><img src="images/Leagues/bundesliga.svg" alt="Bundesliga" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 8px;"> Bundesliga</a>
             </div>
@@ -278,11 +279,7 @@
                         <span class="lc-info"><span class="lc-name">LaLiga EA Sports</span><span class="lc-desc">España · Primera División</span></span>
                         <span class="lc-arrow">></span>
                     </a>
-                    <a href="/premier-league" class="league-card">
-                        <img src="images/Leagues/premier-league.svg" alt="Premier League" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
-                        <span class="lc-info"><span class="lc-name">Premier League</span><span class="lc-desc">Inglaterra · Primera División</span></span>
-                        <span class="lc-arrow">></span>
-                    </a>
+
                     <a href="/serie-a" class="league-card">
                         <img src="images/Leagues/serie-a.svg" alt="Serie A" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
                         <span class="lc-info"><span class="lc-name">Serie A</span><span class="lc-desc">Italia · Primera División</span></span>
@@ -291,6 +288,11 @@
                     <a href="/bundesliga" class="league-card">
                         <img src="images/Leagues/bundesliga.svg" alt="Bundesliga" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
                         <span class="lc-info"><span class="lc-name">Bundesliga</span><span class="lc-desc">Alemania · Primera División</span></span>
+                        <span class="lc-arrow">></span>
+                    </a>
+                    <a href="/liga-hypermotion" class="league-card">
+                        <img src="images/Leagues/liga-hypermotion.svg" alt="Liga Hypermotion" class="lc-icon" style="width: 36px; height: 36px; object-fit: contain;">
+                        <span class="lc-info"><span class="lc-name">Liga Hypermotion</span><span class="lc-desc">España · Segunda División</span></span>
                         <span class="lc-arrow">></span>
                     </a>
                 </div>
@@ -367,8 +369,7 @@
             <section class="stats-center" id="football-stats-section" style="display: none;">
                 <div class="section-header"><h2><span class="dot"></span> Resultados y Clasificaciones</h2></div>
                 <div class="league-tabs">
-                    <button class="tab-btn active" onclick="showLeague('premier')">Premier League</button>
-                    <button class="tab-btn" onclick="showLeague('seriea')">Serie A</button>
+                    <button class="tab-btn active" onclick="showLeague('seriea')">Serie A</button>
                     <button class="tab-btn" onclick="showLeague('bundesliga')">Bundesliga</button>
                     <button class="tab-btn" onclick="showLeague('laliga')">LALIGA EA SPORTS</button>
                     <button class="tab-btn" onclick="showLeague('laliga2')">Liga Hypermotion</button>
@@ -412,11 +413,11 @@
     </footer>
 
     <script src="assets/js/leagues/init.js"></script>
-    <script src="assets/js/leagues/premier.js"></script>
+
     <script src="assets/js/leagues/seriea.js"></script>
     <script src="assets/js/leagues/bundesliga.js"></script>
     <script src="assets/js/leagues/ligaEaSports.js"></script>
-    <script src="assets/js/leagues/Hypermotion.js"></script>
+    <script src="assets/js/leagues/Hypermotion.js?v=2"></script>
     <script src="assets/js/league-stats.js"></script>
 
     <script>

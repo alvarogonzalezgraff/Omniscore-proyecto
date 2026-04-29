@@ -1,1 +1,15 @@
-{}
+{
+  "iCdCO1osQI-HBSzMX0I_Em1IivS5mmMcP-ca9QQiUQI": {
+    "user_data": {
+      "id": 2,
+      "username": "alvaro",
+      "email": "admin@example.com",
+      "password": "$2b$12$fzyArbGJ7NcBbyUSEWgRQu0uPn4KlgepFGhJqdF4qpBtx82ot2jLO",
+      "full_name": "Alvaro",
+      "created_at": "2026-03-02 09:57:50"
+    },
+    "created_at": "2026-04-29T12:45:44.666217",
+    "expires_at": "2026-04-29T13:15:44.666217",
+    "last_accessed": "2026-04-29T12:45:44.666217"
+  }
+}

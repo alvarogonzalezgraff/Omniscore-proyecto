@@ -562,7 +562,13 @@ async def get_scraped_standings(league_name: str):
             'vfl wolfsburg': 'wolfsburg', 'fc augsburg': 'augsburg', 'augsburg': 'augsburg',
             '1. fsv mainz 05': 'mainz', 'mainz 05': 'mainz', 'mainz': 'mainz',
             'hamburger sv': 'hamburgo', 'fc st. pauli': 'st. pauli', 'st. pauli': 'st. pauli',
-            '1. fc heidenheim 1846': 'heidenheim', 'heidenheim': 'heidenheim', 'holstein kiel': 'kiel'
+            '1. fc heidenheim 1846': 'heidenheim', 'heidenheim': 'heidenheim', 'holstein kiel': 'kiel',
+            # Liga Hypermotion
+            'racing de santander': 'racing santander', 'racing santander': 'racing santander',
+            'sporting de gijón': 'sporting de gijón', 'sporting gijón': 'sporting de gijón', 'sporting': 'sporting de gijón',
+            'deportivo de la coruña': 'deportivo la coruña', 'deportivo la coruña': 'deportivo la coruña',
+            'deportivo': 'deportivo la coruña', 'rc deportivo': 'deportivo la coruña',
+            'racing de ferrol': 'racing de ferrol', 'racing ferrol': 'racing de ferrol',
         }
 
         result = []

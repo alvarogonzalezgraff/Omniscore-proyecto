@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -683,6 +683,52 @@
             }
         }
 
+        // Mapa de logos para equipos con rutas especiales o nombres inconsistentes en BD
+        const LOGO_MAP = {
+            'racing santander':    'images/Liga Hypermotion/racing_new.png',
+            'sporting de gijón':   'images/Liga Hypermotion/sporting_new.png',
+            'sporting de gijon':   'images/Liga Hypermotion/sporting_new.png',
+            'deportivo la coruña': 'images/Liga Hypermotion/deportivo_new.png',
+            'deportivo la coruna': 'images/Liga Hypermotion/deportivo_new.png',
+            'racing de ferrol':    'images/Liga Hypermotion/ferrol_new.png',
+            'mirandés':            'images/Liga Hypermotion/Mirandes.png',
+            'mirandes':            'images/Liga Hypermotion/Mirandes.png',
+            'almería':             'images/Liga Hypermotion/UD Almeria.png',
+            'almeria':             'images/Liga Hypermotion/UD Almeria.png',
+            'granada':             'images/Liga Hypermotion/Granada.png',
+            'huesca':              'images/Liga Hypermotion/Huesca.png',
+            'eibar':               'images/Liga Hypermotion/Eibar.png',
+            'albacete':            'images/Liga Hypermotion/Albacete.png',
+            'burgos':              'images/Liga Hypermotion/Burgos.png',
+            'cádiz':               'images/Liga Hypermotion/Cadiz.png',
+            'cadiz':               'images/Liga Hypermotion/Cadiz.png',
+            'córdoba':             'images/Liga Hypermotion/Cordoba.png',
+            'cordoba':             'images/Liga Hypermotion/Cordoba.png',
+            'málaga':              'images/Liga Hypermotion/malaga.png',
+            'malaga':              'images/Liga Hypermotion/malaga.png',
+            'castellón':           'images/Liga Hypermotion/castellón.png',
+            'castellon':           'images/Liga Hypermotion/castellón.png',
+            'zaragoza':            'images/Liga Hypermotion/Real Zaragoza.png',
+            'eldense':             'images/Liga Hypermotion/Eldense.png',
+            'tenerife':            'images/Liga Hypermotion/Tenerife.png',
+            'cartagena':           'images/Liga Hypermotion/Cartagena.png',
+        };
+
+        function resolveTeamLogo(team) {
+            const key = team.team_name.toLowerCase().trim()
+                .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // quitar acentos para fallback
+                ;
+            // 1. Mapa hardcodeado (nombre con acento)
+            const keyAccent = team.team_name.toLowerCase().trim();
+            if (LOGO_MAP[keyAccent]) return LOGO_MAP[keyAccent];
+            // 2. Mapa hardcodeado (sin acento)
+            if (LOGO_MAP[key]) return LOGO_MAP[key];
+            // 3. Logo de la API (si existe y no es ruta rota de BD antigua)
+            if (team.logo && !team.logo.includes('real sporting') && !team.logo.includes('Deportivo la Coru') && team.logo !== 'None') return team.logo;
+            // 4. Fallback autogenerado
+            return 'images/Liga Hypermotion/' + team.team_name.toLowerCase().replace(/ /g, '-') + '.png';
+        }
+
         function renderStandings(data) {
             const tbody = document.getElementById("standings-body");
             if (data.length === 0) {
@@ -692,12 +738,12 @@
 
             tbody.innerHTML = data.map(team => {
                 let z = team.position <= 2 ? 'promotion-direct' : team.position <= 6 ? 'promotion-playoff' : team.position >= 19 ? 'relegation-zone' : '';
-                const logo = "images/Liga Hypermotion/" + team.team_name.toLowerCase().replace(/ /g, "-") + ".png"; 
+                const logoSrc = resolveTeamLogo(team);
                 
                 return `<tr class="${z}">
                     <td>${team.position}</td>
                     <td><div class="team-cell">
-                        <img src="${team.logo || logo}" onerror="this.src='https://via.placeholder.com/28?text=${team.team_name.charAt(0)}'" class="team-logo">
+                        <img src="${logoSrc}" onerror="this.src='https://via.placeholder.com/28?text=${team.team_name.charAt(0)}'" class="team-logo">
                         <span>${team.team_name}</span>
                     </div></td>
                     <td>${team.matches_played}</td>

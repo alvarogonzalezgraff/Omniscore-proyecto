@@ -1,0 +1,28 @@
+{
+  "HbIOLRvajrMcF2p1OfVnT_VARDrt29kWY49FQdn_YmI": {
+    "user_data": {
+      "id": 2,
+      "username": "alvaro",
+      "email": "admin@example.com",
+      "password": "$2b$12$fzyArbGJ7NcBbyUSEWgRQu0uPn4KlgepFGhJqdF4qpBtx82ot2jLO",
+      "full_name": "Alvaro",
+      "created_at": "2026-03-02 09:57:50"
+    },
+    "created_at": "2026-04-30T13:01:03.291664",
+    "expires_at": "2026-04-30T13:31:03.300016",
+    "last_accessed": "2026-04-30T13:01:03.300016"
+  },
+  "ItT4cp3FGHPSR3VKTgoIACnRvlM9BYBoRciiJavlefk": {
+    "user_data": {
+      "id": 2,
+      "username": "alvaro",
+      "email": "admin@example.com",
+      "password": "$2b$12$fzyArbGJ7NcBbyUSEWgRQu0uPn4KlgepFGhJqdF4qpBtx82ot2jLO",
+      "full_name": "Alvaro",
+      "created_at": "2026-03-02 09:57:50"
+    },
+    "created_at": "2026-04-30T13:02:31.903598",
+    "expires_at": "2026-04-30T13:32:31.933988",
+    "last_accessed": "2026-04-30T13:02:31.933988"
+  }
+}

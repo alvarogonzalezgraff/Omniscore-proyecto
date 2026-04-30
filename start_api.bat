@@ -1,4 +1,4 @@
 @echo off
-echo Iniciando servidor de API...
-python api/main.py
-pause
+cd backend
+call start_api.bat
+cd ..

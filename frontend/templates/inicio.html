@@ -92,6 +92,30 @@
         .welcome-banner .btn-explore { display: inline-block; margin-top: 14px; padding: 9px 22px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); color: #fff; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.3s; position: relative; }
         .welcome-banner .btn-explore:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
 
+        .close-banner {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        .close-banner:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            transform: scale(1.1);
+        }
+
         .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
         .section-header h2 { font-size: 16px; font-weight: 700; color: #f8fafc; display: flex; align-items: center; gap: 8px; }
         .section-header h2 .dot { width: 7px; height: 7px; border-radius: 50%; background: #3b82f6; }
@@ -261,7 +285,8 @@
         </aside>
 
         <main class="main-content">
-            <div class="welcome-banner">
+            <div class="welcome-banner" id="welcomeBanner">
+                <button class="close-banner" onclick="closeWelcomeBanner()" title="Cerrar banner">×</button>
                 <h1>🏆 Bienvenido a Omniscore</h1>
                 <p>Tu centro de deportes con estadísticas, resultados en vivo y las mejores competiciones del mundo.</p>
                 <a href="/deportes" class="btn-explore">Explorar Deportes →</a>
@@ -524,6 +549,13 @@
                     }
                 }
             } catch(e) { console.error(e); }
+        }
+
+        function closeWelcomeBanner() {
+            const banner = document.getElementById('welcomeBanner');
+            if (banner) {
+                banner.style.display = 'none';
+            }
         }
     </script>
 </body>

@@ -31,6 +31,8 @@ FRONTEND_DIR = BASE_DIR.parent / "frontend"
 TEMPLATES_DIR = FRONTEND_DIR / "templates"
 ASSETS_DIR = FRONTEND_DIR / "assets"
 IMAGES_DIR = FRONTEND_DIR / "images"
+APP_DIR = BASE_DIR / "app"
+TEAM_LOGOS_DIR = APP_DIR / "images"
 
 app = FastAPI(
     title="Football Leagues API",
@@ -73,6 +75,7 @@ templates = Jinja2Templates(directory=str(TEMPLATES_DIR))
 # Montar directorios estáticos
 app.mount("/assets", StaticFiles(directory=str(ASSETS_DIR)), name="assets")
 app.mount("/images", StaticFiles(directory=str(IMAGES_DIR)), name="images")
+app.mount("/team-logos", StaticFiles(directory=str(TEAM_LOGOS_DIR)), name="team_logos")
 
 # ==================== AUTH ENDPOINTS ====================
 

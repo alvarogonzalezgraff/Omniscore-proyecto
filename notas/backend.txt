@@ -1,0 +1,19 @@
+BACKEND - OMNISCORE
+
+Estructura:
+- Basado en Python utilizando el framework FastAPI.
+- Ubicación: /backend/api/
+
+Componentes Clave:
+- main.py: Punto de entrada principal con la configuración de rutas y middleware.
+- auth.py, auth_endpoints.py, session_auth.py: Sistema completo de autenticación y gestión de sesiones.
+- security_middleware.py: Protecciones de seguridad para las rutas.
+- models.py: Definición de modelos de datos (Pydantic y SQLAlchemy).
+- database_orm.py: Mapeo objeto-relacional para la base de datos.
+
+Dependencias:
+- fastapi: Framework web.
+- uvicorn: Servidor ASGI.
+- sqlalchemy: ORM para la base de datos.
+- python-jose & passlib: Para el manejo de tokens JWT y hashing de contraseñas.
+- apscheduler: Para la ejecución de tareas programadas (scrapers).

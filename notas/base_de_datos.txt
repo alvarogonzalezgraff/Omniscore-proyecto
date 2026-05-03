@@ -1,0 +1,17 @@
+BASE DE DATOS - OMNISCORE
+
+Motor:
+- El sistema utiliza PostgreSQL como motor de base de datos principal para producción.
+- Configuración en /backend/api/database.py.
+
+ORM (Object-Relational Mapping):
+- Se utiliza SQLAlchemy para interactuar con la base de datos de forma programática.
+- Los esquemas y modelos están definidos en database_orm.py y models.py.
+
+Archivos Relacionados:
+- backend/database/: Contiene archivos de base de datos locales (posiblemente para desarrollo o backups como app.db).
+- .env: Contiene la URL de conexión (DATABASE_URL) y credenciales sensibles.
+
+Gestión:
+- La conexión se gestiona mediante un pool de conexiones para optimizar el rendimiento.
+- Soporte para sesiones asíncronas y síncronas.

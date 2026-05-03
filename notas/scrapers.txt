@@ -1,0 +1,15 @@
+SCRAPERS - OMNISCORE
+
+Propósito:
+- Los scrapers se encargan de obtener datos en tiempo real de diferentes ligas y deportes para mantener la aplicación actualizada.
+
+Ubicación:
+- /backend/api/scrapers/
+
+Tecnologías:
+- requests: Para realizar peticiones HTTP a las fuentes de datos.
+- beautifulsoup4: Para parsear y extraer información de archivos HTML.
+- lxml: Parser de alto rendimiento utilizado junto con BeautifulSoup.
+
+Automatización:
+- Utiliza APScheduler para ejecutar las tareas de extracción de forma periódica sin intervención manual.

@@ -1,0 +1,14 @@
+EJECUCIÓN Y SCRIPTS - OMNISCORE
+
+Scripts de Inicio (Raíz):
+- run.py: Script principal para lanzar la aplicación.
+- run_dev.py: Script para el entorno de desarrollo con recarga automática.
+- start_api.bat: Archivo por lotes para iniciar la API rápidamente.
+- start_dev.bat: Archivo por lotes para el entorno de desarrollo.
+
+Entorno Virtual:
+- /venv/: Entorno virtual de Python con todas las dependencias instaladas.
+
+Documentación:
+- documentacion.md: Archivo extenso con detalles técnicos y manuales.
+- /video/: Contiene materiales visuales de demostración del proyecto.

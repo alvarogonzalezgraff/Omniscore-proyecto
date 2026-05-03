@@ -1,0 +1,22 @@
+FRONTEND - OMNISCORE
+
+Estructura:
+- El frontend está basado en archivos HTML estáticos y plantillas.
+- Ubicación: /frontend/templates/
+
+Tecnologías:
+- HTML5 y CSS3 (diseño moderno con gradientes y micro-animaciones).
+- JavaScript Vanilla: Se encarga de la interactividad y llamadas a la API.
+- Jinja2: Motor de plantillas utilizado por el backend para renderizar el contenido dinámico.
+
+Páginas Principales:
+- inicio.html: Página principal de bienvenida y resumen.
+- laliga.html, bundesliga.html, serie-a.html: Páginas específicas de ligas de fútbol.
+- nba.html, acb.html: Páginas de baloncesto.
+- atp.html, wta.html: Páginas de tenis.
+- perfil.html y configuracion.html: Gestión de usuario.
+- registro.html y IniciarSesion.html: Sistema de autenticación.
+
+Recursos:
+- /frontend/assets/: Archivos CSS y JS compartidos.
+- /frontend/images/: Emblemas de equipos, logos de ligas y otros recursos gráficos.

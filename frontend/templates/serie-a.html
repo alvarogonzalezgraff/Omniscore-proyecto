@@ -191,7 +191,29 @@
         border-left: 4px solid #ef4444;
       }
 
+      .legend {
+        display: flex;
+        gap: 25px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        padding: 15px;
+        background-color: #1e293b;
+        border-radius: 10px;
+      }
 
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #94a3b8;
+      }
+
+      .legend-color {
+        width: 16px;
+        height: 16px;
+        border-radius: 3px;
+      }
 
       .tab-content {
         display: none;
@@ -664,6 +686,24 @@
               <tbody id="standings-body"></tbody>
             </table>
           </div>
+          <div class="legend">
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #22c55e"></div>
+              <span>Champions League</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #f59e0b"></div>
+              <span>Europa League</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #3b82f6"></div>
+              <span>Conference League</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #ef4444"></div>
+              <span>Descenso</span>
+            </div>
+          </div>
         </div>
         <div id="results-content" class="tab-content">
           <h2 class="section-title">Resultados</h2>
@@ -731,6 +771,7 @@
         "Torino": "torino.jpg",
         "Genoa": "genoa.jpg",
         "Monza": "monza.jpg",
+        "Como": "como.jpg",
         "Empoli": "empoli.jpg",
         "Udinese": "udinese.jpg",
         "Lecce": "lecce.jpg",
@@ -739,7 +780,9 @@
         "Cagliari": "cagliari.jpg",
         "Frosinone": "frosionne.jpg",
         "Salernitana": "salernitiana.jpg",
-        "Sassuolo": "sassuolo.jpg"
+        "Sassuolo": "sassuolo.jpg",
+        "Parma": "parma.png",
+        "Venezia": "venezia.png"
       };
 
       // Función para obtener la URL del escudo de un equipo
@@ -1063,18 +1106,12 @@
           eventsHtml = `<div style="text-align:center;margin-top:8px;font-size:11.5px;color:#94a3b8;">⚽ ${m.scorers}</div>`;
         }
 
-        // Obtener URLs de escudos
-        const homeLogoUrl = getTeamLogoUrl(m.home_team);
-        const awayLogoUrl = getTeamLogoUrl(m.away_team);
-        const homeLogoHtml = homeLogoUrl ? `<img src="${homeLogoUrl}" style="width:28px;height:28px;object-fit:contain;margin-right:8px;" onerror="this.style.display='none'">` : '';
-        const awayLogoHtml = awayLogoUrl ? `<img src="${awayLogoUrl}" style="width:28px;height:28px;object-fit:contain;margin-left:8px;" onerror="this.style.display='none'">` : '';
-
         return `
           <div class="match-card" style="border-bottom:1px solid #334155;padding:14px 20px;cursor:pointer;transition:all 0.3s ease;" onclick="showMatchDetails(${JSON.stringify(m).replace(/"/g, '&quot;')})">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
-              <div style="font-weight:700;flex:1;text-align:right;display:flex;align-items:center;justify-content:flex-end;">${homeLogoHtml}${m.home_team}</div>
+              <div style="font-weight:700;flex:1;text-align:right;display:flex;align-items:center;justify-content:flex-end;">${m.home_team}</div>
               <div style="background:#009246;color:#fff;padding:7px 18px;border-radius:7px;font-weight:bold;font-size:16px;min-width:64px;text-align:center;">${m.home_score} - ${m.away_score}</div>
-              <div style="font-weight:700;flex:1;text-align:left;display:flex;align-items:center;justify-content:flex-start;">${m.away_team}${awayLogoHtml}</div>
+              <div style="font-weight:700;flex:1;text-align:left;display:flex;align-items:center;justify-content:flex-start;">${m.away_team}</div>
             </div>
             <div style="text-align:center;font-size:11px;color:#475569;margin-top:6px;">📅 ${new Date(m.date).toLocaleDateString()}</div>
             <div style="text-align:center;margin-top:8px;">

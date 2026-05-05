@@ -68,15 +68,22 @@
         /* League cards in main content */
         .sport-panel { margin-bottom: 22px; animation: fadePanel 0.3s; }
         @keyframes fadePanel { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-        .leagues-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
-        .league-card { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #111827; border: 1px solid #1f2937; border-radius: 10px; text-decoration: none; transition: all 0.25s; }
+        .leagues-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+        .league-card { display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: #111827; border: 1px solid #1f2937; border-radius: 12px; text-decoration: none; transition: all 0.25s; }
         .league-card:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
-        .league-card .lc-icon { font-size: 26px; width: 36px; text-align: center; flex-shrink: 0; }
+        .league-card .lc-icon { font-size: 30px; width: 40px; text-align: center; flex-shrink: 0; }
         .league-card .lc-info { flex: 1; }
-        .league-card .lc-name { font-size: 14px; font-weight: 700; color: #f8fafc; display: block; }
-        .league-card .lc-desc { font-size: 11px; color: #6b7280; display: block; margin-top: 2px; }
-        .league-card .lc-arrow { color: #4b5563; font-size: 18px; font-weight: 700; flex-shrink: 0; transition: color 0.2s; }
+        .league-card .lc-name { font-size: 15px; font-weight: 700; color: #f8fafc; display: block; }
+        .league-card .lc-desc { font-size: 12px; color: #6b7280; display: block; margin-top: 2px; }
+        .league-card .lc-arrow { color: #4b5563; font-size: 20px; font-weight: 700; flex-shrink: 0; transition: color 0.2s; }
         .league-card:hover .lc-arrow { color: #3b82f6; }
+
+        /* Slightly larger cards for futbol and baloncesto */
+        #panel-futbol .league-card, #panel-baloncesto .league-card { padding: 18px 20px; gap: 16px; }
+        #panel-futbol .league-card .lc-icon, #panel-baloncesto .league-card .lc-icon { font-size: 32px; width: 44px; }
+        #panel-futbol .league-card .lc-name, #panel-baloncesto .league-card .lc-name { font-size: 16px; }
+        #panel-futbol .league-card .lc-desc, #panel-baloncesto .league-card .lc-desc { font-size: 13px; }
+        #panel-futbol .league-card .lc-arrow, #panel-baloncesto .league-card .lc-arrow { font-size: 22px; }
 
         .sidebar-divider { height: 1px; background: #1f2937; margin: 14px 0; }
         .sidebar-link { display: flex; align-items: center; gap: 8px; padding: 7px 12px; color: #6b7280; font-size: 12px; text-decoration: none; border-radius: 6px; transition: all 0.2s; margin-bottom: 2px; }
@@ -200,15 +207,15 @@
         .favs-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
         .favs-header h2 { font-size: 16px; font-weight: 700; color: #facc15; display: flex; align-items: center; gap: 8px; }
         .favs-header h2 .dot { width: 7px; height: 7px; border-radius: 50%; background: #facc15; }
-        .favs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-        .fav-item { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #111827; border: 1px solid #1f2937; border-radius: 10px; cursor: pointer; transition: all 0.25s; text-decoration: none; }
+        .favs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+        .fav-item { display: flex; align-items: center; gap: 14px; padding: 16px 18px; background: #111827; border: 1px solid #1f2937; border-radius: 12px; cursor: pointer; transition: all 0.25s; text-decoration: none; }
         .fav-item:hover { border-color: #facc15; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
-        .fav-item .fi-icon { font-size: 22px; }
+        .fav-item .fi-icon { font-size: 26px; }
         .fav-item .fi-info { flex: 1; }
-        .fav-item .fi-name { font-size: 13px; font-weight: 700; color: #f8fafc; }
-        .fav-item .fi-sport { font-size: 10px; color: #6b7280; display: flex; align-items: center; gap: 4px; margin-top: 1px; }
+        .fav-item .fi-name { font-size: 15px; font-weight: 700; color: #f8fafc; }
+        .fav-item .fi-sport { font-size: 11px; color: #6b7280; display: flex; align-items: center; gap: 4px; margin-top: 2px; }
         .fav-item .fi-sport .fi-dot { width: 5px; height: 5px; border-radius: 50%; }
-        .fav-item .fi-arrow { color: #4b5563; font-size: 12px; }
+        .fav-item .fi-arrow { color: #4b5563; font-size: 14px; }
 
         /* Sidebar favorites */
         .sidebar-fav-title { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #facc15; font-weight: 700; margin: 12px 0 6px; padding: 0 8px; display: none; }
@@ -276,7 +283,7 @@
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                 Clasificaciones
             </a>
-            <a href="#" class="sidebar-link">
+            <a href="#" class="sidebar-link" onclick="toggleFavs(); return false;">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
                 Favoritos
             </a>
@@ -290,6 +297,14 @@
                 <h1>🏆 Bienvenido a Omniscore</h1>
                 <p>Tu centro de deportes con estadísticas, resultados en vivo y las mejores competiciones del mundo.</p>
                 <a href="/deportes" class="btn-explore">Explorar Deportes →</a>
+            </div>
+
+            <!-- FAVORITOS -->
+            <div class="favs-section" id="inicioFavs">
+                <div class="favs-header">
+                    <h2><span class="dot"></span> Mis Favoritos</h2>
+                </div>
+                <div class="favs-grid" id="inicioFavGrid"></div>
             </div>
 
             <!-- SPORT LEAGUES PANELS -->
@@ -449,18 +464,70 @@
         // Toggle sport leagues in sidebar
         function toggleSport(sport) {
             var ids = ['futbol', 'baloncesto', 'tenis'];
-            // Toggle sidebar leagues
-            ids.forEach(function(id) {
-                var el = document.getElementById('leagues-' + id);
-                if (el) el.style.display = (id === sport) ? 'block' : 'none';
-                var panel = document.getElementById('panel-' + id);
-                if (panel) panel.style.display = (id === sport) ? 'block' : 'none';
-            });
-            // Update active class
-            document.querySelectorAll('.sidebar-sport-btn').forEach(function(btn) {
-                btn.classList.remove('active');
-            });
-            event.currentTarget.classList.add('active');
+            var favSection = document.getElementById('inicioFavs');
+            var panel = document.getElementById('panel-' + sport);
+            var isSameSport = panel && panel.style.display === 'block';
+
+            if (isSameSport) {
+                // Hide this sport panel and show favorites
+                ids.forEach(function(id) {
+                    var el = document.getElementById('leagues-' + id);
+                    if (el) el.style.display = 'none';
+                    var p = document.getElementById('panel-' + id);
+                    if (p) p.style.display = 'none';
+                });
+                document.querySelectorAll('.sidebar-sport-btn').forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+                if (favSection) {
+                    favSection.style.display = '';
+                    renderInicioFavs();
+                }
+            } else {
+                // Hide favorites and show selected sport
+                if (favSection) {
+                    favSection.classList.remove('has-favs');
+                    favSection.style.display = 'none';
+                }
+                ids.forEach(function(id) {
+                    var el = document.getElementById('leagues-' + id);
+                    if (el) el.style.display = (id === sport) ? 'block' : 'none';
+                    var p = document.getElementById('panel-' + id);
+                    if (p) p.style.display = (id === sport) ? 'block' : 'none';
+                });
+                document.querySelectorAll('.sidebar-sport-btn').forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+                event.currentTarget.classList.add('active');
+            }
+        }
+
+        function toggleFavs() {
+            var favSection = document.getElementById('inicioFavs');
+            if (!favSection) return;
+
+            var isHidden = favSection.style.display === 'none';
+            if (isHidden) {
+                // Hide all sport panels
+                var ids = ['futbol', 'baloncesto', 'tenis'];
+                ids.forEach(function(id) {
+                    var el = document.getElementById('leagues-' + id);
+                    if (el) el.style.display = 'none';
+                    var p = document.getElementById('panel-' + id);
+                    if (p) p.style.display = 'none';
+                });
+                document.querySelectorAll('.sidebar-sport-btn').forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+
+                // Show favorites
+                favSection.style.display = '';
+                renderInicioFavs();
+                favSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                favSection.classList.remove('has-favs');
+                favSection.style.display = 'none';
+            }
         }
     </script>
     <script>

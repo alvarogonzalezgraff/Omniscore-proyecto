@@ -1,0 +1,46 @@
+# Omniscore Demo URLs
+
+# Login Page (30s)
+# Show authentication interface
+http://localhost:8001/login
+
+# Home Dashboard (30s)
+# Main dashboard and navigation
+http://localhost:8001/
+
+# Sports Overview (30s)
+# Available sports selection
+http://localhost:8001/deportes
+
+# Football - LaLiga (60s)
+# LaLiga EA Sports league
+http://localhost:8001/laliga
+
+# Football - Bundesliga (30s)
+# German Bundesliga
+http://localhost:8001/bundesliga
+
+# Football - Serie A (30s)
+# Italian Serie A
+http://localhost:8001/serie-a
+
+# Basketball - NBA (60s)
+# NBA basketball league
+http://localhost:8001/nba
+
+# Basketball - EuroLeague (30s)
+# European basketball
+http://localhost:8001/euroliga
+
+# Tennis - ATP Tour (30s)
+# Men's tennis tour
+http://localhost:8001/atp
+
+# User Profile (30s)
+# User settings and profile
+http://localhost:8001/perfil
+
+# API Documentation (60s)
+# API endpoints and documentation
+http://localhost:8001/docs
+
